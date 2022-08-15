@@ -1,6 +1,6 @@
 {
   "name": "@stargaze-zone/chain",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Chain Registry info for Stargaze",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/cosmology-tech/stargaze-zone",
