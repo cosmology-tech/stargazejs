@@ -15,7 +15,7 @@ TS library with Cosmos SDK and Stargaze smart contracts.
 A leaner version of the `stargaze-zone` npm module, w/ cosmwasm, ibc modules.
 
 ```
-npm install stargaze-zone
+npm install stargazejs
 ```
 
 ### Cosmos SDK clients
@@ -40,7 +40,7 @@ const main = async () => {
 All contracts are scoped under the `contracts` object:
 
 ```js
-import { contracts } from '@stargaze-zone/contracts';
+import { contracts } from 'stargazejs';
 const {
     SG721Base,
     VendingFactory,

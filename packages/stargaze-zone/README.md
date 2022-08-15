@@ -37,7 +37,7 @@ const main = async () => {
 All contracts are scoped under the `contracts` object:
 
 ```js
-import { contracts } from '@stargaze-zone/contracts';
+import { contracts } from 'stargaze-zone';
 const {
     SG721Base,
     VendingFactory,

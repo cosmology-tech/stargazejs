@@ -1,4 +1,4 @@
-# stargaze-zone
+# stargaze 
 
 <p align="center" width="100%">
     <img height="90" src="https://user-images.githubusercontent.com/545047/184694732-f4a3d397-14fb-415a-9562-a532f510f812.png" />
@@ -12,7 +12,7 @@ Typescript libraries for the Stargaze ecosystem.
 
 ## Packages
 
-#### [stargaze-zone](packages/stargaze-zone)
+#### [stargazejs](packages/stargazejs)
 
 TS library with Cosmos SDK and Stargaze smart contracts.
 
@@ -23,6 +23,11 @@ TS library with Stargaze smart contracts.
 #### [@stargaze-zone/chain](packages/chain)
 
 Chain Registry info for Stargaze, including asset lists.
+
+#### [stargaze-zone](packages/stargaze-zone)
+
+TS library with Cosmos SDK and Stargaze smart contracts. Includes IBC and CosmWasm modules.
+
 
 ## Developing
 
