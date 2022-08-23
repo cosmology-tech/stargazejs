@@ -16,7 +16,7 @@ npm install @stargaze-zone/chain
 ```
 
 ```js
-import { chain, assets, ibc_assets } from '@stargaze-zone/chain';
+import { chain, assets, asset_list } from '@stargaze-zone/chain';
 ```
 
 ### assets

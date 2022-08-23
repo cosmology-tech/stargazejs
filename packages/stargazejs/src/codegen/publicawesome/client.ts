@@ -4,6 +4,23 @@ import * as stargazeAllocV1beta1TxRegistry from "../stargaze/alloc/v1beta1/tx.re
 import * as stargazeClaimV1beta1TxRegistry from "../stargaze/claim/v1beta1/tx.registry";
 import * as stargazeAllocV1beta1TxAmino from "../stargaze/alloc/v1beta1/tx.amino";
 import * as stargazeClaimV1beta1TxAmino from "../stargaze/claim/v1beta1/tx.amino";
+export const getSigningPublicawesomeClientOptions = ({
+  defaultTypes = defaultRegistryTypes
+}: {
+  defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
+} = {}): {
+  registry: Registry;
+  aminoTypes: AminoTypes;
+} => {
+  const registry = new Registry([...defaultTypes, ...stargazeAllocV1beta1TxRegistry.registry, ...stargazeClaimV1beta1TxRegistry.registry]);
+  const aminoTypes = new AminoTypes({ ...stargazeAllocV1beta1TxAmino.AminoConverter,
+    ...stargazeClaimV1beta1TxAmino.AminoConverter
+  });
+  return {
+    registry,
+    aminoTypes
+  };
+};
 export const getSigningPublicawesomeClient = async ({
   rpcEndpoint,
   signer,
@@ -13,9 +30,11 @@ export const getSigningPublicawesomeClient = async ({
   signer: OfflineSigner;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const registry = new Registry([...defaultTypes, ...stargazeAllocV1beta1TxRegistry.registry, ...stargazeClaimV1beta1TxRegistry.registry]);
-  const aminoTypes = new AminoTypes({ ...stargazeAllocV1beta1TxAmino.AminoConverter,
-    ...stargazeClaimV1beta1TxAmino.AminoConverter
+  const {
+    registry,
+    aminoTypes
+  } = getSigningPublicawesomeClientOptions({
+    defaultTypes
   });
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
     registry,

@@ -1,5 +1,5 @@
-import { IBCAsset } from '@chain-registry/types';
-const ibc_assets: IBCAsset = {
+import { AssetList } from '@chain-registry/types';
+const asset_list: AssetList = {
   chain_name: 'stargaze',
   assets: [
     {
@@ -196,4 +196,4 @@ const ibc_assets: IBCAsset = {
     }
   ]
 };
-export default ibc_assets;
+export default asset_list;
