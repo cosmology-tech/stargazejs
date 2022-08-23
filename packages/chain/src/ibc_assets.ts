@@ -25,16 +25,19 @@ const ibc_assets: IBCAsset = {
         svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/juno.svg'
       },
       coingecko_id: 'juno-network',
-      ibc: {
-        counterparty: {
-          channel: 'channel-20',
-          denom: 'ujuno',
-          chain_name: 'juno'
-        },
-        chain: {
-          channel: 'channel-5'
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel: 'channel-20',
+            denom: 'ujuno',
+            chain_name: 'juno'
+          },
+          chain: {
+            channel: 'channel-5'
+          }
         }
-      }
+      ]
     },
     {
       description: 'The native token cw20 for Neta on Juno Chain',
@@ -63,17 +66,20 @@ const ibc_assets: IBCAsset = {
         png: 'https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/neta.png'
       },
       coingecko_id: 'neta',
-      ibc: {
-        counterparty: {
-          channel: 'channel-20',
-          denom:
-            'ibc/297C64CC42B5A8D8F82FE2EBE208A6FE8F94B86037FA28C4529A23701C228F7A',
-          chain_name: 'juno'
-        },
-        chain: {
-          channel: 'channel-5'
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel: 'channel-20',
+            denom:
+              'ibc/297C64CC42B5A8D8F82FE2EBE208A6FE8F94B86037FA28C4529A23701C228F7A',
+            chain_name: 'juno'
+          },
+          chain: {
+            channel: 'channel-5'
+          }
         }
-      }
+      ]
     },
     {
       description: 'The native token of Osmosis',
@@ -100,16 +106,19 @@ const ibc_assets: IBCAsset = {
       },
       coingecko_id: 'osmosis',
       keywords: ['dex', 'staking'],
-      ibc: {
-        counterparty: {
-          channel: 'channel-75',
-          denom: 'uosmo',
-          chain_name: 'osmosis'
-        },
-        chain: {
-          channel: 'channel-0'
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel: 'channel-75',
+            denom: 'uosmo',
+            chain_name: 'osmosis'
+          },
+          chain: {
+            channel: 'channel-0'
+          }
         }
-      }
+      ]
     },
     {
       denom_units: [
@@ -134,16 +143,19 @@ const ibc_assets: IBCAsset = {
       },
       coingecko_id: 'ion',
       keywords: ['memecoin'],
-      ibc: {
-        counterparty: {
-          channel: 'channel-75',
-          denom: 'uion',
-          chain_name: 'osmosis'
-        },
-        chain: {
-          channel: 'channel-0'
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel: 'channel-75',
+            denom: 'uion',
+            chain_name: 'osmosis'
+          },
+          chain: {
+            channel: 'channel-0'
+          }
         }
-      }
+      ]
     },
     {
       description: 'The native token of Secret Network',
@@ -168,16 +180,19 @@ const ibc_assets: IBCAsset = {
         svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/secretnetwork/images/scrt.svg'
       },
       coingecko_id: 'secret',
-      ibc: {
-        counterparty: {
-          channel: 'channel-19',
-          denom: 'uscrt',
-          chain_name: 'secretnetwork'
-        },
-        chain: {
-          channel: 'channel-48'
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel: 'channel-19',
+            denom: 'uscrt',
+            chain_name: 'secretnetwork'
+          },
+          chain: {
+            channel: 'channel-48'
+          }
         }
-      }
+      ]
     }
   ]
 };

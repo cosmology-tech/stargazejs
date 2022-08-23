@@ -171,6 +171,10 @@ const chain: Chain = {
       {
         address: 'https://rpc-stargaze-ia.notional.ventures/',
         provider: 'Notional'
+      },
+      {
+        address: 'https://stargaze.c29r3.xyz:443/rpc/',
+        provider: 'c29r3'
       }
     ],
     rest: [
@@ -193,6 +197,10 @@ const chain: Chain = {
       {
         address: 'https://api-stargaze-ia.notional.ventures/',
         provider: 'Notional'
+      },
+      {
+        address: 'https://stargaze.c29r3.xyz:443/api/',
+        provider: 'c29r3'
       }
     ],
     grpc: [
