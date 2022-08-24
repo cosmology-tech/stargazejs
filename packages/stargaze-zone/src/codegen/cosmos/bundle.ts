@@ -121,9 +121,9 @@ import * as _185 from "./gov/v1/tx.rpc.msg";
 import * as _186 from "./gov/v1beta1/tx.rpc.msg";
 import * as _187 from "./group/v1/tx.rpc.msg";
 import * as _188 from "./staking/v1beta1/tx.rpc.msg";
-import * as _216 from "./lcd";
-import * as _217 from "./rpc.query";
-import * as _218 from "./rpc.tx";
+import * as _221 from "./lcd";
+import * as _222 from "./rpc.query";
+import * as _223 from "./rpc.tx";
 export namespace cosmos {
   export namespace app {
     export const v1alpha1 = { ..._2,
@@ -356,8 +356,8 @@ export namespace cosmos {
       ..._93
     };
   }
-  export const ClientFactory = { ..._216,
-    ..._217,
-    ..._218
+  export const ClientFactory = { ..._221,
+    ..._222,
+    ..._223
   };
 }

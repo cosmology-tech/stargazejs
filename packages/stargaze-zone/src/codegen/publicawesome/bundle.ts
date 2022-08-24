@@ -7,19 +7,19 @@ import * as _140 from "../stargaze/claim/v1beta1/genesis";
 import * as _141 from "../stargaze/claim/v1beta1/params";
 import * as _142 from "../stargaze/claim/v1beta1/query";
 import * as _143 from "../stargaze/claim/v1beta1/tx";
-import * as _204 from "../stargaze/alloc/v1beta1/tx.amino";
-import * as _205 from "../stargaze/claim/v1beta1/tx.amino";
-import * as _206 from "../stargaze/alloc/v1beta1/tx.registry";
-import * as _207 from "../stargaze/claim/v1beta1/tx.registry";
-import * as _208 from "../stargaze/alloc/v1beta1/query.lcd";
-import * as _209 from "../stargaze/claim/v1beta1/query.lcd";
-import * as _210 from "../stargaze/alloc/v1beta1/query.rpc.query";
-import * as _211 from "../stargaze/claim/v1beta1/query.rpc.query";
-import * as _212 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
-import * as _213 from "../stargaze/claim/v1beta1/tx.rpc.msg";
-import * as _225 from "./lcd";
-import * as _226 from "./rpc.query";
-import * as _227 from "./rpc.tx";
+import * as _209 from "../stargaze/alloc/v1beta1/tx.amino";
+import * as _210 from "../stargaze/claim/v1beta1/tx.amino";
+import * as _211 from "../stargaze/alloc/v1beta1/tx.registry";
+import * as _212 from "../stargaze/claim/v1beta1/tx.registry";
+import * as _213 from "../stargaze/alloc/v1beta1/query.lcd";
+import * as _214 from "../stargaze/claim/v1beta1/query.lcd";
+import * as _215 from "../stargaze/alloc/v1beta1/query.rpc.query";
+import * as _216 from "../stargaze/claim/v1beta1/query.rpc.query";
+import * as _217 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
+import * as _218 from "../stargaze/claim/v1beta1/tx.rpc.msg";
+import * as _230 from "./lcd";
+import * as _231 from "./rpc.query";
+import * as _232 from "./rpc.tx";
 export namespace publicawesome {
   export namespace stargaze {
     export namespace alloc {
@@ -27,11 +27,11 @@ export namespace publicawesome {
         ..._136,
         ..._137,
         ..._138,
-        ..._204,
-        ..._206,
-        ..._208,
-        ..._210,
-        ..._212
+        ..._209,
+        ..._211,
+        ..._213,
+        ..._215,
+        ..._217
       };
     }
     export namespace claim {
@@ -40,16 +40,16 @@ export namespace publicawesome {
         ..._141,
         ..._142,
         ..._143,
-        ..._205,
-        ..._207,
-        ..._209,
-        ..._211,
-        ..._213
+        ..._210,
+        ..._212,
+        ..._214,
+        ..._216,
+        ..._218
       };
     }
   }
-  export const ClientFactory = { ..._225,
-    ..._226,
-    ..._227
+  export const ClientFactory = { ..._230,
+    ..._231,
+    ..._232
   };
 }
