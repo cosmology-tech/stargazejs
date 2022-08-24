@@ -4,14 +4,14 @@ import * as _96 from "./wasm/v1/proposal";
 import * as _97 from "./wasm/v1/query";
 import * as _98 from "./wasm/v1/tx";
 import * as _99 from "./wasm/v1/types";
-import * as _189 from "./wasm/v1/tx.amino";
-import * as _190 from "./wasm/v1/tx.registry";
-import * as _191 from "./wasm/v1/query.lcd";
-import * as _192 from "./wasm/v1/query.rpc.query";
-import * as _193 from "./wasm/v1/tx.rpc.msg";
-import * as _224 from "./lcd";
-import * as _225 from "./rpc.query";
-import * as _226 from "./rpc.tx";
+import * as _233 from "./wasm/v1/tx.amino";
+import * as _234 from "./wasm/v1/tx.registry";
+import * as _235 from "./wasm/v1/query.lcd";
+import * as _236 from "./wasm/v1/query.rpc.query";
+import * as _237 from "./wasm/v1/tx.rpc.msg";
+import * as _274 from "./lcd";
+import * as _275 from "./rpc.query";
+import * as _276 from "./rpc.tx";
 export namespace cosmwasm {
   export namespace wasm {
     export const v1 = { ..._94,
@@ -20,15 +20,15 @@ export namespace cosmwasm {
       ..._97,
       ..._98,
       ..._99,
-      ..._189,
-      ..._190,
-      ..._191,
-      ..._192,
-      ..._193
+      ..._233,
+      ..._234,
+      ..._235,
+      ..._236,
+      ..._237
     };
   }
-  export const ClientFactory = { ..._224,
-    ..._225,
-    ..._226
+  export const ClientFactory = { ..._274,
+    ..._275,
+    ..._276
   };
 }
