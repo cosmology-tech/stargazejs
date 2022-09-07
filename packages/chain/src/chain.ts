@@ -149,12 +149,12 @@ const chain: Chain = {
   apis: {
     rpc: [
       {
-        address: 'https://rpc.stargaze.pupmos.network/',
-        provider: 'PUPMØS'
-      },
-      {
         address: 'https://rpc.stargaze-apis.com/',
         provider: 'Stargaze Foundation'
+      },
+      {
+        address: 'https://rpc.stargaze.pupmos.network/',
+        provider: 'PUPMØS'
       },
       {
         address: 'https://rpc.stargaze.ezstaking.io/',
@@ -169,7 +169,7 @@ const chain: Chain = {
         provider: 'Polkachu'
       },
       {
-        address: 'https://rpc-stargaze-ia.notional.ventures/',
+        address: 'https://rpc-stargaze-ia.cosmosia.notional.ventures/',
         provider: 'Notional'
       },
       {
@@ -179,12 +179,12 @@ const chain: Chain = {
     ],
     rest: [
       {
-        address: 'https://api.stargaze.pupmos.network/',
-        provider: 'PUPMØS'
-      },
-      {
         address: 'https://rest.stargaze-apis.com/',
         provider: 'Stargaze Foundation'
+      },
+      {
+        address: 'https://api.stargaze.pupmos.network/',
+        provider: 'PUPMØS'
       },
       {
         address: 'https://api.stargaze.ezstaking.io/',
@@ -195,7 +195,7 @@ const chain: Chain = {
         provider: 'kingnodes'
       },
       {
-        address: 'https://api-stargaze-ia.notional.ventures/',
+        address: 'https://api-stargaze-ia.cosmosia.notional.ventures/',
         provider: 'Notional'
       },
       {
@@ -205,8 +205,12 @@ const chain: Chain = {
     ],
     grpc: [
       {
-        address: 'grpc-stargaze-ia.notional.ventures:443',
+        address: 'grpc-stargaze-ia.cosmosia.notional.ventures:443',
         provider: 'Notional'
+      },
+      {
+        address: 'stargaze-grpc.polkachu.com:37090',
+        provider: 'Polkachu'
       }
     ]
   },
