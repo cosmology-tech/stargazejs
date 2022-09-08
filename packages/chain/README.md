@@ -103,7 +103,7 @@ console.log(chain);
 
 ## Credits
 
-Built by [Cosmology](https://github.com/cosmology-tech)
+Built by Cosmology — if you like our tools, please consider delegating to [our validator](https://cosmology.tech/validator)
 
 Code built with the help of these related projects:
 
