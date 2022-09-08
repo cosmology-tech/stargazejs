@@ -89,5 +89,6 @@
     "@osmonauts/helpers": "^0.4.3",
     "@osmonauts/lcd": "0.4.0",
     "protobufjs": "^6.11.2"
-  }
+  },
+  "gitHead": "b093199f2790979f55555701971f4aaadd159f0e"
 }
