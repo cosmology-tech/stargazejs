@@ -54,7 +54,7 @@
     "@babel/plugin-transform-runtime": "7.18.10",
     "@babel/preset-env": "7.19.0",
     "@babel/preset-typescript": "^7.17.12",
-    "@chain-registry/utils": "^0.7.1",
+    "@chain-registry/utils": "^0.7.3",
     "@types/jest": "^29.0.0",
     "@typescript-eslint/eslint-plugin": "5.36.2",
     "@typescript-eslint/parser": "5.36.2",
@@ -77,7 +77,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
-    "@chain-registry/types": "0.7.0"
+    "@chain-registry/types": "0.7.1"
   },
   "gitHead": "b093199f2790979f55555701971f4aaadd159f0e"
 }
