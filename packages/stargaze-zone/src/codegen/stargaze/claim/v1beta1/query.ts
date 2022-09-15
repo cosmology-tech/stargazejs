@@ -25,7 +25,7 @@ export interface QueryClaimRecordRequest {
   address: string;
 }
 export interface QueryClaimRecordResponse {
-  claimRecord: ClaimRecord;
+  claim_record: ClaimRecord;
 }
 export interface QueryClaimableForActionRequest {
   address: string;
@@ -306,14 +306,14 @@ export const QueryClaimRecordRequest = {
 
 function createBaseQueryClaimRecordResponse(): QueryClaimRecordResponse {
   return {
-    claimRecord: undefined
+    claim_record: undefined
   };
 }
 
 export const QueryClaimRecordResponse = {
   encode(message: QueryClaimRecordResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.claimRecord !== undefined) {
-      ClaimRecord.encode(message.claimRecord, writer.uint32(10).fork()).ldelim();
+    if (message.claim_record !== undefined) {
+      ClaimRecord.encode(message.claim_record, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -329,7 +329,7 @@ export const QueryClaimRecordResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.claimRecord = ClaimRecord.decode(reader, reader.uint32());
+          message.claim_record = ClaimRecord.decode(reader, reader.uint32());
           break;
 
         default:
@@ -343,19 +343,19 @@ export const QueryClaimRecordResponse = {
 
   fromJSON(object: any): QueryClaimRecordResponse {
     return {
-      claimRecord: isSet(object.claimRecord) ? ClaimRecord.fromJSON(object.claimRecord) : undefined
+      claim_record: isSet(object.claim_record) ? ClaimRecord.fromJSON(object.claim_record) : undefined
     };
   },
 
   toJSON(message: QueryClaimRecordResponse): unknown {
     const obj: any = {};
-    message.claimRecord !== undefined && (obj.claimRecord = message.claimRecord ? ClaimRecord.toJSON(message.claimRecord) : undefined);
+    message.claim_record !== undefined && (obj.claim_record = message.claim_record ? ClaimRecord.toJSON(message.claim_record) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryClaimRecordResponse>): QueryClaimRecordResponse {
     const message = createBaseQueryClaimRecordResponse();
-    message.claimRecord = object.claimRecord !== undefined && object.claimRecord !== null ? ClaimRecord.fromPartial(object.claimRecord) : undefined;
+    message.claim_record = object.claim_record !== undefined && object.claim_record !== null ? ClaimRecord.fromPartial(object.claim_record) : undefined;
     return message;
   }
 

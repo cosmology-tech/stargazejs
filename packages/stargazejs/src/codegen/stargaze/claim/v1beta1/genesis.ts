@@ -10,34 +10,34 @@ export interface GenesisState {
    * this line is used by starport scaffolding # genesis/proto/state
    * balance of the claim module's account
    */
-  moduleAccountBalance: Coin;
+  module_account_balance: Coin;
 
   /** params defines all the parameters of the module. */
   params: Params;
 
   /** list of claim records, one for every airdrop recipient */
-  claimRecords: ClaimRecord[];
+  claim_records: ClaimRecord[];
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
-    moduleAccountBalance: undefined,
+    module_account_balance: undefined,
     params: undefined,
-    claimRecords: []
+    claim_records: []
   };
 }
 
 export const GenesisState = {
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.moduleAccountBalance !== undefined) {
-      Coin.encode(message.moduleAccountBalance, writer.uint32(10).fork()).ldelim();
+    if (message.module_account_balance !== undefined) {
+      Coin.encode(message.module_account_balance, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.claimRecords) {
+    for (const v of message.claim_records) {
       ClaimRecord.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
@@ -54,7 +54,7 @@ export const GenesisState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.moduleAccountBalance = Coin.decode(reader, reader.uint32());
+          message.module_account_balance = Coin.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -62,7 +62,7 @@ export const GenesisState = {
           break;
 
         case 3:
-          message.claimRecords.push(ClaimRecord.decode(reader, reader.uint32()));
+          message.claim_records.push(ClaimRecord.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -76,21 +76,21 @@ export const GenesisState = {
 
   fromJSON(object: any): GenesisState {
     return {
-      moduleAccountBalance: isSet(object.moduleAccountBalance) ? Coin.fromJSON(object.moduleAccountBalance) : undefined,
+      module_account_balance: isSet(object.module_account_balance) ? Coin.fromJSON(object.module_account_balance) : undefined,
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      claimRecords: Array.isArray(object?.claimRecords) ? object.claimRecords.map((e: any) => ClaimRecord.fromJSON(e)) : []
+      claim_records: Array.isArray(object?.claim_records) ? object.claim_records.map((e: any) => ClaimRecord.fromJSON(e)) : []
     };
   },
 
   toJSON(message: GenesisState): unknown {
     const obj: any = {};
-    message.moduleAccountBalance !== undefined && (obj.moduleAccountBalance = message.moduleAccountBalance ? Coin.toJSON(message.moduleAccountBalance) : undefined);
+    message.module_account_balance !== undefined && (obj.module_account_balance = message.module_account_balance ? Coin.toJSON(message.module_account_balance) : undefined);
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
 
-    if (message.claimRecords) {
-      obj.claimRecords = message.claimRecords.map(e => e ? ClaimRecord.toJSON(e) : undefined);
+    if (message.claim_records) {
+      obj.claim_records = message.claim_records.map(e => e ? ClaimRecord.toJSON(e) : undefined);
     } else {
-      obj.claimRecords = [];
+      obj.claim_records = [];
     }
 
     return obj;
@@ -98,9 +98,9 @@ export const GenesisState = {
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.moduleAccountBalance = object.moduleAccountBalance !== undefined && object.moduleAccountBalance !== null ? Coin.fromPartial(object.moduleAccountBalance) : undefined;
+    message.module_account_balance = object.module_account_balance !== undefined && object.module_account_balance !== null ? Coin.fromPartial(object.module_account_balance) : undefined;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.claimRecords = object.claimRecords?.map(e => ClaimRecord.fromPartial(e)) || [];
+    message.claim_records = object.claim_records?.map(e => ClaimRecord.fromPartial(e)) || [];
     return message;
   }
 

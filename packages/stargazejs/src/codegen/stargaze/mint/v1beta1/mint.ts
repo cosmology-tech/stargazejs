@@ -5,37 +5,37 @@ import { isSet, DeepPartial, toTimestamp, fromTimestamp, Long, fromJsonTimestamp
 /** Minter represents the minting state. */
 export interface Minter {
   /** current annual expected provisions */
-  annualProvisions: string;
+  annual_provisions: string;
 }
 
 /** Params holds parameters for the mint module. */
 export interface Params {
   /** type of coin to mint */
-  mintDenom: string;
+  mint_denom: string;
 
   /** the time the chain starts */
-  startTime: Date;
+  start_time: Date;
 
   /** initial annual provisions */
-  initialAnnualProvisions: string;
+  initial_annual_provisions: string;
 
   /** factor to reduce inflation by each year */
-  reductionFactor: string;
+  reduction_factor: string;
 
   /** expected blocks per year */
-  blocksPerYear: Long;
+  blocks_per_year: Long;
 }
 
 function createBaseMinter(): Minter {
   return {
-    annualProvisions: ""
+    annual_provisions: ""
   };
 }
 
 export const Minter = {
   encode(message: Minter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.annualProvisions !== "") {
-      writer.uint32(10).string(message.annualProvisions);
+    if (message.annual_provisions !== "") {
+      writer.uint32(10).string(message.annual_provisions);
     }
 
     return writer;
@@ -51,7 +51,7 @@ export const Minter = {
 
       switch (tag >>> 3) {
         case 1:
-          message.annualProvisions = reader.string();
+          message.annual_provisions = reader.string();
           break;
 
         default:
@@ -65,19 +65,19 @@ export const Minter = {
 
   fromJSON(object: any): Minter {
     return {
-      annualProvisions: isSet(object.annualProvisions) ? String(object.annualProvisions) : ""
+      annual_provisions: isSet(object.annual_provisions) ? String(object.annual_provisions) : ""
     };
   },
 
   toJSON(message: Minter): unknown {
     const obj: any = {};
-    message.annualProvisions !== undefined && (obj.annualProvisions = message.annualProvisions);
+    message.annual_provisions !== undefined && (obj.annual_provisions = message.annual_provisions);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Minter>): Minter {
     const message = createBaseMinter();
-    message.annualProvisions = object.annualProvisions ?? "";
+    message.annual_provisions = object.annual_provisions ?? "";
     return message;
   }
 
@@ -85,34 +85,34 @@ export const Minter = {
 
 function createBaseParams(): Params {
   return {
-    mintDenom: "",
-    startTime: undefined,
-    initialAnnualProvisions: "",
-    reductionFactor: "",
-    blocksPerYear: Long.UZERO
+    mint_denom: "",
+    start_time: undefined,
+    initial_annual_provisions: "",
+    reduction_factor: "",
+    blocks_per_year: Long.UZERO
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.mintDenom !== "") {
-      writer.uint32(10).string(message.mintDenom);
+    if (message.mint_denom !== "") {
+      writer.uint32(10).string(message.mint_denom);
     }
 
-    if (message.startTime !== undefined) {
-      Timestamp.encode(toTimestamp(message.startTime), writer.uint32(18).fork()).ldelim();
+    if (message.start_time !== undefined) {
+      Timestamp.encode(toTimestamp(message.start_time), writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.initialAnnualProvisions !== "") {
-      writer.uint32(26).string(message.initialAnnualProvisions);
+    if (message.initial_annual_provisions !== "") {
+      writer.uint32(26).string(message.initial_annual_provisions);
     }
 
-    if (message.reductionFactor !== "") {
-      writer.uint32(34).string(message.reductionFactor);
+    if (message.reduction_factor !== "") {
+      writer.uint32(34).string(message.reduction_factor);
     }
 
-    if (!message.blocksPerYear.isZero()) {
-      writer.uint32(40).uint64(message.blocksPerYear);
+    if (!message.blocks_per_year.isZero()) {
+      writer.uint32(40).uint64(message.blocks_per_year);
     }
 
     return writer;
@@ -128,23 +128,23 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.mintDenom = reader.string();
+          message.mint_denom = reader.string();
           break;
 
         case 2:
-          message.startTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.start_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.initialAnnualProvisions = reader.string();
+          message.initial_annual_provisions = reader.string();
           break;
 
         case 4:
-          message.reductionFactor = reader.string();
+          message.reduction_factor = reader.string();
           break;
 
         case 5:
-          message.blocksPerYear = (reader.uint64() as Long);
+          message.blocks_per_year = (reader.uint64() as Long);
           break;
 
         default:
@@ -158,31 +158,31 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      mintDenom: isSet(object.mintDenom) ? String(object.mintDenom) : "",
-      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
-      initialAnnualProvisions: isSet(object.initialAnnualProvisions) ? String(object.initialAnnualProvisions) : "",
-      reductionFactor: isSet(object.reductionFactor) ? String(object.reductionFactor) : "",
-      blocksPerYear: isSet(object.blocksPerYear) ? Long.fromString(object.blocksPerYear) : Long.UZERO
+      mint_denom: isSet(object.mint_denom) ? String(object.mint_denom) : "",
+      start_time: isSet(object.start_time) ? fromJsonTimestamp(object.start_time) : undefined,
+      initial_annual_provisions: isSet(object.initial_annual_provisions) ? String(object.initial_annual_provisions) : "",
+      reduction_factor: isSet(object.reduction_factor) ? String(object.reduction_factor) : "",
+      blocks_per_year: isSet(object.blocks_per_year) ? Long.fromString(object.blocks_per_year) : Long.UZERO
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    message.mintDenom !== undefined && (obj.mintDenom = message.mintDenom);
-    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
-    message.initialAnnualProvisions !== undefined && (obj.initialAnnualProvisions = message.initialAnnualProvisions);
-    message.reductionFactor !== undefined && (obj.reductionFactor = message.reductionFactor);
-    message.blocksPerYear !== undefined && (obj.blocksPerYear = (message.blocksPerYear || Long.UZERO).toString());
+    message.mint_denom !== undefined && (obj.mint_denom = message.mint_denom);
+    message.start_time !== undefined && (obj.start_time = message.start_time.toISOString());
+    message.initial_annual_provisions !== undefined && (obj.initial_annual_provisions = message.initial_annual_provisions);
+    message.reduction_factor !== undefined && (obj.reduction_factor = message.reduction_factor);
+    message.blocks_per_year !== undefined && (obj.blocks_per_year = (message.blocks_per_year || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.mintDenom = object.mintDenom ?? "";
-    message.startTime = object.startTime ?? undefined;
-    message.initialAnnualProvisions = object.initialAnnualProvisions ?? "";
-    message.reductionFactor = object.reductionFactor ?? "";
-    message.blocksPerYear = object.blocksPerYear !== undefined && object.blocksPerYear !== null ? Long.fromValue(object.blocksPerYear) : Long.UZERO;
+    message.mint_denom = object.mint_denom ?? "";
+    message.start_time = object.start_time ?? undefined;
+    message.initial_annual_provisions = object.initial_annual_provisions ?? "";
+    message.reduction_factor = object.reduction_factor ?? "";
+    message.blocks_per_year = object.blocks_per_year !== undefined && object.blocks_per_year !== null ? Long.fromValue(object.blocks_per_year) : Long.UZERO;
     return message;
   }
 

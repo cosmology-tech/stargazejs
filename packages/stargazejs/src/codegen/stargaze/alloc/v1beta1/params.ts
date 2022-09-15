@@ -5,15 +5,15 @@ export interface WeightedAddress {
   weight: string;
 }
 export interface DistributionProportions {
-  nftIncentives: string;
-  developerRewards: string;
+  nft_incentives: string;
+  developer_rewards: string;
 }
 export interface Params {
   /** distribution_proportions defines the proportion of the minted denom */
-  distributionProportions: DistributionProportions;
+  distribution_proportions: DistributionProportions;
 
   /** address to receive developer rewards */
-  weightedDeveloperRewardsReceivers: WeightedAddress[];
+  weighted_developer_rewards_receivers: WeightedAddress[];
 }
 
 function createBaseWeightedAddress(): WeightedAddress {
@@ -87,19 +87,19 @@ export const WeightedAddress = {
 
 function createBaseDistributionProportions(): DistributionProportions {
   return {
-    nftIncentives: "",
-    developerRewards: ""
+    nft_incentives: "",
+    developer_rewards: ""
   };
 }
 
 export const DistributionProportions = {
   encode(message: DistributionProportions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftIncentives !== "") {
-      writer.uint32(10).string(message.nftIncentives);
+    if (message.nft_incentives !== "") {
+      writer.uint32(10).string(message.nft_incentives);
     }
 
-    if (message.developerRewards !== "") {
-      writer.uint32(18).string(message.developerRewards);
+    if (message.developer_rewards !== "") {
+      writer.uint32(18).string(message.developer_rewards);
     }
 
     return writer;
@@ -115,11 +115,11 @@ export const DistributionProportions = {
 
       switch (tag >>> 3) {
         case 1:
-          message.nftIncentives = reader.string();
+          message.nft_incentives = reader.string();
           break;
 
         case 2:
-          message.developerRewards = reader.string();
+          message.developer_rewards = reader.string();
           break;
 
         default:
@@ -133,22 +133,22 @@ export const DistributionProportions = {
 
   fromJSON(object: any): DistributionProportions {
     return {
-      nftIncentives: isSet(object.nftIncentives) ? String(object.nftIncentives) : "",
-      developerRewards: isSet(object.developerRewards) ? String(object.developerRewards) : ""
+      nft_incentives: isSet(object.nft_incentives) ? String(object.nft_incentives) : "",
+      developer_rewards: isSet(object.developer_rewards) ? String(object.developer_rewards) : ""
     };
   },
 
   toJSON(message: DistributionProportions): unknown {
     const obj: any = {};
-    message.nftIncentives !== undefined && (obj.nftIncentives = message.nftIncentives);
-    message.developerRewards !== undefined && (obj.developerRewards = message.developerRewards);
+    message.nft_incentives !== undefined && (obj.nft_incentives = message.nft_incentives);
+    message.developer_rewards !== undefined && (obj.developer_rewards = message.developer_rewards);
     return obj;
   },
 
   fromPartial(object: DeepPartial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
-    message.nftIncentives = object.nftIncentives ?? "";
-    message.developerRewards = object.developerRewards ?? "";
+    message.nft_incentives = object.nft_incentives ?? "";
+    message.developer_rewards = object.developer_rewards ?? "";
     return message;
   }
 
@@ -156,18 +156,18 @@ export const DistributionProportions = {
 
 function createBaseParams(): Params {
   return {
-    distributionProportions: undefined,
-    weightedDeveloperRewardsReceivers: []
+    distribution_proportions: undefined,
+    weighted_developer_rewards_receivers: []
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.distributionProportions !== undefined) {
-      DistributionProportions.encode(message.distributionProportions, writer.uint32(10).fork()).ldelim();
+    if (message.distribution_proportions !== undefined) {
+      DistributionProportions.encode(message.distribution_proportions, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.weightedDeveloperRewardsReceivers) {
+    for (const v of message.weighted_developer_rewards_receivers) {
       WeightedAddress.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -184,11 +184,11 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.distributionProportions = DistributionProportions.decode(reader, reader.uint32());
+          message.distribution_proportions = DistributionProportions.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.weightedDeveloperRewardsReceivers.push(WeightedAddress.decode(reader, reader.uint32()));
+          message.weighted_developer_rewards_receivers.push(WeightedAddress.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -202,19 +202,19 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      distributionProportions: isSet(object.distributionProportions) ? DistributionProportions.fromJSON(object.distributionProportions) : undefined,
-      weightedDeveloperRewardsReceivers: Array.isArray(object?.weightedDeveloperRewardsReceivers) ? object.weightedDeveloperRewardsReceivers.map((e: any) => WeightedAddress.fromJSON(e)) : []
+      distribution_proportions: isSet(object.distribution_proportions) ? DistributionProportions.fromJSON(object.distribution_proportions) : undefined,
+      weighted_developer_rewards_receivers: Array.isArray(object?.weighted_developer_rewards_receivers) ? object.weighted_developer_rewards_receivers.map((e: any) => WeightedAddress.fromJSON(e)) : []
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    message.distributionProportions !== undefined && (obj.distributionProportions = message.distributionProportions ? DistributionProportions.toJSON(message.distributionProportions) : undefined);
+    message.distribution_proportions !== undefined && (obj.distribution_proportions = message.distribution_proportions ? DistributionProportions.toJSON(message.distribution_proportions) : undefined);
 
-    if (message.weightedDeveloperRewardsReceivers) {
-      obj.weightedDeveloperRewardsReceivers = message.weightedDeveloperRewardsReceivers.map(e => e ? WeightedAddress.toJSON(e) : undefined);
+    if (message.weighted_developer_rewards_receivers) {
+      obj.weighted_developer_rewards_receivers = message.weighted_developer_rewards_receivers.map(e => e ? WeightedAddress.toJSON(e) : undefined);
     } else {
-      obj.weightedDeveloperRewardsReceivers = [];
+      obj.weighted_developer_rewards_receivers = [];
     }
 
     return obj;
@@ -222,8 +222,8 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.distributionProportions = object.distributionProportions !== undefined && object.distributionProportions !== null ? DistributionProportions.fromPartial(object.distributionProportions) : undefined;
-    message.weightedDeveloperRewardsReceivers = object.weightedDeveloperRewardsReceivers?.map(e => WeightedAddress.fromPartial(e)) || [];
+    message.distribution_proportions = object.distribution_proportions !== undefined && object.distribution_proportions !== null ? DistributionProportions.fromPartial(object.distribution_proportions) : undefined;
+    message.weighted_developer_rewards_receivers = object.weighted_developer_rewards_receivers?.map(e => WeightedAddress.fromPartial(e)) || [];
     return message;
   }
 

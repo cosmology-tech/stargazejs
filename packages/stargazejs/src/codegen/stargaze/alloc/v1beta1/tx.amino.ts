@@ -20,22 +20,22 @@ export const AminoConverter = {
   "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount": {
     aminoType: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount",
     toAmino: ({
-      fromAddress,
-      toAddress,
+      from_address,
+      to_address,
       amount,
-      startTime,
-      endTime,
+      start_time,
+      end_time,
       delayed
     }: MsgCreateVestingAccount): AminoMsgCreateVestingAccount["value"] => {
       return {
-        from_address: fromAddress,
-        to_address: toAddress,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        start_time: startTime.toString(),
-        end_time: endTime.toString(),
+        start_time: start_time.toString(),
+        end_time: end_time.toString(),
         delayed
       };
     },
@@ -48,14 +48,14 @@ export const AminoConverter = {
       delayed
     }: AminoMsgCreateVestingAccount["value"]): MsgCreateVestingAccount => {
       return {
-        fromAddress: from_address,
-        toAddress: to_address,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        startTime: Long.fromString(start_time),
-        endTime: Long.fromString(end_time),
+        start_time: Long.fromString(start_time),
+        end_time: Long.fromString(end_time),
         delayed
       };
     }

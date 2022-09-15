@@ -63,20 +63,20 @@ export interface ClaimRecord {
   address: string;
 
   /** total initial claimable amount for the user */
-  initialClaimableAmount: Coin[];
+  initial_claimable_amount: Coin[];
 
   /**
    * true if action is completed
    * index of bool in array refers to action enum #
    */
-  actionCompleted: boolean[];
+  action_completed: boolean[];
 }
 
 function createBaseClaimRecord(): ClaimRecord {
   return {
     address: "",
-    initialClaimableAmount: [],
-    actionCompleted: []
+    initial_claimable_amount: [],
+    action_completed: []
   };
 }
 
@@ -86,13 +86,13 @@ export const ClaimRecord = {
       writer.uint32(10).string(message.address);
     }
 
-    for (const v of message.initialClaimableAmount) {
+    for (const v of message.initial_claimable_amount) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
     writer.uint32(34).fork();
 
-    for (const v of message.actionCompleted) {
+    for (const v of message.action_completed) {
       writer.bool(v);
     }
 
@@ -114,7 +114,7 @@ export const ClaimRecord = {
           break;
 
         case 2:
-          message.initialClaimableAmount.push(Coin.decode(reader, reader.uint32()));
+          message.initial_claimable_amount.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 4:
@@ -122,10 +122,10 @@ export const ClaimRecord = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.actionCompleted.push(reader.bool());
+              message.action_completed.push(reader.bool());
             }
           } else {
-            message.actionCompleted.push(reader.bool());
+            message.action_completed.push(reader.bool());
           }
 
           break;
@@ -142,8 +142,8 @@ export const ClaimRecord = {
   fromJSON(object: any): ClaimRecord {
     return {
       address: isSet(object.address) ? String(object.address) : "",
-      initialClaimableAmount: Array.isArray(object?.initialClaimableAmount) ? object.initialClaimableAmount.map((e: any) => Coin.fromJSON(e)) : [],
-      actionCompleted: Array.isArray(object?.actionCompleted) ? object.actionCompleted.map((e: any) => Boolean(e)) : []
+      initial_claimable_amount: Array.isArray(object?.initial_claimable_amount) ? object.initial_claimable_amount.map((e: any) => Coin.fromJSON(e)) : [],
+      action_completed: Array.isArray(object?.action_completed) ? object.action_completed.map((e: any) => Boolean(e)) : []
     };
   },
 
@@ -151,16 +151,16 @@ export const ClaimRecord = {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
 
-    if (message.initialClaimableAmount) {
-      obj.initialClaimableAmount = message.initialClaimableAmount.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.initial_claimable_amount) {
+      obj.initial_claimable_amount = message.initial_claimable_amount.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.initialClaimableAmount = [];
+      obj.initial_claimable_amount = [];
     }
 
-    if (message.actionCompleted) {
-      obj.actionCompleted = message.actionCompleted.map(e => e);
+    if (message.action_completed) {
+      obj.action_completed = message.action_completed.map(e => e);
     } else {
-      obj.actionCompleted = [];
+      obj.action_completed = [];
     }
 
     return obj;
@@ -169,8 +169,8 @@ export const ClaimRecord = {
   fromPartial(object: DeepPartial<ClaimRecord>): ClaimRecord {
     const message = createBaseClaimRecord();
     message.address = object.address ?? "";
-    message.initialClaimableAmount = object.initialClaimableAmount?.map(e => Coin.fromPartial(e)) || [];
-    message.actionCompleted = object.actionCompleted?.map(e => e) || [];
+    message.initial_claimable_amount = object.initial_claimable_amount?.map(e => Coin.fromPartial(e)) || [];
+    message.action_completed = object.action_completed?.map(e => e) || [];
     return message;
   }
 
