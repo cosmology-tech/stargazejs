@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/cosmology-tech/stargaze-zone/compare/@stargaze-zone/chain@0.1.8...@stargaze-zone/chain@0.2.0) (2022-09-15)
+
+**Note:** Version bump only for package @stargaze-zone/chain
+
+
+
+
+
 ## [0.1.8](https://github.com/cosmology-tech/stargaze-zone/compare/@stargaze-zone/chain@0.1.7...@stargaze-zone/chain@0.1.8) (2022-09-11)
 
 **Note:** Version bump only for package @stargaze-zone/chain
