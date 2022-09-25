@@ -1,14 +1,23 @@
-import { Params } from "./params";
+import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryParamsRequest {}
 
+export interface QueryParamsRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
+}
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -38,15 +47,6 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -69,7 +69,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -89,18 +89,6 @@ export const QueryParamsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {

@@ -1,4 +1,3 @@
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "@osmonauts/helpers";
 import { MsgCreateVestingAccount } from "./tx";
@@ -20,22 +19,22 @@ export const AminoConverter = {
   "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount": {
     aminoType: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount",
     toAmino: ({
-      from_address,
-      to_address,
+      fromAddress,
+      toAddress,
       amount,
-      start_time,
-      end_time,
+      startTime,
+      endTime,
       delayed
     }: MsgCreateVestingAccount): AminoMsgCreateVestingAccount["value"] => {
       return {
-        from_address,
-        to_address,
+        from_address: fromAddress,
+        to_address: toAddress,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        start_time: start_time.toString(),
-        end_time: end_time.toString(),
+        start_time: startTime.toString(),
+        end_time: endTime.toString(),
         delayed
       };
     },
@@ -48,14 +47,14 @@ export const AminoConverter = {
       delayed
     }: AminoMsgCreateVestingAccount["value"]): MsgCreateVestingAccount => {
       return {
-        from_address,
-        to_address,
+        fromAddress: from_address,
+        toAddress: to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        start_time: Long.fromString(start_time),
-        end_time: Long.fromString(end_time),
+        startTime: Long.fromString(start_time),
+        endTime: Long.fromString(end_time),
         delayed
       };
     }

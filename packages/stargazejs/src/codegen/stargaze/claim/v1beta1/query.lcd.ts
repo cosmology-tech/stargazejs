@@ -1,47 +1,54 @@
-import { Action, ClaimRecord } from "./claim_record";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
-import { Params } from "./params";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryModuleAccountBalanceRequest, QueryModuleAccountBalanceResponse, QueryParamsRequest, QueryParamsResponse, QueryClaimRecordRequest, QueryClaimRecordResponse, QueryClaimableForActionRequest, QueryClaimableForActionResponse, QueryTotalClaimableRequest, QueryTotalClaimableResponse } from "./query";
-export class LCDQueryClient extends LCDClient {
+import { QueryModuleAccountBalanceRequest, QueryModuleAccountBalanceResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryClaimRecordRequest, QueryClaimRecordResponseSDKType, QueryClaimableForActionRequest, QueryClaimableForActionResponseSDKType, QueryTotalClaimableRequest, QueryTotalClaimableResponseSDKType } from "./query";
+export class LCDQueryClient {
+  req: LCDClient;
+
   constructor({
-    restEndpoint
+    requestClient
   }: {
-    restEndpoint: string;
+    requestClient: LCDClient;
   }) {
-    super({
-      restEndpoint
-    });
+    this.req = requestClient;
+    this.moduleAccountBalance = this.moduleAccountBalance.bind(this);
+    this.params = this.params.bind(this);
+    this.claimRecord = this.claimRecord.bind(this);
+    this.claimableForAction = this.claimableForAction.bind(this);
+    this.totalClaimable = this.totalClaimable.bind(this);
   }
-
   /* this line is used by starport scaffolding # 2 */
-  async moduleAccountBalance(_params: QueryModuleAccountBalanceRequest = {}): Promise<QueryModuleAccountBalanceResponse> {
+
+
+  async moduleAccountBalance(_params: QueryModuleAccountBalanceRequest = {}): Promise<QueryModuleAccountBalanceResponseSDKType> {
     const endpoint = `stargaze/claim/v1beta1/module_account_balance`;
-    return await this.get<QueryModuleAccountBalanceResponse>(endpoint);
+    return await this.req.get<QueryModuleAccountBalanceResponseSDKType>(endpoint);
   }
-
   /* Params */
-  async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
+
+
+  async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `stargaze/claim/v1beta1/params`;
-    return await this.get<QueryParamsResponse>(endpoint);
+    return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
-
   /* ClaimRecord */
-  async claimRecord(params: QueryClaimRecordRequest): Promise<QueryClaimRecordResponse> {
+
+
+  async claimRecord(params: QueryClaimRecordRequest): Promise<QueryClaimRecordResponseSDKType> {
     const endpoint = `stargaze/claim/v1beta1/claim_record/${params.address}`;
-    return await this.get<QueryClaimRecordResponse>(endpoint);
+    return await this.req.get<QueryClaimRecordResponseSDKType>(endpoint);
   }
-
   /* ClaimableForAction */
-  async claimableForAction(params: QueryClaimableForActionRequest): Promise<QueryClaimableForActionResponse> {
-    const endpoint = `stargaze/claim/v1beta1/claimable_for_action/${params.address}/${params.action}`;
-    return await this.get<QueryClaimableForActionResponse>(endpoint);
-  }
 
+
+  async claimableForAction(params: QueryClaimableForActionRequest): Promise<QueryClaimableForActionResponseSDKType> {
+    const endpoint = `stargaze/claim/v1beta1/claimable_for_action/${params.address}/${params.action}`;
+    return await this.req.get<QueryClaimableForActionResponseSDKType>(endpoint);
+  }
   /* TotalClaimable */
-  async totalClaimable(params: QueryTotalClaimableRequest): Promise<QueryTotalClaimableResponse> {
+
+
+  async totalClaimable(params: QueryTotalClaimableRequest): Promise<QueryTotalClaimableResponseSDKType> {
     const endpoint = `stargaze/claim/v1beta1/total_claimable/${params.address}`;
-    return await this.get<QueryTotalClaimableResponse>(endpoint);
+    return await this.req.get<QueryTotalClaimableResponseSDKType>(endpoint);
   }
 
 }

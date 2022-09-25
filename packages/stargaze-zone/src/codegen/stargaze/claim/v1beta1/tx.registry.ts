@@ -1,5 +1,3 @@
-import { Action } from "./claim_record";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgInitialClaim, MsgClaimFor } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim", MsgInitialClaim], ["/publicawesome.stargaze.claim.v1beta1.MsgClaimFor", MsgClaimFor]];
@@ -37,38 +35,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
         value
-      };
-    }
-
-  },
-  toJSON: {
-    initialClaim(value: MsgInitialClaim) {
-      return {
-        typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim",
-        value: MsgInitialClaim.toJSON(value)
-      };
-    },
-
-    claimFor(value: MsgClaimFor) {
-      return {
-        typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
-        value: MsgClaimFor.toJSON(value)
-      };
-    }
-
-  },
-  fromJSON: {
-    initialClaim(value: any) {
-      return {
-        typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim",
-        value: MsgInitialClaim.fromJSON(value)
-      };
-    },
-
-    claimFor(value: any) {
-      return {
-        typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
-        value: MsgClaimFor.fromJSON(value)
       };
     }
 

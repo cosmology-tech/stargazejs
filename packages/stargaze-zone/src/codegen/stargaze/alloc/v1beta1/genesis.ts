@@ -1,11 +1,17 @@
-import { Params } from "./params";
+import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the alloc module's genesis state. */
+
 export interface GenesisState {
   /** this line is used by starport scaffolding # genesis/proto/state */
   params: Params;
+}
+/** GenesisState defines the alloc module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /** this line is used by starport scaffolding # genesis/proto/state */
+  params: ParamsSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -43,18 +49,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

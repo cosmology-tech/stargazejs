@@ -1,44 +1,81 @@
-import { Action, ClaimRecord, actionFromJSON, actionToJSON } from "./claim_record";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
-import { Params } from "./params";
+import { Action, ActionSDKType, ClaimRecord, ClaimRecordSDKType } from "./claim_record";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryModuleAccountBalanceRequest {}
 
+export interface QueryModuleAccountBalanceRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryModuleAccountBalanceRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryModuleAccountBalanceResponse {
   /** params defines the parameters of the module. */
   moduleAccountBalance: Coin[];
 }
-
-/** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryParamsRequest {}
-
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
+export interface QueryModuleAccountBalanceResponseSDKType {
+  /** params defines the parameters of the module. */
+  moduleAccountBalance: CoinSDKType[];
+}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequestSDKType {}
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
 }
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
+}
 export interface QueryClaimRecordRequest {
   address: string;
 }
+export interface QueryClaimRecordRequestSDKType {
+  address: string;
+}
 export interface QueryClaimRecordResponse {
-  claim_record: ClaimRecord;
+  claimRecord: ClaimRecord;
+}
+export interface QueryClaimRecordResponseSDKType {
+  claim_record: ClaimRecordSDKType;
 }
 export interface QueryClaimableForActionRequest {
   address: string;
   action: Action;
 }
+export interface QueryClaimableForActionRequestSDKType {
+  address: string;
+  action: ActionSDKType;
+}
 export interface QueryClaimableForActionResponse {
   coins: Coin[];
+}
+export interface QueryClaimableForActionResponseSDKType {
+  coins: CoinSDKType[];
 }
 export interface QueryTotalClaimableRequest {
   address: string;
 }
+export interface QueryTotalClaimableRequestSDKType {
+  address: string;
+}
 export interface QueryTotalClaimableResponse {
   coins: Coin[];
+}
+export interface QueryTotalClaimableResponseSDKType {
+  coins: CoinSDKType[];
 }
 
 function createBaseQueryModuleAccountBalanceRequest(): QueryModuleAccountBalanceRequest {
@@ -68,15 +105,6 @@ export const QueryModuleAccountBalanceRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryModuleAccountBalanceRequest {
-    return {};
-  },
-
-  toJSON(_: QueryModuleAccountBalanceRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryModuleAccountBalanceRequest>): QueryModuleAccountBalanceRequest {
     const message = createBaseQueryModuleAccountBalanceRequest();
     return message;
@@ -99,7 +127,7 @@ export const QueryModuleAccountBalanceResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountBalanceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountBalanceResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryModuleAccountBalanceResponse();
@@ -119,24 +147,6 @@ export const QueryModuleAccountBalanceResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryModuleAccountBalanceResponse {
-    return {
-      moduleAccountBalance: Array.isArray(object?.moduleAccountBalance) ? object.moduleAccountBalance.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: QueryModuleAccountBalanceResponse): unknown {
-    const obj: any = {};
-
-    if (message.moduleAccountBalance) {
-      obj.moduleAccountBalance = message.moduleAccountBalance.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.moduleAccountBalance = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryModuleAccountBalanceResponse>): QueryModuleAccountBalanceResponse {
@@ -174,15 +184,6 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -205,7 +206,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -225,18 +226,6 @@ export const QueryParamsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
@@ -284,18 +273,6 @@ export const QueryClaimRecordRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryClaimRecordRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: QueryClaimRecordRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClaimRecordRequest>): QueryClaimRecordRequest {
     const message = createBaseQueryClaimRecordRequest();
     message.address = object.address ?? "";
@@ -306,20 +283,20 @@ export const QueryClaimRecordRequest = {
 
 function createBaseQueryClaimRecordResponse(): QueryClaimRecordResponse {
   return {
-    claim_record: undefined
+    claimRecord: undefined
   };
 }
 
 export const QueryClaimRecordResponse = {
   encode(message: QueryClaimRecordResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.claim_record !== undefined) {
-      ClaimRecord.encode(message.claim_record, writer.uint32(10).fork()).ldelim();
+    if (message.claimRecord !== undefined) {
+      ClaimRecord.encode(message.claimRecord, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimRecordResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimRecordResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClaimRecordResponse();
@@ -329,7 +306,7 @@ export const QueryClaimRecordResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.claim_record = ClaimRecord.decode(reader, reader.uint32());
+          message.claimRecord = ClaimRecord.decode(reader, reader.uint32());
           break;
 
         default:
@@ -341,21 +318,9 @@ export const QueryClaimRecordResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryClaimRecordResponse {
-    return {
-      claim_record: isSet(object.claim_record) ? ClaimRecord.fromJSON(object.claim_record) : undefined
-    };
-  },
-
-  toJSON(message: QueryClaimRecordResponse): unknown {
-    const obj: any = {};
-    message.claim_record !== undefined && (obj.claim_record = message.claim_record ? ClaimRecord.toJSON(message.claim_record) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClaimRecordResponse>): QueryClaimRecordResponse {
     const message = createBaseQueryClaimRecordResponse();
-    message.claim_record = object.claim_record !== undefined && object.claim_record !== null ? ClaimRecord.fromPartial(object.claim_record) : undefined;
+    message.claimRecord = object.claimRecord !== undefined && object.claimRecord !== null ? ClaimRecord.fromPartial(object.claimRecord) : undefined;
     return message;
   }
 
@@ -407,20 +372,6 @@ export const QueryClaimableForActionRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryClaimableForActionRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      action: isSet(object.action) ? actionFromJSON(object.action) : 0
-    };
-  },
-
-  toJSON(message: QueryClaimableForActionRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.action !== undefined && (obj.action = actionToJSON(message.action));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClaimableForActionRequest>): QueryClaimableForActionRequest {
     const message = createBaseQueryClaimableForActionRequest();
     message.address = object.address ?? "";
@@ -445,7 +396,7 @@ export const QueryClaimableForActionResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableForActionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableForActionResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClaimableForActionResponse();
@@ -465,24 +416,6 @@ export const QueryClaimableForActionResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryClaimableForActionResponse {
-    return {
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: QueryClaimableForActionResponse): unknown {
-    const obj: any = {};
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryClaimableForActionResponse>): QueryClaimableForActionResponse {
@@ -530,18 +463,6 @@ export const QueryTotalClaimableRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryTotalClaimableRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: QueryTotalClaimableRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryTotalClaimableRequest>): QueryTotalClaimableRequest {
     const message = createBaseQueryTotalClaimableRequest();
     message.address = object.address ?? "";
@@ -565,7 +486,7 @@ export const QueryTotalClaimableResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalClaimableResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalClaimableResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTotalClaimableResponse();
@@ -585,24 +506,6 @@ export const QueryTotalClaimableResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryTotalClaimableResponse {
-    return {
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: QueryTotalClaimableResponse): unknown {
-    const obj: any = {};
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryTotalClaimableResponse>): QueryTotalClaimableResponse {

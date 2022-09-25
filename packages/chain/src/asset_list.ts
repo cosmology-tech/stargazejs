@@ -3,6 +3,82 @@ const asset_list: AssetList = {
   chain_name: 'stargaze',
   assets: [
     {
+      description: 'The native token of Crescent',
+      denom_units: [
+        {
+          denom:
+            'ibc/892B184DE49984FEA412E6BB8B9F2FA35E707E29DD5E9ADB515EB99B11E40837',
+          exponent: 0,
+          aliases: ['ucre']
+        },
+        {
+          denom: 'cre',
+          exponent: 6,
+          aliases: []
+        }
+      ],
+      base: 'ibc/892B184DE49984FEA412E6BB8B9F2FA35E707E29DD5E9ADB515EB99B11E40837',
+      name: 'Crescent',
+      display: 'cre',
+      symbol: 'CRE',
+      logo_URIs: {
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/crescent/images/cre.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/crescent/images/cre.svg'
+      },
+      coingecko_id: 'crescent-network',
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel_id: 'channel-21',
+            base_denom: 'ucre',
+            chain_name: 'crescent'
+          },
+          chain: {
+            channel_id: 'channel-51'
+          }
+        }
+      ]
+    },
+    {
+      description: 'The bonded token of Crescent',
+      denom_units: [
+        {
+          denom:
+            'ibc/7811A811C1EBD001CA3DB637DDD7F9254E6FC0D5EFCC26163C94FBA299F77D31',
+          exponent: 0,
+          aliases: ['ubcre']
+        },
+        {
+          denom: 'bcre',
+          exponent: 6,
+          aliases: []
+        }
+      ],
+      base: 'ibc/7811A811C1EBD001CA3DB637DDD7F9254E6FC0D5EFCC26163C94FBA299F77D31',
+      name: 'Bonded Crescent',
+      display: 'bcre',
+      symbol: 'bCRE',
+      logo_URIs: {
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/crescent/images/bcre.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/crescent/images/bcre.svg'
+      },
+      coingecko_id: 'crescent-network',
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel_id: 'channel-21',
+            base_denom: 'ubcre',
+            chain_name: 'crescent'
+          },
+          chain: {
+            channel_id: 'channel-51'
+          }
+        }
+      ]
+    },
+    {
       description: 'The native token of JUNO Chain',
       denom_units: [
         {
@@ -29,12 +105,12 @@ const asset_list: AssetList = {
         {
           type: 'ibc',
           counterparty: {
-            channel: 'channel-20',
-            denom: 'ujuno',
+            channel_id: 'channel-20',
+            base_denom: 'ujuno',
             chain_name: 'juno'
           },
           chain: {
-            channel: 'channel-5'
+            channel_id: 'channel-5'
           }
         }
       ]
@@ -70,13 +146,13 @@ const asset_list: AssetList = {
         {
           type: 'ibc',
           counterparty: {
-            channel: 'channel-20',
-            denom:
+            channel_id: 'channel-20',
+            base_denom:
               'ibc/297C64CC42B5A8D8F82FE2EBE208A6FE8F94B86037FA28C4529A23701C228F7A',
             chain_name: 'juno'
           },
           chain: {
-            channel: 'channel-5'
+            channel_id: 'channel-5'
           }
         }
       ]
@@ -110,12 +186,12 @@ const asset_list: AssetList = {
         {
           type: 'ibc',
           counterparty: {
-            channel: 'channel-75',
-            denom: 'uosmo',
+            channel_id: 'channel-75',
+            base_denom: 'uosmo',
             chain_name: 'osmosis'
           },
           chain: {
-            channel: 'channel-0'
+            channel_id: 'channel-0'
           }
         }
       ]
@@ -147,12 +223,12 @@ const asset_list: AssetList = {
         {
           type: 'ibc',
           counterparty: {
-            channel: 'channel-75',
-            denom: 'uion',
+            channel_id: 'channel-75',
+            base_denom: 'uion',
             chain_name: 'osmosis'
           },
           chain: {
-            channel: 'channel-0'
+            channel_id: 'channel-0'
           }
         }
       ]
@@ -184,12 +260,12 @@ const asset_list: AssetList = {
         {
           type: 'ibc',
           counterparty: {
-            channel: 'channel-19',
-            denom: 'uscrt',
+            channel_id: 'channel-19',
+            base_denom: 'uscrt',
             chain_name: 'secretnetwork'
           },
           chain: {
-            channel: 'channel-48'
+            channel_id: 'channel-48'
           }
         }
       ]

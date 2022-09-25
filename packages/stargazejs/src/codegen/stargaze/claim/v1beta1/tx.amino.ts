@@ -1,5 +1,4 @@
-import { Action, actionFromJSON } from "./claim_record";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { actionFromJSON } from "./claim_record";
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgInitialClaim, MsgClaimFor } from "./tx";
 export interface AminoMsgInitialClaim extends AminoMsg {

@@ -4,6 +4,7 @@ const chain: Chain = {
   chain_name: 'stargaze',
   status: 'live',
   network_type: 'mainnet',
+  website: 'https://stargaze.zone/',
   pretty_name: 'Stargaze',
   chain_id: 'stargaze-1',
   bech32_prefix: 'stars',
@@ -201,6 +202,10 @@ const chain: Chain = {
       {
         address: 'https://stargaze.c29r3.xyz:443/api/',
         provider: 'c29r3'
+      },
+      {
+        address: 'https://stargaze-rapipc.polkachu.com',
+        provider: 'Polkachu'
       }
     ],
     grpc: [
@@ -209,7 +214,7 @@ const chain: Chain = {
         provider: 'Notional'
       },
       {
-        address: 'stargaze-grpc.polkachu.com:37090',
+        address: 'stargaze-grpc.polkachu.com:13790',
         provider: 'Polkachu'
       }
     ]

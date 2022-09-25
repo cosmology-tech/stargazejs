@@ -1,5 +1,3 @@
-import { Grant } from "./authz";
-import { Any } from "../../../google/protobuf/any";
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgGrant, MsgExec, MsgRevoke } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.authz.v1beta1.MsgGrant", MsgGrant], ["/cosmos.authz.v1beta1.MsgExec", MsgExec], ["/cosmos.authz.v1beta1.MsgRevoke", MsgRevoke]];
@@ -51,52 +49,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/cosmos.authz.v1beta1.MsgRevoke",
         value
-      };
-    }
-
-  },
-  toJSON: {
-    grant(value: MsgGrant) {
-      return {
-        typeUrl: "/cosmos.authz.v1beta1.MsgGrant",
-        value: MsgGrant.toJSON(value)
-      };
-    },
-
-    exec(value: MsgExec) {
-      return {
-        typeUrl: "/cosmos.authz.v1beta1.MsgExec",
-        value: MsgExec.toJSON(value)
-      };
-    },
-
-    revoke(value: MsgRevoke) {
-      return {
-        typeUrl: "/cosmos.authz.v1beta1.MsgRevoke",
-        value: MsgRevoke.toJSON(value)
-      };
-    }
-
-  },
-  fromJSON: {
-    grant(value: any) {
-      return {
-        typeUrl: "/cosmos.authz.v1beta1.MsgGrant",
-        value: MsgGrant.fromJSON(value)
-      };
-    },
-
-    exec(value: any) {
-      return {
-        typeUrl: "/cosmos.authz.v1beta1.MsgExec",
-        value: MsgExec.fromJSON(value)
-      };
-    },
-
-    revoke(value: any) {
-      return {
-        typeUrl: "/cosmos.authz.v1beta1.MsgRevoke",
-        value: MsgRevoke.fromJSON(value)
       };
     }
 

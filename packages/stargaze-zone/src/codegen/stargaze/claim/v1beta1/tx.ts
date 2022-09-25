@@ -1,24 +1,42 @@
-import { Action, actionFromJSON, actionToJSON } from "./claim_record";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { Action, ActionSDKType } from "./claim_record";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 export interface MsgInitialClaim {
+  sender: string;
+}
+export interface MsgInitialClaimSDKType {
   sender: string;
 }
 export interface MsgInitialClaimResponse {
   /** total initial claimable amount for the user */
-  claimed_amount: Coin[];
+  claimedAmount: Coin[];
+}
+export interface MsgInitialClaimResponseSDKType {
+  /** total initial claimable amount for the user */
+  claimed_amount: CoinSDKType[];
 }
 export interface MsgClaimFor {
   sender: string;
   address: string;
   action: Action;
 }
+export interface MsgClaimForSDKType {
+  sender: string;
+  address: string;
+  action: ActionSDKType;
+}
 export interface MsgClaimForResponse {
   address: string;
-
   /** total initial claimable amount for the user */
-  claimed_amount: Coin[];
+
+  claimedAmount: Coin[];
+}
+export interface MsgClaimForResponseSDKType {
+  address: string;
+  /** total initial claimable amount for the user */
+
+  claimed_amount: CoinSDKType[];
 }
 
 function createBaseMsgInitialClaim(): MsgInitialClaim {
@@ -58,18 +76,6 @@ export const MsgInitialClaim = {
     return message;
   },
 
-  fromJSON(object: any): MsgInitialClaim {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : ""
-    };
-  },
-
-  toJSON(message: MsgInitialClaim): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgInitialClaim>): MsgInitialClaim {
     const message = createBaseMsgInitialClaim();
     message.sender = object.sender ?? "";
@@ -80,20 +86,20 @@ export const MsgInitialClaim = {
 
 function createBaseMsgInitialClaimResponse(): MsgInitialClaimResponse {
   return {
-    claimed_amount: []
+    claimedAmount: []
   };
 }
 
 export const MsgInitialClaimResponse = {
   encode(message: MsgInitialClaimResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.claimed_amount) {
+    for (const v of message.claimedAmount) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaimResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaimResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgInitialClaimResponse();
@@ -103,7 +109,7 @@ export const MsgInitialClaimResponse = {
 
       switch (tag >>> 3) {
         case 2:
-          message.claimed_amount.push(Coin.decode(reader, reader.uint32()));
+          message.claimedAmount.push(Coin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -115,27 +121,9 @@ export const MsgInitialClaimResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgInitialClaimResponse {
-    return {
-      claimed_amount: Array.isArray(object?.claimed_amount) ? object.claimed_amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgInitialClaimResponse): unknown {
-    const obj: any = {};
-
-    if (message.claimed_amount) {
-      obj.claimed_amount = message.claimed_amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.claimed_amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgInitialClaimResponse>): MsgInitialClaimResponse {
     const message = createBaseMsgInitialClaimResponse();
-    message.claimed_amount = object.claimed_amount?.map(e => Coin.fromPartial(e)) || [];
+    message.claimedAmount = object.claimedAmount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
 
@@ -196,22 +184,6 @@ export const MsgClaimFor = {
     return message;
   },
 
-  fromJSON(object: any): MsgClaimFor {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      address: isSet(object.address) ? String(object.address) : "",
-      action: isSet(object.action) ? actionFromJSON(object.action) : 0
-    };
-  },
-
-  toJSON(message: MsgClaimFor): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.address !== undefined && (obj.address = message.address);
-    message.action !== undefined && (obj.action = actionToJSON(message.action));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgClaimFor>): MsgClaimFor {
     const message = createBaseMsgClaimFor();
     message.sender = object.sender ?? "";
@@ -225,7 +197,7 @@ export const MsgClaimFor = {
 function createBaseMsgClaimForResponse(): MsgClaimForResponse {
   return {
     address: "",
-    claimed_amount: []
+    claimedAmount: []
   };
 }
 
@@ -235,14 +207,14 @@ export const MsgClaimForResponse = {
       writer.uint32(10).string(message.address);
     }
 
-    for (const v of message.claimed_amount) {
+    for (const v of message.claimedAmount) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimForResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimForResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgClaimForResponse();
@@ -256,7 +228,7 @@ export const MsgClaimForResponse = {
           break;
 
         case 2:
-          message.claimed_amount.push(Coin.decode(reader, reader.uint32()));
+          message.claimedAmount.push(Coin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -268,30 +240,10 @@ export const MsgClaimForResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgClaimForResponse {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      claimed_amount: Array.isArray(object?.claimed_amount) ? object.claimed_amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgClaimForResponse): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-
-    if (message.claimed_amount) {
-      obj.claimed_amount = message.claimed_amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.claimed_amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgClaimForResponse>): MsgClaimForResponse {
     const message = createBaseMsgClaimForResponse();
     message.address = object.address ?? "";
-    message.claimed_amount = object.claimed_amount?.map(e => Coin.fromPartial(e)) || [];
+    message.claimedAmount = object.claimedAmount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
 

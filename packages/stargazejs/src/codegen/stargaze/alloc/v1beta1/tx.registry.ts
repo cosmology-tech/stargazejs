@@ -1,4 +1,3 @@
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgCreateVestingAccount } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount", MsgCreateVestingAccount]];
@@ -22,24 +21,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount",
         value
-      };
-    }
-
-  },
-  toJSON: {
-    createVestingAccount(value: MsgCreateVestingAccount) {
-      return {
-        typeUrl: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount",
-        value: MsgCreateVestingAccount.toJSON(value)
-      };
-    }
-
-  },
-  fromJSON: {
-    createVestingAccount(value: any) {
-      return {
-        typeUrl: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount",
-        value: MsgCreateVestingAccount.fromJSON(value)
       };
     }
 
