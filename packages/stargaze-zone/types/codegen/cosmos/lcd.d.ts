@@ -1,7 +1,10 @@
 export declare const createLCDClient: ({ restEndpoint }: {
-    restEndpoint: any;
+    restEndpoint: string;
 }) => Promise<{
     cosmos: {
+        authz: {
+            v1beta1: import("./authz/v1beta1/query.lcd").LCDQueryClient;
+        };
         bank: {
             v1beta1: import("./bank/v1beta1/query.lcd").LCDQueryClient;
         };
@@ -12,11 +15,14 @@ export declare const createLCDClient: ({ restEndpoint }: {
             v1: import("./gov/v1/query.lcd").LCDQueryClient;
             v1beta1: import("./gov/v1beta1/query.lcd").LCDQueryClient;
         };
-        group: {
-            v1: import("./group/v1/query.lcd").LCDQueryClient;
-        };
         staking: {
             v1beta1: import("./staking/v1beta1/query.lcd").LCDQueryClient;
+        };
+        tx: {
+            v1beta1: import("./tx/v1beta1/service.lcd").LCDQueryClient;
+        };
+        upgrade: {
+            v1beta1: import("./upgrade/v1beta1/query.lcd").LCDQueryClient;
         };
     };
 }>;

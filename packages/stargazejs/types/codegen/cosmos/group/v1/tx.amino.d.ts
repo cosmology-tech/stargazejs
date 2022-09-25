@@ -110,7 +110,7 @@ export interface AminoMsgUpdateGroupPolicyMetadata extends AminoMsg {
     };
 }
 export interface AminoMsgSubmitProposal extends AminoMsg {
-    type: "cosmos-sdk/MsgSubmitProposal";
+    type: "cosmos-sdk/group/MsgSubmitProposal";
     value: {
         address: string;
         proposers: string[];
@@ -123,14 +123,14 @@ export interface AminoMsgSubmitProposal extends AminoMsg {
     };
 }
 export interface AminoMsgWithdrawProposal extends AminoMsg {
-    type: "cosmos-sdk/MsgWithdrawProposal";
+    type: "cosmos-sdk/group/MsgWithdrawProposal";
     value: {
         proposal_id: string;
         address: string;
     };
 }
 export interface AminoMsgVote extends AminoMsg {
-    type: "cosmos-sdk/MsgVote";
+    type: "cosmos-sdk/group/MsgVote";
     value: {
         proposal_id: string;
         voter: string;
@@ -140,14 +140,14 @@ export interface AminoMsgVote extends AminoMsg {
     };
 }
 export interface AminoMsgExec extends AminoMsg {
-    type: "cosmos-sdk/MsgExec";
+    type: "cosmos-sdk/group/MsgExec";
     value: {
         proposal_id: string;
         signer: string;
     };
 }
 export interface AminoMsgLeaveGroup extends AminoMsg {
-    type: "cosmos-sdk/MsgLeaveGroup";
+    type: "cosmos-sdk/group/MsgLeaveGroup";
     value: {
         address: string;
         group_id: string;
@@ -161,37 +161,37 @@ export declare const AminoConverter: {
     };
     "/cosmos.group.v1.MsgUpdateGroupMembers": {
         aminoType: string;
-        toAmino: ({ admin, groupId, memberUpdates }: MsgUpdateGroupMembers) => AminoMsgUpdateGroupMembers["value"];
+        toAmino: ({ admin, group_id, member_updates }: MsgUpdateGroupMembers) => AminoMsgUpdateGroupMembers["value"];
         fromAmino: ({ admin, group_id, member_updates }: AminoMsgUpdateGroupMembers["value"]) => MsgUpdateGroupMembers;
     };
     "/cosmos.group.v1.MsgUpdateGroupAdmin": {
         aminoType: string;
-        toAmino: ({ admin, groupId, newAdmin }: MsgUpdateGroupAdmin) => AminoMsgUpdateGroupAdmin["value"];
+        toAmino: ({ admin, group_id, new_admin }: MsgUpdateGroupAdmin) => AminoMsgUpdateGroupAdmin["value"];
         fromAmino: ({ admin, group_id, new_admin }: AminoMsgUpdateGroupAdmin["value"]) => MsgUpdateGroupAdmin;
     };
     "/cosmos.group.v1.MsgUpdateGroupMetadata": {
         aminoType: string;
-        toAmino: ({ admin, groupId, metadata }: MsgUpdateGroupMetadata) => AminoMsgUpdateGroupMetadata["value"];
+        toAmino: ({ admin, group_id, metadata }: MsgUpdateGroupMetadata) => AminoMsgUpdateGroupMetadata["value"];
         fromAmino: ({ admin, group_id, metadata }: AminoMsgUpdateGroupMetadata["value"]) => MsgUpdateGroupMetadata;
     };
     "/cosmos.group.v1.MsgCreateGroupPolicy": {
         aminoType: string;
-        toAmino: ({ admin, groupId, metadata, decisionPolicy }: MsgCreateGroupPolicy) => AminoMsgCreateGroupPolicy["value"];
+        toAmino: ({ admin, group_id, metadata, decision_policy }: MsgCreateGroupPolicy) => AminoMsgCreateGroupPolicy["value"];
         fromAmino: ({ admin, group_id, metadata, decision_policy }: AminoMsgCreateGroupPolicy["value"]) => MsgCreateGroupPolicy;
     };
     "/cosmos.group.v1.MsgCreateGroupWithPolicy": {
         aminoType: string;
-        toAmino: ({ admin, members, groupMetadata, groupPolicyMetadata, groupPolicyAsAdmin, decisionPolicy }: MsgCreateGroupWithPolicy) => AminoMsgCreateGroupWithPolicy["value"];
+        toAmino: ({ admin, members, group_metadata, group_policy_metadata, group_policy_as_admin, decision_policy }: MsgCreateGroupWithPolicy) => AminoMsgCreateGroupWithPolicy["value"];
         fromAmino: ({ admin, members, group_metadata, group_policy_metadata, group_policy_as_admin, decision_policy }: AminoMsgCreateGroupWithPolicy["value"]) => MsgCreateGroupWithPolicy;
     };
     "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin": {
         aminoType: string;
-        toAmino: ({ admin, address, newAdmin }: MsgUpdateGroupPolicyAdmin) => AminoMsgUpdateGroupPolicyAdmin["value"];
+        toAmino: ({ admin, address, new_admin }: MsgUpdateGroupPolicyAdmin) => AminoMsgUpdateGroupPolicyAdmin["value"];
         fromAmino: ({ admin, address, new_admin }: AminoMsgUpdateGroupPolicyAdmin["value"]) => MsgUpdateGroupPolicyAdmin;
     };
     "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy": {
         aminoType: string;
-        toAmino: ({ admin, address, decisionPolicy }: MsgUpdateGroupPolicyDecisionPolicy) => AminoMsgUpdateGroupPolicyDecisionPolicy["value"];
+        toAmino: ({ admin, address, decision_policy }: MsgUpdateGroupPolicyDecisionPolicy) => AminoMsgUpdateGroupPolicyDecisionPolicy["value"];
         fromAmino: ({ admin, address, decision_policy }: AminoMsgUpdateGroupPolicyDecisionPolicy["value"]) => MsgUpdateGroupPolicyDecisionPolicy;
     };
     "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata": {
@@ -206,22 +206,22 @@ export declare const AminoConverter: {
     };
     "/cosmos.group.v1.MsgWithdrawProposal": {
         aminoType: string;
-        toAmino: ({ proposalId, address }: MsgWithdrawProposal) => AminoMsgWithdrawProposal["value"];
+        toAmino: ({ proposal_id, address }: MsgWithdrawProposal) => AminoMsgWithdrawProposal["value"];
         fromAmino: ({ proposal_id, address }: AminoMsgWithdrawProposal["value"]) => MsgWithdrawProposal;
     };
     "/cosmos.group.v1.MsgVote": {
         aminoType: string;
-        toAmino: ({ proposalId, voter, option, metadata, exec }: MsgVote) => AminoMsgVote["value"];
+        toAmino: ({ proposal_id, voter, option, metadata, exec }: MsgVote) => AminoMsgVote["value"];
         fromAmino: ({ proposal_id, voter, option, metadata, exec }: AminoMsgVote["value"]) => MsgVote;
     };
     "/cosmos.group.v1.MsgExec": {
         aminoType: string;
-        toAmino: ({ proposalId, signer }: MsgExec) => AminoMsgExec["value"];
+        toAmino: ({ proposal_id, signer }: MsgExec) => AminoMsgExec["value"];
         fromAmino: ({ proposal_id, signer }: AminoMsgExec["value"]) => MsgExec;
     };
     "/cosmos.group.v1.MsgLeaveGroup": {
         aminoType: string;
-        toAmino: ({ address, groupId }: MsgLeaveGroup) => AminoMsgLeaveGroup["value"];
+        toAmino: ({ address, group_id }: MsgLeaveGroup) => AminoMsgLeaveGroup["value"];
         fromAmino: ({ address, group_id }: AminoMsgLeaveGroup["value"]) => MsgLeaveGroup;
     };
 };

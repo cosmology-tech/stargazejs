@@ -1,13 +1,18 @@
 import { Rpc } from "@osmonauts/helpers";
-import { QueryParamsRequest, QueryParamsResponse, QueryAnnualProvisionsRequest, QueryAnnualProvisionsResponse } from "./query";
+import { QueryClient } from "@cosmjs/stargate";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryAnnualProvisionsRequest, QueryAnnualProvisionsResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
-    params(request: QueryParamsRequest): Promise<QueryParamsResponse>;
-    annualProvisions(request: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponse>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    annualProvisions(request?: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    params(request: QueryParamsRequest): Promise<QueryParamsResponse>;
-    annualProvisions(request: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponse>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    annualProvisions(request?: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
 }
+export declare const createRpcQueryExtension: (base: QueryClient) => {
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    annualProvisions(request?: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
+};

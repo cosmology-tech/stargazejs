@@ -39,42 +39,6 @@ export declare const MessageComposer: {
             value: MsgFundCommunityPool;
         };
     };
-    toJSON: {
-        setWithdrawAddress(value: MsgSetWithdrawAddress): {
-            typeUrl: string;
-            value: unknown;
-        };
-        withdrawDelegatorReward(value: MsgWithdrawDelegatorReward): {
-            typeUrl: string;
-            value: unknown;
-        };
-        withdrawValidatorCommission(value: MsgWithdrawValidatorCommission): {
-            typeUrl: string;
-            value: unknown;
-        };
-        fundCommunityPool(value: MsgFundCommunityPool): {
-            typeUrl: string;
-            value: unknown;
-        };
-    };
-    fromJSON: {
-        setWithdrawAddress(value: any): {
-            typeUrl: string;
-            value: MsgSetWithdrawAddress;
-        };
-        withdrawDelegatorReward(value: any): {
-            typeUrl: string;
-            value: MsgWithdrawDelegatorReward;
-        };
-        withdrawValidatorCommission(value: any): {
-            typeUrl: string;
-            value: MsgWithdrawValidatorCommission;
-        };
-        fundCommunityPool(value: any): {
-            typeUrl: string;
-            value: MsgFundCommunityPool;
-        };
-    };
     fromPartial: {
         setWithdrawAddress(value: MsgSetWithdrawAddress): {
             typeUrl: string;

@@ -1,8 +1,9 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryParamsRequest, QueryParamsResponse } from "./query";
-export declare class LCDQueryClient extends LCDClient {
-    constructor({ restEndpoint }: {
-        restEndpoint: any;
+import { QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
+export declare class LCDQueryClient {
+    req: LCDClient;
+    constructor({ requestClient }: {
+        requestClient: LCDClient;
     });
-    params(params: QueryParamsRequest): Promise<QueryParamsResponse>;
+    params(_params?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
 }

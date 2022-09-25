@@ -3,6 +3,9 @@ export declare const createRPCMsgClient: ({ rpc }: {
     rpc: Rpc;
 }) => Promise<{
     cosmos: {
+        authz: {
+            v1beta1: import("../cosmos/authz/v1beta1/tx.rpc.msg").MsgClientImpl;
+        };
         bank: {
             v1beta1: import("../cosmos/bank/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
@@ -13,11 +16,11 @@ export declare const createRPCMsgClient: ({ rpc }: {
             v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
             v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
-        group: {
-            v1: import("../cosmos/group/v1/tx.rpc.msg").MsgClientImpl;
-        };
         staking: {
             v1beta1: import("../cosmos/staking/v1beta1/tx.rpc.msg").MsgClientImpl;
+        };
+        upgrade: {
+            v1beta1: import("../cosmos/upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
     };
     ibc: {
@@ -29,6 +32,12 @@ export declare const createRPCMsgClient: ({ rpc }: {
         core: {
             channel: {
                 v1: import("./core/channel/v1/tx.rpc.msg").MsgClientImpl;
+            };
+            client: {
+                v1: import("./core/client/v1/tx.rpc.msg").MsgClientImpl;
+            };
+            connection: {
+                v1: import("./core/connection/v1/tx.rpc.msg").MsgClientImpl;
             };
         };
     };

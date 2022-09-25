@@ -1,19 +1,27 @@
 import { Rpc } from "@osmonauts/helpers";
-import { SimulateRequest, SimulateResponse, GetTxRequest, GetTxResponse, BroadcastTxRequest, BroadcastTxResponse, GetTxsEventRequest, GetTxsEventResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse } from "./service";
+import { QueryClient } from "@cosmjs/stargate";
+import { SimulateRequest, SimulateResponseSDKType, GetTxRequest, GetTxResponseSDKType, BroadcastTxRequest, BroadcastTxResponseSDKType, GetTxsEventRequest, GetTxsEventResponseSDKType, GetBlockWithTxsRequest, GetBlockWithTxsResponseSDKType } from "./service";
 /** Service defines the RPC service */
 export interface Service {
-    simulate(request: SimulateRequest): Promise<SimulateResponse>;
-    getTx(request: GetTxRequest): Promise<GetTxResponse>;
-    broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponse>;
-    getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse>;
-    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse>;
+    simulate(request: SimulateRequest): Promise<SimulateResponseSDKType>;
+    getTx(request: GetTxRequest): Promise<GetTxResponseSDKType>;
+    broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponseSDKType>;
+    getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponseSDKType>;
+    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType>;
 }
-export declare class ServiceClientImpl implements Service {
+export declare class QueryClientImpl implements Service {
     private readonly rpc;
     constructor(rpc: Rpc);
-    simulate(request: SimulateRequest): Promise<SimulateResponse>;
-    getTx(request: GetTxRequest): Promise<GetTxResponse>;
-    broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponse>;
-    getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse>;
-    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse>;
+    simulate(request: SimulateRequest): Promise<SimulateResponseSDKType>;
+    getTx(request: GetTxRequest): Promise<GetTxResponseSDKType>;
+    broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponseSDKType>;
+    getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponseSDKType>;
+    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType>;
 }
+export declare const createRpcQueryExtension: (base: QueryClient) => {
+    simulate(request: SimulateRequest): Promise<SimulateResponseSDKType>;
+    getTx(request: GetTxRequest): Promise<GetTxResponseSDKType>;
+    broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponseSDKType>;
+    getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponseSDKType>;
+    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType>;
+};

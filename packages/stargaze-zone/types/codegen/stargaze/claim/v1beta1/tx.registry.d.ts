@@ -23,26 +23,6 @@ export declare const MessageComposer: {
             value: MsgClaimFor;
         };
     };
-    toJSON: {
-        initialClaim(value: MsgInitialClaim): {
-            typeUrl: string;
-            value: unknown;
-        };
-        claimFor(value: MsgClaimFor): {
-            typeUrl: string;
-            value: unknown;
-        };
-    };
-    fromJSON: {
-        initialClaim(value: any): {
-            typeUrl: string;
-            value: MsgInitialClaim;
-        };
-        claimFor(value: any): {
-            typeUrl: string;
-            value: MsgClaimFor;
-        };
-    };
     fromPartial: {
         initialClaim(value: MsgInitialClaim): {
             typeUrl: string;

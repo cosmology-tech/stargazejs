@@ -1,9 +1,10 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryParamsRequest, QueryParamsResponse, QueryAnnualProvisionsRequest, QueryAnnualProvisionsResponse } from "./query";
-export declare class LCDQueryClient extends LCDClient {
-    constructor({ restEndpoint }: {
-        restEndpoint: any;
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryAnnualProvisionsRequest, QueryAnnualProvisionsResponseSDKType } from "./query";
+export declare class LCDQueryClient {
+    req: LCDClient;
+    constructor({ requestClient }: {
+        requestClient: LCDClient;
     });
-    params(params: QueryParamsRequest): Promise<QueryParamsResponse>;
-    annualProvisions(params: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponse>;
+    params(_params?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    annualProvisions(_params?: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
 }

@@ -1,15 +1,16 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse, QueryParamsRequest, QueryParamsResponse, QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryTallyResultRequest, QueryTallyResultResponse } from "./query";
-export declare class LCDQueryClient extends LCDClient {
-    constructor({ restEndpoint }: {
-        restEndpoint: any;
+import { QueryProposalRequest, QueryProposalResponseSDKType, QueryProposalsRequest, QueryProposalsResponseSDKType, QueryVoteRequest, QueryVoteResponseSDKType, QueryVotesRequest, QueryVotesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDepositRequest, QueryDepositResponseSDKType, QueryDepositsRequest, QueryDepositsResponseSDKType, QueryTallyResultRequest, QueryTallyResultResponseSDKType } from "./query";
+export declare class LCDQueryClient {
+    req: LCDClient;
+    constructor({ requestClient }: {
+        requestClient: LCDClient;
     });
-    proposal(params: QueryProposalRequest): Promise<QueryProposalResponse>;
-    proposals(params: QueryProposalsRequest): Promise<QueryProposalsResponse>;
-    vote(params: QueryVoteRequest): Promise<QueryVoteResponse>;
-    votes(params: QueryVotesRequest): Promise<QueryVotesResponse>;
-    params(params: QueryParamsRequest): Promise<QueryParamsResponse>;
-    deposit(params: QueryDepositRequest): Promise<QueryDepositResponse>;
-    deposits(params: QueryDepositsRequest): Promise<QueryDepositsResponse>;
-    tallyResult(params: QueryTallyResultRequest): Promise<QueryTallyResultResponse>;
+    proposal(params: QueryProposalRequest): Promise<QueryProposalResponseSDKType>;
+    proposals(params: QueryProposalsRequest): Promise<QueryProposalsResponseSDKType>;
+    vote(params: QueryVoteRequest): Promise<QueryVoteResponseSDKType>;
+    votes(params: QueryVotesRequest): Promise<QueryVotesResponseSDKType>;
+    params(params: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    deposit(params: QueryDepositRequest): Promise<QueryDepositResponseSDKType>;
+    deposits(params: QueryDepositsRequest): Promise<QueryDepositsResponseSDKType>;
+    tallyResult(params: QueryTallyResultRequest): Promise<QueryTallyResultResponseSDKType>;
 }
