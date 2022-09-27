@@ -223,6 +223,10 @@ import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { 
     cosmosAminoConverters,
     cosmosProtoRegistry,
+    cosmwasmAminoConverters,
+    cosmwasmProtoRegistry,
+    ibcProtoRegistry,
+    ibcAminoConverters,
     publicawesomeAminoConverters,
     publicawesomeProtoRegistry
 } from 'stargazejs';
@@ -232,12 +236,16 @@ const rpcEndpint = 'https://rpc.cosmos.directory/stargaze'; // or another URL
 
 const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
     ...cosmosProtoRegistry,
-    ...publicawesomeProtoRegistry    
+    ...publicawesomeProtoRegistry,
+    ...cosmwasmProtoRegistry,
+    ...ibcProtoRegistry
 ];
 
 const aminoConverters = {
     ...cosmosAminoConverters,
-    ...publicawesomeAminoConverters
+    ...publicawesomeAminoConverters,
+    ...cosmwasmAminoConverters,
+    ...ibcAminoConverters
 };
 
 const registry = new Registry(protoRegistry);

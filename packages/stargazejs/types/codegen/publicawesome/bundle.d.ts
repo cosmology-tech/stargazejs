@@ -1,54 +1,54 @@
-import * as _53 from "../stargaze/alloc/v1beta1/genesis";
-import * as _54 from "../stargaze/alloc/v1beta1/params";
-import * as _55 from "../stargaze/alloc/v1beta1/query";
-import * as _56 from "../stargaze/alloc/v1beta1/tx";
-import * as _57 from "../stargaze/claim/v1beta1/claim_record";
-import * as _58 from "../stargaze/claim/v1beta1/genesis";
-import * as _59 from "../stargaze/claim/v1beta1/params";
-import * as _60 from "../stargaze/claim/v1beta1/query";
-import * as _61 from "../stargaze/claim/v1beta1/tx";
-import * as _117 from "../stargaze/alloc/v1beta1/query.lcd";
-import * as _118 from "../stargaze/claim/v1beta1/query.lcd";
-import * as _119 from "../stargaze/alloc/v1beta1/query.rpc.query";
-import * as _120 from "../stargaze/claim/v1beta1/query.rpc.query";
-import * as _121 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
-import * as _122 from "../stargaze/claim/v1beta1/tx.rpc.msg";
+import * as _82 from "../stargaze/alloc/v1beta1/genesis";
+import * as _83 from "../stargaze/alloc/v1beta1/params";
+import * as _84 from "../stargaze/alloc/v1beta1/query";
+import * as _85 from "../stargaze/alloc/v1beta1/tx";
+import * as _86 from "../stargaze/claim/v1beta1/claim_record";
+import * as _87 from "../stargaze/claim/v1beta1/genesis";
+import * as _88 from "../stargaze/claim/v1beta1/params";
+import * as _89 from "../stargaze/claim/v1beta1/query";
+import * as _90 from "../stargaze/claim/v1beta1/tx";
+import * as _171 from "../stargaze/alloc/v1beta1/query.lcd";
+import * as _172 from "../stargaze/claim/v1beta1/query.lcd";
+import * as _173 from "../stargaze/alloc/v1beta1/query.rpc.query";
+import * as _174 from "../stargaze/claim/v1beta1/query.rpc.query";
+import * as _175 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
+import * as _176 from "../stargaze/claim/v1beta1/tx.rpc.msg";
 export declare namespace publicawesome {
     namespace stargaze {
         namespace alloc {
             const v1beta1: {
-                MsgClientImpl: typeof _121.MsgClientImpl;
-                QueryClientImpl: typeof _119.QueryClientImpl;
+                MsgClientImpl: typeof _175.MsgClientImpl;
+                QueryClientImpl: typeof _173.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    params(request?: _55.QueryParamsRequest): Promise<_55.QueryParamsResponseSDKType>;
+                    params(request?: _84.QueryParamsRequest): Promise<_84.QueryParamsResponseSDKType>;
                 };
-                LCDQueryClient: typeof _117.LCDQueryClient;
+                LCDQueryClient: typeof _171.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        createVestingAccount(value: _56.MsgCreateVestingAccount): {
+                        createVestingAccount(value: _85.MsgCreateVestingAccount): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        createVestingAccount(value: _56.MsgCreateVestingAccount): {
+                        createVestingAccount(value: _85.MsgCreateVestingAccount): {
                             typeUrl: string;
-                            value: _56.MsgCreateVestingAccount;
+                            value: _85.MsgCreateVestingAccount;
                         };
                     };
                     fromPartial: {
-                        createVestingAccount(value: _56.MsgCreateVestingAccount): {
+                        createVestingAccount(value: _85.MsgCreateVestingAccount): {
                             typeUrl: string;
-                            value: _56.MsgCreateVestingAccount;
+                            value: _85.MsgCreateVestingAccount;
                         };
                     };
                 };
                 AminoConverter: {
                     "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount": {
                         aminoType: string;
-                        toAmino: ({ fromAddress, toAddress, amount, startTime, endTime, delayed }: _56.MsgCreateVestingAccount) => {
+                        toAmino: ({ fromAddress, toAddress, amount, startTime, endTime, delayed }: _85.MsgCreateVestingAccount) => {
                             from_address: string;
                             to_address: string;
                             amount: {
@@ -69,12 +69,12 @@ export declare namespace publicawesome {
                             start_time: string;
                             end_time: string;
                             delayed: boolean;
-                        }) => _56.MsgCreateVestingAccount;
+                        }) => _85.MsgCreateVestingAccount;
                     };
                 };
                 MsgCreateVestingAccount: {
-                    encode(message: _56.MsgCreateVestingAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _56.MsgCreateVestingAccount;
+                    encode(message: _85.MsgCreateVestingAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.MsgCreateVestingAccount;
                     fromPartial(object: {
                         fromAddress?: string;
                         toAddress?: string;
@@ -85,21 +85,21 @@ export declare namespace publicawesome {
                         startTime?: any;
                         endTime?: any;
                         delayed?: boolean;
-                    }): _56.MsgCreateVestingAccount;
+                    }): _85.MsgCreateVestingAccount;
                 };
                 MsgCreateVestingAccountResponse: {
-                    encode(_: _56.MsgCreateVestingAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _56.MsgCreateVestingAccountResponseSDKType;
-                    fromPartial(_: {}): _56.MsgCreateVestingAccountResponse;
+                    encode(_: _85.MsgCreateVestingAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.MsgCreateVestingAccountResponseSDKType;
+                    fromPartial(_: {}): _85.MsgCreateVestingAccountResponse;
                 };
                 QueryParamsRequest: {
-                    encode(_: _55.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _55.QueryParamsRequest;
-                    fromPartial(_: {}): _55.QueryParamsRequest;
+                    encode(_: _84.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _84.QueryParamsRequest;
+                    fromPartial(_: {}): _84.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
-                    encode(message: _55.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _55.QueryParamsResponseSDKType;
+                    encode(message: _84.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _84.QueryParamsResponseSDKType;
                     fromPartial(object: {
                         params?: {
                             distributionProportions?: {
@@ -111,27 +111,27 @@ export declare namespace publicawesome {
                                 weight?: string;
                             }[];
                         };
-                    }): _55.QueryParamsResponse;
+                    }): _84.QueryParamsResponse;
                 };
                 WeightedAddress: {
-                    encode(message: _54.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.WeightedAddress;
+                    encode(message: _83.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.WeightedAddress;
                     fromPartial(object: {
                         address?: string;
                         weight?: string;
-                    }): _54.WeightedAddress;
+                    }): _83.WeightedAddress;
                 };
                 DistributionProportions: {
-                    encode(message: _54.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.DistributionProportions;
+                    encode(message: _83.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.DistributionProportions;
                     fromPartial(object: {
                         nftIncentives?: string;
                         developerRewards?: string;
-                    }): _54.DistributionProportions;
+                    }): _83.DistributionProportions;
                 };
                 Params: {
-                    encode(message: _54.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.Params;
+                    encode(message: _83.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.Params;
                     fromPartial(object: {
                         distributionProportions?: {
                             nftIncentives?: string;
@@ -141,11 +141,11 @@ export declare namespace publicawesome {
                             address?: string;
                             weight?: string;
                         }[];
-                    }): _54.Params;
+                    }): _83.Params;
                 };
                 GenesisState: {
-                    encode(message: _53.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.GenesisState;
+                    encode(message: _82.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _82.GenesisState;
                     fromPartial(object: {
                         params?: {
                             distributionProportions?: {
@@ -157,69 +157,69 @@ export declare namespace publicawesome {
                                 weight?: string;
                             }[];
                         };
-                    }): _53.GenesisState;
+                    }): _82.GenesisState;
                 };
             };
         }
         namespace claim {
             const v1beta1: {
-                MsgClientImpl: typeof _122.MsgClientImpl;
-                QueryClientImpl: typeof _120.QueryClientImpl;
+                MsgClientImpl: typeof _176.MsgClientImpl;
+                QueryClientImpl: typeof _174.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    moduleAccountBalance(request?: _60.QueryModuleAccountBalanceRequest): Promise<_60.QueryModuleAccountBalanceResponseSDKType>;
-                    params(request?: _60.QueryParamsRequest): Promise<_60.QueryParamsResponseSDKType>;
-                    claimRecord(request: _60.QueryClaimRecordRequest): Promise<_60.QueryClaimRecordResponseSDKType>;
-                    claimableForAction(request: _60.QueryClaimableForActionRequest): Promise<_60.QueryClaimableForActionResponseSDKType>;
-                    totalClaimable(request: _60.QueryTotalClaimableRequest): Promise<_60.QueryTotalClaimableResponseSDKType>;
+                    moduleAccountBalance(request?: _89.QueryModuleAccountBalanceRequest): Promise<_89.QueryModuleAccountBalanceResponseSDKType>;
+                    params(request?: _89.QueryParamsRequest): Promise<_89.QueryParamsResponseSDKType>;
+                    claimRecord(request: _89.QueryClaimRecordRequest): Promise<_89.QueryClaimRecordResponseSDKType>;
+                    claimableForAction(request: _89.QueryClaimableForActionRequest): Promise<_89.QueryClaimableForActionResponseSDKType>;
+                    totalClaimable(request: _89.QueryTotalClaimableRequest): Promise<_89.QueryTotalClaimableResponseSDKType>;
                 };
-                LCDQueryClient: typeof _118.LCDQueryClient;
+                LCDQueryClient: typeof _172.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        initialClaim(value: _61.MsgInitialClaim): {
+                        initialClaim(value: _90.MsgInitialClaim): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        claimFor(value: _61.MsgClaimFor): {
+                        claimFor(value: _90.MsgClaimFor): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        initialClaim(value: _61.MsgInitialClaim): {
+                        initialClaim(value: _90.MsgInitialClaim): {
                             typeUrl: string;
-                            value: _61.MsgInitialClaim;
+                            value: _90.MsgInitialClaim;
                         };
-                        claimFor(value: _61.MsgClaimFor): {
+                        claimFor(value: _90.MsgClaimFor): {
                             typeUrl: string;
-                            value: _61.MsgClaimFor;
+                            value: _90.MsgClaimFor;
                         };
                     };
                     fromPartial: {
-                        initialClaim(value: _61.MsgInitialClaim): {
+                        initialClaim(value: _90.MsgInitialClaim): {
                             typeUrl: string;
-                            value: _61.MsgInitialClaim;
+                            value: _90.MsgInitialClaim;
                         };
-                        claimFor(value: _61.MsgClaimFor): {
+                        claimFor(value: _90.MsgClaimFor): {
                             typeUrl: string;
-                            value: _61.MsgClaimFor;
+                            value: _90.MsgClaimFor;
                         };
                     };
                 };
                 AminoConverter: {
                     "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim": {
                         aminoType: string;
-                        toAmino: ({ sender }: _61.MsgInitialClaim) => {
+                        toAmino: ({ sender }: _90.MsgInitialClaim) => {
                             sender: string;
                         };
                         fromAmino: ({ sender }: {
                             sender: string;
-                        }) => _61.MsgInitialClaim;
+                        }) => _90.MsgInitialClaim;
                     };
                     "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor": {
                         aminoType: string;
-                        toAmino: ({ sender, address, action }: _61.MsgClaimFor) => {
+                        toAmino: ({ sender, address, action }: _90.MsgClaimFor) => {
                             sender: string;
                             address: string;
                             action: number;
@@ -228,69 +228,69 @@ export declare namespace publicawesome {
                             sender: string;
                             address: string;
                             action: number;
-                        }) => _61.MsgClaimFor;
+                        }) => _90.MsgClaimFor;
                     };
                 };
                 MsgInitialClaim: {
-                    encode(message: _61.MsgInitialClaim, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.MsgInitialClaim;
+                    encode(message: _90.MsgInitialClaim, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgInitialClaim;
                     fromPartial(object: {
                         sender?: string;
-                    }): _61.MsgInitialClaim;
+                    }): _90.MsgInitialClaim;
                 };
                 MsgInitialClaimResponse: {
-                    encode(message: _61.MsgInitialClaimResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.MsgInitialClaimResponseSDKType;
+                    encode(message: _90.MsgInitialClaimResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgInitialClaimResponseSDKType;
                     fromPartial(object: {
                         claimedAmount?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _61.MsgInitialClaimResponse;
+                    }): _90.MsgInitialClaimResponse;
                 };
                 MsgClaimFor: {
-                    encode(message: _61.MsgClaimFor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.MsgClaimFor;
+                    encode(message: _90.MsgClaimFor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgClaimFor;
                     fromPartial(object: {
                         sender?: string;
                         address?: string;
-                        action?: _57.Action;
-                    }): _61.MsgClaimFor;
+                        action?: _86.Action;
+                    }): _90.MsgClaimFor;
                 };
                 MsgClaimForResponse: {
-                    encode(message: _61.MsgClaimForResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.MsgClaimForResponseSDKType;
+                    encode(message: _90.MsgClaimForResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgClaimForResponseSDKType;
                     fromPartial(object: {
                         address?: string;
                         claimedAmount?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _61.MsgClaimForResponse;
+                    }): _90.MsgClaimForResponse;
                 };
                 QueryModuleAccountBalanceRequest: {
-                    encode(_: _60.QueryModuleAccountBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryModuleAccountBalanceRequest;
-                    fromPartial(_: {}): _60.QueryModuleAccountBalanceRequest;
+                    encode(_: _89.QueryModuleAccountBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryModuleAccountBalanceRequest;
+                    fromPartial(_: {}): _89.QueryModuleAccountBalanceRequest;
                 };
                 QueryModuleAccountBalanceResponse: {
-                    encode(message: _60.QueryModuleAccountBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryModuleAccountBalanceResponseSDKType;
+                    encode(message: _89.QueryModuleAccountBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryModuleAccountBalanceResponseSDKType;
                     fromPartial(object: {
                         moduleAccountBalance?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _60.QueryModuleAccountBalanceResponse;
+                    }): _89.QueryModuleAccountBalanceResponse;
                 };
                 QueryParamsRequest: {
-                    encode(_: _60.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryParamsRequest;
-                    fromPartial(_: {}): _60.QueryParamsRequest;
+                    encode(_: _89.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryParamsRequest;
+                    fromPartial(_: {}): _89.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
-                    encode(message: _60.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryParamsResponseSDKType;
+                    encode(message: _89.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryParamsResponseSDKType;
                     fromPartial(object: {
                         params?: {
                             airdropEnabled?: boolean;
@@ -306,21 +306,21 @@ export declare namespace publicawesome {
                             claimDenom?: string;
                             allowedClaimers?: {
                                 contractAddress?: string;
-                                action?: _57.Action;
+                                action?: _86.Action;
                             }[];
                         };
-                    }): _60.QueryParamsResponse;
+                    }): _89.QueryParamsResponse;
                 };
                 QueryClaimRecordRequest: {
-                    encode(message: _60.QueryClaimRecordRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryClaimRecordRequest;
+                    encode(message: _89.QueryClaimRecordRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimRecordRequest;
                     fromPartial(object: {
                         address?: string;
-                    }): _60.QueryClaimRecordRequest;
+                    }): _89.QueryClaimRecordRequest;
                 };
                 QueryClaimRecordResponse: {
-                    encode(message: _60.QueryClaimRecordResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryClaimRecordResponseSDKType;
+                    encode(message: _89.QueryClaimRecordResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimRecordResponseSDKType;
                     fromPartial(object: {
                         claimRecord?: {
                             address?: string;
@@ -330,54 +330,54 @@ export declare namespace publicawesome {
                             }[];
                             actionCompleted?: boolean[];
                         };
-                    }): _60.QueryClaimRecordResponse;
+                    }): _89.QueryClaimRecordResponse;
                 };
                 QueryClaimableForActionRequest: {
-                    encode(message: _60.QueryClaimableForActionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryClaimableForActionRequest;
+                    encode(message: _89.QueryClaimableForActionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimableForActionRequest;
                     fromPartial(object: {
                         address?: string;
-                        action?: _57.Action;
-                    }): _60.QueryClaimableForActionRequest;
+                        action?: _86.Action;
+                    }): _89.QueryClaimableForActionRequest;
                 };
                 QueryClaimableForActionResponse: {
-                    encode(message: _60.QueryClaimableForActionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryClaimableForActionResponseSDKType;
+                    encode(message: _89.QueryClaimableForActionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimableForActionResponseSDKType;
                     fromPartial(object: {
                         coins?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _60.QueryClaimableForActionResponse;
+                    }): _89.QueryClaimableForActionResponse;
                 };
                 QueryTotalClaimableRequest: {
-                    encode(message: _60.QueryTotalClaimableRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryTotalClaimableRequest;
+                    encode(message: _89.QueryTotalClaimableRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryTotalClaimableRequest;
                     fromPartial(object: {
                         address?: string;
-                    }): _60.QueryTotalClaimableRequest;
+                    }): _89.QueryTotalClaimableRequest;
                 };
                 QueryTotalClaimableResponse: {
-                    encode(message: _60.QueryTotalClaimableResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.QueryTotalClaimableResponseSDKType;
+                    encode(message: _89.QueryTotalClaimableResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryTotalClaimableResponseSDKType;
                     fromPartial(object: {
                         coins?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _60.QueryTotalClaimableResponse;
+                    }): _89.QueryTotalClaimableResponse;
                 };
                 ClaimAuthorization: {
-                    encode(message: _59.ClaimAuthorization, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.ClaimAuthorization;
+                    encode(message: _88.ClaimAuthorization, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.ClaimAuthorization;
                     fromPartial(object: {
                         contractAddress?: string;
-                        action?: _57.Action;
-                    }): _59.ClaimAuthorization;
+                        action?: _86.Action;
+                    }): _88.ClaimAuthorization;
                 };
                 Params: {
-                    encode(message: _59.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.Params;
+                    encode(message: _88.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.Params;
                     fromPartial(object: {
                         airdropEnabled?: boolean;
                         airdropStartTime?: Date;
@@ -392,13 +392,13 @@ export declare namespace publicawesome {
                         claimDenom?: string;
                         allowedClaimers?: {
                             contractAddress?: string;
-                            action?: _57.Action;
+                            action?: _86.Action;
                         }[];
-                    }): _59.Params;
+                    }): _88.Params;
                 };
                 GenesisState: {
-                    encode(message: _58.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _58.GenesisState;
+                    encode(message: _87.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.GenesisState;
                     fromPartial(object: {
                         moduleAccountBalance?: {
                             denom?: string;
@@ -418,7 +418,7 @@ export declare namespace publicawesome {
                             claimDenom?: string;
                             allowedClaimers?: {
                                 contractAddress?: string;
-                                action?: _57.Action;
+                                action?: _86.Action;
                             }[];
                         };
                         claimRecords?: {
@@ -429,15 +429,15 @@ export declare namespace publicawesome {
                             }[];
                             actionCompleted?: boolean[];
                         }[];
-                    }): _58.GenesisState;
+                    }): _87.GenesisState;
                 };
-                actionFromJSON(object: any): _57.Action;
-                actionToJSON(object: _57.Action): string;
-                Action: typeof _57.Action;
-                ActionSDKType: typeof _57.ActionSDKType;
+                actionFromJSON(object: any): _86.Action;
+                actionToJSON(object: _86.Action): string;
+                Action: typeof _86.Action;
+                ActionSDKType: typeof _86.ActionSDKType;
                 ClaimRecord: {
-                    encode(message: _57.ClaimRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _57.ClaimRecord;
+                    encode(message: _86.ClaimRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.ClaimRecord;
                     fromPartial(object: {
                         address?: string;
                         initialClaimableAmount?: {
@@ -445,7 +445,7 @@ export declare namespace publicawesome {
                             amount?: string;
                         }[];
                         actionCompleted?: boolean[];
-                    }): _57.ClaimRecord;
+                    }): _86.ClaimRecord;
                 };
             };
         }
@@ -478,10 +478,10 @@ export declare namespace publicawesome {
             publicawesome: {
                 stargaze: {
                     alloc: {
-                        v1beta1: _121.MsgClientImpl;
+                        v1beta1: _175.MsgClientImpl;
                     };
                     claim: {
-                        v1beta1: _122.MsgClientImpl;
+                        v1beta1: _176.MsgClientImpl;
                     };
                 };
             };
@@ -586,16 +586,16 @@ export declare namespace publicawesome {
                 stargaze: {
                     alloc: {
                         v1beta1: {
-                            params(request?: _55.QueryParamsRequest): Promise<_55.QueryParamsResponseSDKType>;
+                            params(request?: _84.QueryParamsRequest): Promise<_84.QueryParamsResponseSDKType>;
                         };
                     };
                     claim: {
                         v1beta1: {
-                            moduleAccountBalance(request?: _60.QueryModuleAccountBalanceRequest): Promise<_60.QueryModuleAccountBalanceResponseSDKType>;
-                            params(request?: _60.QueryParamsRequest): Promise<_60.QueryParamsResponseSDKType>;
-                            claimRecord(request: _60.QueryClaimRecordRequest): Promise<_60.QueryClaimRecordResponseSDKType>;
-                            claimableForAction(request: _60.QueryClaimableForActionRequest): Promise<_60.QueryClaimableForActionResponseSDKType>;
-                            totalClaimable(request: _60.QueryTotalClaimableRequest): Promise<_60.QueryTotalClaimableResponseSDKType>;
+                            moduleAccountBalance(request?: _89.QueryModuleAccountBalanceRequest): Promise<_89.QueryModuleAccountBalanceResponseSDKType>;
+                            params(request?: _89.QueryParamsRequest): Promise<_89.QueryParamsResponseSDKType>;
+                            claimRecord(request: _89.QueryClaimRecordRequest): Promise<_89.QueryClaimRecordResponseSDKType>;
+                            claimableForAction(request: _89.QueryClaimableForActionRequest): Promise<_89.QueryClaimableForActionResponseSDKType>;
+                            totalClaimable(request: _89.QueryTotalClaimableRequest): Promise<_89.QueryTotalClaimableResponseSDKType>;
                         };
                     };
                 };
@@ -631,10 +631,10 @@ export declare namespace publicawesome {
             publicawesome: {
                 stargaze: {
                     alloc: {
-                        v1beta1: _117.LCDQueryClient;
+                        v1beta1: _171.LCDQueryClient;
                     };
                     claim: {
-                        v1beta1: _118.LCDQueryClient;
+                        v1beta1: _172.LCDQueryClient;
                     };
                 };
             };

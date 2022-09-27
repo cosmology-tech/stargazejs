@@ -1,55 +1,55 @@
-import * as _53 from "../stargaze/alloc/v1beta1/genesis";
-import * as _54 from "../stargaze/alloc/v1beta1/params";
-import * as _55 from "../stargaze/alloc/v1beta1/query";
-import * as _56 from "../stargaze/alloc/v1beta1/tx";
-import * as _57 from "../stargaze/claim/v1beta1/claim_record";
-import * as _58 from "../stargaze/claim/v1beta1/genesis";
-import * as _59 from "../stargaze/claim/v1beta1/params";
-import * as _60 from "../stargaze/claim/v1beta1/query";
-import * as _61 from "../stargaze/claim/v1beta1/tx";
-import * as _113 from "../stargaze/alloc/v1beta1/tx.amino";
-import * as _114 from "../stargaze/claim/v1beta1/tx.amino";
-import * as _115 from "../stargaze/alloc/v1beta1/tx.registry";
-import * as _116 from "../stargaze/claim/v1beta1/tx.registry";
-import * as _117 from "../stargaze/alloc/v1beta1/query.lcd";
-import * as _118 from "../stargaze/claim/v1beta1/query.lcd";
-import * as _119 from "../stargaze/alloc/v1beta1/query.rpc.query";
-import * as _120 from "../stargaze/claim/v1beta1/query.rpc.query";
-import * as _121 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
-import * as _122 from "../stargaze/claim/v1beta1/tx.rpc.msg";
-import * as _128 from "./lcd";
-import * as _129 from "./rpc.query";
-import * as _130 from "./rpc.tx";
+import * as _82 from "../stargaze/alloc/v1beta1/genesis";
+import * as _83 from "../stargaze/alloc/v1beta1/params";
+import * as _84 from "../stargaze/alloc/v1beta1/query";
+import * as _85 from "../stargaze/alloc/v1beta1/tx";
+import * as _86 from "../stargaze/claim/v1beta1/claim_record";
+import * as _87 from "../stargaze/claim/v1beta1/genesis";
+import * as _88 from "../stargaze/claim/v1beta1/params";
+import * as _89 from "../stargaze/claim/v1beta1/query";
+import * as _90 from "../stargaze/claim/v1beta1/tx";
+import * as _167 from "../stargaze/alloc/v1beta1/tx.amino";
+import * as _168 from "../stargaze/claim/v1beta1/tx.amino";
+import * as _169 from "../stargaze/alloc/v1beta1/tx.registry";
+import * as _170 from "../stargaze/claim/v1beta1/tx.registry";
+import * as _171 from "../stargaze/alloc/v1beta1/query.lcd";
+import * as _172 from "../stargaze/claim/v1beta1/query.lcd";
+import * as _173 from "../stargaze/alloc/v1beta1/query.rpc.query";
+import * as _174 from "../stargaze/claim/v1beta1/query.rpc.query";
+import * as _175 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
+import * as _176 from "../stargaze/claim/v1beta1/tx.rpc.msg";
+import * as _188 from "./lcd";
+import * as _189 from "./rpc.query";
+import * as _190 from "./rpc.tx";
 export namespace publicawesome {
   export namespace stargaze {
     export namespace alloc {
-      export const v1beta1 = { ..._53,
-        ..._54,
-        ..._55,
-        ..._56,
-        ..._113,
-        ..._115,
-        ..._117,
-        ..._119,
-        ..._121
+      export const v1beta1 = { ..._82,
+        ..._83,
+        ..._84,
+        ..._85,
+        ..._167,
+        ..._169,
+        ..._171,
+        ..._173,
+        ..._175
       };
     }
     export namespace claim {
-      export const v1beta1 = { ..._57,
-        ..._58,
-        ..._59,
-        ..._60,
-        ..._61,
-        ..._114,
-        ..._116,
-        ..._118,
-        ..._120,
-        ..._122
+      export const v1beta1 = { ..._86,
+        ..._87,
+        ..._88,
+        ..._89,
+        ..._90,
+        ..._168,
+        ..._170,
+        ..._172,
+        ..._174,
+        ..._176
       };
     }
   }
-  export const ClientFactory = { ..._128,
-    ..._129,
-    ..._130
+  export const ClientFactory = { ..._188,
+    ..._189,
+    ..._190
   };
 }

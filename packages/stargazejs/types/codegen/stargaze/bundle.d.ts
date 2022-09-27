@@ -1,25 +1,25 @@
-import * as _62 from "./mint/v1beta1/genesis";
-import * as _63 from "./mint/v1beta1/mint";
-import * as _64 from "./mint/v1beta1/query";
-import * as _123 from "./mint/v1beta1/query.lcd";
-import * as _124 from "./mint/v1beta1/query.rpc.query";
+import * as _91 from "./mint/v1beta1/genesis";
+import * as _92 from "./mint/v1beta1/mint";
+import * as _93 from "./mint/v1beta1/query";
+import * as _177 from "./mint/v1beta1/query.lcd";
+import * as _178 from "./mint/v1beta1/query.rpc.query";
 export declare namespace stargaze {
     namespace mint {
         const v1beta1: {
-            QueryClientImpl: typeof _124.QueryClientImpl;
+            QueryClientImpl: typeof _178.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                params(request?: _64.QueryParamsRequest): Promise<_64.QueryParamsResponseSDKType>;
-                annualProvisions(request?: _64.QueryAnnualProvisionsRequest): Promise<_64.QueryAnnualProvisionsResponseSDKType>;
+                params(request?: _93.QueryParamsRequest): Promise<_93.QueryParamsResponseSDKType>;
+                annualProvisions(request?: _93.QueryAnnualProvisionsRequest): Promise<_93.QueryAnnualProvisionsResponseSDKType>;
             };
-            LCDQueryClient: typeof _123.LCDQueryClient;
+            LCDQueryClient: typeof _177.LCDQueryClient;
             QueryParamsRequest: {
-                encode(_: _64.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _64.QueryParamsRequest;
-                fromPartial(_: {}): _64.QueryParamsRequest;
+                encode(_: _93.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.QueryParamsRequest;
+                fromPartial(_: {}): _93.QueryParamsRequest;
             };
             QueryParamsResponse: {
-                encode(message: _64.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _64.QueryParamsResponseSDKType;
+                encode(message: _93.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.QueryParamsResponseSDKType;
                 fromPartial(object: {
                     params?: {
                         mintDenom?: string;
@@ -28,41 +28,41 @@ export declare namespace stargaze {
                         reductionFactor?: string;
                         blocksPerYear?: any;
                     };
-                }): _64.QueryParamsResponse;
+                }): _93.QueryParamsResponse;
             };
             QueryAnnualProvisionsRequest: {
-                encode(_: _64.QueryAnnualProvisionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _64.QueryAnnualProvisionsRequest;
-                fromPartial(_: {}): _64.QueryAnnualProvisionsRequest;
+                encode(_: _93.QueryAnnualProvisionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.QueryAnnualProvisionsRequest;
+                fromPartial(_: {}): _93.QueryAnnualProvisionsRequest;
             };
             QueryAnnualProvisionsResponse: {
-                encode(message: _64.QueryAnnualProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _64.QueryAnnualProvisionsResponseSDKType;
+                encode(message: _93.QueryAnnualProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.QueryAnnualProvisionsResponseSDKType;
                 fromPartial(object: {
                     annualProvisions?: Uint8Array;
-                }): _64.QueryAnnualProvisionsResponse;
+                }): _93.QueryAnnualProvisionsResponse;
             };
             Minter: {
-                encode(message: _63.Minter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.Minter;
+                encode(message: _92.Minter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.Minter;
                 fromPartial(object: {
                     annualProvisions?: string;
-                }): _63.Minter;
+                }): _92.Minter;
             };
             Params: {
-                encode(message: _63.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.Params;
+                encode(message: _92.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.Params;
                 fromPartial(object: {
                     mintDenom?: string;
                     startTime?: Date;
                     initialAnnualProvisions?: string;
                     reductionFactor?: string;
                     blocksPerYear?: any;
-                }): _63.Params;
+                }): _92.Params;
             };
             GenesisState: {
-                encode(message: _62.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.GenesisState;
+                encode(message: _91.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.GenesisState;
                 fromPartial(object: {
                     minter?: {
                         annualProvisions?: string;
@@ -74,7 +74,7 @@ export declare namespace stargaze {
                         reductionFactor?: string;
                         blocksPerYear?: any;
                     };
-                }): _62.GenesisState;
+                }): _91.GenesisState;
             };
         };
     }
@@ -178,8 +178,8 @@ export declare namespace stargaze {
             stargaze: {
                 mint: {
                     v1beta1: {
-                        params(request?: _64.QueryParamsRequest): Promise<_64.QueryParamsResponseSDKType>;
-                        annualProvisions(request?: _64.QueryAnnualProvisionsRequest): Promise<_64.QueryAnnualProvisionsResponseSDKType>;
+                        params(request?: _93.QueryParamsRequest): Promise<_93.QueryParamsResponseSDKType>;
+                        annualProvisions(request?: _93.QueryAnnualProvisionsRequest): Promise<_93.QueryAnnualProvisionsResponseSDKType>;
                     };
                 };
             };
@@ -213,7 +213,7 @@ export declare namespace stargaze {
             };
             stargaze: {
                 mint: {
-                    v1beta1: _123.LCDQueryClient;
+                    v1beta1: _177.LCDQueryClient;
                 };
             };
         }>;
