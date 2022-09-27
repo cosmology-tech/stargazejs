@@ -5,7 +5,7 @@
 </p>
 
 <p align="center" width="100%">
-   <a href="https://github.com/cosmology-tech/stargaze-zone/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+   <a href="https://github.com/cosmology-tech/stargazejs/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 </p>
 
 Typescript libraries for the Stargaze ecosystem.
@@ -24,18 +24,13 @@ TS library with Stargaze smart contracts.
 
 Chain Registry info for Stargaze, including asset lists.
 
-#### [stargaze-zone](packages/stargaze-zone)
-
-TS library with Cosmos SDK and Stargaze smart contracts. Includes IBC and CosmWasm modules.
-
-
 ## Developing
 
 Checkout the repository and bootstrap the yarn workspace:
 
 ```sh
 # Clone the repo.
-git clone https://github.com/cosmology-tech/stargaze-zone
+git clone https://github.com/cosmology-tech/stargazejs
 yarn
 yarn bootstrap
 ```

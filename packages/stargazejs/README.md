@@ -5,14 +5,12 @@
 </p>
 
 <p align="center" width="100%">
-   <a href="https://github.com/cosmology-tech/stargaze-zone/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+   <a href="https://github.com/cosmology-tech/stargazejs/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
    <a href="https://www.npmjs.com/package/stargazejs"><img height="20" src="https://img.shields.io/github/package-json/v/cosmology-tech/stargaze-zone?filename=packages%2Fstargazejs%2Fpackage.json"></a>
 </p>
 
 
-TS library with Cosmos SDK and Stargaze smart contracts. 
-
-A leaner version of the `stargaze-zone` npm module, w/ cosmwasm, ibc modules.
+TS library with Cosmos SDK and Stargaze smart contracts.
 
 ```
 npm install stargazejs
@@ -77,6 +75,31 @@ await client.addMembers({
 })
 ```
 
+### CosmWasm Messages
+
+```js
+import { cosmwasm } from "stargaze-zone";
+
+const {
+    clearAdmin,
+    executeContract,
+    instantiateContract,
+    migrateContract,
+    storeCode,
+    updateAdmin
+} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
+```
+
+### IBC Messages
+
+```js
+import { ibc } from 'stargazejs';
+
+const {
+    transfer
+} = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
+```
+
 ### Cosmos Messages
 
 ```js
@@ -109,6 +132,119 @@ const {
     voteWeighted
 } = cosmos.gov.v1beta1.MessageComposer.fromPartial;
 ```
+### Initializing the Stargate Client
+
+Use `getSigningPublicawesomeClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
+
+```js
+import { getSigningPublicawesomeClient } from 'stargazejs';
+
+const stargateClient = await getSigningPublicawesomeClient({
+  rpcEndpoint,
+  signer // OfflineSigner
+});
+```
+## Creating Signers
+
+To broadcast messages, you'll want to use either [keplr](https://docs.keplr.app/api/cosmjs.html) or an `OfflineSigner` from `cosmjs` using mnemonics.
+
+### Cosmos Kit
+
+If you use react, for keplr, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#2-signing-clients)
+
+### Amino Signer
+
+Likely you'll want to use the Amino, so unless you need proto, you should use this one:
+
+```js
+import { getOfflineSignerAmino as getOfflineSigner } from 'cosmjs-utils';
+```
+### Proto Signer
+
+```js
+import { getOfflineSignerProto as getOfflineSigner } from 'cosmjs-utils';
+```
+
+WARNING: NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS. Please take care of your security and use best practices such as AES encryption and/or methods from 12factor applications.
+
+```js
+import { chains } from 'chain-registry';
+
+const mnemonic =
+  'unfold client turtle either pilot stock floor glow toward bullet car science';
+  const chain = chains.find(({ chain_name }) => chain_name === 'stargaze');
+  const signer = await getOfflineSigner({
+    mnemonic,
+    chain
+  });
+```
+### Broadcasting messages
+
+Now that you have your `stargateClient`, you can broadcast messages:
+
+```js
+const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
+
+const msg = send({
+    amount: [
+    {
+        denom: 'ustars',
+        amount: '1000'
+    }
+    ],
+    toAddress: address,
+    fromAddress: address
+});
+
+const fee: StdFee = {
+    amount: [
+    {
+        denom: 'ustars',
+        amount: '864'
+    }
+    ],
+    gas: '86364'
+};
+const response = await stargateClient.signAndBroadcast(address, [msg], fee);
+```
+
+### Advanced Usage
+
+If you want to manually construct a stargate client
+
+```js
+import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+
+import { 
+    cosmosAminoConverters,
+    cosmosProtoRegistry,
+    publicawesomeAminoConverters,
+    publicawesomeProtoRegistry
+} from 'stargazejs';
+
+const signer: OfflineSigner = /* create your signer (see above)  */
+const rpcEndpint = 'https://rpc.cosmos.directory/stargaze'; // or another URL
+
+const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+    ...cosmosProtoRegistry,
+    ...publicawesomeProtoRegistry    
+];
+
+const aminoConverters = {
+    ...cosmosAminoConverters,
+    ...publicawesomeAminoConverters
+};
+
+const registry = new Registry(protoRegistry);
+const aminoTypes = new AminoTypes(aminoConverters);
+
+const stargateClient = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
+    registry,
+    aminoTypes
+});
+```
+
 ## Credits
 
 🛠 Built by Cosmology — if you like our tools, please consider delegating to [our validator ⚛️](https://cosmology.tech/validator)

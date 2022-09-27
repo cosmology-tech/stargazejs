@@ -5,7 +5,7 @@
 </p>
 
 <p align="center" width="100%">
-   <a href="https://github.com/cosmology-tech/stargaze-zone/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+   <a href="https://github.com/cosmology-tech/stargazejs/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
    <a href="https://www.npmjs.com/package/@stargaze-zone/chain"><img height="20" src="https://img.shields.io/github/package-json/v/cosmology-tech/stargaze-zone?filename=packages%2Fchain%2Fpackage.json"></a>
 </p>
 

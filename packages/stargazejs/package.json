@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "description": "stargaze",
   "author": "Dan Lynch <pyramation@gmail.com>",
-  "homepage": "https://github.com/cosmology-tech/stargaze-zone#readme",
+  "homepage": "https://github.com/cosmology-tech/stargazejs#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "main/index.js",
   "typings": "types/index.d.ts",
@@ -33,11 +33,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cosmology-tech/stargaze-zone"
+    "url": "https://github.com/cosmology-tech/stargazejs"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/cosmology-tech/stargaze-zone/issues"
+    "url": "https://github.com/cosmology-tech/stargazejs/issues"
   },
   "devDependencies": {
     "@babel/cli": "7.18.10",
