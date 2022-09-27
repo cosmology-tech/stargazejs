@@ -132,6 +132,10 @@ const {
     voteWeighted
 } = cosmos.gov.v1beta1.MessageComposer.fromPartial;
 ```
+
+## Connecting with Wallets and Signing Messages
+
+⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit). Continue below to see how to manually construct signers and clients.
 ### Initializing the Stargate Client
 
 Use `getSigningPublicawesomeClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
