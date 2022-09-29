@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/cosmology-tech/stargazejs/compare/@stargaze-zone/contracts@0.4.0...@stargaze-zone/contracts@0.5.0) (2022-09-29)
+
+**Note:** Version bump only for package @stargaze-zone/contracts
+
+
+
+
+
 # [0.4.0](https://github.com/cosmology-tech/stargazejs/compare/@stargaze-zone/contracts@0.3.0...@stargaze-zone/contracts@0.4.0) (2022-09-27)
 
 **Note:** Version bump only for package @stargaze-zone/contracts
