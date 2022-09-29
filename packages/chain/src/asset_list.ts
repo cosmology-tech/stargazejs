@@ -269,6 +269,188 @@ const asset_list: AssetList = {
           }
         }
       ]
+    },
+    {
+      description: 'The native token of Stride',
+      denom_units: [
+        {
+          denom:
+            'ibc/55967CD055E19BF374A2556456C5760DAFDCF1D86DD85FAD08DBA806964DB2C4',
+          exponent: 0,
+          aliases: ['ustrd']
+        },
+        {
+          denom: 'strd',
+          exponent: 6,
+          aliases: []
+        }
+      ],
+      base: 'ibc/55967CD055E19BF374A2556456C5760DAFDCF1D86DD85FAD08DBA806964DB2C4',
+      name: 'Stride',
+      display: 'strd',
+      symbol: 'STRD',
+      logo_URIs: {
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/strd.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/strd.svg'
+      },
+      coingecko_id: 'stride',
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel_id: 'channel-19',
+            base_denom: 'ustrd',
+            chain_name: 'stride'
+          },
+          chain: {
+            channel_id: 'channel-106'
+          }
+        }
+      ]
+    },
+    {
+      denom_units: [
+        {
+          denom:
+            'ibc/FED316EA6AA1F52581F61D5D4B38F2A09042D5EA1DABA07B8A23C1EE3C0C4651',
+          exponent: 0,
+          aliases: ['stuatom']
+        },
+        {
+          denom: 'statom',
+          exponent: 6
+        }
+      ],
+      base: 'ibc/FED316EA6AA1F52581F61D5D4B38F2A09042D5EA1DABA07B8A23C1EE3C0C4651',
+      name: 'stATOM',
+      display: 'statom',
+      symbol: 'stATOM',
+      logo_URIs: {
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/statom.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/statom.svg'
+      },
+      coingecko_id: 'stride-staked-atom',
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel_id: 'channel-19',
+            base_denom: 'stuatom',
+            chain_name: 'stride'
+          },
+          chain: {
+            channel_id: 'channel-106'
+          }
+        }
+      ]
+    },
+    {
+      denom_units: [
+        {
+          denom:
+            'ibc/7A58490427EF0092E2BFFB4BEEBA38E29B09E9B98557DFC78335B43F15CF2676',
+          exponent: 0,
+          aliases: ['stustars']
+        },
+        {
+          denom: 'ststars',
+          exponent: 6
+        }
+      ],
+      base: 'ibc/7A58490427EF0092E2BFFB4BEEBA38E29B09E9B98557DFC78335B43F15CF2676',
+      name: 'stSTARS',
+      display: 'ststars',
+      symbol: 'stSTARS',
+      logo_URIs: {
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/ststars.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/ststars.svg'
+      },
+      coingecko_id: '',
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel_id: 'channel-19',
+            base_denom: 'stustars',
+            chain_name: 'stride'
+          },
+          chain: {
+            channel_id: 'channel-106'
+          }
+        }
+      ]
+    },
+    {
+      denom_units: [
+        {
+          denom:
+            'ibc/0AA9207D732AC65D17EF3081AE8EB96CABE26D9E8FBE27EC96BC4E3FEBD255C1',
+          exponent: 0,
+          aliases: ['stuosmo']
+        },
+        {
+          denom: 'stosmo',
+          exponent: 6
+        }
+      ],
+      base: 'ibc/0AA9207D732AC65D17EF3081AE8EB96CABE26D9E8FBE27EC96BC4E3FEBD255C1',
+      name: 'stOSMO',
+      display: 'stosmo',
+      symbol: 'stOSMO',
+      logo_URIs: {
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stosmo.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stosmo.svg'
+      },
+      coingecko_id: '',
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel_id: 'channel-19',
+            base_denom: 'stuosmo',
+            chain_name: 'stride'
+          },
+          chain: {
+            channel_id: 'channel-106'
+          }
+        }
+      ]
+    },
+    {
+      denom_units: [
+        {
+          denom:
+            'ibc/2D4AEA83CAECDA73C09D0FA6A5A76CAE68873C36A744212687E5A495B36BD8C6',
+          exponent: 0,
+          aliases: ['stujuno']
+        },
+        {
+          denom: 'stjuno',
+          exponent: 6
+        }
+      ],
+      base: 'ibc/2D4AEA83CAECDA73C09D0FA6A5A76CAE68873C36A744212687E5A495B36BD8C6',
+      name: 'stJUNO',
+      display: 'stjuno',
+      symbol: 'stJUNO',
+      logo_URIs: {
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stjuno.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stjuno.svg'
+      },
+      coingecko_id: '',
+      traces: [
+        {
+          type: 'ibc',
+          counterparty: {
+            channel_id: 'channel-19',
+            base_denom: 'stujuno',
+            chain_name: 'stride'
+          },
+          chain: {
+            channel_id: 'channel-106'
+          }
+        }
+      ]
     }
   ]
 };
