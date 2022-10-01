@@ -57,9 +57,11 @@ export declare type Decimal = string;
 export interface CollectionInfoResponse {
     creator: string;
     description: string;
+    explicit_content: boolean;
     external_link?: string | null;
     image: string;
     royalty_info?: RoyaltyInfoResponse | null;
+    trading_start_time?: Timestamp | null;
     [k: string]: unknown;
 }
 export interface RoyaltyInfoResponse {
@@ -82,9 +84,11 @@ export interface InstantiateMsg {
 export interface CollectionInfoForRoyaltyInfoResponse {
     creator: string;
     description: string;
+    explicit_content: boolean;
     external_link?: string | null;
     image: string;
     royalty_info?: RoyaltyInfoResponse | null;
+    trading_start_time?: Timestamp | null;
     [k: string]: unknown;
 }
 export interface MinterResponse {

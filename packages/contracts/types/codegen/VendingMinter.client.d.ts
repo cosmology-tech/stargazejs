@@ -5,7 +5,7 @@
 */
 import { CosmWasmClient, SigningCosmWasmClient, ExecuteResult } from "@cosmjs/cosmwasm-stargate";
 import { StdFee } from "@cosmjs/amino";
-import { ConfigResponse, Coin, MintCountResponse, MintPriceResponse, MintableNumTokensResponse, StartTimeResponse } from "./VendingMinter.types";
+import { ConfigResponse, Coin, MintCountResponse, MintPriceResponse, MintableNumTokensResponse, StartTimeResponse, StatusResponse } from "./VendingMinter.types";
 export interface VendingMinterReadOnlyInterface {
     contractAddress: string;
     config: () => Promise<ConfigResponse>;
@@ -15,6 +15,7 @@ export interface VendingMinterReadOnlyInterface {
     mintCount: ({ address }: {
         address: string;
     }) => Promise<MintCountResponse>;
+    status: () => Promise<StatusResponse>;
 }
 export declare class VendingMinterQueryClient implements VendingMinterReadOnlyInterface {
     client: CosmWasmClient;
@@ -27,6 +28,7 @@ export declare class VendingMinterQueryClient implements VendingMinterReadOnlyIn
     mintCount: ({ address }: {
         address: string;
     }) => Promise<MintCountResponse>;
+    status: () => Promise<StatusResponse>;
 }
 export interface VendingMinterInterface extends VendingMinterReadOnlyInterface {
     contractAddress: string;
@@ -35,7 +37,12 @@ export interface VendingMinterInterface extends VendingMinterReadOnlyInterface {
     setWhitelist: ({ whitelist }: {
         whitelist: string;
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    purge: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    updateMintPrice: ({ price }: {
+        price: number;
+    }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     updateStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    updateTradingStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     updatePerAddressLimit: ({ perAddressLimit }: {
         perAddressLimit: number;
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
@@ -47,7 +54,7 @@ export interface VendingMinterInterface extends VendingMinterReadOnlyInterface {
         tokenId: number;
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     shuffle: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
-    withdraw: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    burnRemaining: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
 }
 export declare class VendingMinterClient extends VendingMinterQueryClient implements VendingMinterInterface {
     client: SigningCosmWasmClient;
@@ -58,7 +65,12 @@ export declare class VendingMinterClient extends VendingMinterQueryClient implem
     setWhitelist: ({ whitelist }: {
         whitelist: string;
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    purge: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    updateMintPrice: ({ price }: {
+        price: number;
+    }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     updateStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    updateTradingStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     updatePerAddressLimit: ({ perAddressLimit }: {
         perAddressLimit: number;
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
@@ -70,5 +82,5 @@ export declare class VendingMinterClient extends VendingMinterQueryClient implem
         tokenId: number;
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     shuffle: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
-    withdraw: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    burnRemaining: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
 }

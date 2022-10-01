@@ -12,7 +12,12 @@ export interface VendingMinterMessage {
     setWhitelist: ({ whitelist }: {
         whitelist: string;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    purge: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateMintPrice: ({ price }: {
+        price: number;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updateStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateTradingStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updatePerAddressLimit: ({ perAddressLimit }: {
         perAddressLimit: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
@@ -24,7 +29,7 @@ export interface VendingMinterMessage {
         tokenId: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     shuffle: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
-    withdraw: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    burnRemaining: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
 export declare class VendingMinterMessageComposer implements VendingMinterMessage {
     sender: string;
@@ -34,7 +39,12 @@ export declare class VendingMinterMessageComposer implements VendingMinterMessag
     setWhitelist: ({ whitelist }: {
         whitelist: string;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    purge: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateMintPrice: ({ price }: {
+        price: number;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updateStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateTradingStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updatePerAddressLimit: ({ perAddressLimit }: {
         perAddressLimit: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
@@ -46,5 +56,5 @@ export declare class VendingMinterMessageComposer implements VendingMinterMessag
         tokenId: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     shuffle: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
-    withdraw: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    burnRemaining: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }

@@ -99,7 +99,7 @@ export const MsgInitialClaimResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaimResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaimResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgInitialClaimResponse();
@@ -214,7 +214,7 @@ export const MsgClaimForResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimForResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimForResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgClaimForResponse();

@@ -1,10 +1,10 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgCreateVestingAccount, MsgCreateVestingAccountResponse, MsgCreateVestingAccountResponseSDKType } from "./tx";
+import { MsgCreateVestingAccount, MsgCreateVestingAccountResponse } from "./tx";
 /** Msg defines the RPC service */
 
 export interface Msg {
-  createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponseSDKType>;
+  createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse>;
   /*CreateVestingAccount defines a method that enables creating a vesting
   account.*/
 
@@ -17,7 +17,7 @@ export class MsgClientImpl implements Msg {
     this.createVestingAccount = this.createVestingAccount.bind(this);
   }
 
-  createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponseSDKType> {
+  createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse> {
     const data = MsgCreateVestingAccount.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.alloc.v1beta1.Msg", "CreateVestingAccount", data);
     return promise.then(data => MsgCreateVestingAccountResponse.decode(new _m0.Reader(data)));

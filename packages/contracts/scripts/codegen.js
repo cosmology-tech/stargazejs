@@ -4,8 +4,28 @@ import codegen from '@cosmwasm/ts-codegen';
 const contractsDir = resolve(join(__dirname, '/../../../contracts'));
 const contracts = [
   {
+    name: 'BaseFactory',
+    dir: join(contractsDir, 'base-factory')
+  },
+  {
+    name: 'BaseMinter',
+    dir: join(contractsDir, 'base-minter')
+  },
+  {
     name: 'SG721Base',
     dir: join(contractsDir, 'sg721-base')
+  },
+  {
+    name: 'SG721MetadataOnchain',
+    dir: join(contractsDir, 'sg721-metadata-onchain')
+  },
+  {
+    name: 'Sg721Nt',
+    dir: join(contractsDir, 'sg721-nt')
+  },
+  {
+    name: 'Splits',
+    dir: join(contractsDir, 'splits')
   },
   {
     name: 'VendingFactory',

@@ -6,7 +6,7 @@
 
 import { CosmWasmClient, SigningCosmWasmClient, ExecuteResult } from "@cosmjs/cosmwasm-stargate";
 import { StdFee } from "@cosmjs/amino";
-import { Timestamp, Uint64, Uint128, ConfigResponse, Coin, ExecuteMsg, Decimal, InstantiateMsg, CreateMinterMsgForVendingMinterInitMsgExtension, CollectionParams, CollectionInfoForRoyaltyInfoResponse, RoyaltyInfoResponse, VendingMinterInitMsgExtension, MinterParamsForParamsExtension, ParamsExtension, MintCountResponse, MintPriceResponse, MintableNumTokensResponse, Addr, MinterConfigForConfigExtension, ConfigExtension, QueryMsg, StartTimeResponse } from "./VendingMinter.types";
+import { Uint128, Timestamp, Uint64, ConfigResponse, Coin, ExecuteMsg, Decimal, InstantiateMsg, CreateMinterMsgForVendingMinterInitMsgExtension, CollectionParams, CollectionInfoForRoyaltyInfoResponse, RoyaltyInfoResponse, VendingMinterInitMsgExtension, MinterParamsForParamsExtension, ParamsExtension, MintCountResponse, MintPriceResponse, MintableNumTokensResponse, Addr, MinterConfigForConfigExtension, ConfigExtension, QueryMsg, StartTimeResponse, StatusResponse, Status } from "./VendingMinter.types";
 export interface VendingMinterReadOnlyInterface {
   contractAddress: string;
   config: () => Promise<ConfigResponse>;
@@ -18,6 +18,7 @@ export interface VendingMinterReadOnlyInterface {
   }: {
     address: string;
   }) => Promise<MintCountResponse>;
+  status: () => Promise<StatusResponse>;
 }
 export class VendingMinterQueryClient implements VendingMinterReadOnlyInterface {
   client: CosmWasmClient;
@@ -31,6 +32,7 @@ export class VendingMinterQueryClient implements VendingMinterReadOnlyInterface 
     this.startTime = this.startTime.bind(this);
     this.mintPrice = this.mintPrice.bind(this);
     this.mintCount = this.mintCount.bind(this);
+    this.status = this.status.bind(this);
   }
 
   config = async (): Promise<ConfigResponse> => {
@@ -64,6 +66,11 @@ export class VendingMinterQueryClient implements VendingMinterReadOnlyInterface 
       }
     });
   };
+  status = async (): Promise<StatusResponse> => {
+    return this.client.queryContractSmart(this.contractAddress, {
+      status: {}
+    });
+  };
 }
 export interface VendingMinterInterface extends VendingMinterReadOnlyInterface {
   contractAddress: string;
@@ -74,7 +81,14 @@ export interface VendingMinterInterface extends VendingMinterReadOnlyInterface {
   }: {
     whitelist: string;
   }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+  purge: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+  updateMintPrice: ({
+    price
+  }: {
+    price: number;
+  }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
   updateStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+  updateTradingStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
   updatePerAddressLimit: ({
     perAddressLimit
   }: {
@@ -93,7 +107,7 @@ export interface VendingMinterInterface extends VendingMinterReadOnlyInterface {
     tokenId: number;
   }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
   shuffle: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
-  withdraw: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+  burnRemaining: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
 }
 export class VendingMinterClient extends VendingMinterQueryClient implements VendingMinterInterface {
   client: SigningCosmWasmClient;
@@ -107,12 +121,15 @@ export class VendingMinterClient extends VendingMinterQueryClient implements Ven
     this.contractAddress = contractAddress;
     this.mint = this.mint.bind(this);
     this.setWhitelist = this.setWhitelist.bind(this);
+    this.purge = this.purge.bind(this);
+    this.updateMintPrice = this.updateMintPrice.bind(this);
     this.updateStartTime = this.updateStartTime.bind(this);
+    this.updateTradingStartTime = this.updateTradingStartTime.bind(this);
     this.updatePerAddressLimit = this.updatePerAddressLimit.bind(this);
     this.mintTo = this.mintTo.bind(this);
     this.mintFor = this.mintFor.bind(this);
     this.shuffle = this.shuffle.bind(this);
-    this.withdraw = this.withdraw.bind(this);
+    this.burnRemaining = this.burnRemaining.bind(this);
   }
 
   mint = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
@@ -131,9 +148,30 @@ export class VendingMinterClient extends VendingMinterQueryClient implements Ven
       }
     }, fee, memo, funds);
   };
+  purge = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
+    return await this.client.execute(this.sender, this.contractAddress, {
+      purge: {}
+    }, fee, memo, funds);
+  };
+  updateMintPrice = async ({
+    price
+  }: {
+    price: number;
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
+    return await this.client.execute(this.sender, this.contractAddress, {
+      update_mint_price: {
+        price
+      }
+    }, fee, memo, funds);
+  };
   updateStartTime = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       update_start_time: {}
+    }, fee, memo, funds);
+  };
+  updateTradingStartTime = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
+    return await this.client.execute(this.sender, this.contractAddress, {
+      update_trading_start_time: {}
     }, fee, memo, funds);
   };
   updatePerAddressLimit = async ({
@@ -177,9 +215,9 @@ export class VendingMinterClient extends VendingMinterQueryClient implements Ven
       shuffle: {}
     }, fee, memo, funds);
   };
-  withdraw = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
+  burnRemaining = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
-      withdraw: {}
+      burn_remaining: {}
     }, fee, memo, funds);
   };
 }

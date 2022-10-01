@@ -11,10 +11,10 @@ export interface ConfigResponse {
   end_time: Timestamp;
   is_active: boolean;
   member_limit: number;
+  mint_price: Coin;
   num_members: number;
   per_address_limit: number;
   start_time: Timestamp;
-  unit_price: Coin;
   [k: string]: unknown;
 }
 export interface Coin {
@@ -27,10 +27,10 @@ export interface Config {
   admin: Addr;
   end_time: Timestamp;
   member_limit: number;
+  mint_price: Coin;
   num_members: number;
   per_address_limit: number;
   start_time: Timestamp;
-  unit_price: Coin;
   [k: string]: unknown;
 }
 export type ExecuteMsg = {
@@ -70,9 +70,9 @@ export interface InstantiateMsg {
   end_time: Timestamp;
   member_limit: number;
   members: string[];
+  mint_price: Coin;
   per_address_limit: number;
   start_time: Timestamp;
-  unit_price: Coin;
   [k: string]: unknown;
 }
 export interface IsActiveResponse {
