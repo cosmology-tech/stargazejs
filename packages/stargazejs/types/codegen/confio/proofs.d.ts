@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../helpers";
 export declare enum HashOp {
     /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
     NO_HASH = 0,
@@ -104,7 +104,7 @@ export declare function lengthOpToJSON(object: LengthOp): string;
 export interface ExistenceProof {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOp;
+    leaf?: LeafOp;
     path: InnerOp[];
 }
 /**
@@ -131,7 +131,7 @@ export interface ExistenceProof {
 export interface ExistenceProofSDKType {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOpSDKType;
+    leaf?: LeafOpSDKType;
     path: InnerOpSDKType[];
 }
 /**
@@ -142,8 +142,8 @@ export interface ExistenceProofSDKType {
 export interface NonExistenceProof {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: ExistenceProof;
-    right: ExistenceProof;
+    left?: ExistenceProof;
+    right?: ExistenceProof;
 }
 /**
  * NonExistenceProof takes a proof of two neighbors, one left of the desired key,
@@ -153,8 +153,8 @@ export interface NonExistenceProof {
 export interface NonExistenceProofSDKType {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: ExistenceProofSDKType;
-    right: ExistenceProofSDKType;
+    left?: ExistenceProofSDKType;
+    right?: ExistenceProofSDKType;
 }
 /** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
 export interface CommitmentProof {
@@ -285,8 +285,8 @@ export interface ProofSpec {
      * any field in the ExistenceProof must be the same as in this spec.
      * except Prefix, which is just the first bytes of prefix (spec can be longer)
      */
-    leafSpec: LeafOp;
-    innerSpec: InnerSpec;
+    leafSpec?: LeafOp;
+    innerSpec?: InnerSpec;
     /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
     maxDepth: number;
     /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
@@ -309,8 +309,8 @@ export interface ProofSpecSDKType {
      * any field in the ExistenceProof must be the same as in this spec.
      * except Prefix, which is just the first bytes of prefix (spec can be longer)
      */
-    leaf_spec: LeafOpSDKType;
-    inner_spec: InnerSpecSDKType;
+    leaf_spec?: LeafOpSDKType;
+    inner_spec?: InnerSpecSDKType;
     /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
     max_depth: number;
     /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
@@ -405,28 +405,28 @@ export interface CompressedBatchEntrySDKType {
 export interface CompressedExistenceProof {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOp;
+    leaf?: LeafOp;
     /** these are indexes into the lookup_inners table in CompressedBatchProof */
     path: number[];
 }
 export interface CompressedExistenceProofSDKType {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOpSDKType;
+    leaf?: LeafOpSDKType;
     /** these are indexes into the lookup_inners table in CompressedBatchProof */
     path: number[];
 }
 export interface CompressedNonExistenceProof {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: CompressedExistenceProof;
-    right: CompressedExistenceProof;
+    left?: CompressedExistenceProof;
+    right?: CompressedExistenceProof;
 }
 export interface CompressedNonExistenceProofSDKType {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: CompressedExistenceProofSDKType;
-    right: CompressedExistenceProofSDKType;
+    left?: CompressedExistenceProofSDKType;
+    right?: CompressedExistenceProofSDKType;
 }
 export declare const ExistenceProof: {
     encode(message: ExistenceProof, writer?: _m0.Writer): _m0.Writer;

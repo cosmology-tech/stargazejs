@@ -1,15 +1,13 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgInitialClaim, MsgInitialClaimResponse, MsgClaimFor, MsgClaimForResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the Msg service. */
 
 export interface Msg {
   initialClaim(request: MsgInitialClaim): Promise<MsgInitialClaimResponse>;
-  /*null*/
+  /** this line is used by starport scaffolding # proto/tx/rpc */
 
   claimFor(request: MsgClaimFor): Promise<MsgClaimForResponse>;
-  /*this line is used by starport scaffolding # proto/tx/rpc*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

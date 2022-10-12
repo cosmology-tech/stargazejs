@@ -1,11 +1,11 @@
 import { Params, ParamsSDKType, Metadata, MetadataSDKType } from "./bank";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisState {
     /** params defines all the paramaters of the module. */
-    params: Params;
+    params?: Params;
     /** balances is an array containing the balances of all the accounts. */
     balances: Balance[];
     /**
@@ -19,7 +19,7 @@ export interface GenesisState {
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisStateSDKType {
     /** params defines all the paramaters of the module. */
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
     /** balances is an array containing the balances of all the accounts. */
     balances: BalanceSDKType[];
     /**

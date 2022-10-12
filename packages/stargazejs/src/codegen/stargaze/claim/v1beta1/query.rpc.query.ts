@@ -1,25 +1,16 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryModuleAccountBalanceRequest, QueryModuleAccountBalanceResponse, QueryParamsRequest, QueryParamsResponse, QueryClaimRecordRequest, QueryClaimRecordResponse, QueryClaimableForActionRequest, QueryClaimableForActionResponse, QueryTotalClaimableRequest, QueryTotalClaimableResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service. */
 
 export interface Query {
+  /** this line is used by starport scaffolding # 2 */
   moduleAccountBalance(request?: QueryModuleAccountBalanceRequest): Promise<QueryModuleAccountBalanceResponse>;
-  /*this line is used by starport scaffolding # 2*/
-
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*null*/
-
   claimRecord(request: QueryClaimRecordRequest): Promise<QueryClaimRecordResponse>;
-  /*null*/
-
   claimableForAction(request: QueryClaimableForActionRequest): Promise<QueryClaimableForActionResponse>;
-  /*null*/
-
   totalClaimable(request: QueryTotalClaimableRequest): Promise<QueryTotalClaimableResponse>;
-  /*null*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

@@ -1,7 +1,7 @@
 import { Action, ActionSDKType } from "./claim_record";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 export interface MsgInitialClaim {
   sender: string;
 }

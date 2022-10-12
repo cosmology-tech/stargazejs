@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /** Minter represents the minting state. */
 export interface Minter {
     /** current annual expected provisions */
@@ -15,7 +15,7 @@ export interface Params {
     /** type of coin to mint */
     mintDenom: string;
     /** the time the chain starts */
-    startTime: Date;
+    startTime?: Date;
     /** initial annual provisions */
     initialAnnualProvisions: string;
     /** factor to reduce inflation by each year */
@@ -28,7 +28,7 @@ export interface ParamsSDKType {
     /** type of coin to mint */
     mint_denom: string;
     /** the time the chain starts */
-    start_time: Date;
+    start_time?: Date;
     /** initial annual provisions */
     initial_annual_provisions: string;
     /** factor to reduce inflation by each year */

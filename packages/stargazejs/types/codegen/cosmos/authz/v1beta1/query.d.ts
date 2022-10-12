@@ -1,22 +1,22 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Grant, GrantSDKType, GrantAuthorization, GrantAuthorizationSDKType } from "./authz";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
 export interface QueryGrantsRequest {
-    granter?: string;
-    grantee?: string;
+    granter: string;
+    grantee: string;
     /** Optional, msg_type_url, when set, will query only grants matching given msg type. */
-    msgTypeUrl?: string;
+    msgTypeUrl: string;
     /** pagination defines an pagination for the request. */
     pagination?: PageRequest;
 }
 /** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
 export interface QueryGrantsRequestSDKType {
-    granter?: string;
-    grantee?: string;
+    granter: string;
+    grantee: string;
     /** Optional, msg_type_url, when set, will query only grants matching given msg type. */
-    msg_type_url?: string;
+    msg_type_url: string;
     /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
@@ -93,7 +93,7 @@ export declare const QueryGrantsRequest: {
 };
 export declare const QueryGrantsResponse: {
     encode(message: QueryGrantsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponse;
     fromPartial(object: DeepPartial<QueryGrantsResponse>): QueryGrantsResponse;
 };
 export declare const QueryGranterGrantsRequest: {
@@ -103,7 +103,7 @@ export declare const QueryGranterGrantsRequest: {
 };
 export declare const QueryGranterGrantsResponse: {
     encode(message: QueryGranterGrantsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponse;
     fromPartial(object: DeepPartial<QueryGranterGrantsResponse>): QueryGranterGrantsResponse;
 };
 export declare const QueryGranteeGrantsRequest: {
@@ -113,6 +113,6 @@ export declare const QueryGranteeGrantsRequest: {
 };
 export declare const QueryGranteeGrantsResponse: {
     encode(message: QueryGranteeGrantsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponse;
     fromPartial(object: DeepPartial<QueryGranteeGrantsResponse>): QueryGranteeGrantsResponse;
 };

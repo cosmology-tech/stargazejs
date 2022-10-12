@@ -1,7 +1,7 @@
 import { Action, ActionSDKType } from "./claim_record";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 export interface MsgInitialClaim {
     sender: string;
 }
@@ -43,7 +43,7 @@ export declare const MsgInitialClaim: {
 };
 export declare const MsgInitialClaimResponse: {
     encode(message: MsgInitialClaimResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaimResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaimResponse;
     fromPartial(object: DeepPartial<MsgInitialClaimResponse>): MsgInitialClaimResponse;
 };
 export declare const MsgClaimFor: {
@@ -53,6 +53,6 @@ export declare const MsgClaimFor: {
 };
 export declare const MsgClaimForResponse: {
     encode(message: MsgClaimForResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimForResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimForResponse;
     fromPartial(object: DeepPartial<MsgClaimForResponse>): MsgClaimForResponse;
 };

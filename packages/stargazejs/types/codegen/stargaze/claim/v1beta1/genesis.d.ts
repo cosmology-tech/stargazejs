@@ -2,16 +2,16 @@ import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsSDKType } from "./params";
 import { ClaimRecord, ClaimRecordSDKType } from "./claim_record";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the claim module's genesis state. */
 export interface GenesisState {
     /**
      * this line is used by starport scaffolding # genesis/proto/state
      * balance of the claim module's account
      */
-    moduleAccountBalance: Coin;
+    moduleAccountBalance?: Coin;
     /** params defines all the parameters of the module. */
-    params: Params;
+    params?: Params;
     /** list of claim records, one for every airdrop recipient */
     claimRecords: ClaimRecord[];
 }
@@ -21,9 +21,9 @@ export interface GenesisStateSDKType {
      * this line is used by starport scaffolding # genesis/proto/state
      * balance of the claim module's account
      */
-    module_account_balance: CoinSDKType;
+    module_account_balance?: CoinSDKType;
     /** params defines all the parameters of the module. */
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
     /** list of claim records, one for every airdrop recipient */
     claim_records: ClaimRecordSDKType[];
 }

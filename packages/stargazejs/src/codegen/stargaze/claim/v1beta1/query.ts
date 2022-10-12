@@ -2,7 +2,7 @@ import { Action, ActionSDKType, ClaimRecord, ClaimRecordSDKType } from "./claim_
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 
 export interface QueryModuleAccountBalanceRequest {}
@@ -31,13 +31,13 @@ export interface QueryParamsRequestSDKType {}
 
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
-  params: Params;
+  params?: Params;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 
 export interface QueryParamsResponseSDKType {
   /** params defines the parameters of the module. */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 export interface QueryClaimRecordRequest {
   address: string;
@@ -46,10 +46,10 @@ export interface QueryClaimRecordRequestSDKType {
   address: string;
 }
 export interface QueryClaimRecordResponse {
-  claimRecord: ClaimRecord;
+  claimRecord?: ClaimRecord;
 }
 export interface QueryClaimRecordResponseSDKType {
-  claim_record: ClaimRecordSDKType;
+  claim_record?: ClaimRecordSDKType;
 }
 export interface QueryClaimableForActionRequest {
   address: string;

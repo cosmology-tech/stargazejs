@@ -1,14 +1,14 @@
 import { Channel, ChannelSDKType, Packet, PacketSDKType } from "./channel";
 import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../../helpers";
 /**
  * MsgChannelOpenInit defines an sdk.Msg to initialize a channel handshake. It
  * is called by a relayer on Chain A.
  */
 export interface MsgChannelOpenInit {
     portId: string;
-    channel: Channel;
+    channel?: Channel;
     signer: string;
 }
 /**
@@ -17,7 +17,7 @@ export interface MsgChannelOpenInit {
  */
 export interface MsgChannelOpenInitSDKType {
     port_id: string;
-    channel: ChannelSDKType;
+    channel?: ChannelSDKType;
     signer: string;
 }
 /** MsgChannelOpenInitResponse defines the Msg/ChannelOpenInit response type. */
@@ -37,10 +37,10 @@ export interface MsgChannelOpenTry {
      * the channel identifier of the previous channel in state INIT
      */
     previousChannelId: string;
-    channel: Channel;
+    channel?: Channel;
     counterpartyVersion: string;
     proofInit: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     signer: string;
 }
 /**
@@ -54,10 +54,10 @@ export interface MsgChannelOpenTrySDKType {
      * the channel identifier of the previous channel in state INIT
      */
     previous_channel_id: string;
-    channel: ChannelSDKType;
+    channel?: ChannelSDKType;
     counterparty_version: string;
     proof_init: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     signer: string;
 }
 /** MsgChannelOpenTryResponse defines the Msg/ChannelOpenTry response type. */
@@ -76,7 +76,7 @@ export interface MsgChannelOpenAck {
     counterpartyChannelId: string;
     counterpartyVersion: string;
     proofTry: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     signer: string;
 }
 /**
@@ -89,7 +89,7 @@ export interface MsgChannelOpenAckSDKType {
     counterparty_channel_id: string;
     counterparty_version: string;
     proof_try: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     signer: string;
 }
 /** MsgChannelOpenAckResponse defines the Msg/ChannelOpenAck response type. */
@@ -106,7 +106,7 @@ export interface MsgChannelOpenConfirm {
     portId: string;
     channelId: string;
     proofAck: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     signer: string;
 }
 /**
@@ -117,7 +117,7 @@ export interface MsgChannelOpenConfirmSDKType {
     port_id: string;
     channel_id: string;
     proof_ack: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     signer: string;
 }
 /**
@@ -164,7 +164,7 @@ export interface MsgChannelCloseConfirm {
     portId: string;
     channelId: string;
     proofInit: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     signer: string;
 }
 /**
@@ -175,7 +175,7 @@ export interface MsgChannelCloseConfirmSDKType {
     port_id: string;
     channel_id: string;
     proof_init: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     signer: string;
 }
 /**
@@ -192,16 +192,16 @@ export interface MsgChannelCloseConfirmResponseSDKType {
 }
 /** MsgRecvPacket receives incoming IBC packet */
 export interface MsgRecvPacket {
-    packet: Packet;
+    packet?: Packet;
     proofCommitment: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     signer: string;
 }
 /** MsgRecvPacket receives incoming IBC packet */
 export interface MsgRecvPacketSDKType {
-    packet: PacketSDKType;
+    packet?: PacketSDKType;
     proof_commitment: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     signer: string;
 }
 /** MsgRecvPacketResponse defines the Msg/RecvPacket response type. */
@@ -212,17 +212,17 @@ export interface MsgRecvPacketResponseSDKType {
 }
 /** MsgTimeout receives timed-out packet */
 export interface MsgTimeout {
-    packet: Packet;
+    packet?: Packet;
     proofUnreceived: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     nextSequenceRecv: Long;
     signer: string;
 }
 /** MsgTimeout receives timed-out packet */
 export interface MsgTimeoutSDKType {
-    packet: PacketSDKType;
+    packet?: PacketSDKType;
     proof_unreceived: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     next_sequence_recv: Long;
     signer: string;
 }
@@ -234,19 +234,19 @@ export interface MsgTimeoutResponseSDKType {
 }
 /** MsgTimeoutOnClose timed-out packet upon counterparty channel closure. */
 export interface MsgTimeoutOnClose {
-    packet: Packet;
+    packet?: Packet;
     proofUnreceived: Uint8Array;
     proofClose: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     nextSequenceRecv: Long;
     signer: string;
 }
 /** MsgTimeoutOnClose timed-out packet upon counterparty channel closure. */
 export interface MsgTimeoutOnCloseSDKType {
-    packet: PacketSDKType;
+    packet?: PacketSDKType;
     proof_unreceived: Uint8Array;
     proof_close: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     next_sequence_recv: Long;
     signer: string;
 }
@@ -258,18 +258,18 @@ export interface MsgTimeoutOnCloseResponseSDKType {
 }
 /** MsgAcknowledgement receives incoming IBC acknowledgement */
 export interface MsgAcknowledgement {
-    packet: Packet;
+    packet?: Packet;
     acknowledgement: Uint8Array;
     proofAcked: Uint8Array;
-    proofHeight: Height;
+    proofHeight?: Height;
     signer: string;
 }
 /** MsgAcknowledgement receives incoming IBC acknowledgement */
 export interface MsgAcknowledgementSDKType {
-    packet: PacketSDKType;
+    packet?: PacketSDKType;
     acknowledgement: Uint8Array;
     proof_acked: Uint8Array;
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
     signer: string;
 }
 /** MsgAcknowledgementResponse defines the Msg/Acknowledgement response type. */
@@ -285,7 +285,7 @@ export declare const MsgChannelOpenInit: {
 };
 export declare const MsgChannelOpenInitResponse: {
     encode(_: MsgChannelOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenInitResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenInitResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse;
 };
 export declare const MsgChannelOpenTry: {
@@ -295,7 +295,7 @@ export declare const MsgChannelOpenTry: {
 };
 export declare const MsgChannelOpenTryResponse: {
     encode(_: MsgChannelOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenTryResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenTryResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse;
 };
 export declare const MsgChannelOpenAck: {
@@ -305,7 +305,7 @@ export declare const MsgChannelOpenAck: {
 };
 export declare const MsgChannelOpenAckResponse: {
     encode(_: MsgChannelOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenAckResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenAckResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse;
 };
 export declare const MsgChannelOpenConfirm: {
@@ -315,7 +315,7 @@ export declare const MsgChannelOpenConfirm: {
 };
 export declare const MsgChannelOpenConfirmResponse: {
     encode(_: MsgChannelOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenConfirmResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenConfirmResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse;
 };
 export declare const MsgChannelCloseInit: {
@@ -325,7 +325,7 @@ export declare const MsgChannelCloseInit: {
 };
 export declare const MsgChannelCloseInitResponse: {
     encode(_: MsgChannelCloseInitResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseInitResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseInitResponse;
     fromPartial(_: DeepPartial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse;
 };
 export declare const MsgChannelCloseConfirm: {
@@ -335,7 +335,7 @@ export declare const MsgChannelCloseConfirm: {
 };
 export declare const MsgChannelCloseConfirmResponse: {
     encode(_: MsgChannelCloseConfirmResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseConfirmResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseConfirmResponse;
     fromPartial(_: DeepPartial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse;
 };
 export declare const MsgRecvPacket: {
@@ -345,7 +345,7 @@ export declare const MsgRecvPacket: {
 };
 export declare const MsgRecvPacketResponse: {
     encode(_: MsgRecvPacketResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRecvPacketResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRecvPacketResponse;
     fromPartial(_: DeepPartial<MsgRecvPacketResponse>): MsgRecvPacketResponse;
 };
 export declare const MsgTimeout: {
@@ -355,7 +355,7 @@ export declare const MsgTimeout: {
 };
 export declare const MsgTimeoutResponse: {
     encode(_: MsgTimeoutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutResponse;
     fromPartial(_: DeepPartial<MsgTimeoutResponse>): MsgTimeoutResponse;
 };
 export declare const MsgTimeoutOnClose: {
@@ -365,7 +365,7 @@ export declare const MsgTimeoutOnClose: {
 };
 export declare const MsgTimeoutOnCloseResponse: {
     encode(_: MsgTimeoutOnCloseResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutOnCloseResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutOnCloseResponse;
     fromPartial(_: DeepPartial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse;
 };
 export declare const MsgAcknowledgement: {
@@ -375,6 +375,6 @@ export declare const MsgAcknowledgement: {
 };
 export declare const MsgAcknowledgementResponse: {
     encode(_: MsgAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAcknowledgementResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAcknowledgementResponse;
     fromPartial(_: DeepPartial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse;
 };

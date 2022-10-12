@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Params, ParamsSDKType, Metadata, MetadataSDKType } from "./bank";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method. */
 export interface QueryBalanceRequest {
     /** address is the address to query balances for. */
@@ -20,12 +20,12 @@ export interface QueryBalanceRequestSDKType {
 /** QueryBalanceResponse is the response type for the Query/Balance RPC method. */
 export interface QueryBalanceResponse {
     /** balance is the balance of the coin. */
-    balance: Coin;
+    balance?: Coin;
 }
 /** QueryBalanceResponse is the response type for the Query/Balance RPC method. */
 export interface QueryBalanceResponseSDKType {
     /** balance is the balance of the coin. */
-    balance: CoinSDKType;
+    balance?: CoinSDKType;
 }
 /** QueryBalanceRequest is the request type for the Query/AllBalances RPC method. */
 export interface QueryAllBalancesRequest {
@@ -156,22 +156,22 @@ export interface QueryTotalSupplyResponseSDKType {
 /** QuerySupplyOfRequest is the request type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfRequest {
     /** denom is the coin denom to query balances for. */
-    denom?: string;
+    denom: string;
 }
 /** QuerySupplyOfRequest is the request type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfRequestSDKType {
     /** denom is the coin denom to query balances for. */
-    denom?: string;
+    denom: string;
 }
 /** QuerySupplyOfResponse is the response type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfResponse {
     /** amount is the supply of the coin. */
-    amount: Coin;
+    amount?: Coin;
 }
 /** QuerySupplyOfResponse is the response type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfResponseSDKType {
     /** amount is the supply of the coin. */
-    amount: CoinSDKType;
+    amount?: CoinSDKType;
 }
 /** QueryParamsRequest defines the request type for querying x/bank parameters. */
 export interface QueryParamsRequest {
@@ -181,11 +181,11 @@ export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse defines the response type for querying x/bank parameters. */
 export interface QueryParamsResponse {
-    params: Params;
+    params?: Params;
 }
 /** QueryParamsResponse defines the response type for querying x/bank parameters. */
 export interface QueryParamsResponseSDKType {
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
 }
 /** QueryDenomsMetadataRequest is the request type for the Query/DenomsMetadata RPC method. */
 export interface QueryDenomsMetadataRequest {
@@ -233,7 +233,7 @@ export interface QueryDenomMetadataRequestSDKType {
  */
 export interface QueryDenomMetadataResponse {
     /** metadata describes and provides all the client information for the requested token. */
-    metadata: Metadata;
+    metadata?: Metadata;
 }
 /**
  * QueryDenomMetadataResponse is the response type for the Query/DenomMetadata RPC
@@ -241,7 +241,7 @@ export interface QueryDenomMetadataResponse {
  */
 export interface QueryDenomMetadataResponseSDKType {
     /** metadata describes and provides all the client information for the requested token. */
-    metadata: MetadataSDKType;
+    metadata?: MetadataSDKType;
 }
 /**
  * QueryDenomOwnersRequest defines the request type for the DenomOwners RPC query,
@@ -274,7 +274,7 @@ export interface DenomOwner {
     /** address defines the address that owns a particular denomination. */
     address: string;
     /** balance is the balance of the denominated coin for an account. */
-    balance: Coin;
+    balance?: Coin;
 }
 /**
  * DenomOwner defines structure representing an account that owns or holds a
@@ -285,7 +285,7 @@ export interface DenomOwnerSDKType {
     /** address defines the address that owns a particular denomination. */
     address: string;
     /** balance is the balance of the denominated coin for an account. */
-    balance: CoinSDKType;
+    balance?: CoinSDKType;
 }
 /** QueryDenomOwnersResponse defines the RPC response of a DenomOwners RPC query. */
 export interface QueryDenomOwnersResponse {
@@ -306,7 +306,7 @@ export declare const QueryBalanceRequest: {
 };
 export declare const QueryBalanceResponse: {
     encode(message: QueryBalanceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponse;
     fromPartial(object: DeepPartial<QueryBalanceResponse>): QueryBalanceResponse;
 };
 export declare const QueryAllBalancesRequest: {
@@ -316,7 +316,7 @@ export declare const QueryAllBalancesRequest: {
 };
 export declare const QueryAllBalancesResponse: {
     encode(message: QueryAllBalancesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesResponse;
     fromPartial(object: DeepPartial<QueryAllBalancesResponse>): QueryAllBalancesResponse;
 };
 export declare const QuerySpendableBalancesRequest: {
@@ -326,7 +326,7 @@ export declare const QuerySpendableBalancesRequest: {
 };
 export declare const QuerySpendableBalancesResponse: {
     encode(message: QuerySpendableBalancesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalancesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalancesResponse;
     fromPartial(object: DeepPartial<QuerySpendableBalancesResponse>): QuerySpendableBalancesResponse;
 };
 export declare const QueryTotalSupplyRequest: {
@@ -336,7 +336,7 @@ export declare const QueryTotalSupplyRequest: {
 };
 export declare const QueryTotalSupplyResponse: {
     encode(message: QueryTotalSupplyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyResponse;
     fromPartial(object: DeepPartial<QueryTotalSupplyResponse>): QueryTotalSupplyResponse;
 };
 export declare const QuerySupplyOfRequest: {
@@ -346,7 +346,7 @@ export declare const QuerySupplyOfRequest: {
 };
 export declare const QuerySupplyOfResponse: {
     encode(message: QuerySupplyOfResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfResponse;
     fromPartial(object: DeepPartial<QuerySupplyOfResponse>): QuerySupplyOfResponse;
 };
 export declare const QueryParamsRequest: {
@@ -356,7 +356,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryDenomsMetadataRequest: {
@@ -366,7 +366,7 @@ export declare const QueryDenomsMetadataRequest: {
 };
 export declare const QueryDenomsMetadataResponse: {
     encode(message: QueryDenomsMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataResponse;
     fromPartial(object: DeepPartial<QueryDenomsMetadataResponse>): QueryDenomsMetadataResponse;
 };
 export declare const QueryDenomMetadataRequest: {
@@ -376,7 +376,7 @@ export declare const QueryDenomMetadataRequest: {
 };
 export declare const QueryDenomMetadataResponse: {
     encode(message: QueryDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataResponse;
     fromPartial(object: DeepPartial<QueryDenomMetadataResponse>): QueryDenomMetadataResponse;
 };
 export declare const QueryDenomOwnersRequest: {
@@ -391,6 +391,6 @@ export declare const DenomOwner: {
 };
 export declare const QueryDenomOwnersResponse: {
     encode(message: QueryDenomOwnersResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomOwnersResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomOwnersResponse;
     fromPartial(object: DeepPartial<QueryDenomOwnersResponse>): QueryDenomOwnersResponse;
 };

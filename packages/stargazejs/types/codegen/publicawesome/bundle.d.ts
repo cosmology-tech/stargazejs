@@ -1,54 +1,54 @@
-import * as _82 from "../stargaze/alloc/v1beta1/genesis";
-import * as _83 from "../stargaze/alloc/v1beta1/params";
-import * as _84 from "../stargaze/alloc/v1beta1/query";
-import * as _85 from "../stargaze/alloc/v1beta1/tx";
-import * as _86 from "../stargaze/claim/v1beta1/claim_record";
-import * as _87 from "../stargaze/claim/v1beta1/genesis";
-import * as _88 from "../stargaze/claim/v1beta1/params";
-import * as _89 from "../stargaze/claim/v1beta1/query";
-import * as _90 from "../stargaze/claim/v1beta1/tx";
-import * as _171 from "../stargaze/alloc/v1beta1/query.lcd";
-import * as _172 from "../stargaze/claim/v1beta1/query.lcd";
-import * as _173 from "../stargaze/alloc/v1beta1/query.rpc.query";
-import * as _174 from "../stargaze/claim/v1beta1/query.rpc.query";
-import * as _175 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
-import * as _176 from "../stargaze/claim/v1beta1/tx.rpc.msg";
+import * as _79 from "../stargaze/alloc/v1beta1/genesis";
+import * as _80 from "../stargaze/alloc/v1beta1/params";
+import * as _81 from "../stargaze/alloc/v1beta1/query";
+import * as _82 from "../stargaze/alloc/v1beta1/tx";
+import * as _83 from "../stargaze/claim/v1beta1/claim_record";
+import * as _84 from "../stargaze/claim/v1beta1/genesis";
+import * as _85 from "../stargaze/claim/v1beta1/params";
+import * as _86 from "../stargaze/claim/v1beta1/query";
+import * as _87 from "../stargaze/claim/v1beta1/tx";
+import * as _168 from "../stargaze/alloc/v1beta1/query.lcd";
+import * as _169 from "../stargaze/claim/v1beta1/query.lcd";
+import * as _170 from "../stargaze/alloc/v1beta1/query.rpc.query";
+import * as _171 from "../stargaze/claim/v1beta1/query.rpc.query";
+import * as _172 from "../stargaze/alloc/v1beta1/tx.rpc.msg";
+import * as _173 from "../stargaze/claim/v1beta1/tx.rpc.msg";
 export declare namespace publicawesome {
     namespace stargaze {
         namespace alloc {
             const v1beta1: {
-                MsgClientImpl: typeof _175.MsgClientImpl;
-                QueryClientImpl: typeof _173.QueryClientImpl;
+                MsgClientImpl: typeof _172.MsgClientImpl;
+                QueryClientImpl: typeof _170.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    params(request?: _84.QueryParamsRequest): Promise<_84.QueryParamsResponseSDKType>;
+                    params(request?: _81.QueryParamsRequest): Promise<_81.QueryParamsResponse>;
                 };
-                LCDQueryClient: typeof _171.LCDQueryClient;
+                LCDQueryClient: typeof _168.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        createVestingAccount(value: _85.MsgCreateVestingAccount): {
+                        createVestingAccount(value: _82.MsgCreateVestingAccount): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        createVestingAccount(value: _85.MsgCreateVestingAccount): {
+                        createVestingAccount(value: _82.MsgCreateVestingAccount): {
                             typeUrl: string;
-                            value: _85.MsgCreateVestingAccount;
+                            value: _82.MsgCreateVestingAccount;
                         };
                     };
                     fromPartial: {
-                        createVestingAccount(value: _85.MsgCreateVestingAccount): {
+                        createVestingAccount(value: _82.MsgCreateVestingAccount): {
                             typeUrl: string;
-                            value: _85.MsgCreateVestingAccount;
+                            value: _82.MsgCreateVestingAccount;
                         };
                     };
                 };
                 AminoConverter: {
                     "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount": {
                         aminoType: string;
-                        toAmino: ({ fromAddress, toAddress, amount, startTime, endTime, delayed }: _85.MsgCreateVestingAccount) => {
+                        toAmino: ({ fromAddress, toAddress, amount, startTime, endTime, delayed }: _82.MsgCreateVestingAccount) => {
                             from_address: string;
                             to_address: string;
                             amount: {
@@ -69,12 +69,12 @@ export declare namespace publicawesome {
                             start_time: string;
                             end_time: string;
                             delayed: boolean;
-                        }) => _85.MsgCreateVestingAccount;
+                        }) => _82.MsgCreateVestingAccount;
                     };
                 };
                 MsgCreateVestingAccount: {
-                    encode(message: _85.MsgCreateVestingAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.MsgCreateVestingAccount;
+                    encode(message: _82.MsgCreateVestingAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _82.MsgCreateVestingAccount;
                     fromPartial(object: {
                         fromAddress?: string;
                         toAddress?: string;
@@ -82,24 +82,166 @@ export declare namespace publicawesome {
                             denom?: string;
                             amount?: string;
                         }[];
-                        startTime?: any;
-                        endTime?: any;
+                        startTime?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long")) => import("long");
+                            and?: (other: string | number | import("long")) => import("long");
+                            compare?: (other: string | number | import("long")) => number;
+                            comp?: (other: string | number | import("long")) => number;
+                            divide?: (divisor: string | number | import("long")) => import("long");
+                            div?: (divisor: string | number | import("long")) => import("long");
+                            equals?: (other: string | number | import("long")) => boolean;
+                            eq?: (other: string | number | import("long")) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long")) => boolean;
+                            gt?: (other: string | number | import("long")) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                            gte?: (other: string | number | import("long")) => boolean;
+                            ge?: (other: string | number | import("long")) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long")) => boolean;
+                            lt?: (other: string | number | import("long")) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                            lte?: (other: string | number | import("long")) => boolean;
+                            le?: (other: string | number | import("long")) => boolean;
+                            modulo?: (other: string | number | import("long")) => import("long");
+                            mod?: (other: string | number | import("long")) => import("long");
+                            rem?: (other: string | number | import("long")) => import("long");
+                            multiply?: (multiplier: string | number | import("long")) => import("long");
+                            mul?: (multiplier: string | number | import("long")) => import("long");
+                            negate?: () => import("long");
+                            neg?: () => import("long");
+                            not?: () => import("long");
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long")) => boolean;
+                            neq?: (other: string | number | import("long")) => boolean;
+                            ne?: (other: string | number | import("long")) => boolean;
+                            or?: (other: string | number | import("long")) => import("long");
+                            shiftLeft?: (numBits: number | import("long")) => import("long");
+                            shl?: (numBits: number | import("long")) => import("long");
+                            shiftRight?: (numBits: number | import("long")) => import("long");
+                            shr?: (numBits: number | import("long")) => import("long");
+                            shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                            shru?: (numBits: number | import("long")) => import("long");
+                            shr_u?: (numBits: number | import("long")) => import("long");
+                            rotateLeft?: (numBits: number | import("long")) => import("long");
+                            rotl?: (numBits: number | import("long")) => import("long");
+                            rotateRight?: (numBits: number | import("long")) => import("long");
+                            rotr?: (numBits: number | import("long")) => import("long");
+                            subtract?: (subtrahend: string | number | import("long")) => import("long");
+                            sub?: (subtrahend: string | number | import("long")) => import("long");
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long");
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long");
+                            xor?: (other: string | number | import("long")) => import("long");
+                        };
+                        endTime?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long")) => import("long");
+                            and?: (other: string | number | import("long")) => import("long");
+                            compare?: (other: string | number | import("long")) => number;
+                            comp?: (other: string | number | import("long")) => number;
+                            divide?: (divisor: string | number | import("long")) => import("long");
+                            div?: (divisor: string | number | import("long")) => import("long");
+                            equals?: (other: string | number | import("long")) => boolean;
+                            eq?: (other: string | number | import("long")) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long")) => boolean;
+                            gt?: (other: string | number | import("long")) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                            gte?: (other: string | number | import("long")) => boolean;
+                            ge?: (other: string | number | import("long")) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long")) => boolean;
+                            lt?: (other: string | number | import("long")) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                            lte?: (other: string | number | import("long")) => boolean;
+                            le?: (other: string | number | import("long")) => boolean;
+                            modulo?: (other: string | number | import("long")) => import("long");
+                            mod?: (other: string | number | import("long")) => import("long");
+                            rem?: (other: string | number | import("long")) => import("long");
+                            multiply?: (multiplier: string | number | import("long")) => import("long");
+                            mul?: (multiplier: string | number | import("long")) => import("long");
+                            negate?: () => import("long");
+                            neg?: () => import("long");
+                            not?: () => import("long");
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long")) => boolean;
+                            neq?: (other: string | number | import("long")) => boolean;
+                            ne?: (other: string | number | import("long")) => boolean;
+                            or?: (other: string | number | import("long")) => import("long");
+                            shiftLeft?: (numBits: number | import("long")) => import("long");
+                            shl?: (numBits: number | import("long")) => import("long");
+                            shiftRight?: (numBits: number | import("long")) => import("long");
+                            shr?: (numBits: number | import("long")) => import("long");
+                            shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                            shru?: (numBits: number | import("long")) => import("long");
+                            shr_u?: (numBits: number | import("long")) => import("long");
+                            rotateLeft?: (numBits: number | import("long")) => import("long");
+                            rotl?: (numBits: number | import("long")) => import("long");
+                            rotateRight?: (numBits: number | import("long")) => import("long");
+                            rotr?: (numBits: number | import("long")) => import("long");
+                            subtract?: (subtrahend: string | number | import("long")) => import("long");
+                            sub?: (subtrahend: string | number | import("long")) => import("long");
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long");
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long");
+                            xor?: (other: string | number | import("long")) => import("long");
+                        };
                         delayed?: boolean;
-                    }): _85.MsgCreateVestingAccount;
+                    }): _82.MsgCreateVestingAccount;
                 };
                 MsgCreateVestingAccountResponse: {
-                    encode(_: _85.MsgCreateVestingAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.MsgCreateVestingAccountResponseSDKType;
-                    fromPartial(_: {}): _85.MsgCreateVestingAccountResponse;
+                    encode(_: _82.MsgCreateVestingAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _82.MsgCreateVestingAccountResponse;
+                    fromPartial(_: {}): _82.MsgCreateVestingAccountResponse;
                 };
                 QueryParamsRequest: {
-                    encode(_: _84.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _84.QueryParamsRequest;
-                    fromPartial(_: {}): _84.QueryParamsRequest;
+                    encode(_: _81.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _81.QueryParamsRequest;
+                    fromPartial(_: {}): _81.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
-                    encode(message: _84.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _84.QueryParamsResponseSDKType;
+                    encode(message: _81.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _81.QueryParamsResponse;
                     fromPartial(object: {
                         params?: {
                             distributionProportions?: {
@@ -111,27 +253,27 @@ export declare namespace publicawesome {
                                 weight?: string;
                             }[];
                         };
-                    }): _84.QueryParamsResponse;
+                    }): _81.QueryParamsResponse;
                 };
                 WeightedAddress: {
-                    encode(message: _83.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.WeightedAddress;
+                    encode(message: _80.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _80.WeightedAddress;
                     fromPartial(object: {
                         address?: string;
                         weight?: string;
-                    }): _83.WeightedAddress;
+                    }): _80.WeightedAddress;
                 };
                 DistributionProportions: {
-                    encode(message: _83.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.DistributionProportions;
+                    encode(message: _80.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _80.DistributionProportions;
                     fromPartial(object: {
                         nftIncentives?: string;
                         developerRewards?: string;
-                    }): _83.DistributionProportions;
+                    }): _80.DistributionProportions;
                 };
                 Params: {
-                    encode(message: _83.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.Params;
+                    encode(message: _80.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _80.Params;
                     fromPartial(object: {
                         distributionProportions?: {
                             nftIncentives?: string;
@@ -141,11 +283,11 @@ export declare namespace publicawesome {
                             address?: string;
                             weight?: string;
                         }[];
-                    }): _83.Params;
+                    }): _80.Params;
                 };
                 GenesisState: {
-                    encode(message: _82.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _82.GenesisState;
+                    encode(message: _79.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _79.GenesisState;
                     fromPartial(object: {
                         params?: {
                             distributionProportions?: {
@@ -157,69 +299,69 @@ export declare namespace publicawesome {
                                 weight?: string;
                             }[];
                         };
-                    }): _82.GenesisState;
+                    }): _79.GenesisState;
                 };
             };
         }
         namespace claim {
             const v1beta1: {
-                MsgClientImpl: typeof _176.MsgClientImpl;
-                QueryClientImpl: typeof _174.QueryClientImpl;
+                MsgClientImpl: typeof _173.MsgClientImpl;
+                QueryClientImpl: typeof _171.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    moduleAccountBalance(request?: _89.QueryModuleAccountBalanceRequest): Promise<_89.QueryModuleAccountBalanceResponseSDKType>;
-                    params(request?: _89.QueryParamsRequest): Promise<_89.QueryParamsResponseSDKType>;
-                    claimRecord(request: _89.QueryClaimRecordRequest): Promise<_89.QueryClaimRecordResponseSDKType>;
-                    claimableForAction(request: _89.QueryClaimableForActionRequest): Promise<_89.QueryClaimableForActionResponseSDKType>;
-                    totalClaimable(request: _89.QueryTotalClaimableRequest): Promise<_89.QueryTotalClaimableResponseSDKType>;
+                    moduleAccountBalance(request?: _86.QueryModuleAccountBalanceRequest): Promise<_86.QueryModuleAccountBalanceResponse>;
+                    params(request?: _86.QueryParamsRequest): Promise<_86.QueryParamsResponse>;
+                    claimRecord(request: _86.QueryClaimRecordRequest): Promise<_86.QueryClaimRecordResponse>;
+                    claimableForAction(request: _86.QueryClaimableForActionRequest): Promise<_86.QueryClaimableForActionResponse>;
+                    totalClaimable(request: _86.QueryTotalClaimableRequest): Promise<_86.QueryTotalClaimableResponse>;
                 };
-                LCDQueryClient: typeof _172.LCDQueryClient;
+                LCDQueryClient: typeof _169.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        initialClaim(value: _90.MsgInitialClaim): {
+                        initialClaim(value: _87.MsgInitialClaim): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        claimFor(value: _90.MsgClaimFor): {
+                        claimFor(value: _87.MsgClaimFor): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        initialClaim(value: _90.MsgInitialClaim): {
+                        initialClaim(value: _87.MsgInitialClaim): {
                             typeUrl: string;
-                            value: _90.MsgInitialClaim;
+                            value: _87.MsgInitialClaim;
                         };
-                        claimFor(value: _90.MsgClaimFor): {
+                        claimFor(value: _87.MsgClaimFor): {
                             typeUrl: string;
-                            value: _90.MsgClaimFor;
+                            value: _87.MsgClaimFor;
                         };
                     };
                     fromPartial: {
-                        initialClaim(value: _90.MsgInitialClaim): {
+                        initialClaim(value: _87.MsgInitialClaim): {
                             typeUrl: string;
-                            value: _90.MsgInitialClaim;
+                            value: _87.MsgInitialClaim;
                         };
-                        claimFor(value: _90.MsgClaimFor): {
+                        claimFor(value: _87.MsgClaimFor): {
                             typeUrl: string;
-                            value: _90.MsgClaimFor;
+                            value: _87.MsgClaimFor;
                         };
                     };
                 };
                 AminoConverter: {
                     "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim": {
                         aminoType: string;
-                        toAmino: ({ sender }: _90.MsgInitialClaim) => {
+                        toAmino: ({ sender }: _87.MsgInitialClaim) => {
                             sender: string;
                         };
                         fromAmino: ({ sender }: {
                             sender: string;
-                        }) => _90.MsgInitialClaim;
+                        }) => _87.MsgInitialClaim;
                     };
                     "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor": {
                         aminoType: string;
-                        toAmino: ({ sender, address, action }: _90.MsgClaimFor) => {
+                        toAmino: ({ sender, address, action }: _87.MsgClaimFor) => {
                             sender: string;
                             address: string;
                             action: number;
@@ -228,99 +370,241 @@ export declare namespace publicawesome {
                             sender: string;
                             address: string;
                             action: number;
-                        }) => _90.MsgClaimFor;
+                        }) => _87.MsgClaimFor;
                     };
                 };
                 MsgInitialClaim: {
-                    encode(message: _90.MsgInitialClaim, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgInitialClaim;
+                    encode(message: _87.MsgInitialClaim, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgInitialClaim;
                     fromPartial(object: {
                         sender?: string;
-                    }): _90.MsgInitialClaim;
+                    }): _87.MsgInitialClaim;
                 };
                 MsgInitialClaimResponse: {
-                    encode(message: _90.MsgInitialClaimResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgInitialClaimResponseSDKType;
+                    encode(message: _87.MsgInitialClaimResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgInitialClaimResponse;
                     fromPartial(object: {
                         claimedAmount?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _90.MsgInitialClaimResponse;
+                    }): _87.MsgInitialClaimResponse;
                 };
                 MsgClaimFor: {
-                    encode(message: _90.MsgClaimFor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgClaimFor;
+                    encode(message: _87.MsgClaimFor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgClaimFor;
                     fromPartial(object: {
                         sender?: string;
                         address?: string;
-                        action?: _86.Action;
-                    }): _90.MsgClaimFor;
+                        action?: _83.Action;
+                    }): _87.MsgClaimFor;
                 };
                 MsgClaimForResponse: {
-                    encode(message: _90.MsgClaimForResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgClaimForResponseSDKType;
+                    encode(message: _87.MsgClaimForResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgClaimForResponse;
                     fromPartial(object: {
                         address?: string;
                         claimedAmount?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _90.MsgClaimForResponse;
+                    }): _87.MsgClaimForResponse;
                 };
                 QueryModuleAccountBalanceRequest: {
-                    encode(_: _89.QueryModuleAccountBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryModuleAccountBalanceRequest;
-                    fromPartial(_: {}): _89.QueryModuleAccountBalanceRequest;
+                    encode(_: _86.QueryModuleAccountBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryModuleAccountBalanceRequest;
+                    fromPartial(_: {}): _86.QueryModuleAccountBalanceRequest;
                 };
                 QueryModuleAccountBalanceResponse: {
-                    encode(message: _89.QueryModuleAccountBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryModuleAccountBalanceResponseSDKType;
+                    encode(message: _86.QueryModuleAccountBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryModuleAccountBalanceResponse;
                     fromPartial(object: {
                         moduleAccountBalance?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _89.QueryModuleAccountBalanceResponse;
+                    }): _86.QueryModuleAccountBalanceResponse;
                 };
                 QueryParamsRequest: {
-                    encode(_: _89.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryParamsRequest;
-                    fromPartial(_: {}): _89.QueryParamsRequest;
+                    encode(_: _86.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryParamsRequest;
+                    fromPartial(_: {}): _86.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
-                    encode(message: _89.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryParamsResponseSDKType;
+                    encode(message: _86.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryParamsResponse;
                     fromPartial(object: {
                         params?: {
                             airdropEnabled?: boolean;
                             airdropStartTime?: Date;
                             durationUntilDecay?: {
-                                seconds?: any;
+                                seconds?: {
+                                    high?: number;
+                                    low?: number;
+                                    unsigned?: boolean;
+                                    add?: (addend: string | number | import("long")) => import("long");
+                                    and?: (other: string | number | import("long")) => import("long");
+                                    compare?: (other: string | number | import("long")) => number;
+                                    comp?: (other: string | number | import("long")) => number;
+                                    divide?: (divisor: string | number | import("long")) => import("long");
+                                    div?: (divisor: string | number | import("long")) => import("long");
+                                    equals?: (other: string | number | import("long")) => boolean;
+                                    eq?: (other: string | number | import("long")) => boolean;
+                                    getHighBits?: () => number;
+                                    getHighBitsUnsigned?: () => number;
+                                    getLowBits?: () => number;
+                                    getLowBitsUnsigned?: () => number;
+                                    getNumBitsAbs?: () => number;
+                                    greaterThan?: (other: string | number | import("long")) => boolean;
+                                    gt?: (other: string | number | import("long")) => boolean;
+                                    greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    gte?: (other: string | number | import("long")) => boolean;
+                                    ge?: (other: string | number | import("long")) => boolean;
+                                    isEven?: () => boolean;
+                                    isNegative?: () => boolean;
+                                    isOdd?: () => boolean;
+                                    isPositive?: () => boolean;
+                                    isZero?: () => boolean;
+                                    eqz?: () => boolean;
+                                    lessThan?: (other: string | number | import("long")) => boolean;
+                                    lt?: (other: string | number | import("long")) => boolean;
+                                    lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    lte?: (other: string | number | import("long")) => boolean;
+                                    le?: (other: string | number | import("long")) => boolean;
+                                    modulo?: (other: string | number | import("long")) => import("long");
+                                    mod?: (other: string | number | import("long")) => import("long");
+                                    rem?: (other: string | number | import("long")) => import("long");
+                                    multiply?: (multiplier: string | number | import("long")) => import("long");
+                                    mul?: (multiplier: string | number | import("long")) => import("long");
+                                    negate?: () => import("long");
+                                    neg?: () => import("long");
+                                    not?: () => import("long");
+                                    countLeadingZeros?: () => number;
+                                    clz?: () => number;
+                                    countTrailingZeros?: () => number;
+                                    ctz?: () => number;
+                                    notEquals?: (other: string | number | import("long")) => boolean;
+                                    neq?: (other: string | number | import("long")) => boolean;
+                                    ne?: (other: string | number | import("long")) => boolean;
+                                    or?: (other: string | number | import("long")) => import("long");
+                                    shiftLeft?: (numBits: number | import("long")) => import("long");
+                                    shl?: (numBits: number | import("long")) => import("long");
+                                    shiftRight?: (numBits: number | import("long")) => import("long");
+                                    shr?: (numBits: number | import("long")) => import("long");
+                                    shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                                    shru?: (numBits: number | import("long")) => import("long");
+                                    shr_u?: (numBits: number | import("long")) => import("long");
+                                    rotateLeft?: (numBits: number | import("long")) => import("long");
+                                    rotl?: (numBits: number | import("long")) => import("long");
+                                    rotateRight?: (numBits: number | import("long")) => import("long");
+                                    rotr?: (numBits: number | import("long")) => import("long");
+                                    subtract?: (subtrahend: string | number | import("long")) => import("long");
+                                    sub?: (subtrahend: string | number | import("long")) => import("long");
+                                    toInt?: () => number;
+                                    toNumber?: () => number;
+                                    toBytes?: (le?: boolean) => number[];
+                                    toBytesLE?: () => number[];
+                                    toBytesBE?: () => number[];
+                                    toSigned?: () => import("long");
+                                    toString?: (radix?: number) => string;
+                                    toUnsigned?: () => import("long");
+                                    xor?: (other: string | number | import("long")) => import("long");
+                                };
                                 nanos?: number;
                             };
                             durationOfDecay?: {
-                                seconds?: any;
+                                seconds?: {
+                                    high?: number;
+                                    low?: number;
+                                    unsigned?: boolean;
+                                    add?: (addend: string | number | import("long")) => import("long");
+                                    and?: (other: string | number | import("long")) => import("long");
+                                    compare?: (other: string | number | import("long")) => number;
+                                    comp?: (other: string | number | import("long")) => number;
+                                    divide?: (divisor: string | number | import("long")) => import("long");
+                                    div?: (divisor: string | number | import("long")) => import("long");
+                                    equals?: (other: string | number | import("long")) => boolean;
+                                    eq?: (other: string | number | import("long")) => boolean;
+                                    getHighBits?: () => number;
+                                    getHighBitsUnsigned?: () => number;
+                                    getLowBits?: () => number;
+                                    getLowBitsUnsigned?: () => number;
+                                    getNumBitsAbs?: () => number;
+                                    greaterThan?: (other: string | number | import("long")) => boolean;
+                                    gt?: (other: string | number | import("long")) => boolean;
+                                    greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    gte?: (other: string | number | import("long")) => boolean;
+                                    ge?: (other: string | number | import("long")) => boolean;
+                                    isEven?: () => boolean;
+                                    isNegative?: () => boolean;
+                                    isOdd?: () => boolean;
+                                    isPositive?: () => boolean;
+                                    isZero?: () => boolean;
+                                    eqz?: () => boolean;
+                                    lessThan?: (other: string | number | import("long")) => boolean;
+                                    lt?: (other: string | number | import("long")) => boolean;
+                                    lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    lte?: (other: string | number | import("long")) => boolean;
+                                    le?: (other: string | number | import("long")) => boolean;
+                                    modulo?: (other: string | number | import("long")) => import("long");
+                                    mod?: (other: string | number | import("long")) => import("long");
+                                    rem?: (other: string | number | import("long")) => import("long");
+                                    multiply?: (multiplier: string | number | import("long")) => import("long");
+                                    mul?: (multiplier: string | number | import("long")) => import("long");
+                                    negate?: () => import("long");
+                                    neg?: () => import("long");
+                                    not?: () => import("long");
+                                    countLeadingZeros?: () => number;
+                                    clz?: () => number;
+                                    countTrailingZeros?: () => number;
+                                    ctz?: () => number;
+                                    notEquals?: (other: string | number | import("long")) => boolean;
+                                    neq?: (other: string | number | import("long")) => boolean;
+                                    ne?: (other: string | number | import("long")) => boolean;
+                                    or?: (other: string | number | import("long")) => import("long");
+                                    shiftLeft?: (numBits: number | import("long")) => import("long");
+                                    shl?: (numBits: number | import("long")) => import("long");
+                                    shiftRight?: (numBits: number | import("long")) => import("long");
+                                    shr?: (numBits: number | import("long")) => import("long");
+                                    shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                                    shru?: (numBits: number | import("long")) => import("long");
+                                    shr_u?: (numBits: number | import("long")) => import("long");
+                                    rotateLeft?: (numBits: number | import("long")) => import("long");
+                                    rotl?: (numBits: number | import("long")) => import("long");
+                                    rotateRight?: (numBits: number | import("long")) => import("long");
+                                    rotr?: (numBits: number | import("long")) => import("long");
+                                    subtract?: (subtrahend: string | number | import("long")) => import("long");
+                                    sub?: (subtrahend: string | number | import("long")) => import("long");
+                                    toInt?: () => number;
+                                    toNumber?: () => number;
+                                    toBytes?: (le?: boolean) => number[];
+                                    toBytesLE?: () => number[];
+                                    toBytesBE?: () => number[];
+                                    toSigned?: () => import("long");
+                                    toString?: (radix?: number) => string;
+                                    toUnsigned?: () => import("long");
+                                    xor?: (other: string | number | import("long")) => import("long");
+                                };
                                 nanos?: number;
                             };
                             claimDenom?: string;
                             allowedClaimers?: {
                                 contractAddress?: string;
-                                action?: _86.Action;
+                                action?: _83.Action;
                             }[];
                         };
-                    }): _89.QueryParamsResponse;
+                    }): _86.QueryParamsResponse;
                 };
                 QueryClaimRecordRequest: {
-                    encode(message: _89.QueryClaimRecordRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimRecordRequest;
+                    encode(message: _86.QueryClaimRecordRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimRecordRequest;
                     fromPartial(object: {
                         address?: string;
-                    }): _89.QueryClaimRecordRequest;
+                    }): _86.QueryClaimRecordRequest;
                 };
                 QueryClaimRecordResponse: {
-                    encode(message: _89.QueryClaimRecordResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimRecordResponseSDKType;
+                    encode(message: _86.QueryClaimRecordResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimRecordResponse;
                     fromPartial(object: {
                         claimRecord?: {
                             address?: string;
@@ -330,75 +614,217 @@ export declare namespace publicawesome {
                             }[];
                             actionCompleted?: boolean[];
                         };
-                    }): _89.QueryClaimRecordResponse;
+                    }): _86.QueryClaimRecordResponse;
                 };
                 QueryClaimableForActionRequest: {
-                    encode(message: _89.QueryClaimableForActionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimableForActionRequest;
+                    encode(message: _86.QueryClaimableForActionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimableForActionRequest;
                     fromPartial(object: {
                         address?: string;
-                        action?: _86.Action;
-                    }): _89.QueryClaimableForActionRequest;
+                        action?: _83.Action;
+                    }): _86.QueryClaimableForActionRequest;
                 };
                 QueryClaimableForActionResponse: {
-                    encode(message: _89.QueryClaimableForActionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryClaimableForActionResponseSDKType;
+                    encode(message: _86.QueryClaimableForActionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimableForActionResponse;
                     fromPartial(object: {
                         coins?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _89.QueryClaimableForActionResponse;
+                    }): _86.QueryClaimableForActionResponse;
                 };
                 QueryTotalClaimableRequest: {
-                    encode(message: _89.QueryTotalClaimableRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryTotalClaimableRequest;
+                    encode(message: _86.QueryTotalClaimableRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalClaimableRequest;
                     fromPartial(object: {
                         address?: string;
-                    }): _89.QueryTotalClaimableRequest;
+                    }): _86.QueryTotalClaimableRequest;
                 };
                 QueryTotalClaimableResponse: {
-                    encode(message: _89.QueryTotalClaimableResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.QueryTotalClaimableResponseSDKType;
+                    encode(message: _86.QueryTotalClaimableResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalClaimableResponse;
                     fromPartial(object: {
                         coins?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                    }): _89.QueryTotalClaimableResponse;
+                    }): _86.QueryTotalClaimableResponse;
                 };
                 ClaimAuthorization: {
-                    encode(message: _88.ClaimAuthorization, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.ClaimAuthorization;
+                    encode(message: _85.ClaimAuthorization, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.ClaimAuthorization;
                     fromPartial(object: {
                         contractAddress?: string;
-                        action?: _86.Action;
-                    }): _88.ClaimAuthorization;
+                        action?: _83.Action;
+                    }): _85.ClaimAuthorization;
                 };
                 Params: {
-                    encode(message: _88.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.Params;
+                    encode(message: _85.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.Params;
                     fromPartial(object: {
                         airdropEnabled?: boolean;
                         airdropStartTime?: Date;
                         durationUntilDecay?: {
-                            seconds?: any;
+                            seconds?: {
+                                high?: number;
+                                low?: number;
+                                unsigned?: boolean;
+                                add?: (addend: string | number | import("long")) => import("long");
+                                and?: (other: string | number | import("long")) => import("long");
+                                compare?: (other: string | number | import("long")) => number;
+                                comp?: (other: string | number | import("long")) => number;
+                                divide?: (divisor: string | number | import("long")) => import("long");
+                                div?: (divisor: string | number | import("long")) => import("long");
+                                equals?: (other: string | number | import("long")) => boolean;
+                                eq?: (other: string | number | import("long")) => boolean;
+                                getHighBits?: () => number;
+                                getHighBitsUnsigned?: () => number;
+                                getLowBits?: () => number;
+                                getLowBitsUnsigned?: () => number;
+                                getNumBitsAbs?: () => number;
+                                greaterThan?: (other: string | number | import("long")) => boolean;
+                                gt?: (other: string | number | import("long")) => boolean;
+                                greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                gte?: (other: string | number | import("long")) => boolean;
+                                ge?: (other: string | number | import("long")) => boolean;
+                                isEven?: () => boolean;
+                                isNegative?: () => boolean;
+                                isOdd?: () => boolean;
+                                isPositive?: () => boolean;
+                                isZero?: () => boolean;
+                                eqz?: () => boolean;
+                                lessThan?: (other: string | number | import("long")) => boolean;
+                                lt?: (other: string | number | import("long")) => boolean;
+                                lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                lte?: (other: string | number | import("long")) => boolean;
+                                le?: (other: string | number | import("long")) => boolean;
+                                modulo?: (other: string | number | import("long")) => import("long");
+                                mod?: (other: string | number | import("long")) => import("long");
+                                rem?: (other: string | number | import("long")) => import("long");
+                                multiply?: (multiplier: string | number | import("long")) => import("long");
+                                mul?: (multiplier: string | number | import("long")) => import("long");
+                                negate?: () => import("long");
+                                neg?: () => import("long");
+                                not?: () => import("long");
+                                countLeadingZeros?: () => number;
+                                clz?: () => number;
+                                countTrailingZeros?: () => number;
+                                ctz?: () => number;
+                                notEquals?: (other: string | number | import("long")) => boolean;
+                                neq?: (other: string | number | import("long")) => boolean;
+                                ne?: (other: string | number | import("long")) => boolean;
+                                or?: (other: string | number | import("long")) => import("long");
+                                shiftLeft?: (numBits: number | import("long")) => import("long");
+                                shl?: (numBits: number | import("long")) => import("long");
+                                shiftRight?: (numBits: number | import("long")) => import("long");
+                                shr?: (numBits: number | import("long")) => import("long");
+                                shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                                shru?: (numBits: number | import("long")) => import("long");
+                                shr_u?: (numBits: number | import("long")) => import("long");
+                                rotateLeft?: (numBits: number | import("long")) => import("long");
+                                rotl?: (numBits: number | import("long")) => import("long");
+                                rotateRight?: (numBits: number | import("long")) => import("long");
+                                rotr?: (numBits: number | import("long")) => import("long");
+                                subtract?: (subtrahend: string | number | import("long")) => import("long");
+                                sub?: (subtrahend: string | number | import("long")) => import("long");
+                                toInt?: () => number;
+                                toNumber?: () => number;
+                                toBytes?: (le?: boolean) => number[];
+                                toBytesLE?: () => number[];
+                                toBytesBE?: () => number[];
+                                toSigned?: () => import("long");
+                                toString?: (radix?: number) => string;
+                                toUnsigned?: () => import("long");
+                                xor?: (other: string | number | import("long")) => import("long");
+                            };
                             nanos?: number;
                         };
                         durationOfDecay?: {
-                            seconds?: any;
+                            seconds?: {
+                                high?: number;
+                                low?: number;
+                                unsigned?: boolean;
+                                add?: (addend: string | number | import("long")) => import("long");
+                                and?: (other: string | number | import("long")) => import("long");
+                                compare?: (other: string | number | import("long")) => number;
+                                comp?: (other: string | number | import("long")) => number;
+                                divide?: (divisor: string | number | import("long")) => import("long");
+                                div?: (divisor: string | number | import("long")) => import("long");
+                                equals?: (other: string | number | import("long")) => boolean;
+                                eq?: (other: string | number | import("long")) => boolean;
+                                getHighBits?: () => number;
+                                getHighBitsUnsigned?: () => number;
+                                getLowBits?: () => number;
+                                getLowBitsUnsigned?: () => number;
+                                getNumBitsAbs?: () => number;
+                                greaterThan?: (other: string | number | import("long")) => boolean;
+                                gt?: (other: string | number | import("long")) => boolean;
+                                greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                gte?: (other: string | number | import("long")) => boolean;
+                                ge?: (other: string | number | import("long")) => boolean;
+                                isEven?: () => boolean;
+                                isNegative?: () => boolean;
+                                isOdd?: () => boolean;
+                                isPositive?: () => boolean;
+                                isZero?: () => boolean;
+                                eqz?: () => boolean;
+                                lessThan?: (other: string | number | import("long")) => boolean;
+                                lt?: (other: string | number | import("long")) => boolean;
+                                lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                lte?: (other: string | number | import("long")) => boolean;
+                                le?: (other: string | number | import("long")) => boolean;
+                                modulo?: (other: string | number | import("long")) => import("long");
+                                mod?: (other: string | number | import("long")) => import("long");
+                                rem?: (other: string | number | import("long")) => import("long");
+                                multiply?: (multiplier: string | number | import("long")) => import("long");
+                                mul?: (multiplier: string | number | import("long")) => import("long");
+                                negate?: () => import("long");
+                                neg?: () => import("long");
+                                not?: () => import("long");
+                                countLeadingZeros?: () => number;
+                                clz?: () => number;
+                                countTrailingZeros?: () => number;
+                                ctz?: () => number;
+                                notEquals?: (other: string | number | import("long")) => boolean;
+                                neq?: (other: string | number | import("long")) => boolean;
+                                ne?: (other: string | number | import("long")) => boolean;
+                                or?: (other: string | number | import("long")) => import("long");
+                                shiftLeft?: (numBits: number | import("long")) => import("long");
+                                shl?: (numBits: number | import("long")) => import("long");
+                                shiftRight?: (numBits: number | import("long")) => import("long");
+                                shr?: (numBits: number | import("long")) => import("long");
+                                shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                                shru?: (numBits: number | import("long")) => import("long");
+                                shr_u?: (numBits: number | import("long")) => import("long");
+                                rotateLeft?: (numBits: number | import("long")) => import("long");
+                                rotl?: (numBits: number | import("long")) => import("long");
+                                rotateRight?: (numBits: number | import("long")) => import("long");
+                                rotr?: (numBits: number | import("long")) => import("long");
+                                subtract?: (subtrahend: string | number | import("long")) => import("long");
+                                sub?: (subtrahend: string | number | import("long")) => import("long");
+                                toInt?: () => number;
+                                toNumber?: () => number;
+                                toBytes?: (le?: boolean) => number[];
+                                toBytesLE?: () => number[];
+                                toBytesBE?: () => number[];
+                                toSigned?: () => import("long");
+                                toString?: (radix?: number) => string;
+                                toUnsigned?: () => import("long");
+                                xor?: (other: string | number | import("long")) => import("long");
+                            };
                             nanos?: number;
                         };
                         claimDenom?: string;
                         allowedClaimers?: {
                             contractAddress?: string;
-                            action?: _86.Action;
+                            action?: _83.Action;
                         }[];
-                    }): _88.Params;
+                    }): _85.Params;
                 };
                 GenesisState: {
-                    encode(message: _87.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.GenesisState;
+                    encode(message: _84.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _84.GenesisState;
                     fromPartial(object: {
                         moduleAccountBalance?: {
                             denom?: string;
@@ -408,17 +834,159 @@ export declare namespace publicawesome {
                             airdropEnabled?: boolean;
                             airdropStartTime?: Date;
                             durationUntilDecay?: {
-                                seconds?: any;
+                                seconds?: {
+                                    high?: number;
+                                    low?: number;
+                                    unsigned?: boolean;
+                                    add?: (addend: string | number | import("long")) => import("long");
+                                    and?: (other: string | number | import("long")) => import("long");
+                                    compare?: (other: string | number | import("long")) => number;
+                                    comp?: (other: string | number | import("long")) => number;
+                                    divide?: (divisor: string | number | import("long")) => import("long");
+                                    div?: (divisor: string | number | import("long")) => import("long");
+                                    equals?: (other: string | number | import("long")) => boolean;
+                                    eq?: (other: string | number | import("long")) => boolean;
+                                    getHighBits?: () => number;
+                                    getHighBitsUnsigned?: () => number;
+                                    getLowBits?: () => number;
+                                    getLowBitsUnsigned?: () => number;
+                                    getNumBitsAbs?: () => number;
+                                    greaterThan?: (other: string | number | import("long")) => boolean;
+                                    gt?: (other: string | number | import("long")) => boolean;
+                                    greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    gte?: (other: string | number | import("long")) => boolean;
+                                    ge?: (other: string | number | import("long")) => boolean;
+                                    isEven?: () => boolean;
+                                    isNegative?: () => boolean;
+                                    isOdd?: () => boolean;
+                                    isPositive?: () => boolean;
+                                    isZero?: () => boolean;
+                                    eqz?: () => boolean;
+                                    lessThan?: (other: string | number | import("long")) => boolean;
+                                    lt?: (other: string | number | import("long")) => boolean;
+                                    lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    lte?: (other: string | number | import("long")) => boolean;
+                                    le?: (other: string | number | import("long")) => boolean;
+                                    modulo?: (other: string | number | import("long")) => import("long");
+                                    mod?: (other: string | number | import("long")) => import("long");
+                                    rem?: (other: string | number | import("long")) => import("long");
+                                    multiply?: (multiplier: string | number | import("long")) => import("long");
+                                    mul?: (multiplier: string | number | import("long")) => import("long");
+                                    negate?: () => import("long");
+                                    neg?: () => import("long");
+                                    not?: () => import("long");
+                                    countLeadingZeros?: () => number;
+                                    clz?: () => number;
+                                    countTrailingZeros?: () => number;
+                                    ctz?: () => number;
+                                    notEquals?: (other: string | number | import("long")) => boolean;
+                                    neq?: (other: string | number | import("long")) => boolean;
+                                    ne?: (other: string | number | import("long")) => boolean;
+                                    or?: (other: string | number | import("long")) => import("long");
+                                    shiftLeft?: (numBits: number | import("long")) => import("long");
+                                    shl?: (numBits: number | import("long")) => import("long");
+                                    shiftRight?: (numBits: number | import("long")) => import("long");
+                                    shr?: (numBits: number | import("long")) => import("long");
+                                    shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                                    shru?: (numBits: number | import("long")) => import("long");
+                                    shr_u?: (numBits: number | import("long")) => import("long");
+                                    rotateLeft?: (numBits: number | import("long")) => import("long");
+                                    rotl?: (numBits: number | import("long")) => import("long");
+                                    rotateRight?: (numBits: number | import("long")) => import("long");
+                                    rotr?: (numBits: number | import("long")) => import("long");
+                                    subtract?: (subtrahend: string | number | import("long")) => import("long");
+                                    sub?: (subtrahend: string | number | import("long")) => import("long");
+                                    toInt?: () => number;
+                                    toNumber?: () => number;
+                                    toBytes?: (le?: boolean) => number[];
+                                    toBytesLE?: () => number[];
+                                    toBytesBE?: () => number[];
+                                    toSigned?: () => import("long");
+                                    toString?: (radix?: number) => string;
+                                    toUnsigned?: () => import("long");
+                                    xor?: (other: string | number | import("long")) => import("long");
+                                };
                                 nanos?: number;
                             };
                             durationOfDecay?: {
-                                seconds?: any;
+                                seconds?: {
+                                    high?: number;
+                                    low?: number;
+                                    unsigned?: boolean;
+                                    add?: (addend: string | number | import("long")) => import("long");
+                                    and?: (other: string | number | import("long")) => import("long");
+                                    compare?: (other: string | number | import("long")) => number;
+                                    comp?: (other: string | number | import("long")) => number;
+                                    divide?: (divisor: string | number | import("long")) => import("long");
+                                    div?: (divisor: string | number | import("long")) => import("long");
+                                    equals?: (other: string | number | import("long")) => boolean;
+                                    eq?: (other: string | number | import("long")) => boolean;
+                                    getHighBits?: () => number;
+                                    getHighBitsUnsigned?: () => number;
+                                    getLowBits?: () => number;
+                                    getLowBitsUnsigned?: () => number;
+                                    getNumBitsAbs?: () => number;
+                                    greaterThan?: (other: string | number | import("long")) => boolean;
+                                    gt?: (other: string | number | import("long")) => boolean;
+                                    greaterThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    gte?: (other: string | number | import("long")) => boolean;
+                                    ge?: (other: string | number | import("long")) => boolean;
+                                    isEven?: () => boolean;
+                                    isNegative?: () => boolean;
+                                    isOdd?: () => boolean;
+                                    isPositive?: () => boolean;
+                                    isZero?: () => boolean;
+                                    eqz?: () => boolean;
+                                    lessThan?: (other: string | number | import("long")) => boolean;
+                                    lt?: (other: string | number | import("long")) => boolean;
+                                    lessThanOrEqual?: (other: string | number | import("long")) => boolean;
+                                    lte?: (other: string | number | import("long")) => boolean;
+                                    le?: (other: string | number | import("long")) => boolean;
+                                    modulo?: (other: string | number | import("long")) => import("long");
+                                    mod?: (other: string | number | import("long")) => import("long");
+                                    rem?: (other: string | number | import("long")) => import("long");
+                                    multiply?: (multiplier: string | number | import("long")) => import("long");
+                                    mul?: (multiplier: string | number | import("long")) => import("long");
+                                    negate?: () => import("long");
+                                    neg?: () => import("long");
+                                    not?: () => import("long");
+                                    countLeadingZeros?: () => number;
+                                    clz?: () => number;
+                                    countTrailingZeros?: () => number;
+                                    ctz?: () => number;
+                                    notEquals?: (other: string | number | import("long")) => boolean;
+                                    neq?: (other: string | number | import("long")) => boolean;
+                                    ne?: (other: string | number | import("long")) => boolean;
+                                    or?: (other: string | number | import("long")) => import("long");
+                                    shiftLeft?: (numBits: number | import("long")) => import("long");
+                                    shl?: (numBits: number | import("long")) => import("long");
+                                    shiftRight?: (numBits: number | import("long")) => import("long");
+                                    shr?: (numBits: number | import("long")) => import("long");
+                                    shiftRightUnsigned?: (numBits: number | import("long")) => import("long");
+                                    shru?: (numBits: number | import("long")) => import("long");
+                                    shr_u?: (numBits: number | import("long")) => import("long");
+                                    rotateLeft?: (numBits: number | import("long")) => import("long");
+                                    rotl?: (numBits: number | import("long")) => import("long");
+                                    rotateRight?: (numBits: number | import("long")) => import("long");
+                                    rotr?: (numBits: number | import("long")) => import("long");
+                                    subtract?: (subtrahend: string | number | import("long")) => import("long");
+                                    sub?: (subtrahend: string | number | import("long")) => import("long");
+                                    toInt?: () => number;
+                                    toNumber?: () => number;
+                                    toBytes?: (le?: boolean) => number[];
+                                    toBytesLE?: () => number[];
+                                    toBytesBE?: () => number[];
+                                    toSigned?: () => import("long");
+                                    toString?: (radix?: number) => string;
+                                    toUnsigned?: () => import("long");
+                                    xor?: (other: string | number | import("long")) => import("long");
+                                };
                                 nanos?: number;
                             };
                             claimDenom?: string;
                             allowedClaimers?: {
                                 contractAddress?: string;
-                                action?: _86.Action;
+                                action?: _83.Action;
                             }[];
                         };
                         claimRecords?: {
@@ -429,15 +997,15 @@ export declare namespace publicawesome {
                             }[];
                             actionCompleted?: boolean[];
                         }[];
-                    }): _87.GenesisState;
+                    }): _84.GenesisState;
                 };
-                actionFromJSON(object: any): _86.Action;
-                actionToJSON(object: _86.Action): string;
-                Action: typeof _86.Action;
-                ActionSDKType: typeof _86.ActionSDKType;
+                actionFromJSON(object: any): _83.Action;
+                actionToJSON(object: _83.Action): string;
+                Action: typeof _83.Action;
+                ActionSDKType: typeof _83.ActionSDKType;
                 ClaimRecord: {
-                    encode(message: _86.ClaimRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.ClaimRecord;
+                    encode(message: _83.ClaimRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.ClaimRecord;
                     fromPartial(object: {
                         address?: string;
                         initialClaimableAmount?: {
@@ -445,14 +1013,14 @@ export declare namespace publicawesome {
                             amount?: string;
                         }[];
                         actionCompleted?: boolean[];
-                    }): _86.ClaimRecord;
+                    }): _83.ClaimRecord;
                 };
             };
         }
     }
     const ClientFactory: {
         createRPCMsgClient: ({ rpc }: {
-            rpc: import("@osmonauts/helpers").Rpc;
+            rpc: import("../helpers").Rpc;
         }) => Promise<{
             cosmos: {
                 authz: {
@@ -478,10 +1046,10 @@ export declare namespace publicawesome {
             publicawesome: {
                 stargaze: {
                     alloc: {
-                        v1beta1: _175.MsgClientImpl;
+                        v1beta1: _172.MsgClientImpl;
                     };
                     claim: {
-                        v1beta1: _176.MsgClientImpl;
+                        v1beta1: _173.MsgClientImpl;
                     };
                 };
             };
@@ -492,93 +1060,93 @@ export declare namespace publicawesome {
             cosmos: {
                 authz: {
                     v1beta1: {
-                        grants(request: import("../cosmos/authz/v1beta1/query").QueryGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGrantsResponseSDKType>;
-                        granterGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranterGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranterGrantsResponseSDKType>;
-                        granteeGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsResponseSDKType>;
+                        grants(request: import("../cosmos/authz/v1beta1/query").QueryGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGrantsResponse>;
+                        granterGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranterGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranterGrantsResponse>;
+                        granteeGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsResponse>;
                     };
                 };
                 bank: {
                     v1beta1: {
-                        balance(request: import("../cosmos/bank/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryBalanceResponseSDKType>;
-                        allBalances(request: import("../cosmos/bank/v1beta1/query").QueryAllBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryAllBalancesResponseSDKType>;
-                        spendableBalances(request: import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesResponseSDKType>;
-                        totalSupply(request?: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponseSDKType>;
-                        supplyOf(request: import("../cosmos/bank/v1beta1/query").QuerySupplyOfRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySupplyOfResponseSDKType>;
-                        params(request?: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponseSDKType>;
-                        denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponseSDKType>;
-                        denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponseSDKType>;
-                        denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponseSDKType>;
+                        balance(request: import("../cosmos/bank/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryBalanceResponse>;
+                        allBalances(request: import("../cosmos/bank/v1beta1/query").QueryAllBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryAllBalancesResponse>;
+                        spendableBalances(request: import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesResponse>;
+                        totalSupply(request?: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponse>;
+                        supplyOf(request: import("../cosmos/bank/v1beta1/query").QuerySupplyOfRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySupplyOfResponse>;
+                        params(request?: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponse>;
+                        denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponse>;
+                        denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponse>;
+                        denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponse>;
                     };
                 };
                 distribution: {
                     v1beta1: {
-                        params(request?: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponseSDKType>;
-                        validatorOutstandingRewards(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsResponseSDKType>;
-                        validatorCommission(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionResponseSDKType>;
-                        validatorSlashes(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesResponseSDKType>;
-                        delegationRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsResponseSDKType>;
-                        delegationTotalRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsResponseSDKType>;
-                        delegatorValidators(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
-                        delegatorWithdrawAddress(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressResponseSDKType>;
-                        communityPool(request?: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponseSDKType>;
+                        params(request?: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponse>;
+                        validatorOutstandingRewards(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsResponse>;
+                        validatorCommission(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionResponse>;
+                        validatorSlashes(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesResponse>;
+                        delegationRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsResponse>;
+                        delegationTotalRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsResponse>;
+                        delegatorValidators(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsResponse>;
+                        delegatorWithdrawAddress(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressResponse>;
+                        communityPool(request?: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponse>;
                     };
                 };
                 gov: {
                     v1: {
-                        proposal(request: import("../cosmos/gov/v1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalResponseSDKType>;
-                        proposals(request: import("../cosmos/gov/v1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalsResponseSDKType>;
-                        vote(request: import("../cosmos/gov/v1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1/query").QueryVoteResponseSDKType>;
-                        votes(request: import("../cosmos/gov/v1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1/query").QueryVotesResponseSDKType>;
-                        params(request: import("../cosmos/gov/v1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1/query").QueryParamsResponseSDKType>;
-                        deposit(request: import("../cosmos/gov/v1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositResponseSDKType>;
-                        deposits(request: import("../cosmos/gov/v1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositsResponseSDKType>;
-                        tallyResult(request: import("../cosmos/gov/v1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1/query").QueryTallyResultResponseSDKType>;
+                        proposal(request: import("../cosmos/gov/v1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalResponse>;
+                        proposals(request: import("../cosmos/gov/v1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalsResponse>;
+                        vote(request: import("../cosmos/gov/v1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1/query").QueryVoteResponse>;
+                        votes(request: import("../cosmos/gov/v1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1/query").QueryVotesResponse>;
+                        params(request: import("../cosmos/gov/v1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1/query").QueryParamsResponse>;
+                        deposit(request: import("../cosmos/gov/v1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositResponse>;
+                        deposits(request: import("../cosmos/gov/v1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositsResponse>;
+                        tallyResult(request: import("../cosmos/gov/v1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1/query").QueryTallyResultResponse>;
                     };
                     v1beta1: {
-                        proposal(request: import("../cosmos/gov/v1beta1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalResponseSDKType>;
-                        proposals(request: import("../cosmos/gov/v1beta1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalsResponseSDKType>;
-                        vote(request: import("../cosmos/gov/v1beta1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVoteResponseSDKType>;
-                        votes(request: import("../cosmos/gov/v1beta1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVotesResponseSDKType>;
-                        params(request: import("../cosmos/gov/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryParamsResponseSDKType>;
-                        deposit(request: import("../cosmos/gov/v1beta1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositResponseSDKType>;
-                        deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponseSDKType>;
-                        tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponseSDKType>;
+                        proposal(request: import("../cosmos/gov/v1beta1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalResponse>;
+                        proposals(request: import("../cosmos/gov/v1beta1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalsResponse>;
+                        vote(request: import("../cosmos/gov/v1beta1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVoteResponse>;
+                        votes(request: import("../cosmos/gov/v1beta1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVotesResponse>;
+                        params(request: import("../cosmos/gov/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryParamsResponse>;
+                        deposit(request: import("../cosmos/gov/v1beta1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositResponse>;
+                        deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponse>;
+                        tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponse>;
                     };
                 };
                 staking: {
                     v1beta1: {
-                        validators(request: import("../cosmos/staking/v1beta1/query").QueryValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorsResponseSDKType>;
-                        validator(request: import("../cosmos/staking/v1beta1/query").QueryValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorResponseSDKType>;
-                        validatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsResponseSDKType>;
-                        validatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsResponseSDKType>;
-                        delegation(request: import("../cosmos/staking/v1beta1/query").QueryDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegationResponseSDKType>;
-                        unbondingDelegation(request: import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationResponseSDKType>;
-                        delegatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsResponseSDKType>;
-                        delegatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsResponseSDKType>;
-                        redelegations(request: import("../cosmos/staking/v1beta1/query").QueryRedelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryRedelegationsResponseSDKType>;
-                        delegatorValidators(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
-                        delegatorValidator(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorResponseSDKType>;
-                        historicalInfo(request: import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoResponseSDKType>;
-                        pool(request?: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponseSDKType>;
-                        params(request?: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponseSDKType>;
+                        validators(request: import("../cosmos/staking/v1beta1/query").QueryValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorsResponse>;
+                        validator(request: import("../cosmos/staking/v1beta1/query").QueryValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorResponse>;
+                        validatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsResponse>;
+                        validatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsResponse>;
+                        delegation(request: import("../cosmos/staking/v1beta1/query").QueryDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegationResponse>;
+                        unbondingDelegation(request: import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationResponse>;
+                        delegatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsResponse>;
+                        delegatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsResponse>;
+                        redelegations(request: import("../cosmos/staking/v1beta1/query").QueryRedelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryRedelegationsResponse>;
+                        delegatorValidators(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsResponse>;
+                        delegatorValidator(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorResponse>;
+                        historicalInfo(request: import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoResponse>;
+                        pool(request?: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponse>;
+                        params(request?: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponse>;
                     };
                 };
                 tx: {
                     v1beta1: {
-                        simulate(request: import("../cosmos/tx/v1beta1/service").SimulateRequest): Promise<import("../cosmos/tx/v1beta1/service").SimulateResponseSDKType>;
-                        getTx(request: import("../cosmos/tx/v1beta1/service").GetTxRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxResponseSDKType>;
-                        broadcastTx(request: import("../cosmos/tx/v1beta1/service").BroadcastTxRequest): Promise<import("../cosmos/tx/v1beta1/service").BroadcastTxResponseSDKType>;
-                        getTxsEvent(request: import("../cosmos/tx/v1beta1/service").GetTxsEventRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxsEventResponseSDKType>;
-                        getBlockWithTxs(request: import("../cosmos/tx/v1beta1/service").GetBlockWithTxsRequest): Promise<import("../cosmos/tx/v1beta1/service").GetBlockWithTxsResponseSDKType>;
+                        simulate(request: import("../cosmos/tx/v1beta1/service").SimulateRequest): Promise<import("../cosmos/tx/v1beta1/service").SimulateResponse>;
+                        getTx(request: import("../cosmos/tx/v1beta1/service").GetTxRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxResponse>;
+                        broadcastTx(request: import("../cosmos/tx/v1beta1/service").BroadcastTxRequest): Promise<import("../cosmos/tx/v1beta1/service").BroadcastTxResponse>;
+                        getTxsEvent(request: import("../cosmos/tx/v1beta1/service").GetTxsEventRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxsEventResponse>;
+                        getBlockWithTxs(request: import("../cosmos/tx/v1beta1/service").GetBlockWithTxsRequest): Promise<import("../cosmos/tx/v1beta1/service").GetBlockWithTxsResponse>;
                     };
                 };
                 upgrade: {
                     v1beta1: {
-                        currentPlan(request?: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponseSDKType>;
-                        appliedPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanResponseSDKType>;
-                        upgradedConsensusState(request: import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateResponseSDKType>;
-                        moduleVersions(request: import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsResponseSDKType>;
-                        authority(request?: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponseSDKType>;
+                        currentPlan(request?: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponse>;
+                        appliedPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanResponse>;
+                        upgradedConsensusState(request: import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateResponse>;
+                        moduleVersions(request: import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsResponse>;
+                        authority(request?: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponse>;
                     };
                 };
             };
@@ -586,16 +1154,16 @@ export declare namespace publicawesome {
                 stargaze: {
                     alloc: {
                         v1beta1: {
-                            params(request?: _84.QueryParamsRequest): Promise<_84.QueryParamsResponseSDKType>;
+                            params(request?: _81.QueryParamsRequest): Promise<_81.QueryParamsResponse>;
                         };
                     };
                     claim: {
                         v1beta1: {
-                            moduleAccountBalance(request?: _89.QueryModuleAccountBalanceRequest): Promise<_89.QueryModuleAccountBalanceResponseSDKType>;
-                            params(request?: _89.QueryParamsRequest): Promise<_89.QueryParamsResponseSDKType>;
-                            claimRecord(request: _89.QueryClaimRecordRequest): Promise<_89.QueryClaimRecordResponseSDKType>;
-                            claimableForAction(request: _89.QueryClaimableForActionRequest): Promise<_89.QueryClaimableForActionResponseSDKType>;
-                            totalClaimable(request: _89.QueryTotalClaimableRequest): Promise<_89.QueryTotalClaimableResponseSDKType>;
+                            moduleAccountBalance(request?: _86.QueryModuleAccountBalanceRequest): Promise<_86.QueryModuleAccountBalanceResponse>;
+                            params(request?: _86.QueryParamsRequest): Promise<_86.QueryParamsResponse>;
+                            claimRecord(request: _86.QueryClaimRecordRequest): Promise<_86.QueryClaimRecordResponse>;
+                            claimableForAction(request: _86.QueryClaimableForActionRequest): Promise<_86.QueryClaimableForActionResponse>;
+                            totalClaimable(request: _86.QueryTotalClaimableRequest): Promise<_86.QueryTotalClaimableResponse>;
                         };
                     };
                 };
@@ -631,10 +1199,10 @@ export declare namespace publicawesome {
             publicawesome: {
                 stargaze: {
                     alloc: {
-                        v1beta1: _171.LCDQueryClient;
+                        v1beta1: _168.LCDQueryClient;
                     };
                     claim: {
-                        v1beta1: _172.LCDQueryClient;
+                        v1beta1: _169.LCDQueryClient;
                     };
                 };
             };

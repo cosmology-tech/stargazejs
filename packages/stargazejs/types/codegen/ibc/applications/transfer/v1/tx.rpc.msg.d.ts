@@ -1,11 +1,12 @@
-import { Rpc } from "@osmonauts/helpers";
-import { MsgTransfer, MsgTransferResponseSDKType } from "./tx";
-/** Msg defines the RPC service */
+import { Rpc } from "../../../../helpers";
+import { MsgTransfer, MsgTransferResponse } from "./tx";
+/** Msg defines the ibc/transfer Msg service. */
 export interface Msg {
-    transfer(request: MsgTransfer): Promise<MsgTransferResponseSDKType>;
+    /** Transfer defines a rpc handler method for MsgTransfer. */
+    transfer(request: MsgTransfer): Promise<MsgTransferResponse>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    transfer(request: MsgTransfer): Promise<MsgTransferResponseSDKType>;
+    transfer(request: MsgTransfer): Promise<MsgTransferResponse>;
 }

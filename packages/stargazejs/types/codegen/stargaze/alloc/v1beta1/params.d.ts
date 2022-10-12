@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 export interface WeightedAddress {
     address: string;
     weight: string;
@@ -18,13 +18,13 @@ export interface DistributionProportionsSDKType {
 }
 export interface Params {
     /** distribution_proportions defines the proportion of the minted denom */
-    distributionProportions: DistributionProportions;
+    distributionProportions?: DistributionProportions;
     /** address to receive developer rewards */
     weightedDeveloperRewardsReceivers: WeightedAddress[];
 }
 export interface ParamsSDKType {
     /** distribution_proportions defines the proportion of the minted denom */
-    distribution_proportions: DistributionProportionsSDKType;
+    distribution_proportions?: DistributionProportionsSDKType;
     /** address to receive developer rewards */
     weighted_developer_rewards_receivers: WeightedAddressSDKType[];
 }

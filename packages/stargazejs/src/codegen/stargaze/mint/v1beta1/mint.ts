@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, toTimestamp, fromTimestamp, Long } from "@osmonauts/helpers";
+import { DeepPartial, toTimestamp, fromTimestamp, Long } from "../../../helpers";
 /** Minter represents the minting state. */
 
 export interface Minter {
@@ -20,7 +20,7 @@ export interface Params {
   mintDenom: string;
   /** the time the chain starts */
 
-  startTime: Date;
+  startTime?: Date;
   /** initial annual provisions */
 
   initialAnnualProvisions: string;
@@ -38,7 +38,7 @@ export interface ParamsSDKType {
   mint_denom: string;
   /** the time the chain starts */
 
-  start_time: Date;
+  start_time?: Date;
   /** initial annual provisions */
 
   initial_annual_provisions: string;

@@ -1,13 +1,12 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service. */
 
 export interface Query {
+  /** this line is used by starport scaffolding # 2 */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*this line is used by starport scaffolding # 2*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

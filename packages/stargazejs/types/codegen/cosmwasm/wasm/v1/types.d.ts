@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /** AccessType permission types */
 export declare enum AccessType {
     /** ACCESS_TYPE_UNSPECIFIED - AccessTypeUnspecified placeholder for empty value */
@@ -73,13 +73,13 @@ export interface AccessConfigSDKType {
 }
 /** Params defines the set of wasm parameters. */
 export interface Params {
-    codeUploadAccess: AccessConfig;
+    codeUploadAccess?: AccessConfig;
     instantiateDefaultPermission: AccessType;
     maxWasmCodeSize: Long;
 }
 /** Params defines the set of wasm parameters. */
 export interface ParamsSDKType {
-    code_upload_access: AccessConfigSDKType;
+    code_upload_access?: AccessConfigSDKType;
     instantiate_default_permission: AccessTypeSDKType;
     max_wasm_code_size: Long;
 }
@@ -90,7 +90,7 @@ export interface CodeInfo {
     /** Creator address who initially stored the code */
     creator: string;
     /** InstantiateConfig access control to apply on contract creation, optional */
-    instantiateConfig: AccessConfig;
+    instantiateConfig?: AccessConfig;
 }
 /** CodeInfo is data for the uploaded contract WASM code */
 export interface CodeInfoSDKType {
@@ -99,7 +99,7 @@ export interface CodeInfoSDKType {
     /** Creator address who initially stored the code */
     creator: string;
     /** InstantiateConfig access control to apply on contract creation, optional */
-    instantiate_config: AccessConfigSDKType;
+    instantiate_config?: AccessConfigSDKType;
 }
 /** ContractInfo stores a WASM contract instance */
 export interface ContractInfo {
@@ -116,13 +116,13 @@ export interface ContractInfo {
      * This data should kept internal and not be exposed via query results. Just
      * use for sorting
      */
-    created: AbsoluteTxPosition;
+    created?: AbsoluteTxPosition;
     ibcPortId: string;
     /**
      * Extension is an extension point to store custom metadata within the
      * persistence model.
      */
-    extension: Any;
+    extension?: Any;
 }
 /** ContractInfo stores a WASM contract instance */
 export interface ContractInfoSDKType {
@@ -139,13 +139,13 @@ export interface ContractInfoSDKType {
      * This data should kept internal and not be exposed via query results. Just
      * use for sorting
      */
-    created: AbsoluteTxPositionSDKType;
+    created?: AbsoluteTxPositionSDKType;
     ibc_port_id: string;
     /**
      * Extension is an extension point to store custom metadata within the
      * persistence model.
      */
-    extension: AnySDKType;
+    extension?: AnySDKType;
 }
 /** ContractCodeHistoryEntry metadata to a contract. */
 export interface ContractCodeHistoryEntry {
@@ -153,7 +153,7 @@ export interface ContractCodeHistoryEntry {
     /** CodeID is the reference to the stored WASM code */
     codeId: Long;
     /** Updated Tx position when the operation was executed. */
-    updated: AbsoluteTxPosition;
+    updated?: AbsoluteTxPosition;
     msg: Uint8Array;
 }
 /** ContractCodeHistoryEntry metadata to a contract. */
@@ -162,7 +162,7 @@ export interface ContractCodeHistoryEntrySDKType {
     /** CodeID is the reference to the stored WASM code */
     code_id: Long;
     /** Updated Tx position when the operation was executed. */
-    updated: AbsoluteTxPositionSDKType;
+    updated?: AbsoluteTxPositionSDKType;
     msg: Uint8Array;
 }
 /**

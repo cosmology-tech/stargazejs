@@ -3,7 +3,7 @@ import { Channel, ChannelSDKType, IdentifiedChannel, IdentifiedChannelSDKType, P
 import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../../helpers";
 /** QueryChannelRequest is the request type for the Query/Channel RPC method */
 export interface QueryChannelRequest {
     /** port unique identifier */
@@ -25,11 +25,11 @@ export interface QueryChannelRequestSDKType {
  */
 export interface QueryChannelResponse {
     /** channel associated with the request identifiers */
-    channel: Channel;
+    channel?: Channel;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryChannelResponse is the response type for the Query/Channel RPC method.
@@ -38,11 +38,11 @@ export interface QueryChannelResponse {
  */
 export interface QueryChannelResponseSDKType {
     /** channel associated with the request identifiers */
-    channel: ChannelSDKType;
+    channel?: ChannelSDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /** QueryChannelsRequest is the request type for the Query/Channels RPC method */
 export interface QueryChannelsRequest {
@@ -61,7 +61,7 @@ export interface QueryChannelsResponse {
     /** pagination response */
     pagination?: PageResponse;
     /** query block height */
-    height: Height;
+    height?: Height;
 }
 /** QueryChannelsResponse is the response type for the Query/Channels RPC method. */
 export interface QueryChannelsResponseSDKType {
@@ -70,7 +70,7 @@ export interface QueryChannelsResponseSDKType {
     /** pagination response */
     pagination?: PageResponseSDKType;
     /** query block height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
 }
 /**
  * QueryConnectionChannelsRequest is the request type for the
@@ -102,7 +102,7 @@ export interface QueryConnectionChannelsResponse {
     /** pagination response */
     pagination?: PageResponse;
     /** query block height */
-    height: Height;
+    height?: Height;
 }
 /**
  * QueryConnectionChannelsResponse is the Response type for the
@@ -114,7 +114,7 @@ export interface QueryConnectionChannelsResponseSDKType {
     /** pagination response */
     pagination?: PageResponseSDKType;
     /** query block height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
 }
 /**
  * QueryChannelClientStateRequest is the request type for the Query/ClientState
@@ -142,11 +142,11 @@ export interface QueryChannelClientStateRequestSDKType {
  */
 export interface QueryChannelClientStateResponse {
     /** client state associated with the channel */
-    identifiedClientState: IdentifiedClientState;
+    identifiedClientState?: IdentifiedClientState;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryChannelClientStateResponse is the Response type for the
@@ -154,11 +154,11 @@ export interface QueryChannelClientStateResponse {
  */
 export interface QueryChannelClientStateResponseSDKType {
     /** client state associated with the channel */
-    identified_client_state: IdentifiedClientStateSDKType;
+    identified_client_state?: IdentifiedClientStateSDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryChannelConsensusStateRequest is the request type for the
@@ -194,13 +194,13 @@ export interface QueryChannelConsensusStateRequestSDKType {
  */
 export interface QueryChannelConsensusStateResponse {
     /** consensus state associated with the channel */
-    consensusState: Any;
+    consensusState?: Any;
     /** client ID associated with the consensus state */
     clientId: string;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryChannelClientStateResponse is the Response type for the
@@ -208,13 +208,13 @@ export interface QueryChannelConsensusStateResponse {
  */
 export interface QueryChannelConsensusStateResponseSDKType {
     /** consensus state associated with the channel */
-    consensus_state: AnySDKType;
+    consensus_state?: AnySDKType;
     /** client ID associated with the consensus state */
     client_id: string;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketCommitmentRequest is the request type for the
@@ -251,7 +251,7 @@ export interface QueryPacketCommitmentResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryPacketCommitmentResponse defines the client query response for a packet
@@ -264,7 +264,7 @@ export interface QueryPacketCommitmentResponseSDKType {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketCommitmentsRequest is the request type for the
@@ -299,7 +299,7 @@ export interface QueryPacketCommitmentsResponse {
     /** pagination response */
     pagination?: PageResponse;
     /** query block height */
-    height: Height;
+    height?: Height;
 }
 /**
  * QueryPacketCommitmentsResponse is the request type for the
@@ -310,7 +310,7 @@ export interface QueryPacketCommitmentsResponseSDKType {
     /** pagination response */
     pagination?: PageResponseSDKType;
     /** query block height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
 }
 /**
  * QueryPacketReceiptRequest is the request type for the
@@ -347,7 +347,7 @@ export interface QueryPacketReceiptResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryPacketReceiptResponse defines the client query response for a packet
@@ -360,7 +360,7 @@ export interface QueryPacketReceiptResponseSDKType {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketAcknowledgementRequest is the request type for the
@@ -397,7 +397,7 @@ export interface QueryPacketAcknowledgementResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryPacketAcknowledgementResponse defines the client query response for a
@@ -410,7 +410,7 @@ export interface QueryPacketAcknowledgementResponseSDKType {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketAcknowledgementsRequest is the request type for the
@@ -424,7 +424,7 @@ export interface QueryPacketAcknowledgementsRequest {
     /** pagination request */
     pagination?: PageRequest;
     /** list of packet sequences */
-    packetCommitmentSequences?: Long[];
+    packetCommitmentSequences: Long[];
 }
 /**
  * QueryPacketAcknowledgementsRequest is the request type for the
@@ -438,7 +438,7 @@ export interface QueryPacketAcknowledgementsRequestSDKType {
     /** pagination request */
     pagination?: PageRequestSDKType;
     /** list of packet sequences */
-    packet_commitment_sequences?: Long[];
+    packet_commitment_sequences: Long[];
 }
 /**
  * QueryPacketAcknowledgemetsResponse is the request type for the
@@ -449,7 +449,7 @@ export interface QueryPacketAcknowledgementsResponse {
     /** pagination response */
     pagination?: PageResponse;
     /** query block height */
-    height: Height;
+    height?: Height;
 }
 /**
  * QueryPacketAcknowledgemetsResponse is the request type for the
@@ -460,7 +460,7 @@ export interface QueryPacketAcknowledgementsResponseSDKType {
     /** pagination response */
     pagination?: PageResponseSDKType;
     /** query block height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
 }
 /**
  * QueryUnreceivedPacketsRequest is the request type for the
@@ -494,7 +494,7 @@ export interface QueryUnreceivedPacketsResponse {
     /** list of unreceived packet sequences */
     sequences: Long[];
     /** query block height */
-    height: Height;
+    height?: Height;
 }
 /**
  * QueryUnreceivedPacketsResponse is the response type for the
@@ -504,7 +504,7 @@ export interface QueryUnreceivedPacketsResponseSDKType {
     /** list of unreceived packet sequences */
     sequences: Long[];
     /** query block height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
 }
 /**
  * QueryUnreceivedAcks is the request type for the
@@ -538,7 +538,7 @@ export interface QueryUnreceivedAcksResponse {
     /** list of unreceived acknowledgement sequences */
     sequences: Long[];
     /** query block height */
-    height: Height;
+    height?: Height;
 }
 /**
  * QueryUnreceivedAcksResponse is the response type for the
@@ -548,7 +548,7 @@ export interface QueryUnreceivedAcksResponseSDKType {
     /** list of unreceived acknowledgement sequences */
     sequences: Long[];
     /** query block height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
 }
 /**
  * QueryNextSequenceReceiveRequest is the request type for the
@@ -580,7 +580,7 @@ export interface QueryNextSequenceReceiveResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QuerySequenceResponse is the request type for the
@@ -592,7 +592,7 @@ export interface QueryNextSequenceReceiveResponseSDKType {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 export declare const QueryChannelRequest: {
     encode(message: QueryChannelRequest, writer?: _m0.Writer): _m0.Writer;
@@ -601,7 +601,7 @@ export declare const QueryChannelRequest: {
 };
 export declare const QueryChannelResponse: {
     encode(message: QueryChannelResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponse;
     fromPartial(object: DeepPartial<QueryChannelResponse>): QueryChannelResponse;
 };
 export declare const QueryChannelsRequest: {
@@ -611,7 +611,7 @@ export declare const QueryChannelsRequest: {
 };
 export declare const QueryChannelsResponse: {
     encode(message: QueryChannelsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponse;
     fromPartial(object: DeepPartial<QueryChannelsResponse>): QueryChannelsResponse;
 };
 export declare const QueryConnectionChannelsRequest: {
@@ -621,7 +621,7 @@ export declare const QueryConnectionChannelsRequest: {
 };
 export declare const QueryConnectionChannelsResponse: {
     encode(message: QueryConnectionChannelsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponse;
     fromPartial(object: DeepPartial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse;
 };
 export declare const QueryChannelClientStateRequest: {
@@ -631,7 +631,7 @@ export declare const QueryChannelClientStateRequest: {
 };
 export declare const QueryChannelClientStateResponse: {
     encode(message: QueryChannelClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponse;
     fromPartial(object: DeepPartial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse;
 };
 export declare const QueryChannelConsensusStateRequest: {
@@ -641,7 +641,7 @@ export declare const QueryChannelConsensusStateRequest: {
 };
 export declare const QueryChannelConsensusStateResponse: {
     encode(message: QueryChannelConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponse;
     fromPartial(object: DeepPartial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse;
 };
 export declare const QueryPacketCommitmentRequest: {
@@ -651,7 +651,7 @@ export declare const QueryPacketCommitmentRequest: {
 };
 export declare const QueryPacketCommitmentResponse: {
     encode(message: QueryPacketCommitmentResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponse;
     fromPartial(object: DeepPartial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse;
 };
 export declare const QueryPacketCommitmentsRequest: {
@@ -661,7 +661,7 @@ export declare const QueryPacketCommitmentsRequest: {
 };
 export declare const QueryPacketCommitmentsResponse: {
     encode(message: QueryPacketCommitmentsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponse;
     fromPartial(object: DeepPartial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse;
 };
 export declare const QueryPacketReceiptRequest: {
@@ -671,7 +671,7 @@ export declare const QueryPacketReceiptRequest: {
 };
 export declare const QueryPacketReceiptResponse: {
     encode(message: QueryPacketReceiptResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponse;
     fromPartial(object: DeepPartial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse;
 };
 export declare const QueryPacketAcknowledgementRequest: {
@@ -681,7 +681,7 @@ export declare const QueryPacketAcknowledgementRequest: {
 };
 export declare const QueryPacketAcknowledgementResponse: {
     encode(message: QueryPacketAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse;
     fromPartial(object: DeepPartial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse;
 };
 export declare const QueryPacketAcknowledgementsRequest: {
@@ -691,7 +691,7 @@ export declare const QueryPacketAcknowledgementsRequest: {
 };
 export declare const QueryPacketAcknowledgementsResponse: {
     encode(message: QueryPacketAcknowledgementsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse;
     fromPartial(object: DeepPartial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse;
 };
 export declare const QueryUnreceivedPacketsRequest: {
@@ -701,7 +701,7 @@ export declare const QueryUnreceivedPacketsRequest: {
 };
 export declare const QueryUnreceivedPacketsResponse: {
     encode(message: QueryUnreceivedPacketsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse;
     fromPartial(object: DeepPartial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse;
 };
 export declare const QueryUnreceivedAcksRequest: {
@@ -711,7 +711,7 @@ export declare const QueryUnreceivedAcksRequest: {
 };
 export declare const QueryUnreceivedAcksResponse: {
     encode(message: QueryUnreceivedAcksResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponse;
     fromPartial(object: DeepPartial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse;
 };
 export declare const QueryNextSequenceReceiveRequest: {
@@ -721,6 +721,6 @@ export declare const QueryNextSequenceReceiveRequest: {
 };
 export declare const QueryNextSequenceReceiveResponse: {
     encode(message: QueryNextSequenceReceiveResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse;
     fromPartial(object: DeepPartial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse;
 };

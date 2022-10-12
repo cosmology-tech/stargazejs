@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "../../../helpers";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
     /**
@@ -19,7 +19,7 @@ export interface Plan {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time: Date;
+    time?: Date;
     /**
      * The height at which the upgrade must be performed.
      * Only used if Time is not set.
@@ -36,7 +36,7 @@ export interface Plan {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    upgradedClientState: Any;
+    upgradedClientState?: Any;
 }
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface PlanSDKType {
@@ -56,7 +56,7 @@ export interface PlanSDKType {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time: Date;
+    time?: Date;
     /**
      * The height at which the upgrade must be performed.
      * Only used if Time is not set.
@@ -73,7 +73,7 @@ export interface PlanSDKType {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    upgraded_client_state: AnySDKType;
+    upgraded_client_state?: AnySDKType;
 }
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
@@ -85,7 +85,7 @@ export interface PlanSDKType {
 export interface SoftwareUpgradeProposal {
     title: string;
     description: string;
-    plan: Plan;
+    plan?: Plan;
 }
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
@@ -97,7 +97,7 @@ export interface SoftwareUpgradeProposal {
 export interface SoftwareUpgradeProposalSDKType {
     title: string;
     description: string;
-    plan: PlanSDKType;
+    plan?: PlanSDKType;
 }
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software

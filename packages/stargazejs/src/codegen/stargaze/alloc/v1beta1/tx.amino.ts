@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { Long } from "@osmonauts/helpers";
+import { Long } from "../../../helpers";
 import { MsgCreateVestingAccount } from "./tx";
 export interface AminoMsgCreateVestingAccount extends AminoMsg {
   type: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount";

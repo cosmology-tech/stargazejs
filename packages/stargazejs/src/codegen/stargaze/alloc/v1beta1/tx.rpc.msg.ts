@@ -1,13 +1,14 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgCreateVestingAccount, MsgCreateVestingAccountResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the alloc Msg service. */
 
 export interface Msg {
+  /**
+   * CreateVestingAccount defines a method that enables creating a vesting
+   * account.
+   */
   createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse>;
-  /*CreateVestingAccount defines a method that enables creating a vesting
-  account.*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

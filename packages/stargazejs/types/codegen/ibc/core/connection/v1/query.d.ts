@@ -3,7 +3,7 @@ import { ConnectionEnd, ConnectionEndSDKType, IdentifiedConnection, IdentifiedCo
 import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../../helpers";
 /**
  * QueryConnectionRequest is the request type for the Query/Connection RPC
  * method
@@ -27,11 +27,11 @@ export interface QueryConnectionRequestSDKType {
  */
 export interface QueryConnectionResponse {
     /** connection associated with the request identifier */
-    connection: ConnectionEnd;
+    connection?: ConnectionEnd;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryConnectionResponse is the response type for the Query/Connection RPC
@@ -40,11 +40,11 @@ export interface QueryConnectionResponse {
  */
 export interface QueryConnectionResponseSDKType {
     /** connection associated with the request identifier */
-    connection: ConnectionEndSDKType;
+    connection?: ConnectionEndSDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryConnectionsRequest is the request type for the Query/Connections RPC
@@ -70,7 +70,7 @@ export interface QueryConnectionsResponse {
     /** pagination response */
     pagination?: PageResponse;
     /** query block height */
-    height: Height;
+    height?: Height;
 }
 /**
  * QueryConnectionsResponse is the response type for the Query/Connections RPC
@@ -82,7 +82,7 @@ export interface QueryConnectionsResponseSDKType {
     /** pagination response */
     pagination?: PageResponseSDKType;
     /** query block height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
 }
 /**
  * QueryClientConnectionsRequest is the request type for the
@@ -110,7 +110,7 @@ export interface QueryClientConnectionsResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was generated */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryClientConnectionsResponse is the response type for the
@@ -122,7 +122,7 @@ export interface QueryClientConnectionsResponseSDKType {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was generated */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryConnectionClientStateRequest is the request type for the
@@ -146,11 +146,11 @@ export interface QueryConnectionClientStateRequestSDKType {
  */
 export interface QueryConnectionClientStateResponse {
     /** client state associated with the channel */
-    identifiedClientState: IdentifiedClientState;
+    identifiedClientState?: IdentifiedClientState;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryConnectionClientStateResponse is the response type for the
@@ -158,11 +158,11 @@ export interface QueryConnectionClientStateResponse {
  */
 export interface QueryConnectionClientStateResponseSDKType {
     /** client state associated with the channel */
-    identified_client_state: IdentifiedClientStateSDKType;
+    identified_client_state?: IdentifiedClientStateSDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryConnectionConsensusStateRequest is the request type for the
@@ -190,13 +190,13 @@ export interface QueryConnectionConsensusStateRequestSDKType {
  */
 export interface QueryConnectionConsensusStateResponse {
     /** consensus state associated with the channel */
-    consensusState: Any;
+    consensusState?: Any;
     /** client ID associated with the consensus state */
     clientId: string;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryConnectionConsensusStateResponse is the response type for the
@@ -204,13 +204,13 @@ export interface QueryConnectionConsensusStateResponse {
  */
 export interface QueryConnectionConsensusStateResponseSDKType {
     /** consensus state associated with the channel */
-    consensus_state: AnySDKType;
+    consensus_state?: AnySDKType;
     /** client ID associated with the consensus state */
     client_id: string;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 export declare const QueryConnectionRequest: {
     encode(message: QueryConnectionRequest, writer?: _m0.Writer): _m0.Writer;
@@ -219,7 +219,7 @@ export declare const QueryConnectionRequest: {
 };
 export declare const QueryConnectionResponse: {
     encode(message: QueryConnectionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponse;
     fromPartial(object: DeepPartial<QueryConnectionResponse>): QueryConnectionResponse;
 };
 export declare const QueryConnectionsRequest: {
@@ -229,7 +229,7 @@ export declare const QueryConnectionsRequest: {
 };
 export declare const QueryConnectionsResponse: {
     encode(message: QueryConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponse;
     fromPartial(object: DeepPartial<QueryConnectionsResponse>): QueryConnectionsResponse;
 };
 export declare const QueryClientConnectionsRequest: {
@@ -239,7 +239,7 @@ export declare const QueryClientConnectionsRequest: {
 };
 export declare const QueryClientConnectionsResponse: {
     encode(message: QueryClientConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponse;
     fromPartial(object: DeepPartial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse;
 };
 export declare const QueryConnectionClientStateRequest: {
@@ -249,7 +249,7 @@ export declare const QueryConnectionClientStateRequest: {
 };
 export declare const QueryConnectionClientStateResponse: {
     encode(message: QueryConnectionClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponse;
     fromPartial(object: DeepPartial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse;
 };
 export declare const QueryConnectionConsensusStateRequest: {
@@ -259,6 +259,6 @@ export declare const QueryConnectionConsensusStateRequest: {
 };
 export declare const QueryConnectionConsensusStateResponse: {
     encode(message: QueryConnectionConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponse;
     fromPartial(object: DeepPartial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse;
 };

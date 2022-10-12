@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventSDKType } from "../../../../tendermint/abci/types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "../../../../helpers";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
  * tags are stringified and the log is JSON decoded.
@@ -31,7 +31,7 @@ export interface TxResponse {
     /** Amount of gas consumed by transaction. */
     gasUsed: Long;
     /** The request transaction bytes. */
-    tx: Any;
+    tx?: Any;
     /**
      * Time of the previous block. For heights > 1, it's the weighted median of
      * the timestamps of the valid votes in the block.LastCommit. For height == 1,
@@ -77,7 +77,7 @@ export interface TxResponseSDKType {
     /** Amount of gas consumed by transaction. */
     gas_used: Long;
     /** The request transaction bytes. */
-    tx: AnySDKType;
+    tx?: AnySDKType;
     /**
      * Time of the previous block. For heights > 1, it's the weighted median of
      * the timestamps of the valid votes in the block.LastCommit. For height == 1,
@@ -213,16 +213,16 @@ export interface ResultSDKType {
  * successfully simulated.
  */
 export interface SimulationResponse {
-    gasInfo: GasInfo;
-    result: Result;
+    gasInfo?: GasInfo;
+    result?: Result;
 }
 /**
  * SimulationResponse defines the response generated when a transaction is
  * successfully simulated.
  */
 export interface SimulationResponseSDKType {
-    gas_info: GasInfoSDKType;
-    result: ResultSDKType;
+    gas_info?: GasInfoSDKType;
+    result?: ResultSDKType;
 }
 /**
  * MsgData defines the data returned in a Result object during message

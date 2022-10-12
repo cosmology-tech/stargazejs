@@ -2,7 +2,7 @@ import { Action, ActionSDKType } from "./claim_record";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, toTimestamp, fromTimestamp } from "../../../helpers";
 export interface ClaimAuthorization {
   contractAddress: string;
   action: Action;
@@ -15,9 +15,9 @@ export interface ClaimAuthorizationSDKType {
 
 export interface Params {
   airdropEnabled: boolean;
-  airdropStartTime: Date;
-  durationUntilDecay: Duration;
-  durationOfDecay: Duration;
+  airdropStartTime?: Date;
+  durationUntilDecay?: Duration;
+  durationOfDecay?: Duration;
   /** denom of claimable asset */
 
   claimDenom: string;
@@ -29,9 +29,9 @@ export interface Params {
 
 export interface ParamsSDKType {
   airdrop_enabled: boolean;
-  airdrop_start_time: Date;
-  duration_until_decay: DurationSDKType;
-  duration_of_decay: DurationSDKType;
+  airdrop_start_time?: Date;
+  duration_until_decay?: DurationSDKType;
+  duration_of_decay?: DurationSDKType;
   /** denom of claimable asset */
 
   claim_denom: string;
@@ -181,8 +181,8 @@ export const Params = {
     const message = createBaseParams();
     message.airdropEnabled = object.airdropEnabled ?? false;
     message.airdropStartTime = object.airdropStartTime ?? undefined;
-    message.durationUntilDecay = object.durationUntilDecay ?? undefined;
-    message.durationOfDecay = object.durationOfDecay ?? undefined;
+    message.durationUntilDecay = object.durationUntilDecay !== undefined && object.durationUntilDecay !== null ? Duration.fromPartial(object.durationUntilDecay) : undefined;
+    message.durationOfDecay = object.durationOfDecay !== undefined && object.durationOfDecay !== null ? Duration.fromPartial(object.durationOfDecay) : undefined;
     message.claimDenom = object.claimDenom ?? "";
     message.allowedClaimers = object.allowedClaimers?.map(e => ClaimAuthorization.fromPartial(e)) || [];
     return message;

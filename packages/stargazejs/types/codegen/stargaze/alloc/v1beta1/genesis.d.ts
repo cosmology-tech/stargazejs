@@ -1,15 +1,15 @@
 import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the alloc module's genesis state. */
 export interface GenesisState {
     /** this line is used by starport scaffolding # genesis/proto/state */
-    params: Params;
+    params?: Params;
 }
 /** GenesisState defines the alloc module's genesis state. */
 export interface GenesisStateSDKType {
     /** this line is used by starport scaffolding # genesis/proto/state */
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
