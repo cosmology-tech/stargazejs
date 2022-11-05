@@ -11,14 +11,14 @@ const chain: Chain = {
   daemon_name: 'starsd',
   node_home: '$HOME/.starsd',
   slip44: 118,
-  genesis: {
-    genesis_url:
-      'https://raw.githubusercontent.com/public-awesome/mainnet/main/stargaze-1/genesis.tar.gz'
-  },
   codebase: {
     git_repo: 'https://github.com/public-awesome/stargaze',
     recommended_version: 'v7.0.0',
-    compatible_versions: ['v7.0.0']
+    compatible_versions: ['v7.0.0'],
+    genesis: {
+      genesis_url:
+        'https://raw.githubusercontent.com/public-awesome/mainnet/main/stargaze-1/genesis.tar.gz'
+    }
   },
   peers: {
     seeds: [
@@ -163,7 +163,7 @@ const chain: Chain = {
         provider: 'PUPMØS'
       },
       {
-        address: 'https://rpc.stargaze.ezstaking.io/',
+        address: 'https://rpc-stargaze.ezstaking.dev',
         provider: 'EZStaking.io'
       },
       {
@@ -185,6 +185,18 @@ const chain: Chain = {
       {
         address: 'https://rpc.stargaze.nodestake.top',
         provider: 'NodeStake'
+      },
+      {
+        address: 'https://stargaze-rpc.ibs.team',
+        provider: 'Inter Blockchain Services'
+      },
+      {
+        address: 'https://rpc-stargaze.d-stake.xyz',
+        provider: 'D-stake'
+      },
+      {
+        address: 'https://rpc.stargaze.silentvalidator.com/',
+        provider: 'silent'
       }
     ],
     rest: [
@@ -197,7 +209,7 @@ const chain: Chain = {
         provider: 'PUPMØS'
       },
       {
-        address: 'https://api.stargaze.ezstaking.io/',
+        address: 'https://api-stargaze.ezstaking.dev',
         provider: 'EZStaking.io'
       },
       {
@@ -219,6 +231,18 @@ const chain: Chain = {
       {
         address: 'https://api.stargaze.nodestake.top',
         provider: 'NodeStake'
+      },
+      {
+        address: 'https://stargaze-api.ibs.team',
+        provider: 'Inter Blockchain Services'
+      },
+      {
+        address: 'https://api-stargaze.d-stake.xyz',
+        provider: 'D-stake'
+      },
+      {
+        address: 'https://api.stargaze.silentvalidator.com/',
+        provider: 'silent'
       }
     ],
     grpc: [
@@ -233,10 +257,23 @@ const chain: Chain = {
       {
         address: 'https://grpc.stargaze.nodestake.top',
         provider: 'NodeStake'
+      },
+      {
+        address: 'https://grpc-stargaze.d-stake.xyz',
+        provider: 'D-stake'
+      },
+      {
+        address: 'https://grpc.stargaze.silentvalidator.com/',
+        provider: 'silent'
       }
     ]
   },
   explorers: [
+    {
+      kind: 'EZStaking Tools',
+      url: 'https://ezstaking.tools/stargaze',
+      tx_page: 'https://ezstaking.tools/stargaze/txs/${txHash}'
+    },
     {
       kind: 'mintscan',
       url: 'https://www.mintscan.io/stargaze/',
