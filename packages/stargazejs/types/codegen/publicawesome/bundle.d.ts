@@ -75,89 +75,42 @@ export declare namespace publicawesome {
                 MsgCreateVestingAccount: {
                     encode(message: _82.MsgCreateVestingAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _82.MsgCreateVestingAccount;
-                    fromPartial(object: {
-                        fromAddress?: string;
-                        toAddress?: string;
-                        amount?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                        startTime?: any;
-                        endTime?: any;
-                        delayed?: boolean;
-                    }): _82.MsgCreateVestingAccount;
+                    fromPartial(object: any): _82.MsgCreateVestingAccount;
                 };
                 MsgCreateVestingAccountResponse: {
                     encode(_: _82.MsgCreateVestingAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _82.MsgCreateVestingAccountResponse;
-                    fromPartial(_: {}): _82.MsgCreateVestingAccountResponse;
+                    fromPartial(_: any): _82.MsgCreateVestingAccountResponse;
                 };
                 QueryParamsRequest: {
                     encode(_: _81.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _81.QueryParamsRequest;
-                    fromPartial(_: {}): _81.QueryParamsRequest;
+                    fromPartial(_: any): _81.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
                     encode(message: _81.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _81.QueryParamsResponse;
-                    fromPartial(object: {
-                        params?: {
-                            distributionProportions?: {
-                                nftIncentives?: string;
-                                developerRewards?: string;
-                            };
-                            weightedDeveloperRewardsReceivers?: {
-                                address?: string;
-                                weight?: string;
-                            }[];
-                        };
-                    }): _81.QueryParamsResponse;
+                    fromPartial(object: any): _81.QueryParamsResponse;
                 };
                 WeightedAddress: {
                     encode(message: _80.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _80.WeightedAddress;
-                    fromPartial(object: {
-                        address?: string;
-                        weight?: string;
-                    }): _80.WeightedAddress;
+                    fromPartial(object: any): _80.WeightedAddress;
                 };
                 DistributionProportions: {
                     encode(message: _80.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _80.DistributionProportions;
-                    fromPartial(object: {
-                        nftIncentives?: string;
-                        developerRewards?: string;
-                    }): _80.DistributionProportions;
+                    fromPartial(object: any): _80.DistributionProportions;
                 };
                 Params: {
                     encode(message: _80.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _80.Params;
-                    fromPartial(object: {
-                        distributionProportions?: {
-                            nftIncentives?: string;
-                            developerRewards?: string;
-                        };
-                        weightedDeveloperRewardsReceivers?: {
-                            address?: string;
-                            weight?: string;
-                        }[];
-                    }): _80.Params;
+                    fromPartial(object: any): _80.Params;
                 };
                 GenesisState: {
                     encode(message: _79.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _79.GenesisState;
-                    fromPartial(object: {
-                        params?: {
-                            distributionProportions?: {
-                                nftIncentives?: string;
-                                developerRewards?: string;
-                            };
-                            weightedDeveloperRewardsReceivers?: {
-                                address?: string;
-                                weight?: string;
-                            }[];
-                        };
-                    }): _79.GenesisState;
+                    fromPartial(object: any): _79.GenesisState;
                 };
             };
         }
@@ -234,202 +187,87 @@ export declare namespace publicawesome {
                 MsgInitialClaim: {
                     encode(message: _87.MsgInitialClaim, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgInitialClaim;
-                    fromPartial(object: {
-                        sender?: string;
-                    }): _87.MsgInitialClaim;
+                    fromPartial(object: any): _87.MsgInitialClaim;
                 };
                 MsgInitialClaimResponse: {
                     encode(message: _87.MsgInitialClaimResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgInitialClaimResponse;
-                    fromPartial(object: {
-                        claimedAmount?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    }): _87.MsgInitialClaimResponse;
+                    fromPartial(object: any): _87.MsgInitialClaimResponse;
                 };
                 MsgClaimFor: {
                     encode(message: _87.MsgClaimFor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgClaimFor;
-                    fromPartial(object: {
-                        sender?: string;
-                        address?: string;
-                        action?: _83.Action;
-                    }): _87.MsgClaimFor;
+                    fromPartial(object: any): _87.MsgClaimFor;
                 };
                 MsgClaimForResponse: {
                     encode(message: _87.MsgClaimForResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgClaimForResponse;
-                    fromPartial(object: {
-                        address?: string;
-                        claimedAmount?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    }): _87.MsgClaimForResponse;
+                    fromPartial(object: any): _87.MsgClaimForResponse;
                 };
                 QueryModuleAccountBalanceRequest: {
                     encode(_: _86.QueryModuleAccountBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryModuleAccountBalanceRequest;
-                    fromPartial(_: {}): _86.QueryModuleAccountBalanceRequest;
+                    fromPartial(_: any): _86.QueryModuleAccountBalanceRequest;
                 };
                 QueryModuleAccountBalanceResponse: {
                     encode(message: _86.QueryModuleAccountBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryModuleAccountBalanceResponse;
-                    fromPartial(object: {
-                        moduleAccountBalance?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    }): _86.QueryModuleAccountBalanceResponse;
+                    fromPartial(object: any): _86.QueryModuleAccountBalanceResponse;
                 };
                 QueryParamsRequest: {
                     encode(_: _86.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryParamsRequest;
-                    fromPartial(_: {}): _86.QueryParamsRequest;
+                    fromPartial(_: any): _86.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
                     encode(message: _86.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryParamsResponse;
-                    fromPartial(object: {
-                        params?: {
-                            airdropEnabled?: boolean;
-                            airdropStartTime?: Date;
-                            durationUntilDecay?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
-                            durationOfDecay?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
-                            claimDenom?: string;
-                            allowedClaimers?: {
-                                contractAddress?: string;
-                                action?: _83.Action;
-                            }[];
-                        };
-                    }): _86.QueryParamsResponse;
+                    fromPartial(object: any): _86.QueryParamsResponse;
                 };
                 QueryClaimRecordRequest: {
                     encode(message: _86.QueryClaimRecordRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimRecordRequest;
-                    fromPartial(object: {
-                        address?: string;
-                    }): _86.QueryClaimRecordRequest;
+                    fromPartial(object: any): _86.QueryClaimRecordRequest;
                 };
                 QueryClaimRecordResponse: {
                     encode(message: _86.QueryClaimRecordResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimRecordResponse;
-                    fromPartial(object: {
-                        claimRecord?: {
-                            address?: string;
-                            initialClaimableAmount?: {
-                                denom?: string;
-                                amount?: string;
-                            }[];
-                            actionCompleted?: boolean[];
-                        };
-                    }): _86.QueryClaimRecordResponse;
+                    fromPartial(object: any): _86.QueryClaimRecordResponse;
                 };
                 QueryClaimableForActionRequest: {
                     encode(message: _86.QueryClaimableForActionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimableForActionRequest;
-                    fromPartial(object: {
-                        address?: string;
-                        action?: _83.Action;
-                    }): _86.QueryClaimableForActionRequest;
+                    fromPartial(object: any): _86.QueryClaimableForActionRequest;
                 };
                 QueryClaimableForActionResponse: {
                     encode(message: _86.QueryClaimableForActionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryClaimableForActionResponse;
-                    fromPartial(object: {
-                        coins?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    }): _86.QueryClaimableForActionResponse;
+                    fromPartial(object: any): _86.QueryClaimableForActionResponse;
                 };
                 QueryTotalClaimableRequest: {
                     encode(message: _86.QueryTotalClaimableRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalClaimableRequest;
-                    fromPartial(object: {
-                        address?: string;
-                    }): _86.QueryTotalClaimableRequest;
+                    fromPartial(object: any): _86.QueryTotalClaimableRequest;
                 };
                 QueryTotalClaimableResponse: {
                     encode(message: _86.QueryTotalClaimableResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalClaimableResponse;
-                    fromPartial(object: {
-                        coins?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    }): _86.QueryTotalClaimableResponse;
+                    fromPartial(object: any): _86.QueryTotalClaimableResponse;
                 };
                 ClaimAuthorization: {
                     encode(message: _85.ClaimAuthorization, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.ClaimAuthorization;
-                    fromPartial(object: {
-                        contractAddress?: string;
-                        action?: _83.Action;
-                    }): _85.ClaimAuthorization;
+                    fromPartial(object: any): _85.ClaimAuthorization;
                 };
                 Params: {
                     encode(message: _85.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.Params;
-                    fromPartial(object: {
-                        airdropEnabled?: boolean;
-                        airdropStartTime?: Date;
-                        durationUntilDecay?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        durationOfDecay?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        claimDenom?: string;
-                        allowedClaimers?: {
-                            contractAddress?: string;
-                            action?: _83.Action;
-                        }[];
-                    }): _85.Params;
+                    fromPartial(object: any): _85.Params;
                 };
                 GenesisState: {
                     encode(message: _84.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _84.GenesisState;
-                    fromPartial(object: {
-                        moduleAccountBalance?: {
-                            denom?: string;
-                            amount?: string;
-                        };
-                        params?: {
-                            airdropEnabled?: boolean;
-                            airdropStartTime?: Date;
-                            durationUntilDecay?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
-                            durationOfDecay?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
-                            claimDenom?: string;
-                            allowedClaimers?: {
-                                contractAddress?: string;
-                                action?: _83.Action;
-                            }[];
-                        };
-                        claimRecords?: {
-                            address?: string;
-                            initialClaimableAmount?: {
-                                denom?: string;
-                                amount?: string;
-                            }[];
-                            actionCompleted?: boolean[];
-                        }[];
-                    }): _84.GenesisState;
+                    fromPartial(object: any): _84.GenesisState;
                 };
                 actionFromJSON(object: any): _83.Action;
                 actionToJSON(object: _83.Action): string;
@@ -438,14 +276,7 @@ export declare namespace publicawesome {
                 ClaimRecord: {
                     encode(message: _83.ClaimRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.ClaimRecord;
-                    fromPartial(object: {
-                        address?: string;
-                        initialClaimableAmount?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                        actionCompleted?: boolean[];
-                    }): _83.ClaimRecord;
+                    fromPartial(object: any): _83.ClaimRecord;
                 };
             };
         }
@@ -487,7 +318,7 @@ export declare namespace publicawesome {
             };
         }>;
         createRPCQueryClient: ({ rpcEndpoint }: {
-            rpcEndpoint: string;
+            rpcEndpoint: string | import("@cosmjs/tendermint-rpc").HttpEndpoint;
         }) => Promise<{
             cosmos: {
                 authz: {

@@ -15,72 +15,43 @@ export declare namespace stargaze {
             QueryParamsRequest: {
                 encode(_: _90.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.QueryParamsRequest;
-                fromPartial(_: {}): _90.QueryParamsRequest;
+                fromPartial(_: any): _90.QueryParamsRequest;
             };
             QueryParamsResponse: {
                 encode(message: _90.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.QueryParamsResponse;
-                fromPartial(object: {
-                    params?: {
-                        mintDenom?: string;
-                        startTime?: Date;
-                        initialAnnualProvisions?: string;
-                        reductionFactor?: string;
-                        blocksPerYear?: any;
-                    };
-                }): _90.QueryParamsResponse;
+                fromPartial(object: any): _90.QueryParamsResponse;
             };
             QueryAnnualProvisionsRequest: {
                 encode(_: _90.QueryAnnualProvisionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.QueryAnnualProvisionsRequest;
-                fromPartial(_: {}): _90.QueryAnnualProvisionsRequest;
+                fromPartial(_: any): _90.QueryAnnualProvisionsRequest;
             };
             QueryAnnualProvisionsResponse: {
                 encode(message: _90.QueryAnnualProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.QueryAnnualProvisionsResponse;
-                fromPartial(object: {
-                    annualProvisions?: Uint8Array;
-                }): _90.QueryAnnualProvisionsResponse;
+                fromPartial(object: any): _90.QueryAnnualProvisionsResponse;
             };
             Minter: {
                 encode(message: _89.Minter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.Minter;
-                fromPartial(object: {
-                    annualProvisions?: string;
-                }): _89.Minter;
+                fromPartial(object: any): _89.Minter;
             };
             Params: {
                 encode(message: _89.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.Params;
-                fromPartial(object: {
-                    mintDenom?: string;
-                    startTime?: Date;
-                    initialAnnualProvisions?: string;
-                    reductionFactor?: string;
-                    blocksPerYear?: any;
-                }): _89.Params;
+                fromPartial(object: any): _89.Params;
             };
             GenesisState: {
                 encode(message: _88.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.GenesisState;
-                fromPartial(object: {
-                    minter?: {
-                        annualProvisions?: string;
-                    };
-                    params?: {
-                        mintDenom?: string;
-                        startTime?: Date;
-                        initialAnnualProvisions?: string;
-                        reductionFactor?: string;
-                        blocksPerYear?: any;
-                    };
-                }): _88.GenesisState;
+                fromPartial(object: any): _88.GenesisState;
             };
         };
     }
     const ClientFactory: {
         createRPCQueryClient: ({ rpcEndpoint }: {
-            rpcEndpoint: string;
+            rpcEndpoint: string | import("@cosmjs/tendermint-rpc").HttpEndpoint;
         }) => Promise<{
             cosmos: {
                 authz: {

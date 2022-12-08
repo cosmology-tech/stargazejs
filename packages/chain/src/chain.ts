@@ -37,7 +37,7 @@ const chain: Chain = {
       },
       {
         id: 'babc3f3f7804933265ec9c40ad94f4da8e9e0017',
-        address: 'stargaze.seed.rhinostake.com:16656',
+        address: 'seed.rhinostake.com:13756',
         provider: 'RHINO'
       },
       {
@@ -49,11 +49,6 @@ const chain: Chain = {
         id: 'ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0',
         address: 'seeds.polkachu.com:13756',
         provider: 'Polkachu'
-      },
-      {
-        id: '01f3e27f915811797cf0e29d593925f59328d1c7',
-        address: 'stargaze-seed.panthea.eu:42656',
-        provider: 'Panthea EU'
       }
     ],
     persistent_peers: [
@@ -154,11 +149,6 @@ const chain: Chain = {
         id: 'c636bf9ad65959b738c15eb5458a89a88cba32a4',
         address: '135.181.102.205:26656',
         provider: 'tsundokum'
-      },
-      {
-        id: '350dfe5fa979d4b1ee07cab2a22b130a4238105f',
-        address: 'stargaze-peer.panthea.eu:32656',
-        provider: 'Panthea EU'
       }
     ]
   },
@@ -169,7 +159,7 @@ const chain: Chain = {
         provider: 'Stargaze Foundation'
       },
       {
-        address: 'https://rpc.stargaze.pupmos.network/',
+        address: 'https://rpc-stargaze.pupmos.network',
         provider: 'PUPMØS'
       },
       {
@@ -207,10 +197,6 @@ const chain: Chain = {
       {
         address: 'https://rpc.stargaze.silentvalidator.com/',
         provider: 'silent'
-      },
-      {
-        address: 'https://stargaze-rpc.panthea.eu',
-        provider: 'Panthea EU'
       }
     ],
     rest: [
@@ -219,7 +205,7 @@ const chain: Chain = {
         provider: 'Stargaze Foundation'
       },
       {
-        address: 'https://api.stargaze.pupmos.network/',
+        address: 'https://api-stargaze.pupmos.network',
         provider: 'PUPMØS'
       },
       {
@@ -257,10 +243,6 @@ const chain: Chain = {
       {
         address: 'https://api.stargaze.silentvalidator.com/',
         provider: 'silent'
-      },
-      {
-        address: 'https://stargaze-api.panthea.eu',
-        provider: 'Panthea EU'
       }
     ],
     grpc: [
@@ -295,10 +277,11 @@ const chain: Chain = {
     {
       kind: 'mintscan',
       url: 'https://www.mintscan.io/stargaze/',
-      tx_page: 'https://www.mintscan.io/stargaze/txs/${txHash}'
+      tx_page: 'https://www.mintscan.io/stargaze/txs/${txHash}',
+      account_page: 'https://www.mintscan.io/stargaze/account/${accountAddress}'
     },
     {
-      kind: 'ping-pub',
+      kind: 'ping.pub',
       url: 'https://ping.pub/stargaze',
       tx_page: 'https://ping.pub/stargaze/tx/${txHash}'
     },

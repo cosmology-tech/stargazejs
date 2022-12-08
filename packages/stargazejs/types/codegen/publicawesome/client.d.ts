@@ -1,5 +1,6 @@
-import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const publicawesomeAminoConverters: {
     "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim": {
         aminoType: string;
@@ -57,7 +58,7 @@ export declare const getSigningPublicawesomeClientOptions: ({ defaultTypes }?: {
     aminoTypes: AminoTypes;
 };
 export declare const getSigningPublicawesomeClient: ({ rpcEndpoint, signer, defaultTypes }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
     signer: OfflineSigner;
     defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => Promise<SigningStargateClient>;
