@@ -8,11 +8,17 @@ import { MsgExecuteContractEncodeObject } from "cosmwasm";
 export interface SplitsMessage {
     contractAddress: string;
     sender: string;
+    updateAdmin: ({ admin }: {
+        admin?: string;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     distribute: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
 export declare class SplitsMessageComposer implements SplitsMessage {
     sender: string;
     contractAddress: string;
     constructor(sender: string, contractAddress: string);
+    updateAdmin: ({ admin }: {
+        admin?: string;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     distribute: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
