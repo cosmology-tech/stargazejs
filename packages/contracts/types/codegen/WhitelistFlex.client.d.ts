@@ -5,8 +5,8 @@
 */
 import { CosmWasmClient, SigningCosmWasmClient, ExecuteResult } from "@cosmjs/cosmwasm-stargate";
 import { StdFee } from "@cosmjs/amino";
-import { ConfigResponse, Coin, HasEndedResponse, HasMemberResponse, HasStartedResponse, IsActiveResponse, MembersResponse } from "./Whitelist.types";
-export interface WhitelistReadOnlyInterface {
+import { Member, Coin, CosmosMsgForEmpty, AdminListResponse, CanExecuteResponse, ConfigResponse, HasEndedResponse, HasMemberResponse, HasStartedResponse, IsActiveResponse, MemberResponse, MembersResponse } from "./WhitelistFlex.types";
+export interface WhitelistFlexReadOnlyInterface {
     contractAddress: string;
     hasStarted: () => Promise<HasStartedResponse>;
     hasEnded: () => Promise<HasEndedResponse>;
@@ -18,9 +18,17 @@ export interface WhitelistReadOnlyInterface {
     hasMember: ({ member }: {
         member: string;
     }) => Promise<HasMemberResponse>;
+    member: ({ member }: {
+        member: string;
+    }) => Promise<MemberResponse>;
     config: () => Promise<ConfigResponse>;
+    adminList: () => Promise<AdminListResponse>;
+    canExecute: ({ msg, sender }: {
+        msg: CosmosMsgForEmpty;
+        sender: string;
+    }) => Promise<CanExecuteResponse>;
 }
-export declare class WhitelistQueryClient implements WhitelistReadOnlyInterface {
+export declare class WhitelistFlexQueryClient implements WhitelistFlexReadOnlyInterface {
     client: CosmWasmClient;
     contractAddress: string;
     constructor(client: CosmWasmClient, contractAddress: string);
@@ -34,23 +42,34 @@ export declare class WhitelistQueryClient implements WhitelistReadOnlyInterface 
     hasMember: ({ member }: {
         member: string;
     }) => Promise<HasMemberResponse>;
+    member: ({ member }: {
+        member: string;
+    }) => Promise<MemberResponse>;
     config: () => Promise<ConfigResponse>;
+    adminList: () => Promise<AdminListResponse>;
+    canExecute: ({ msg, sender }: {
+        msg: CosmosMsgForEmpty;
+        sender: string;
+    }) => Promise<CanExecuteResponse>;
 }
-export interface WhitelistInterface extends WhitelistReadOnlyInterface {
+export interface WhitelistFlexInterface extends WhitelistFlexReadOnlyInterface {
     contractAddress: string;
     sender: string;
     updateStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     updateEndTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     addMembers: ({ toAdd }: {
-        toAdd: string[];
+        toAdd: Member[];
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     removeMembers: ({ toRemove }: {
         toRemove: string[];
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
-    updatePerAddressLimit: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     increaseMemberLimit: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    updateAdmins: ({ admins }: {
+        admins: string[];
+    }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    freeze: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
 }
-export declare class WhitelistClient extends WhitelistQueryClient implements WhitelistInterface {
+export declare class WhitelistFlexClient extends WhitelistFlexQueryClient implements WhitelistFlexInterface {
     client: SigningCosmWasmClient;
     sender: string;
     contractAddress: string;
@@ -58,11 +77,14 @@ export declare class WhitelistClient extends WhitelistQueryClient implements Whi
     updateStartTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     updateEndTime: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     addMembers: ({ toAdd }: {
-        toAdd: string[];
+        toAdd: Member[];
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     removeMembers: ({ toRemove }: {
         toRemove: string[];
     }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
-    updatePerAddressLimit: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
     increaseMemberLimit: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    updateAdmins: ({ admins }: {
+        admins: string[];
+    }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+    freeze: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
 }

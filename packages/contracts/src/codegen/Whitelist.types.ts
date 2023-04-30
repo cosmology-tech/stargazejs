@@ -4,6 +4,10 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
+export interface AdminListResponse {
+  admins: string[];
+  mutable: boolean;
+}
 export type Timestamp = Uint64;
 export type Uint64 = string;
 export type Uint128 = string;
@@ -15,23 +19,19 @@ export interface ConfigResponse {
   num_members: number;
   per_address_limit: number;
   start_time: Timestamp;
-  [k: string]: unknown;
 }
 export interface Coin {
   amount: Uint128;
   denom: string;
   [k: string]: unknown;
 }
-export type Addr = string;
 export interface Config {
-  admin: Addr;
   end_time: Timestamp;
   member_limit: number;
   mint_price: Coin;
   num_members: number;
   per_address_limit: number;
   start_time: Timestamp;
-  [k: string]: unknown;
 }
 export type ExecuteMsg = {
   update_start_time: Timestamp;
@@ -45,69 +45,124 @@ export type ExecuteMsg = {
   update_per_address_limit: number;
 } | {
   increase_member_limit: number;
+} | {
+  update_admins: {
+    admins: string[];
+  };
+} | {
+  freeze: {};
 };
 export interface AddMembersMsg {
   to_add: string[];
-  [k: string]: unknown;
 }
 export interface RemoveMembersMsg {
   to_remove: string[];
-  [k: string]: unknown;
 }
 export interface HasEndedResponse {
   has_ended: boolean;
-  [k: string]: unknown;
 }
 export interface HasMemberResponse {
   has_member: boolean;
-  [k: string]: unknown;
 }
 export interface HasStartedResponse {
   has_started: boolean;
-  [k: string]: unknown;
 }
 export interface InstantiateMsg {
+  admins: string[];
+  admins_mutable: boolean;
   end_time: Timestamp;
   member_limit: number;
   members: string[];
   mint_price: Coin;
   per_address_limit: number;
   start_time: Timestamp;
-  [k: string]: unknown;
 }
 export interface IsActiveResponse {
   is_active: boolean;
-  [k: string]: unknown;
 }
 export interface MembersResponse {
   members: string[];
-  [k: string]: unknown;
 }
 export type QueryMsg = {
-  has_started: {
-    [k: string]: unknown;
-  };
+  has_started: {};
 } | {
-  has_ended: {
-    [k: string]: unknown;
-  };
+  has_ended: {};
 } | {
-  is_active: {
-    [k: string]: unknown;
-  };
+  is_active: {};
 } | {
   members: {
     limit?: number | null;
     start_after?: string | null;
-    [k: string]: unknown;
   };
 } | {
   has_member: {
     member: string;
+  };
+} | {
+  config: {};
+} | {
+  admin_list: {};
+} | {
+  can_execute: {
+    msg: CosmosMsgForEmpty;
+    sender: string;
+  };
+};
+export type CosmosMsgForEmpty = {
+  bank: BankMsg;
+} | {
+  custom: Empty;
+} | {
+  wasm: WasmMsg;
+};
+export type BankMsg = {
+  send: {
+    amount: Coin[];
+    to_address: string;
     [k: string]: unknown;
   };
 } | {
-  config: {
+  burn: {
+    amount: Coin[];
     [k: string]: unknown;
   };
 };
+export type WasmMsg = {
+  execute: {
+    contract_addr: string;
+    funds: Coin[];
+    msg: Binary;
+    [k: string]: unknown;
+  };
+} | {
+  instantiate: {
+    admin?: string | null;
+    code_id: number;
+    funds: Coin[];
+    label: string;
+    msg: Binary;
+    [k: string]: unknown;
+  };
+} | {
+  migrate: {
+    contract_addr: string;
+    msg: Binary;
+    new_code_id: number;
+    [k: string]: unknown;
+  };
+} | {
+  update_admin: {
+    admin: string;
+    contract_addr: string;
+    [k: string]: unknown;
+  };
+} | {
+  clear_admin: {
+    contract_addr: string;
+    [k: string]: unknown;
+  };
+};
+export type Binary = string;
+export interface Empty {
+  [k: string]: unknown;
+}

@@ -3,19 +3,19 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export declare type Uint128 = string;
+export type Uint128 = string;
 export interface InstantiateMsg {
     params: MinterParamsForParamsExtension;
-    [k: string]: unknown;
 }
 export interface MinterParamsForParamsExtension {
+    allowed_sg721_code_ids: number[];
     code_id: number;
     creation_fee: Coin;
     extension: ParamsExtension;
+    frozen: boolean;
     max_trading_offset_secs: number;
     min_mint_price: Coin;
     mint_fee_bps: number;
-    [k: string]: unknown;
 }
 export interface Coin {
     amount: Uint128;
@@ -28,10 +28,11 @@ export interface ParamsExtension {
     max_per_address_limit: number;
     max_token_limit: number;
     shuffle_fee: Coin;
-    [k: string]: unknown;
 }
-export declare type Sg2QueryMsg = {
-    params: {
-        [k: string]: unknown;
-    };
+export type Sg2QueryMsg = {
+    params: {};
+} | {
+    allowed_collection_code_ids: {};
+} | {
+    allowed_collection_code_id: number;
 };

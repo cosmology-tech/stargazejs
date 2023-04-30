@@ -11,7 +11,7 @@ export interface BaseMinterMessage {
     mint: ({ tokenUri }: {
         tokenUri: string;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
-    updateTradingStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateStartTradingTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
 export declare class BaseMinterMessageComposer implements BaseMinterMessage {
     sender: string;
@@ -20,5 +20,5 @@ export declare class BaseMinterMessageComposer implements BaseMinterMessage {
     mint: ({ tokenUri }: {
         tokenUri: string;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
-    updateTradingStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateStartTradingTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }

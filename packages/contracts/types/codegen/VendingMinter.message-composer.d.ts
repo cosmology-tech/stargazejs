@@ -17,7 +17,7 @@ export interface VendingMinterMessage {
         price: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updateStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
-    updateTradingStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateStartTradingTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updatePerAddressLimit: ({ perAddressLimit }: {
         perAddressLimit: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
@@ -30,6 +30,10 @@ export interface VendingMinterMessage {
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     shuffle: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     burnRemaining: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateDiscountPrice: ({ price }: {
+        price: number;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    removeDiscountPrice: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
 export declare class VendingMinterMessageComposer implements VendingMinterMessage {
     sender: string;
@@ -44,7 +48,7 @@ export declare class VendingMinterMessageComposer implements VendingMinterMessag
         price: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updateStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
-    updateTradingStartTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateStartTradingTime: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updatePerAddressLimit: ({ perAddressLimit }: {
         perAddressLimit: number;
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
@@ -57,4 +61,8 @@ export declare class VendingMinterMessageComposer implements VendingMinterMessag
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     shuffle: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     burnRemaining: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateDiscountPrice: ({ price }: {
+        price: number;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    removeDiscountPrice: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }

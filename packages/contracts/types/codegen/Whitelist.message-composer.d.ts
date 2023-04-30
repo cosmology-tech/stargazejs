@@ -18,6 +18,10 @@ export interface WhitelistMessage {
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updatePerAddressLimit: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     increaseMemberLimit: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateAdmins: ({ admins }: {
+        admins: string[];
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    freeze: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
 export declare class WhitelistMessageComposer implements WhitelistMessage {
     sender: string;
@@ -33,4 +37,8 @@ export declare class WhitelistMessageComposer implements WhitelistMessage {
     }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
     updatePerAddressLimit: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
     increaseMemberLimit: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    updateAdmins: ({ admins }: {
+        admins: string[];
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+    freeze: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
