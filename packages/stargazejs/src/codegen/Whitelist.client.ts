@@ -6,7 +6,7 @@
 
 import { CosmWasmClient, SigningCosmWasmClient, ExecuteResult } from "@cosmjs/cosmwasm-stargate";
 import { StdFee } from "@cosmjs/amino";
-import { Timestamp, Uint64, Uint128, ConfigResponse, Coin, Addr, Config, ExecuteMsg, AddMembersMsg, RemoveMembersMsg, HasEndedResponse, HasMemberResponse, HasStartedResponse, InstantiateMsg, IsActiveResponse, MembersResponse, QueryMsg } from "./Whitelist.types";
+import { AdminListResponse, Timestamp, Uint64, Uint128, ConfigResponse, Coin, Config, ExecuteMsg, AddMembersMsg, RemoveMembersMsg, HasEndedResponse, HasMemberResponse, HasStartedResponse, InstantiateMsg, IsActiveResponse, MembersResponse, QueryMsg, CosmosMsgForEmpty, BankMsg, WasmMsg, Binary, Empty } from "./Whitelist.types";
 export interface WhitelistReadOnlyInterface {
   contractAddress: string;
   hasStarted: () => Promise<HasStartedResponse>;
@@ -25,6 +25,14 @@ export interface WhitelistReadOnlyInterface {
     member: string;
   }) => Promise<HasMemberResponse>;
   config: () => Promise<ConfigResponse>;
+  adminList: () => Promise<AdminListResponse>;
+  canExecute: ({
+    msg,
+    sender
+  }: {
+    msg: CosmosMsgForEmpty;
+    sender: string;
+  }) => Promise<CanExecuteResponse>;
 }
 export class WhitelistQueryClient implements WhitelistReadOnlyInterface {
   client: CosmWasmClient;
@@ -39,6 +47,8 @@ export class WhitelistQueryClient implements WhitelistReadOnlyInterface {
     this.members = this.members.bind(this);
     this.hasMember = this.hasMember.bind(this);
     this.config = this.config.bind(this);
+    this.adminList = this.adminList.bind(this);
+    this.canExecute = this.canExecute.bind(this);
   }
 
   hasStarted = async (): Promise<HasStartedResponse> => {
@@ -86,6 +96,25 @@ export class WhitelistQueryClient implements WhitelistReadOnlyInterface {
       config: {}
     });
   };
+  adminList = async (): Promise<AdminListResponse> => {
+    return this.client.queryContractSmart(this.contractAddress, {
+      admin_list: {}
+    });
+  };
+  canExecute = async ({
+    msg,
+    sender
+  }: {
+    msg: CosmosMsgForEmpty;
+    sender: string;
+  }): Promise<CanExecuteResponse> => {
+    return this.client.queryContractSmart(this.contractAddress, {
+      can_execute: {
+        msg,
+        sender
+      }
+    });
+  };
 }
 export interface WhitelistInterface extends WhitelistReadOnlyInterface {
   contractAddress: string;
@@ -104,6 +133,12 @@ export interface WhitelistInterface extends WhitelistReadOnlyInterface {
   }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
   updatePerAddressLimit: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
   increaseMemberLimit: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+  updateAdmins: ({
+    admins
+  }: {
+    admins: string[];
+  }, fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
+  freeze: (fee?: number | StdFee | "auto", memo?: string, funds?: Coin[]) => Promise<ExecuteResult>;
 }
 export class WhitelistClient extends WhitelistQueryClient implements WhitelistInterface {
   client: SigningCosmWasmClient;
@@ -121,6 +156,8 @@ export class WhitelistClient extends WhitelistQueryClient implements WhitelistIn
     this.removeMembers = this.removeMembers.bind(this);
     this.updatePerAddressLimit = this.updatePerAddressLimit.bind(this);
     this.increaseMemberLimit = this.increaseMemberLimit.bind(this);
+    this.updateAdmins = this.updateAdmins.bind(this);
+    this.freeze = this.freeze.bind(this);
   }
 
   updateStartTime = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
@@ -163,6 +200,22 @@ export class WhitelistClient extends WhitelistQueryClient implements WhitelistIn
   increaseMemberLimit = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
     return await this.client.execute(this.sender, this.contractAddress, {
       increase_member_limit: {}
+    }, fee, memo, funds);
+  };
+  updateAdmins = async ({
+    admins
+  }: {
+    admins: string[];
+  }, fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
+    return await this.client.execute(this.sender, this.contractAddress, {
+      update_admins: {
+        admins
+      }
+    }, fee, memo, funds);
+  };
+  freeze = async (fee: number | StdFee | "auto" = "auto", memo?: string, funds?: Coin[]): Promise<ExecuteResult> => {
+    return await this.client.execute(this.sender, this.contractAddress, {
+      freeze: {}
     }, fee, memo, funds);
   };
 }

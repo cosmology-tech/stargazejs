@@ -2,45 +2,82 @@ import { join, resolve } from 'path';
 import telescope from '@osmonauts/telescope';
 
 const protoDirs = [join(__dirname, '/../proto')];
-const contractsDir = resolve(join(__dirname, '/../../../contracts'));
-const contracts = [
+const launchpadDir = resolve(join(__dirname, "/../../../launchpad/contracts"));
+const marketplaceDir = resolve(
+  join(__dirname, "/../../../marketplace/contracts")
+);
+
+const launchpadContracts = [
   {
-    name: 'BaseFactory',
-    dir: join(contractsDir, 'base-factory')
+    name: "SG721Base",
+    dir: join(launchpadDir, "collections", "sg721-base"),
   },
   {
-    name: 'BaseMinter',
-    dir: join(contractsDir, 'base-minter')
+    name: "SG721MetadataOnchain",
+    dir: join(launchpadDir, "collections", "sg721-metadata-onchain"),
   },
   {
-    name: 'SG721Base',
-    dir: join(contractsDir, 'sg721-base')
+    name: "Sg721Nt",
+    dir: join(launchpadDir, "collections", "sg721-nt"),
   },
   {
-    name: 'SG721MetadataOnchain',
-    dir: join(contractsDir, 'sg721-metadata-onchain')
+    name: "Sg721Updatable",
+    dir: join(launchpadDir, "collections", "sg721-updatable"),
   },
   {
-    name: 'Sg721Nt',
-    dir: join(contractsDir, 'sg721-nt')
+    name: "BaseFactory",
+    dir: join(launchpadDir, "factories", "base-factory"),
   },
   {
-    name: 'Splits',
-    dir: join(contractsDir, 'splits')
+    name: "VendingFactory",
+    dir: join(launchpadDir, "factories", "vending-factory"),
   },
   {
-    name: 'VendingFactory',
-    dir: join(contractsDir, 'vending-factory')
+    name: "BaseMinter",
+    dir: join(launchpadDir, "minters", "base-minter"),
   },
   {
-    name: 'VendingMinter',
-    dir: join(contractsDir, 'vending-minter')
+    name: "VendingMinter",
+    dir: join(launchpadDir, "minters", "vending-minter"),
   },
   {
-    name: 'Whitelist',
-    dir: join(contractsDir, 'whitelist')
-  }
+    name: "VendingMinterWlFlex",
+    dir: join(launchpadDir, "minters", "vending-minter-wl-flex"),
+  },
+  {
+    name: "SgEthAirdrop",
+    dir: join(launchpadDir, "sg-eth-airdrop"),
+  },
+  {
+    name: "Splits",
+    dir: join(launchpadDir, "splits"),
+  },
+  {
+    name: "Whitelist",
+    dir: join(launchpadDir, "whitelists", "whitelist"),
+  },
+  {
+    name: "WhitelistFlex",
+    dir: join(launchpadDir, "whitelists", "whitelist-flex"),
+  },
+  {
+    name: "WhitelistImmutable",
+    dir: join(launchpadDir, "whitelists", "whitelist-immutable"),
+  },
 ];
+
+const marketplaceContracts = [
+  {
+    name: "Marketplace",
+    dir: join(marketplaceDir, "marketplace"),
+  },
+  {
+    name: "ReserveAuction",
+    dir: join(marketplaceDir, "reserve-auction"),
+  },
+];
+
+const contracts = [...launchpadContracts, ...marketplaceContracts];
 
 telescope({
   protoDirs,

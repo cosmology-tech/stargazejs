@@ -3,4 +3,22 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export {};
+import { MsgExecuteContractEncodeObject } from "cosmwasm";
+import { Coin, Empty, CollectionParams } from "./BaseFactory.types";
+export interface BaseFactoryMessage {
+    contractAddress: string;
+    sender: string;
+    createMinter: ({ collectionParams, initMsg }: {
+        collectionParams: CollectionParams;
+        initMsg?: Empty;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+}
+export declare class BaseFactoryMessageComposer implements BaseFactoryMessage {
+    sender: string;
+    contractAddress: string;
+    constructor(sender: string, contractAddress: string);
+    createMinter: ({ collectionParams, initMsg }: {
+        collectionParams: CollectionParams;
+        initMsg?: Empty;
+    }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+}

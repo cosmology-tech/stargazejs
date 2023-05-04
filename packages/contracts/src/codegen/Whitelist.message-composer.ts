@@ -7,7 +7,7 @@
 import { MsgExecuteContractEncodeObject } from "cosmwasm";
 import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import { toUtf8 } from "@cosmjs/encoding";
-import { Timestamp, Uint64, Uint128, ConfigResponse, Coin, Addr, Config, ExecuteMsg, AddMembersMsg, RemoveMembersMsg, HasEndedResponse, HasMemberResponse, HasStartedResponse, InstantiateMsg, IsActiveResponse, MembersResponse, QueryMsg } from "./Whitelist.types";
+import { AdminListResponse, Timestamp, Uint64, Uint128, ConfigResponse, Coin, Config, ExecuteMsg, AddMembersMsg, RemoveMembersMsg, HasEndedResponse, HasMemberResponse, HasStartedResponse, InstantiateMsg, IsActiveResponse, MembersResponse, QueryMsg, CosmosMsgForEmpty, BankMsg, WasmMsg, Binary, Empty } from "./Whitelist.types";
 export interface WhitelistMessage {
   contractAddress: string;
   sender: string;
@@ -25,6 +25,12 @@ export interface WhitelistMessage {
   }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
   updatePerAddressLimit: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
   increaseMemberLimit: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
+  updateAdmins: ({
+    admins
+  }: {
+    admins: string[];
+  }, funds?: Coin[]) => MsgExecuteContractEncodeObject;
+  freeze: (funds?: Coin[]) => MsgExecuteContractEncodeObject;
 }
 export class WhitelistMessageComposer implements WhitelistMessage {
   sender: string;
@@ -39,6 +45,8 @@ export class WhitelistMessageComposer implements WhitelistMessage {
     this.removeMembers = this.removeMembers.bind(this);
     this.updatePerAddressLimit = this.updatePerAddressLimit.bind(this);
     this.increaseMemberLimit = this.increaseMemberLimit.bind(this);
+    this.updateAdmins = this.updateAdmins.bind(this);
+    this.freeze = this.freeze.bind(this);
   }
 
   updateStartTime = (funds?: Coin[]): MsgExecuteContractEncodeObject => {
@@ -126,6 +134,38 @@ export class WhitelistMessageComposer implements WhitelistMessage {
         contract: this.contractAddress,
         msg: toUtf8(JSON.stringify({
           increase_member_limit: {}
+        })),
+        funds
+      })
+    };
+  };
+  updateAdmins = ({
+    admins
+  }: {
+    admins: string[];
+  }, funds?: Coin[]): MsgExecuteContractEncodeObject => {
+    return {
+      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+      value: MsgExecuteContract.fromPartial({
+        sender: this.sender,
+        contract: this.contractAddress,
+        msg: toUtf8(JSON.stringify({
+          update_admins: {
+            admins
+          }
+        })),
+        funds
+      })
+    };
+  };
+  freeze = (funds?: Coin[]): MsgExecuteContractEncodeObject => {
+    return {
+      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+      value: MsgExecuteContract.fromPartial({
+        sender: this.sender,
+        contract: this.contractAddress,
+        msg: toUtf8(JSON.stringify({
+          freeze: {}
         })),
         funds
       })

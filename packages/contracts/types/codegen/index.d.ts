@@ -3,44 +3,91 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-import * as _4 from "./BaseMinter.client";
-import * as _5 from "./BaseMinter.message-composer";
-import * as _7 from "./SG721Base.client";
-import * as _10 from "./SG721MetadataOnchain.client";
-import * as _16 from "./Splits.client";
-import * as _17 from "./Splits.message-composer";
+import * as _1 from "./SG721Base.client";
+import * as _4 from "./SG721MetadataOnchain.client";
+import * as _10 from "./Sg721Updatable.client";
+import * as _13 from "./BaseFactory.client";
+import * as _14 from "./BaseFactory.message-composer";
+import * as _19 from "./BaseMinter.client";
+import * as _20 from "./BaseMinter.message-composer";
 import * as _22 from "./VendingMinter.client";
 import * as _23 from "./VendingMinter.message-composer";
-import * as _25 from "./Whitelist.client";
-import * as _26 from "./Whitelist.message-composer";
+import * as _25 from "./VendingMinterWlFlex.client";
+import * as _26 from "./VendingMinterWlFlex.message-composer";
+import * as _28 from "./SgEthAirdrop.client";
+import * as _29 from "./SgEthAirdrop.message-composer";
+import * as _31 from "./Splits.client";
+import * as _32 from "./Splits.message-composer";
+import * as _34 from "./Whitelist.client";
+import * as _35 from "./Whitelist.message-composer";
+import * as _37 from "./WhitelistFlex.client";
+import * as _38 from "./WhitelistFlex.message-composer";
+import * as _40 from "./WhitelistImmutable.client";
+import * as _43 from "./Marketplace.client";
+import * as _44 from "./Marketplace.message-composer";
+import * as _46 from "./ReserveAuction.client";
+import * as _47 from "./ReserveAuction.message-composer";
 export declare namespace contracts {
-    const BaseFactory: {};
-    const BaseMinter: {
-        BaseMinterMessageComposer: typeof _5.BaseMinterMessageComposer;
-        BaseMinterQueryClient: typeof _4.BaseMinterQueryClient;
-        BaseMinterClient: typeof _4.BaseMinterClient;
-    };
     const SG721Base: {
-        SG721BaseQueryClient: typeof _7.SG721BaseQueryClient;
+        SG721BaseQueryClient: typeof _1.SG721BaseQueryClient;
     };
     const SG721MetadataOnchain: {
-        SG721MetadataOnchainQueryClient: typeof _10.SG721MetadataOnchainQueryClient;
+        SG721MetadataOnchainQueryClient: typeof _4.SG721MetadataOnchainQueryClient;
     };
     const Sg721Nt: {};
-    const Splits: {
-        SplitsMessageComposer: typeof _17.SplitsMessageComposer;
-        SplitsQueryClient: typeof _16.SplitsQueryClient;
-        SplitsClient: typeof _16.SplitsClient;
+    const Sg721Updatable: {
+        Sg721UpdatableQueryClient: typeof _10.Sg721UpdatableQueryClient;
+    };
+    const BaseFactory: {
+        BaseFactoryMessageComposer: typeof _14.BaseFactoryMessageComposer;
+        BaseFactoryClient: typeof _13.BaseFactoryClient;
     };
     const VendingFactory: {};
+    const BaseMinter: {
+        BaseMinterMessageComposer: typeof _20.BaseMinterMessageComposer;
+        BaseMinterClient: typeof _19.BaseMinterClient;
+    };
     const VendingMinter: {
         VendingMinterMessageComposer: typeof _23.VendingMinterMessageComposer;
         VendingMinterQueryClient: typeof _22.VendingMinterQueryClient;
         VendingMinterClient: typeof _22.VendingMinterClient;
     };
+    const VendingMinterWlFlex: {
+        VendingMinterWlFlexMessageComposer: typeof _26.VendingMinterWlFlexMessageComposer;
+        VendingMinterWlFlexQueryClient: typeof _25.VendingMinterWlFlexQueryClient;
+        VendingMinterWlFlexClient: typeof _25.VendingMinterWlFlexClient;
+    };
+    const SgEthAirdrop: {
+        SgEthAirdropMessageComposer: typeof _29.SgEthAirdropMessageComposer;
+        SgEthAirdropQueryClient: typeof _28.SgEthAirdropQueryClient;
+        SgEthAirdropClient: typeof _28.SgEthAirdropClient;
+    };
+    const Splits: {
+        SplitsMessageComposer: typeof _32.SplitsMessageComposer;
+        SplitsQueryClient: typeof _31.SplitsQueryClient;
+        SplitsClient: typeof _31.SplitsClient;
+    };
     const Whitelist: {
-        WhitelistMessageComposer: typeof _26.WhitelistMessageComposer;
-        WhitelistQueryClient: typeof _25.WhitelistQueryClient;
-        WhitelistClient: typeof _25.WhitelistClient;
+        WhitelistMessageComposer: typeof _35.WhitelistMessageComposer;
+        WhitelistQueryClient: typeof _34.WhitelistQueryClient;
+        WhitelistClient: typeof _34.WhitelistClient;
+    };
+    const WhitelistFlex: {
+        WhitelistFlexMessageComposer: typeof _38.WhitelistFlexMessageComposer;
+        WhitelistFlexQueryClient: typeof _37.WhitelistFlexQueryClient;
+        WhitelistFlexClient: typeof _37.WhitelistFlexClient;
+    };
+    const WhitelistImmutable: {
+        WhitelistImmutableQueryClient: typeof _40.WhitelistImmutableQueryClient;
+    };
+    const Marketplace: {
+        MarketplaceMessageComposer: typeof _44.MarketplaceMessageComposer;
+        MarketplaceQueryClient: typeof _43.MarketplaceQueryClient;
+        MarketplaceClient: typeof _43.MarketplaceClient;
+    };
+    const ReserveAuction: {
+        ReserveAuctionMessageComposer: typeof _47.ReserveAuctionMessageComposer;
+        ReserveAuctionQueryClient: typeof _46.ReserveAuctionQueryClient;
+        ReserveAuctionClient: typeof _46.ReserveAuctionClient;
     };
 }

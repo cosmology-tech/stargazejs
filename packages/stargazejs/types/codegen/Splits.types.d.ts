@@ -3,51 +3,61 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export declare type Cw4Contract = Addr;
-export declare type Addr = string;
-export interface ConfigResponse {
-    config: Config;
-    [k: string]: unknown;
-}
-export interface Config {
-    group_addr: Cw4Contract;
-    [k: string]: unknown;
-}
-export declare type ExecuteMsg = {
-    distribute: {
-        [k: string]: unknown;
-    };
+export type Group = {
+    cw4_instantiate: ContractInstantiateMsg;
+} | {
+    cw4_address: string;
 };
-export interface InstantiateMsg {
-    group_addr: string;
-    [k: string]: unknown;
-}
-export interface MemberListResponse {
-    members: Member[];
-    [k: string]: unknown;
-}
-export interface Member {
-    addr: string;
-    weight: number;
-    [k: string]: unknown;
-}
-export interface MemberResponse {
-    weight?: number | null;
-    [k: string]: unknown;
-}
-export declare type QueryMsg = {
-    config: {
-        [k: string]: unknown;
+export type Admin = {
+    address: {
+        addr: string;
     };
+} | {
+    creator: {};
+};
+export type Binary = string;
+export interface InstantiateMsg {
+    admin?: string | null;
+    group: Group;
+}
+export interface ContractInstantiateMsg {
+    admin?: Admin | null;
+    code_id: number;
+    label: string;
+    msg: Binary;
+}
+export type ExecuteMsg = {
+    update_admin: {
+        admin?: string | null;
+    };
+} | {
+    distribute: {};
+};
+export type QueryMsg = {
+    admin: {};
+} | {
+    group: {};
 } | {
     member: {
         address: string;
-        [k: string]: unknown;
     };
 } | {
     list_members: {
         limit?: number | null;
         start_after?: string | null;
-        [k: string]: unknown;
     };
 };
+export interface AdminResponse {
+    admin?: string | null;
+}
+export type Addr = string;
+export interface MemberListResponse {
+    members: Member[];
+}
+export interface Member {
+    addr: string;
+    weight: number;
+}
+export interface MemberResponse {
+    weight?: number | null;
+}
