@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/cosmology-tech/stargazejs/compare/stargazejs@0.10.0...stargazejs@0.11.0) (2023-05-04)
+
+**Note:** Version bump only for package stargazejs
+
+
+
+
+
 # [0.10.0](https://github.com/cosmology-tech/stargazejs/compare/stargazejs@0.9.0...stargazejs@0.10.0) (2022-12-08)
 
 **Note:** Version bump only for package stargazejs
