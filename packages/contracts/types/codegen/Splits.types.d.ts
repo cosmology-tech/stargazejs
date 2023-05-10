@@ -3,19 +3,19 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export type Group = {
+export declare type Group = {
     cw4_instantiate: ContractInstantiateMsg;
 } | {
     cw4_address: string;
 };
-export type Admin = {
+export declare type Admin = {
     address: {
         addr: string;
     };
 } | {
     creator: {};
 };
-export type Binary = string;
+export declare type Binary = string;
 export interface InstantiateMsg {
     admin?: string | null;
     group: Group;
@@ -26,14 +26,14 @@ export interface ContractInstantiateMsg {
     label: string;
     msg: Binary;
 }
-export type ExecuteMsg = {
+export declare type ExecuteMsg = {
     update_admin: {
         admin?: string | null;
     };
 } | {
     distribute: {};
 };
-export type QueryMsg = {
+export declare type QueryMsg = {
     admin: {};
 } | {
     group: {};
@@ -50,7 +50,7 @@ export type QueryMsg = {
 export interface AdminResponse {
     admin?: string | null;
 }
-export type Addr = string;
+export declare type Addr = string;
 export interface MemberListResponse {
     members: Member[];
 }

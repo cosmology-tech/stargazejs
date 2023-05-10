@@ -7,9 +7,12 @@ export interface AdminListResponse {
     admins: string[];
     mutable: boolean;
 }
-export type Timestamp = Uint64;
-export type Uint64 = string;
-export type Uint128 = string;
+export interface CanExecuteResponse {
+    can_execute: boolean;
+}
+export declare type Timestamp = Uint64;
+export declare type Uint64 = string;
+export declare type Uint128 = string;
 export interface ConfigResponse {
     end_time: Timestamp;
     is_active: boolean;
@@ -32,7 +35,7 @@ export interface Config {
     per_address_limit: number;
     start_time: Timestamp;
 }
-export type ExecuteMsg = {
+export declare type ExecuteMsg = {
     update_start_time: Timestamp;
 } | {
     update_end_time: Timestamp;
@@ -82,7 +85,7 @@ export interface IsActiveResponse {
 export interface MembersResponse {
     members: string[];
 }
-export type QueryMsg = {
+export declare type QueryMsg = {
     has_started: {};
 } | {
     has_ended: {};
@@ -107,14 +110,14 @@ export type QueryMsg = {
         sender: string;
     };
 };
-export type CosmosMsgForEmpty = {
+export declare type CosmosMsgForEmpty = {
     bank: BankMsg;
 } | {
     custom: Empty;
 } | {
     wasm: WasmMsg;
 };
-export type BankMsg = {
+export declare type BankMsg = {
     send: {
         amount: Coin[];
         to_address: string;
@@ -126,7 +129,7 @@ export type BankMsg = {
         [k: string]: unknown;
     };
 };
-export type WasmMsg = {
+export declare type WasmMsg = {
     execute: {
         contract_addr: string;
         funds: Coin[];
@@ -161,7 +164,7 @@ export type WasmMsg = {
         [k: string]: unknown;
     };
 };
-export type Binary = string;
+export declare type Binary = string;
 export interface Empty {
     [k: string]: unknown;
 }

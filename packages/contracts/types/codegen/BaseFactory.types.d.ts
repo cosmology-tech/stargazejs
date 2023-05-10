@@ -3,7 +3,7 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export type Uint128 = string;
+export declare type Uint128 = string;
 export interface InstantiateMsg {
     params: MinterParamsForNullable_Empty;
 }
@@ -25,12 +25,12 @@ export interface Coin {
 export interface Empty {
     [k: string]: unknown;
 }
-export type ExecuteMsg = {
+export declare type ExecuteMsg = {
     create_minter: CreateMinterMsgForNullable_Empty;
 };
-export type Decimal = string;
-export type Timestamp = Uint64;
-export type Uint64 = string;
+export declare type Decimal = string;
+export declare type Timestamp = Uint64;
+export declare type Uint64 = string;
 export interface CreateMinterMsgForNullable_Empty {
     collection_params: CollectionParams;
     init_msg?: Empty | null;

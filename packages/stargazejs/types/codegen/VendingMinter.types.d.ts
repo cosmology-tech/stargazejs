@@ -3,9 +3,9 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export type Uint128 = string;
-export type Timestamp = Uint64;
-export type Uint64 = string;
+export declare type Uint128 = string;
+export declare type Timestamp = Uint64;
+export declare type Uint64 = string;
 export interface ConfigResponse {
     admin: string;
     base_token_uri: string;
@@ -24,7 +24,7 @@ export interface Coin {
     denom: string;
     [k: string]: unknown;
 }
-export type ExecuteMsg = {
+export declare type ExecuteMsg = {
     mint: {};
 } | {
     set_whitelist: {
@@ -64,7 +64,7 @@ export type ExecuteMsg = {
 } | {
     remove_discount_price: {};
 };
-export type Decimal = string;
+export declare type Decimal = string;
 export interface InstantiateMsg {
     create_msg: CreateMinterMsgForVendingMinterInitMsgExtension;
     params: MinterParamsForParamsExtension;
@@ -132,7 +132,7 @@ export interface MintPriceResponse {
 export interface MintableNumTokensResponse {
     count: number;
 }
-export type Addr = string;
+export declare type Addr = string;
 export interface MinterConfigForConfigExtension {
     collection_code_id: number;
     extension: ConfigExtension;
@@ -149,7 +149,7 @@ export interface ConfigExtension {
     start_time: Timestamp;
     whitelist?: Addr | null;
 }
-export type QueryMsg = {
+export declare type QueryMsg = {
     config: {};
 } | {
     mintable_num_tokens: {};

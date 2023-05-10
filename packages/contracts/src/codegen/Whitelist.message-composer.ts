@@ -7,7 +7,7 @@
 import { MsgExecuteContractEncodeObject } from "cosmwasm";
 import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import { toUtf8 } from "@cosmjs/encoding";
-import { AdminListResponse, Timestamp, Uint64, Uint128, ConfigResponse, Coin, Config, ExecuteMsg, AddMembersMsg, RemoveMembersMsg, HasEndedResponse, HasMemberResponse, HasStartedResponse, InstantiateMsg, IsActiveResponse, MembersResponse, QueryMsg, CosmosMsgForEmpty, BankMsg, WasmMsg, Binary, Empty } from "./Whitelist.types";
+import { AdminListResponse, CanExecuteResponse, Timestamp, Uint64, Uint128, ConfigResponse, Coin, Config, ExecuteMsg, AddMembersMsg, RemoveMembersMsg, HasEndedResponse, HasMemberResponse, HasStartedResponse, InstantiateMsg, IsActiveResponse, MembersResponse, QueryMsg, CosmosMsgForEmpty, BankMsg, WasmMsg, Binary, Empty } from "./Whitelist.types";
 export interface WhitelistMessage {
   contractAddress: string;
   sender: string;
