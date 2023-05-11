@@ -8,8 +8,8 @@ export interface InstantiateMsg {
     mint_discount_bps?: number | null;
     per_address_limit: number;
 }
-export type ExecuteMsg = string;
-export type QueryMsg = {
+export declare type ExecuteMsg = string;
+export declare type QueryMsg = {
     config: {};
 } | {
     includes_address: {
@@ -22,8 +22,8 @@ export type QueryMsg = {
 } | {
     per_address_limit: {};
 };
-export type Uint64 = number;
-export type Addr = string;
+export declare type Uint64 = number;
+export declare type Addr = string;
 export interface ConfigResponse {
     config: Config;
 }
@@ -32,7 +32,7 @@ export interface Config {
     mint_discount_bps?: number | null;
     per_address_limit: number;
 }
-export type Boolean = boolean;
+export declare type Boolean = boolean;
 export interface PerAddressLimitResponse {
     limit: number;
 }

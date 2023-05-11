@@ -3,10 +3,10 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export type Decimal = string;
-export type Timestamp = Uint64;
-export type Uint64 = string;
-export type Uint128 = string;
+export declare type Decimal = string;
+export declare type Timestamp = Uint64;
+export declare type Uint64 = string;
+export declare type Uint128 = string;
 export interface InstantiateMsg {
     create_msg: CreateMinterMsgForNullable_Empty;
     params: MinterParamsForNullable_Empty;
@@ -52,7 +52,7 @@ export interface Coin {
     denom: string;
     [k: string]: unknown;
 }
-export type ExecuteMsg = {
+export declare type ExecuteMsg = {
     mint: {
         token_uri: string;
     };

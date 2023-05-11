@@ -3,7 +3,7 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export type Uint128 = string;
+export declare type Uint128 = string;
 export interface InstantiateMsg {
     create_auction_fee: Uint128;
     extend_duration: number;
@@ -17,7 +17,7 @@ export interface Coin {
     denom: string;
     [k: string]: unknown;
 }
-export type ExecuteMsg = {
+export declare type ExecuteMsg = {
     create_auction: {
         collection: string;
         end_time: Timestamp;
@@ -48,9 +48,9 @@ export type ExecuteMsg = {
         token_id: string;
     };
 };
-export type Timestamp = Uint64;
-export type Uint64 = string;
-export type QueryMsg = {
+export declare type Timestamp = Uint64;
+export declare type Uint64 = string;
+export declare type QueryMsg = {
     config: {};
 } | {
     auction: {
@@ -78,7 +78,7 @@ export interface QueryOptionsForTupleOfuint64AndTupleOfStringAndString {
     limit?: number | null;
     start_after?: [number, [string, string]] | null;
 }
-export type Addr = string;
+export declare type Addr = string;
 export interface AuctionResponse {
     auction: Auction;
 }

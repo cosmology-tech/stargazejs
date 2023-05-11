@@ -8,6 +8,9 @@ export interface AdminListResponse {
   admins: string[];
   mutable: boolean;
 }
+export interface CanExecuteResponse {
+  can_execute: boolean;
+}
 export type Timestamp = Uint64;
 export type Uint64 = string;
 export type Uint128 = string;

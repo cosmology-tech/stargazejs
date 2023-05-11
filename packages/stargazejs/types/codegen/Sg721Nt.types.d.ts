@@ -3,15 +3,15 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export type Expiration = {
+export declare type Expiration = {
     at_height: number;
 } | {
     at_time: Timestamp;
 } | {
     never: {};
 };
-export type Timestamp = Uint64;
-export type Uint64 = string;
+export declare type Timestamp = Uint64;
+export declare type Uint64 = string;
 export interface AllNftInfoResponse {
     access: OwnerOfResponse;
     info: NftInfoResponseForEmpty;
@@ -47,7 +47,7 @@ export interface ContractInfoResponse {
     name: string;
     symbol: string;
 }
-export type Cw721QueryMsg = {
+export declare type Cw721QueryMsg = {
     owner_of: {
         include_expired?: boolean | null;
         token_id: string;
@@ -95,7 +95,7 @@ export type Cw721QueryMsg = {
         start_after?: string | null;
     };
 };
-export type Decimal = string;
+export declare type Decimal = string;
 export interface InstantiateMsg {
     collection_info: CollectionInfoForRoyaltyInfoResponse;
     minter: string;

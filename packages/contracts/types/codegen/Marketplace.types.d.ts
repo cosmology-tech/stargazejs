@@ -3,8 +3,8 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-export type Uint128 = string;
-export type Duration = {
+export declare type Uint128 = string;
+export declare type Duration = {
     height: number;
 } | {
     time: number;
@@ -25,7 +25,7 @@ export interface ExpiryRange {
     max: number;
     min: number;
 }
-export type ExecuteMsg = {
+export declare type ExecuteMsg = {
     set_ask: {
         collection: string;
         expires: Timestamp;
@@ -121,15 +121,15 @@ export type ExecuteMsg = {
         collection: string;
     };
 };
-export type Timestamp = Uint64;
-export type Uint64 = string;
-export type SaleType = "fixed_price" | "auction";
+export declare type Timestamp = Uint64;
+export declare type Uint64 = string;
+export declare type SaleType = "fixed_price" | "auction";
 export interface Coin {
     amount: Uint128;
     denom: string;
     [k: string]: unknown;
 }
-export type QueryMsg = {
+export declare type QueryMsg = {
     collections: {
         limit?: number | null;
         start_after?: string | null;
@@ -253,7 +253,7 @@ export type QueryMsg = {
 } | {
     params: {};
 };
-export type Addr = string;
+export declare type Addr = string;
 export interface AskOffset {
     price: Uint128;
     token_id: number;
@@ -320,7 +320,7 @@ export interface CollectionBid {
 export interface CollectionsResponse {
     collections: Addr[];
 }
-export type Decimal = string;
+export declare type Decimal = string;
 export interface ParamsResponse {
     params: SudoParams;
 }
