@@ -23,9 +23,7 @@ export interface Params {
     weightedDeveloperRewardsReceivers: WeightedAddress[];
 }
 export interface ParamsSDKType {
-    /** distribution_proportions defines the proportion of the minted denom */
     distribution_proportions?: DistributionProportionsSDKType;
-    /** address to receive developer rewards */
     weighted_developer_rewards_receivers: WeightedAddressSDKType[];
 }
 export declare const WeightedAddress: {

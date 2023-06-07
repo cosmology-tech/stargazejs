@@ -272,7 +272,7 @@ export declare namespace publicawesome {
                 actionFromJSON(object: any): _83.Action;
                 actionToJSON(object: _83.Action): string;
                 Action: typeof _83.Action;
-                ActionSDKType: typeof _83.ActionSDKType;
+                ActionSDKType: typeof _83.Action;
                 ClaimRecord: {
                     encode(message: _83.ClaimRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.ClaimRecord;

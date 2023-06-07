@@ -1,6 +1,6 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgCreateVestingAccount } from "./tx";
-export interface AminoMsgCreateVestingAccount extends AminoMsg {
+export interface MsgCreateVestingAccountAminoType extends AminoMsg {
     type: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount";
     value: {
         from_address: string;
@@ -17,7 +17,7 @@ export interface AminoMsgCreateVestingAccount extends AminoMsg {
 export declare const AminoConverter: {
     "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount": {
         aminoType: string;
-        toAmino: ({ fromAddress, toAddress, amount, startTime, endTime, delayed }: MsgCreateVestingAccount) => AminoMsgCreateVestingAccount["value"];
-        fromAmino: ({ from_address, to_address, amount, start_time, end_time, delayed }: AminoMsgCreateVestingAccount["value"]) => MsgCreateVestingAccount;
+        toAmino: ({ fromAddress, toAddress, amount, startTime, endTime, delayed }: MsgCreateVestingAccount) => MsgCreateVestingAccountAminoType["value"];
+        fromAmino: ({ from_address, to_address, amount, start_time, end_time, delayed }: MsgCreateVestingAccountAminoType["value"]) => MsgCreateVestingAccount;
     };
 };

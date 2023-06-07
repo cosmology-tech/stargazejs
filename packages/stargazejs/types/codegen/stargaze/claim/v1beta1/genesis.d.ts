@@ -17,14 +17,8 @@ export interface GenesisState {
 }
 /** GenesisState defines the claim module's genesis state. */
 export interface GenesisStateSDKType {
-    /**
-     * this line is used by starport scaffolding # genesis/proto/state
-     * balance of the claim module's account
-     */
     module_account_balance?: CoinSDKType;
-    /** params defines all the parameters of the module. */
     params?: ParamsSDKType;
-    /** list of claim records, one for every airdrop recipient */
     claim_records: ClaimRecordSDKType[];
 }
 export declare const GenesisState: {

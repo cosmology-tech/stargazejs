@@ -217,9 +217,9 @@ export declare namespace cosmwasm {
             contractCodeHistoryOperationTypeFromJSON(object: any): _50.ContractCodeHistoryOperationType;
             contractCodeHistoryOperationTypeToJSON(object: _50.ContractCodeHistoryOperationType): string;
             AccessType: typeof _50.AccessType;
-            AccessTypeSDKType: typeof _50.AccessTypeSDKType;
+            AccessTypeSDKType: typeof _50.AccessType;
             ContractCodeHistoryOperationType: typeof _50.ContractCodeHistoryOperationType;
-            ContractCodeHistoryOperationTypeSDKType: typeof _50.ContractCodeHistoryOperationTypeSDKType;
+            ContractCodeHistoryOperationTypeSDKType: typeof _50.ContractCodeHistoryOperationType;
             AccessTypeParam: {
                 encode(message: _50.AccessTypeParam, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _50.AccessTypeParam;

@@ -20,13 +20,13 @@ export declare namespace tendermint {
         evidenceTypeFromJSON(object: any): _91.EvidenceType;
         evidenceTypeToJSON(object: _91.EvidenceType): string;
         CheckTxType: typeof _91.CheckTxType;
-        CheckTxTypeSDKType: typeof _91.CheckTxTypeSDKType;
+        CheckTxTypeSDKType: typeof _91.CheckTxType;
         ResponseOfferSnapshot_Result: typeof _91.ResponseOfferSnapshot_Result;
-        ResponseOfferSnapshot_ResultSDKType: typeof _91.ResponseOfferSnapshot_ResultSDKType;
+        ResponseOfferSnapshot_ResultSDKType: typeof _91.ResponseOfferSnapshot_Result;
         ResponseApplySnapshotChunk_Result: typeof _91.ResponseApplySnapshotChunk_Result;
-        ResponseApplySnapshotChunk_ResultSDKType: typeof _91.ResponseApplySnapshotChunk_ResultSDKType;
+        ResponseApplySnapshotChunk_ResultSDKType: typeof _91.ResponseApplySnapshotChunk_Result;
         EvidenceType: typeof _91.EvidenceType;
-        EvidenceTypeSDKType: typeof _91.EvidenceTypeSDKType;
+        EvidenceTypeSDKType: typeof _91.EvidenceType;
         Request: {
             encode(message: _91.Request, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.Request;
@@ -337,9 +337,9 @@ export declare namespace tendermint {
         signedMsgTypeFromJSON(object: any): _99.SignedMsgType;
         signedMsgTypeToJSON(object: _99.SignedMsgType): string;
         BlockIDFlag: typeof _99.BlockIDFlag;
-        BlockIDFlagSDKType: typeof _99.BlockIDFlagSDKType;
+        BlockIDFlagSDKType: typeof _99.BlockIDFlag;
         SignedMsgType: typeof _99.SignedMsgType;
-        SignedMsgTypeSDKType: typeof _99.SignedMsgTypeSDKType;
+        SignedMsgTypeSDKType: typeof _99.SignedMsgType;
         PartSetHeader: {
             encode(message: _99.PartSetHeader, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.PartSetHeader;

@@ -1,4 +1,4 @@
-import { Action, ActionSDKType } from "./claim_record";
+import { Action } from "./claim_record";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../../helpers";
@@ -8,7 +8,7 @@ export interface ClaimAuthorization {
 }
 export interface ClaimAuthorizationSDKType {
     contract_address: string;
-    action: ActionSDKType;
+    action: Action;
 }
 /** Params defines the claim module's parameters. */
 export interface Params {
@@ -27,9 +27,7 @@ export interface ParamsSDKType {
     airdrop_start_time?: Date;
     duration_until_decay?: DurationSDKType;
     duration_of_decay?: DurationSDKType;
-    /** denom of claimable asset */
     claim_denom: string;
-    /** list of contracts and their allowed claim actions */
     allowed_claimers: ClaimAuthorizationSDKType[];
 }
 export declare const ClaimAuthorization: {
