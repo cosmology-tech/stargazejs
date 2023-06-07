@@ -14,14 +14,12 @@ export const MessageComposer = {
         value: MsgInitialClaim.encode(value).finish()
       };
     },
-
     claimFor(value: MsgClaimFor) {
       return {
         typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
         value: MsgClaimFor.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     initialClaim(value: MsgInitialClaim) {
@@ -30,14 +28,12 @@ export const MessageComposer = {
         value
       };
     },
-
     claimFor(value: MsgClaimFor) {
       return {
         typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
         value
       };
     }
-
   },
   fromPartial: {
     initialClaim(value: MsgInitialClaim) {
@@ -46,13 +42,11 @@ export const MessageComposer = {
         value: MsgInitialClaim.fromPartial(value)
       };
     },
-
     claimFor(value: MsgClaimFor) {
       return {
         typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
         value: MsgClaimFor.fromPartial(value)
       };
     }
-
   }
 };

@@ -14,7 +14,6 @@ export const MessageComposer = {
         value: MsgCreateVestingAccount.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     createVestingAccount(value: MsgCreateVestingAccount) {
@@ -23,7 +22,6 @@ export const MessageComposer = {
         value
       };
     }
-
   },
   fromPartial: {
     createVestingAccount(value: MsgCreateVestingAccount) {
@@ -32,6 +30,5 @@ export const MessageComposer = {
         value: MsgCreateVestingAccount.fromPartial(value)
       };
     }
-
   }
 };
