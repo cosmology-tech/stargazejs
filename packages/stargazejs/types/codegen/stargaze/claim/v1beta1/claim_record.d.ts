@@ -9,14 +9,7 @@ export declare enum Action {
     ActionDelegateStake = 4,
     UNRECOGNIZED = -1
 }
-export declare enum ActionSDKType {
-    ActionInitialClaim = 0,
-    ActionBidNFT = 1,
-    ActionMintNFT = 2,
-    ActionVote = 3,
-    ActionDelegateStake = 4,
-    UNRECOGNIZED = -1
-}
+export declare const ActionSDKType: typeof Action;
 export declare function actionFromJSON(object: any): Action;
 export declare function actionToJSON(object: Action): string;
 export interface ClaimRecord {
@@ -31,14 +24,8 @@ export interface ClaimRecord {
     actionCompleted: boolean[];
 }
 export interface ClaimRecordSDKType {
-    /** address of claim user */
     address: string;
-    /** total initial claimable amount for the user */
     initial_claimable_amount: CoinSDKType[];
-    /**
-     * true if action is completed
-     * index of bool in array refers to action enum #
-     */
     action_completed: boolean[];
 }
 export declare const ClaimRecord: {

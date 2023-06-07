@@ -1,13 +1,13 @@
 import { actionFromJSON } from "./claim_record";
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgInitialClaim, MsgClaimFor } from "./tx";
-export interface AminoMsgInitialClaim extends AminoMsg {
+export interface MsgInitialClaimAminoType extends AminoMsg {
   type: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim";
   value: {
     sender: string;
   };
 }
-export interface AminoMsgClaimFor extends AminoMsg {
+export interface MsgClaimForAminoType extends AminoMsg {
   type: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor";
   value: {
     sender: string;
@@ -20,14 +20,14 @@ export const AminoConverter = {
     aminoType: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim",
     toAmino: ({
       sender
-    }: MsgInitialClaim): AminoMsgInitialClaim["value"] => {
+    }: MsgInitialClaim): MsgInitialClaimAminoType["value"] => {
       return {
         sender
       };
     },
     fromAmino: ({
       sender
-    }: AminoMsgInitialClaim["value"]): MsgInitialClaim => {
+    }: MsgInitialClaimAminoType["value"]): MsgInitialClaim => {
       return {
         sender
       };
@@ -39,7 +39,7 @@ export const AminoConverter = {
       sender,
       address,
       action
-    }: MsgClaimFor): AminoMsgClaimFor["value"] => {
+    }: MsgClaimFor): MsgClaimForAminoType["value"] => {
       return {
         sender,
         address,
@@ -50,7 +50,7 @@ export const AminoConverter = {
       sender,
       address,
       action
-    }: AminoMsgClaimFor["value"]): MsgClaimFor => {
+    }: MsgClaimForAminoType["value"]): MsgClaimFor => {
       return {
         sender,
         address,

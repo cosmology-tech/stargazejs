@@ -46,7 +46,8 @@ import * as _184 from "./rpc.tx";
 export namespace ibc {
   export namespace applications {
     export namespace transfer {
-      export const v1 = { ..._57,
+      export const v1 = {
+        ..._57,
         ..._58,
         ..._59,
         ..._60,
@@ -56,13 +57,15 @@ export namespace ibc {
         ..._156,
         ..._160
       };
-      export const v2 = { ..._61
+      export const v2 = {
+        ..._61
       };
     }
   }
   export namespace core {
     export namespace channel {
-      export const v1 = { ..._62,
+      export const v1 = {
+        ..._62,
         ..._63,
         ..._64,
         ..._65,
@@ -74,7 +77,8 @@ export namespace ibc {
       };
     }
     export namespace client {
-      export const v1 = { ..._66,
+      export const v1 = {
+        ..._66,
         ..._67,
         ..._68,
         ..._69,
@@ -86,11 +90,13 @@ export namespace ibc {
       };
     }
     export namespace commitment {
-      export const v1 = { ..._70
+      export const v1 = {
+        ..._70
       };
     }
     export namespace connection {
-      export const v1 = { ..._71,
+      export const v1 = {
+        ..._71,
         ..._72,
         ..._73,
         ..._74,
@@ -104,21 +110,26 @@ export namespace ibc {
   }
   export namespace lightclients {
     export namespace localhost {
-      export const v1 = { ..._75
+      export const v1 = {
+        ..._75
       };
     }
     export namespace solomachine {
-      export const v1 = { ..._76
+      export const v1 = {
+        ..._76
       };
-      export const v2 = { ..._77
+      export const v2 = {
+        ..._77
       };
     }
     export namespace tendermint {
-      export const v1 = { ..._78
+      export const v1 = {
+        ..._78
       };
     }
   }
-  export const ClientFactory = { ..._182,
+  export const ClientFactory = {
+    ..._182,
     ..._183,
     ..._184
   };

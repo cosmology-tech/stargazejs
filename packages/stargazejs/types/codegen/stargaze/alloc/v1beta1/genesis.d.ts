@@ -8,7 +8,6 @@ export interface GenesisState {
 }
 /** GenesisState defines the alloc module's genesis state. */
 export interface GenesisStateSDKType {
-    /** this line is used by starport scaffolding # genesis/proto/state */
     params?: ParamsSDKType;
 }
 export declare const GenesisState: {

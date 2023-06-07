@@ -1,4 +1,4 @@
-import { Action, ActionSDKType } from "./claim_record";
+import { Action } from "./claim_record";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../../helpers";
@@ -13,7 +13,6 @@ export interface MsgInitialClaimResponse {
     claimedAmount: Coin[];
 }
 export interface MsgInitialClaimResponseSDKType {
-    /** total initial claimable amount for the user */
     claimed_amount: CoinSDKType[];
 }
 export interface MsgClaimFor {
@@ -24,7 +23,7 @@ export interface MsgClaimFor {
 export interface MsgClaimForSDKType {
     sender: string;
     address: string;
-    action: ActionSDKType;
+    action: Action;
 }
 export interface MsgClaimForResponse {
     address: string;
@@ -33,7 +32,6 @@ export interface MsgClaimForResponse {
 }
 export interface MsgClaimForResponseSDKType {
     address: string;
-    /** total initial claimable amount for the user */
     claimed_amount: CoinSDKType[];
 }
 export declare const MsgInitialClaim: {

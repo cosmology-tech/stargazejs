@@ -836,9 +836,9 @@ export declare namespace ibc {
                 orderFromJSON(object: any): _62.Order;
                 orderToJSON(object: _62.Order): string;
                 State: typeof _62.State;
-                StateSDKType: typeof _62.StateSDKType;
+                StateSDKType: typeof _62.State;
                 Order: typeof _62.Order;
-                OrderSDKType: typeof _62.OrderSDKType;
+                OrderSDKType: typeof _62.Order;
                 Channel: {
                     encode(message: _62.Channel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.Channel;
@@ -1550,7 +1550,7 @@ export declare namespace ibc {
                 stateFromJSON(object: any): _71.State;
                 stateToJSON(object: _71.State): string;
                 State: typeof _71.State;
-                StateSDKType: typeof _71.StateSDKType;
+                StateSDKType: typeof _71.State;
                 ConnectionEnd: {
                     encode(message: _71.ConnectionEnd, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _71.ConnectionEnd;
@@ -1604,7 +1604,7 @@ export declare namespace ibc {
                 dataTypeFromJSON(object: any): _76.DataType;
                 dataTypeToJSON(object: _76.DataType): string;
                 DataType: typeof _76.DataType;
-                DataTypeSDKType: typeof _76.DataTypeSDKType;
+                DataTypeSDKType: typeof _76.DataType;
                 ClientState: {
                     encode(message: _76.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _76.ClientState;
@@ -1690,7 +1690,7 @@ export declare namespace ibc {
                 dataTypeFromJSON(object: any): _77.DataType;
                 dataTypeToJSON(object: _77.DataType): string;
                 DataType: typeof _77.DataType;
-                DataTypeSDKType: typeof _77.DataTypeSDKType;
+                DataTypeSDKType: typeof _77.DataType;
                 ClientState: {
                     encode(message: _77.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _77.ClientState;

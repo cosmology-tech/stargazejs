@@ -1540,9 +1540,9 @@ export declare namespace cosmos {
             proposalStatusFromJSON(object: any): _27.ProposalStatus;
             proposalStatusToJSON(object: _27.ProposalStatus): string;
             VoteOption: typeof _27.VoteOption;
-            VoteOptionSDKType: typeof _27.VoteOptionSDKType;
+            VoteOptionSDKType: typeof _27.VoteOption;
             ProposalStatus: typeof _27.ProposalStatus;
-            ProposalStatusSDKType: typeof _27.ProposalStatusSDKType;
+            ProposalStatusSDKType: typeof _27.ProposalStatus;
             WeightedVoteOption: {
                 encode(message: _27.WeightedVoteOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _27.WeightedVoteOption;
@@ -1864,9 +1864,9 @@ export declare namespace cosmos {
             proposalStatusFromJSON(object: any): _31.ProposalStatus;
             proposalStatusToJSON(object: _31.ProposalStatus): string;
             VoteOption: typeof _31.VoteOption;
-            VoteOptionSDKType: typeof _31.VoteOptionSDKType;
+            VoteOptionSDKType: typeof _31.VoteOption;
             ProposalStatus: typeof _31.ProposalStatus;
-            ProposalStatusSDKType: typeof _31.ProposalStatusSDKType;
+            ProposalStatusSDKType: typeof _31.ProposalStatus;
             WeightedVoteOption: {
                 encode(message: _31.WeightedVoteOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _31.WeightedVoteOption;
@@ -2204,7 +2204,7 @@ export declare namespace cosmos {
             bondStatusFromJSON(object: any): _37.BondStatus;
             bondStatusToJSON(object: _37.BondStatus): string;
             BondStatus: typeof _37.BondStatus;
-            BondStatusSDKType: typeof _37.BondStatusSDKType;
+            BondStatusSDKType: typeof _37.BondStatus;
             HistoricalInfo: {
                 encode(message: _37.HistoricalInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _37.HistoricalInfo;
@@ -2458,7 +2458,7 @@ export declare namespace cosmos {
             authorizationTypeFromJSON(object: any): _34.AuthorizationType;
             authorizationTypeToJSON(object: _34.AuthorizationType): string;
             AuthorizationType: typeof _34.AuthorizationType;
-            AuthorizationTypeSDKType: typeof _34.AuthorizationTypeSDKType;
+            AuthorizationTypeSDKType: typeof _34.AuthorizationType;
             StakeAuthorization: {
                 encode(message: _34.StakeAuthorization, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _34.StakeAuthorization;
@@ -2477,7 +2477,7 @@ export declare namespace cosmos {
                 signModeFromJSON(object: any): _39.SignMode;
                 signModeToJSON(object: _39.SignMode): string;
                 SignMode: typeof _39.SignMode;
-                SignModeSDKType: typeof _39.SignModeSDKType;
+                SignModeSDKType: typeof _39.SignMode;
                 SignatureDescriptors: {
                     encode(message: _39.SignatureDescriptors, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _39.SignatureDescriptors;
@@ -2585,9 +2585,9 @@ export declare namespace cosmos {
             broadcastModeFromJSON(object: any): _40.BroadcastMode;
             broadcastModeToJSON(object: _40.BroadcastMode): string;
             OrderBy: typeof _40.OrderBy;
-            OrderBySDKType: typeof _40.OrderBySDKType;
+            OrderBySDKType: typeof _40.OrderBy;
             BroadcastMode: typeof _40.BroadcastMode;
-            BroadcastModeSDKType: typeof _40.BroadcastModeSDKType;
+            BroadcastModeSDKType: typeof _40.BroadcastMode;
             GetTxsEventRequest: {
                 encode(message: _40.GetTxsEventRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _40.GetTxsEventRequest;
