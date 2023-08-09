@@ -35,6 +35,13 @@ yarn
 yarn bootstrap
 ```
 
+
+And then get all submodules:
+
+```
+git submodule update --init
+```
+
 ### Building
 
 ```sh
