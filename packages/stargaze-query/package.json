@@ -1,6 +1,6 @@
 {
   "name": "stargaze-query",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "description": "stargaze",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/cosmology-tech/stargazejs#readme",
@@ -52,12 +52,14 @@
     "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@babel/plugin-transform-runtime": "7.19.1",
     "@babel/preset-env": "7.19.4",
+    "@babel/preset-react": "7.22.5",
     "@babel/preset-typescript": "^7.18.6",
     "@cosmology/telescope": "^0.102.1",
     "@protobufs/cosmos": "^0.0.11",
     "@protobufs/cosmwasm": "^0.0.11",
     "@protobufs/ibc": "^0.0.11",
     "@protobufs/stargaze": "^0.0.12",
+    "@tanstack/react-query": "4.32.6",
     "@types/jest": "^29.1.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "29.1.2",
@@ -70,6 +72,8 @@
     "jest-in-case": "^1.0.2",
     "long": "^5.2.0",
     "prettier": "^2.7.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "regenerator-runtime": "^0.13.7",
     "rimraf": "^3.0.2",
     "ts-jest": "^29.0.3",
@@ -84,5 +88,10 @@
     "@cosmjs/tendermint-rpc": "^0.29.5",
     "@cosmology/lcd": "^0.12.0",
     "protobufjs": "^6.11.2"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": ">= 4",
+    "react": ">= 18",
+    "react-dom": ">= 18"
   }
 }
