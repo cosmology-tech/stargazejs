@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { Uint128, Duration, InstantiateMsg, ExpiryRange, ExecuteMsg, Timestamp, Uint64, SaleType, Coin, QueryMsg, Addr, AskOffset, CollectionOffset, BidOffset, CollectionBidOffset, AsksResponse, Ask, AskCountResponse, HooksResponse, BidResponse, Bid, BidsResponse, CollectionBidResponse, CollectionBid, CollectionsResponse, Decimal, ParamsResponse, SudoParams } from "./Marketplace.types";
 import { MarketplaceQueryClient } from "./Marketplace.client";
 export interface MarketplaceReactQuery<TResponse, TData = TResponse> {
   client: MarketplaceQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface MarketplaceParamsQuery<TData> extends MarketplaceReactQuery<ParamsResponse, TData> {}
 export function useMarketplaceParamsQuery<TData = ParamsResponse>({

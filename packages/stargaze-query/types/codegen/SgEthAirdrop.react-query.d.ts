@@ -3,19 +3,21 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-import { UseQueryOptions } from "react-query";
+import { UseQueryOptions } from "@tanstack/react-query";
 import { Addr, Boolean } from "./SgEthAirdrop.types";
 import { SgEthAirdropQueryClient } from "./SgEthAirdrop.client";
 export interface SgEthAirdropReactQuery<TResponse, TData = TResponse> {
     client: SgEthAirdropQueryClient;
-    options?: UseQueryOptions<TResponse, Error, TData>;
+    options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+        initialData?: undefined;
+    };
 }
 export interface SgEthAirdropGetMinterQuery<TData> extends SgEthAirdropReactQuery<Addr, TData> {
 }
-export declare function useSgEthAirdropGetMinterQuery<TData = Addr>({ client, options }: SgEthAirdropGetMinterQuery<TData>): any;
+export declare function useSgEthAirdropGetMinterQuery<TData = Addr>({ client, options }: SgEthAirdropGetMinterQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface SgEthAirdropAirdropEligibleQuery<TData> extends SgEthAirdropReactQuery<Boolean, TData> {
     args: {
         ethAddress: string;
     };
 }
-export declare function useSgEthAirdropAirdropEligibleQuery<TData = Boolean>({ client, args, options }: SgEthAirdropAirdropEligibleQuery<TData>): any;
+export declare function useSgEthAirdropAirdropEligibleQuery<TData = Boolean>({ client, args, options }: SgEthAirdropAirdropEligibleQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;

@@ -3,28 +3,30 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-import { UseQueryOptions } from "react-query";
+import { UseQueryOptions } from "@tanstack/react-query";
 import { Uint64, ConfigResponse, Boolean, PerAddressLimitResponse } from "./WhitelistImmutable.types";
 import { WhitelistImmutableQueryClient } from "./WhitelistImmutable.client";
 export interface WhitelistImmutableReactQuery<TResponse, TData = TResponse> {
     client: WhitelistImmutableQueryClient;
-    options?: UseQueryOptions<TResponse, Error, TData>;
+    options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+        initialData?: undefined;
+    };
 }
 export interface WhitelistImmutablePerAddressLimitQuery<TData> extends WhitelistImmutableReactQuery<PerAddressLimitResponse, TData> {
 }
-export declare function useWhitelistImmutablePerAddressLimitQuery<TData = PerAddressLimitResponse>({ client, options }: WhitelistImmutablePerAddressLimitQuery<TData>): any;
+export declare function useWhitelistImmutablePerAddressLimitQuery<TData = PerAddressLimitResponse>({ client, options }: WhitelistImmutablePerAddressLimitQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface WhitelistImmutableAddressCountQuery<TData> extends WhitelistImmutableReactQuery<Uint64, TData> {
 }
-export declare function useWhitelistImmutableAddressCountQuery<TData = Uint64>({ client, options }: WhitelistImmutableAddressCountQuery<TData>): any;
+export declare function useWhitelistImmutableAddressCountQuery<TData = Uint64>({ client, options }: WhitelistImmutableAddressCountQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface WhitelistImmutableAdminQuery<TData> extends WhitelistImmutableReactQuery<Uint64, TData> {
 }
-export declare function useWhitelistImmutableAdminQuery<TData = Uint64>({ client, options }: WhitelistImmutableAdminQuery<TData>): any;
+export declare function useWhitelistImmutableAdminQuery<TData = Uint64>({ client, options }: WhitelistImmutableAdminQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface WhitelistImmutableIncludesAddressQuery<TData> extends WhitelistImmutableReactQuery<Boolean, TData> {
     args: {
         address: string;
     };
 }
-export declare function useWhitelistImmutableIncludesAddressQuery<TData = Boolean>({ client, args, options }: WhitelistImmutableIncludesAddressQuery<TData>): any;
+export declare function useWhitelistImmutableIncludesAddressQuery<TData = Boolean>({ client, args, options }: WhitelistImmutableIncludesAddressQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface WhitelistImmutableConfigQuery<TData> extends WhitelistImmutableReactQuery<ConfigResponse, TData> {
 }
-export declare function useWhitelistImmutableConfigQuery<TData = ConfigResponse>({ client, options }: WhitelistImmutableConfigQuery<TData>): any;
+export declare function useWhitelistImmutableConfigQuery<TData = ConfigResponse>({ client, options }: WhitelistImmutableConfigQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;

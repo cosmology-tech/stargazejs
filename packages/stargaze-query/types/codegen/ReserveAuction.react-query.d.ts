@@ -3,12 +3,14 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-import { UseQueryOptions } from "react-query";
+import { UseQueryOptions } from "@tanstack/react-query";
 import { Timestamp, QueryOptionsForTupleOfStringAndString, QueryOptionsForTupleOfuint64AndTupleOfStringAndString, AuctionResponse, AuctionsResponse, ConfigResponse } from "./ReserveAuction.types";
 import { ReserveAuctionQueryClient } from "./ReserveAuction.client";
 export interface ReserveAuctionReactQuery<TResponse, TData = TResponse> {
     client: ReserveAuctionQueryClient;
-    options?: UseQueryOptions<TResponse, Error, TData>;
+    options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+        initialData?: undefined;
+    };
 }
 export interface ReserveAuctionAuctionsByEndTimeQuery<TData> extends ReserveAuctionReactQuery<AuctionsResponse, TData> {
     args: {
@@ -16,21 +18,21 @@ export interface ReserveAuctionAuctionsByEndTimeQuery<TData> extends ReserveAuct
         queryOptions?: QueryOptionsForTupleOfuint64AndTupleOfStringAndString;
     };
 }
-export declare function useReserveAuctionAuctionsByEndTimeQuery<TData = AuctionsResponse>({ client, args, options }: ReserveAuctionAuctionsByEndTimeQuery<TData>): any;
+export declare function useReserveAuctionAuctionsByEndTimeQuery<TData = AuctionsResponse>({ client, args, options }: ReserveAuctionAuctionsByEndTimeQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface ReserveAuctionAuctionsBySellerQuery<TData> extends ReserveAuctionReactQuery<AuctionsResponse, TData> {
     args: {
         queryOptions?: QueryOptionsForTupleOfStringAndString;
         seller: string;
     };
 }
-export declare function useReserveAuctionAuctionsBySellerQuery<TData = AuctionsResponse>({ client, args, options }: ReserveAuctionAuctionsBySellerQuery<TData>): any;
+export declare function useReserveAuctionAuctionsBySellerQuery<TData = AuctionsResponse>({ client, args, options }: ReserveAuctionAuctionsBySellerQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface ReserveAuctionAuctionQuery<TData> extends ReserveAuctionReactQuery<AuctionResponse, TData> {
     args: {
         collection: string;
         tokenId: string;
     };
 }
-export declare function useReserveAuctionAuctionQuery<TData = AuctionResponse>({ client, args, options }: ReserveAuctionAuctionQuery<TData>): any;
+export declare function useReserveAuctionAuctionQuery<TData = AuctionResponse>({ client, args, options }: ReserveAuctionAuctionQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface ReserveAuctionConfigQuery<TData> extends ReserveAuctionReactQuery<ConfigResponse, TData> {
 }
-export declare function useReserveAuctionConfigQuery<TData = ConfigResponse>({ client, options }: ReserveAuctionConfigQuery<TData>): any;
+export declare function useReserveAuctionConfigQuery<TData = ConfigResponse>({ client, options }: ReserveAuctionConfigQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;

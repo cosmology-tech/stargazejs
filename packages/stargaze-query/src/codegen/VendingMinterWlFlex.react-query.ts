@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { Decimal, Timestamp, Uint64, Uint128, InstantiateMsg, CreateMinterMsgForVendingMinterInitMsgExtension, CollectionParams, CollectionInfoForRoyaltyInfoResponse, RoyaltyInfoResponse, VendingMinterInitMsgExtension, Coin, MinterParamsForParamsExtension, ParamsExtension, ExecuteMsg, QueryMsg, ConfigResponse, MintCountResponse, MintPriceResponse, MintableNumTokensResponse, StartTimeResponse, StatusResponse, Status } from "./VendingMinterWlFlex.types";
 import { VendingMinterWlFlexQueryClient } from "./VendingMinterWlFlex.client";
 export interface VendingMinterWlFlexReactQuery<TResponse, TData = TResponse> {
   client: VendingMinterWlFlexQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface VendingMinterWlFlexStatusQuery<TData> extends VendingMinterWlFlexReactQuery<StatusResponse, TData> {}
 export function useVendingMinterWlFlexStatusQuery<TData = StatusResponse>({

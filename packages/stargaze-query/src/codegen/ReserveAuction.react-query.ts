@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { Uint128, InstantiateMsg, Coin, ExecuteMsg, Timestamp, Uint64, QueryMsg, QueryOptionsForTupleOfStringAndString, QueryOptionsForTupleOfuint64AndTupleOfStringAndString, Addr, AuctionResponse, Auction, HighBid, AuctionsResponse, ConfigResponse, Config } from "./ReserveAuction.types";
 import { ReserveAuctionQueryClient } from "./ReserveAuction.client";
 export interface ReserveAuctionReactQuery<TResponse, TData = TResponse> {
   client: ReserveAuctionQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface ReserveAuctionAuctionsByEndTimeQuery<TData> extends ReserveAuctionReactQuery<AuctionsResponse, TData> {
   args: {

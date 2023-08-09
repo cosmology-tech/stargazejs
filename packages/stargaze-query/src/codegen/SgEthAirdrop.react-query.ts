@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { Addr, InstantiateMsg, ExecuteMsg, QueryMsg, Boolean } from "./SgEthAirdrop.types";
 import { SgEthAirdropQueryClient } from "./SgEthAirdrop.client";
 export interface SgEthAirdropReactQuery<TResponse, TData = TResponse> {
   client: SgEthAirdropQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface SgEthAirdropGetMinterQuery<TData> extends SgEthAirdropReactQuery<Addr, TData> {}
 export function useSgEthAirdropGetMinterQuery<TData = Addr>({

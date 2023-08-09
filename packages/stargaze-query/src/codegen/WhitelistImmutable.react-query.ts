@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { InstantiateMsg, ExecuteMsg, QueryMsg, Uint64, Addr, ConfigResponse, Config, Boolean, PerAddressLimitResponse } from "./WhitelistImmutable.types";
 import { WhitelistImmutableQueryClient } from "./WhitelistImmutable.client";
 export interface WhitelistImmutableReactQuery<TResponse, TData = TResponse> {
   client: WhitelistImmutableQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface WhitelistImmutablePerAddressLimitQuery<TData> extends WhitelistImmutableReactQuery<PerAddressLimitResponse, TData> {}
 export function useWhitelistImmutablePerAddressLimitQuery<TData = PerAddressLimitResponse>({

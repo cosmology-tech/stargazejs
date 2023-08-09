@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { Expiration, Timestamp, Uint64, AllNftInfoResponse, OwnerOfResponse, Approval, NftInfoResponseForMetadata, Metadata, Trait, AllOperatorsResponse, AllTokensResponse, ApprovalResponse, ApprovalsResponse, Decimal, CollectionInfoResponse, RoyaltyInfoResponse, ContractInfoResponse, InstantiateMsg, CollectionInfoForRoyaltyInfoResponse, MinterResponse, NftInfoResponse, NumTokensResponse, OperatorsResponse, QueryMsg, TokensResponse } from "./SG721MetadataOnchain.types";
 import { SG721MetadataOnchainQueryClient } from "./SG721MetadataOnchain.client";
 export interface SG721MetadataOnchainReactQuery<TResponse, TData = TResponse> {
   client: SG721MetadataOnchainQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface SG721MetadataOnchainCollectionInfoQuery<TData> extends SG721MetadataOnchainReactQuery<CollectionInfoResponse, TData> {}
 export function useSG721MetadataOnchainCollectionInfoQuery<TData = CollectionInfoResponse>({

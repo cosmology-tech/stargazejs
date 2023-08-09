@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { Timestamp, Uint64, Uint128, InstantiateMsg, Member, Coin, ExecuteMsg, AddMembersMsg, RemoveMembersMsg, QueryMsg, CosmosMsgForEmpty, BankMsg, WasmMsg, Binary, Empty, AdminListResponse, CanExecuteResponse, ConfigResponse, HasEndedResponse, HasMemberResponse, HasStartedResponse, IsActiveResponse, MemberResponse, MembersResponse } from "./WhitelistFlex.types";
 import { WhitelistFlexQueryClient } from "./WhitelistFlex.client";
 export interface WhitelistFlexReactQuery<TResponse, TData = TResponse> {
   client: WhitelistFlexQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface WhitelistFlexCanExecuteQuery<TData> extends WhitelistFlexReactQuery<CanExecuteResponse, TData> {
   args: {

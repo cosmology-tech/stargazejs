@@ -3,31 +3,33 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-import { UseQueryOptions } from "react-query";
+import { UseQueryOptions } from "@tanstack/react-query";
 import { ConfigResponse, MintCountResponse, MintPriceResponse, MintableNumTokensResponse, StartTimeResponse, StatusResponse } from "./VendingMinterWlFlex.types";
 import { VendingMinterWlFlexQueryClient } from "./VendingMinterWlFlex.client";
 export interface VendingMinterWlFlexReactQuery<TResponse, TData = TResponse> {
     client: VendingMinterWlFlexQueryClient;
-    options?: UseQueryOptions<TResponse, Error, TData>;
+    options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+        initialData?: undefined;
+    };
 }
 export interface VendingMinterWlFlexStatusQuery<TData> extends VendingMinterWlFlexReactQuery<StatusResponse, TData> {
 }
-export declare function useVendingMinterWlFlexStatusQuery<TData = StatusResponse>({ client, options }: VendingMinterWlFlexStatusQuery<TData>): any;
+export declare function useVendingMinterWlFlexStatusQuery<TData = StatusResponse>({ client, options }: VendingMinterWlFlexStatusQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface VendingMinterWlFlexMintCountQuery<TData> extends VendingMinterWlFlexReactQuery<MintCountResponse, TData> {
     args: {
         address: string;
     };
 }
-export declare function useVendingMinterWlFlexMintCountQuery<TData = MintCountResponse>({ client, args, options }: VendingMinterWlFlexMintCountQuery<TData>): any;
+export declare function useVendingMinterWlFlexMintCountQuery<TData = MintCountResponse>({ client, args, options }: VendingMinterWlFlexMintCountQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface VendingMinterWlFlexMintPriceQuery<TData> extends VendingMinterWlFlexReactQuery<MintPriceResponse, TData> {
 }
-export declare function useVendingMinterWlFlexMintPriceQuery<TData = MintPriceResponse>({ client, options }: VendingMinterWlFlexMintPriceQuery<TData>): any;
+export declare function useVendingMinterWlFlexMintPriceQuery<TData = MintPriceResponse>({ client, options }: VendingMinterWlFlexMintPriceQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface VendingMinterWlFlexStartTimeQuery<TData> extends VendingMinterWlFlexReactQuery<StartTimeResponse, TData> {
 }
-export declare function useVendingMinterWlFlexStartTimeQuery<TData = StartTimeResponse>({ client, options }: VendingMinterWlFlexStartTimeQuery<TData>): any;
+export declare function useVendingMinterWlFlexStartTimeQuery<TData = StartTimeResponse>({ client, options }: VendingMinterWlFlexStartTimeQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface VendingMinterWlFlexMintableNumTokensQuery<TData> extends VendingMinterWlFlexReactQuery<MintableNumTokensResponse, TData> {
 }
-export declare function useVendingMinterWlFlexMintableNumTokensQuery<TData = MintableNumTokensResponse>({ client, options }: VendingMinterWlFlexMintableNumTokensQuery<TData>): any;
+export declare function useVendingMinterWlFlexMintableNumTokensQuery<TData = MintableNumTokensResponse>({ client, options }: VendingMinterWlFlexMintableNumTokensQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface VendingMinterWlFlexConfigQuery<TData> extends VendingMinterWlFlexReactQuery<ConfigResponse, TData> {
 }
-export declare function useVendingMinterWlFlexConfigQuery<TData = ConfigResponse>({ client, options }: VendingMinterWlFlexConfigQuery<TData>): any;
+export declare function useVendingMinterWlFlexConfigQuery<TData = ConfigResponse>({ client, options }: VendingMinterWlFlexConfigQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;

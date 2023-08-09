@@ -4,12 +4,14 @@
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
 
-import { UseQueryOptions, useQuery } from "react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { Group, Admin, Binary, InstantiateMsg, ContractInstantiateMsg, ExecuteMsg, QueryMsg, AdminResponse, Addr, MemberListResponse, Member, MemberResponse } from "./Splits.types";
 import { SplitsQueryClient } from "./Splits.client";
 export interface SplitsReactQuery<TResponse, TData = TResponse> {
   client: SplitsQueryClient;
-  options?: UseQueryOptions<TResponse, Error, TData>;
+  options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+    initialData?: undefined;
+  };
 }
 export interface SplitsListMembersQuery<TData> extends SplitsReactQuery<MemberListResponse, TData> {
   args: {

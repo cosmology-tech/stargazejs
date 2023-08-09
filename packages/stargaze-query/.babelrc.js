@@ -12,6 +12,13 @@ module.exports = (api) => {
       '@babel/plugin-proposal-numeric-separator',
       '@babel/proposal-export-default-from'
     ],
-    presets: useESModules ? ['@babel/typescript'] : ['@babel/typescript', '@babel/env']
+    presets: useESModules ? [
+      '@babel/typescript',
+      '@babel/preset-react',
+    ] : [
+      '@babel/typescript',
+      '@babel/env',
+      '@babel/preset-react',
+     ]
   };
 };

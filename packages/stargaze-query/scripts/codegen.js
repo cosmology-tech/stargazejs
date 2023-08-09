@@ -140,7 +140,8 @@ telescope({
           enabled: true
         },
         reactQuery: {
-          enabled: true
+          enabled: true,
+          version: 'v4'
         },
         useContractsHooks: {
           enabled: true

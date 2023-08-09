@@ -3,12 +3,14 @@
 * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
 * and run the @cosmwasm/ts-codegen generate command to regenerate this file.
 */
-import { UseQueryOptions } from "react-query";
+import { UseQueryOptions } from "@tanstack/react-query";
 import { AdminResponse, Addr, MemberListResponse, MemberResponse } from "./Splits.types";
 import { SplitsQueryClient } from "./Splits.client";
 export interface SplitsReactQuery<TResponse, TData = TResponse> {
     client: SplitsQueryClient;
-    options?: UseQueryOptions<TResponse, Error, TData>;
+    options?: Omit<UseQueryOptions<TResponse, Error, TData>, "'queryKey' | 'queryFn' | 'initialData'"> & {
+        initialData?: undefined;
+    };
 }
 export interface SplitsListMembersQuery<TData> extends SplitsReactQuery<MemberListResponse, TData> {
     args: {
@@ -16,16 +18,16 @@ export interface SplitsListMembersQuery<TData> extends SplitsReactQuery<MemberLi
         startAfter?: string;
     };
 }
-export declare function useSplitsListMembersQuery<TData = MemberListResponse>({ client, args, options }: SplitsListMembersQuery<TData>): any;
+export declare function useSplitsListMembersQuery<TData = MemberListResponse>({ client, args, options }: SplitsListMembersQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface SplitsMemberQuery<TData> extends SplitsReactQuery<MemberResponse, TData> {
     args: {
         address: string;
     };
 }
-export declare function useSplitsMemberQuery<TData = MemberResponse>({ client, args, options }: SplitsMemberQuery<TData>): any;
+export declare function useSplitsMemberQuery<TData = MemberResponse>({ client, args, options }: SplitsMemberQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface SplitsGroupQuery<TData> extends SplitsReactQuery<Addr, TData> {
 }
-export declare function useSplitsGroupQuery<TData = Addr>({ client, options }: SplitsGroupQuery<TData>): any;
+export declare function useSplitsGroupQuery<TData = Addr>({ client, options }: SplitsGroupQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
 export interface SplitsAdminQuery<TData> extends SplitsReactQuery<AdminResponse, TData> {
 }
-export declare function useSplitsAdminQuery<TData = AdminResponse>({ client, options }: SplitsAdminQuery<TData>): any;
+export declare function useSplitsAdminQuery<TData = AdminResponse>({ client, options }: SplitsAdminQuery<TData>): import("@tanstack/react-query").UseQueryResult<TData, Error>;
