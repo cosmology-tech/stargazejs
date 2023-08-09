@@ -139,12 +139,12 @@ telescope({
         messageComposer: {
           enabled: true
         },
-        // reactQuery: {
-        //   enabled: true
-        // },
-        // useContractsHooks: {
-        //   enabled: true
-        // }
+        reactQuery: {
+          enabled: true
+        },
+        useContractsHooks: {
+          enabled: true
+        }
       }
     },
     aminoEncoding: {

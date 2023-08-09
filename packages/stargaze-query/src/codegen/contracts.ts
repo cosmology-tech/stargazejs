@@ -7,114 +7,183 @@
 import * as _0 from "./SG721Base.types";
 import * as _1 from "./SG721Base.client";
 import * as _2 from "./SG721Base.message-composer";
-import * as _3 from "./SG721MetadataOnchain.types";
-import * as _4 from "./SG721MetadataOnchain.client";
-import * as _5 from "./SG721MetadataOnchain.message-composer";
-import * as _6 from "./Sg721Nt.types";
-import * as _7 from "./Sg721Nt.client";
-import * as _8 from "./Sg721Nt.message-composer";
-import * as _9 from "./Sg721Updatable.types";
-import * as _10 from "./Sg721Updatable.client";
-import * as _11 from "./Sg721Updatable.message-composer";
-import * as _12 from "./BaseFactory.types";
-import * as _13 from "./BaseFactory.client";
-import * as _14 from "./BaseFactory.message-composer";
-import * as _15 from "./VendingFactory.types";
-import * as _16 from "./VendingFactory.client";
-import * as _17 from "./VendingFactory.message-composer";
-import * as _18 from "./BaseMinter.types";
-import * as _19 from "./BaseMinter.client";
-import * as _20 from "./BaseMinter.message-composer";
-import * as _21 from "./VendingMinter.types";
-import * as _22 from "./VendingMinter.client";
-import * as _23 from "./VendingMinter.message-composer";
-import * as _24 from "./VendingMinterWlFlex.types";
-import * as _25 from "./VendingMinterWlFlex.client";
-import * as _26 from "./VendingMinterWlFlex.message-composer";
-import * as _27 from "./SgEthAirdrop.types";
-import * as _28 from "./SgEthAirdrop.client";
-import * as _29 from "./SgEthAirdrop.message-composer";
-import * as _30 from "./Splits.types";
-import * as _31 from "./Splits.client";
-import * as _32 from "./Splits.message-composer";
-import * as _33 from "./Whitelist.types";
-import * as _34 from "./Whitelist.client";
-import * as _35 from "./Whitelist.message-composer";
-import * as _36 from "./WhitelistFlex.types";
-import * as _37 from "./WhitelistFlex.client";
-import * as _38 from "./WhitelistFlex.message-composer";
-import * as _39 from "./WhitelistImmutable.types";
-import * as _40 from "./WhitelistImmutable.client";
-import * as _41 from "./WhitelistImmutable.message-composer";
-import * as _42 from "./Marketplace.types";
-import * as _43 from "./Marketplace.client";
-import * as _44 from "./Marketplace.message-composer";
-import * as _45 from "./ReserveAuction.types";
-import * as _46 from "./ReserveAuction.client";
-import * as _47 from "./ReserveAuction.message-composer";
+import * as _3 from "./SG721Base.react-query";
+import * as _4 from "./SG721Base.provider";
+import * as _5 from "./SG721MetadataOnchain.types";
+import * as _6 from "./SG721MetadataOnchain.client";
+import * as _7 from "./SG721MetadataOnchain.message-composer";
+import * as _8 from "./SG721MetadataOnchain.react-query";
+import * as _9 from "./SG721MetadataOnchain.provider";
+import * as _10 from "./Sg721Nt.types";
+import * as _11 from "./Sg721Nt.client";
+import * as _12 from "./Sg721Nt.message-composer";
+import * as _13 from "./Sg721Nt.react-query";
+import * as _14 from "./Sg721Updatable.types";
+import * as _15 from "./Sg721Updatable.client";
+import * as _16 from "./Sg721Updatable.message-composer";
+import * as _17 from "./Sg721Updatable.react-query";
+import * as _18 from "./Sg721Updatable.provider";
+import * as _19 from "./BaseFactory.types";
+import * as _20 from "./BaseFactory.client";
+import * as _21 from "./BaseFactory.message-composer";
+import * as _22 from "./BaseFactory.react-query";
+import * as _23 from "./BaseFactory.provider";
+import * as _24 from "./VendingFactory.types";
+import * as _25 from "./VendingFactory.client";
+import * as _26 from "./VendingFactory.message-composer";
+import * as _27 from "./VendingFactory.react-query";
+import * as _28 from "./BaseMinter.types";
+import * as _29 from "./BaseMinter.client";
+import * as _30 from "./BaseMinter.message-composer";
+import * as _31 from "./BaseMinter.react-query";
+import * as _32 from "./BaseMinter.provider";
+import * as _33 from "./VendingMinter.types";
+import * as _34 from "./VendingMinter.client";
+import * as _35 from "./VendingMinter.message-composer";
+import * as _36 from "./VendingMinter.react-query";
+import * as _37 from "./VendingMinter.provider";
+import * as _38 from "./VendingMinterWlFlex.types";
+import * as _39 from "./VendingMinterWlFlex.client";
+import * as _40 from "./VendingMinterWlFlex.message-composer";
+import * as _41 from "./VendingMinterWlFlex.react-query";
+import * as _42 from "./VendingMinterWlFlex.provider";
+import * as _43 from "./SgEthAirdrop.types";
+import * as _44 from "./SgEthAirdrop.client";
+import * as _45 from "./SgEthAirdrop.message-composer";
+import * as _46 from "./SgEthAirdrop.react-query";
+import * as _47 from "./SgEthAirdrop.provider";
+import * as _48 from "./Splits.types";
+import * as _49 from "./Splits.client";
+import * as _50 from "./Splits.message-composer";
+import * as _51 from "./Splits.react-query";
+import * as _52 from "./Splits.provider";
+import * as _53 from "./Whitelist.types";
+import * as _54 from "./Whitelist.client";
+import * as _55 from "./Whitelist.message-composer";
+import * as _56 from "./Whitelist.react-query";
+import * as _57 from "./Whitelist.provider";
+import * as _58 from "./WhitelistFlex.types";
+import * as _59 from "./WhitelistFlex.client";
+import * as _60 from "./WhitelistFlex.message-composer";
+import * as _61 from "./WhitelistFlex.react-query";
+import * as _62 from "./WhitelistFlex.provider";
+import * as _63 from "./WhitelistImmutable.types";
+import * as _64 from "./WhitelistImmutable.client";
+import * as _65 from "./WhitelistImmutable.message-composer";
+import * as _66 from "./WhitelistImmutable.react-query";
+import * as _67 from "./WhitelistImmutable.provider";
+import * as _68 from "./Marketplace.types";
+import * as _69 from "./Marketplace.client";
+import * as _70 from "./Marketplace.message-composer";
+import * as _71 from "./Marketplace.react-query";
+import * as _72 from "./Marketplace.provider";
+import * as _73 from "./ReserveAuction.types";
+import * as _74 from "./ReserveAuction.client";
+import * as _75 from "./ReserveAuction.message-composer";
+import * as _76 from "./ReserveAuction.react-query";
+import * as _77 from "./ReserveAuction.provider";
+import * as _78 from "./contractContextProviders";
+import * as _79 from "./contractContextBase";
+import * as _80 from "./contracts-context";
 export namespace contracts {
   export const SG721Base = { ..._0,
     ..._1,
-    ..._2
+    ..._2,
+    ..._3,
+    ..._4
   };
-  export const SG721MetadataOnchain = { ..._3,
-    ..._4,
-    ..._5
-  };
-  export const Sg721Nt = { ..._6,
+  export const SG721MetadataOnchain = { ..._5,
+    ..._6,
     ..._7,
-    ..._8
+    ..._8,
+    ..._9
   };
-  export const Sg721Updatable = { ..._9,
-    ..._10,
-    ..._11
+  export const Sg721Nt = { ..._10,
+    ..._11,
+    ..._12,
+    ..._13
   };
-  export const BaseFactory = { ..._12,
-    ..._13,
-    ..._14
-  };
-  export const VendingFactory = { ..._15,
+  export const Sg721Updatable = { ..._14,
+    ..._15,
     ..._16,
-    ..._17
+    ..._17,
+    ..._18
   };
-  export const BaseMinter = { ..._18,
-    ..._19,
-    ..._20
-  };
-  export const VendingMinter = { ..._21,
+  export const BaseFactory = { ..._19,
+    ..._20,
+    ..._21,
     ..._22,
     ..._23
   };
-  export const VendingMinterWlFlex = { ..._24,
+  export const VendingFactory = { ..._24,
     ..._25,
-    ..._26
+    ..._26,
+    ..._27
   };
-  export const SgEthAirdrop = { ..._27,
-    ..._28,
-    ..._29
-  };
-  export const Splits = { ..._30,
+  export const BaseMinter = { ..._28,
+    ..._29,
+    ..._30,
     ..._31,
     ..._32
   };
-  export const Whitelist = { ..._33,
+  export const VendingMinter = { ..._33,
     ..._34,
-    ..._35
+    ..._35,
+    ..._36,
+    ..._37
   };
-  export const WhitelistFlex = { ..._36,
-    ..._37,
-    ..._38
-  };
-  export const WhitelistImmutable = { ..._39,
+  export const VendingMinterWlFlex = { ..._38,
+    ..._39,
     ..._40,
-    ..._41
+    ..._41,
+    ..._42
   };
-  export const Marketplace = { ..._42,
-    ..._43,
-    ..._44
-  };
-  export const ReserveAuction = { ..._45,
+  export const SgEthAirdrop = { ..._43,
+    ..._44,
+    ..._45,
     ..._46,
     ..._47
+  };
+  export const Splits = { ..._48,
+    ..._49,
+    ..._50,
+    ..._51,
+    ..._52
+  };
+  export const Whitelist = { ..._53,
+    ..._54,
+    ..._55,
+    ..._56,
+    ..._57
+  };
+  export const WhitelistFlex = { ..._58,
+    ..._59,
+    ..._60,
+    ..._61,
+    ..._62
+  };
+  export const WhitelistImmutable = { ..._63,
+    ..._64,
+    ..._65,
+    ..._66,
+    ..._67
+  };
+  export const Marketplace = { ..._68,
+    ..._69,
+    ..._70,
+    ..._71,
+    ..._72
+  };
+  export const ReserveAuction = { ..._73,
+    ..._74,
+    ..._75,
+    ..._76,
+    ..._77
+  };
+  export const contractContextProviders = { ..._78
+  };
+  export const contractContextBase = { ..._79
+  };
+  export const contractsContext = { ..._80
   };
 }
