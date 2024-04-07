@@ -19,6 +19,23 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      base: {
+        node: {
+          v1beta1: new (await import("../cosmos/base/node/v1beta1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
+      },
+      circuit: {
+        v1: new (await import("../cosmos/circuit/v1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      consensus: {
+        v1: new (await import("../cosmos/consensus/v1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       distribution: {
         v1beta1: new (await import("../cosmos/distribution/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -52,6 +69,21 @@ export const createLCDClient = async ({
       stargaze: {
         alloc: {
           v1beta1: new (await import("../stargaze/alloc/v1beta1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        },
+        cron: {
+          v1: new (await import("../stargaze/cron/v1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        },
+        globalfee: {
+          v1: new (await import("../stargaze/globalfee/v1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        },
+        mint: {
+          v1beta1: new (await import("./stargaze/mint/v1beta1/query.lcd")).LCDQueryClient({
             requestClient
           })
         },

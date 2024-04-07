@@ -1,9 +1,19 @@
 import { Action } from "./claim_record";
-import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
+import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface MsgInitialClaim {
   sender: string;
+}
+export interface MsgInitialClaimProtoMsg {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim";
+  value: Uint8Array;
+}
+export interface MsgInitialClaimAmino {
+  sender?: string;
+}
+export interface MsgInitialClaimAminoMsg {
+  type: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim";
+  value: MsgInitialClaimAmino;
 }
 export interface MsgInitialClaimSDKType {
   sender: string;
@@ -12,6 +22,18 @@ export interface MsgInitialClaimResponse {
   /** total initial claimable amount for the user */
   claimedAmount: Coin[];
 }
+export interface MsgInitialClaimResponseProtoMsg {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaimResponse";
+  value: Uint8Array;
+}
+export interface MsgInitialClaimResponseAmino {
+  /** total initial claimable amount for the user */
+  claimed_amount?: CoinAmino[];
+}
+export interface MsgInitialClaimResponseAminoMsg {
+  type: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaimResponse";
+  value: MsgInitialClaimResponseAmino;
+}
 export interface MsgInitialClaimResponseSDKType {
   claimed_amount: CoinSDKType[];
 }
@@ -19,6 +41,19 @@ export interface MsgClaimFor {
   sender: string;
   address: string;
   action: Action;
+}
+export interface MsgClaimForProtoMsg {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor";
+  value: Uint8Array;
+}
+export interface MsgClaimForAmino {
+  sender?: string;
+  address?: string;
+  action?: Action;
+}
+export interface MsgClaimForAminoMsg {
+  type: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor";
+  value: MsgClaimForAmino;
 }
 export interface MsgClaimForSDKType {
   sender: string;
@@ -30,6 +65,19 @@ export interface MsgClaimForResponse {
   /** total initial claimable amount for the user */
   claimedAmount: Coin[];
 }
+export interface MsgClaimForResponseProtoMsg {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimForResponse";
+  value: Uint8Array;
+}
+export interface MsgClaimForResponseAmino {
+  address?: string;
+  /** total initial claimable amount for the user */
+  claimed_amount?: CoinAmino[];
+}
+export interface MsgClaimForResponseAminoMsg {
+  type: "/publicawesome.stargaze.claim.v1beta1.MsgClaimForResponse";
+  value: MsgClaimForResponseAmino;
+}
 export interface MsgClaimForResponseSDKType {
   address: string;
   claimed_amount: CoinSDKType[];
@@ -40,14 +88,15 @@ function createBaseMsgInitialClaim(): MsgInitialClaim {
   };
 }
 export const MsgInitialClaim = {
-  encode(message: MsgInitialClaim, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim",
+  encode(message: MsgInitialClaim, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaim {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgInitialClaim {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgInitialClaim();
     while (reader.pos < end) {
@@ -63,10 +112,37 @@ export const MsgInitialClaim = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgInitialClaim>): MsgInitialClaim {
+  fromPartial(object: Partial<MsgInitialClaim>): MsgInitialClaim {
     const message = createBaseMsgInitialClaim();
     message.sender = object.sender ?? "";
     return message;
+  },
+  fromAmino(object: MsgInitialClaimAmino): MsgInitialClaim {
+    const message = createBaseMsgInitialClaim();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    return message;
+  },
+  toAmino(message: MsgInitialClaim): MsgInitialClaimAmino {
+    const obj: any = {};
+    obj.sender = message.sender === "" ? undefined : message.sender;
+    return obj;
+  },
+  fromAminoMsg(object: MsgInitialClaimAminoMsg): MsgInitialClaim {
+    return MsgInitialClaim.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgInitialClaimProtoMsg): MsgInitialClaim {
+    return MsgInitialClaim.decode(message.value);
+  },
+  toProto(message: MsgInitialClaim): Uint8Array {
+    return MsgInitialClaim.encode(message).finish();
+  },
+  toProtoMsg(message: MsgInitialClaim): MsgInitialClaimProtoMsg {
+    return {
+      typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim",
+      value: MsgInitialClaim.encode(message).finish()
+    };
   }
 };
 function createBaseMsgInitialClaimResponse(): MsgInitialClaimResponse {
@@ -75,14 +151,15 @@ function createBaseMsgInitialClaimResponse(): MsgInitialClaimResponse {
   };
 }
 export const MsgInitialClaimResponse = {
-  encode(message: MsgInitialClaimResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaimResponse",
+  encode(message: MsgInitialClaimResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.claimedAmount) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInitialClaimResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgInitialClaimResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgInitialClaimResponse();
     while (reader.pos < end) {
@@ -98,10 +175,39 @@ export const MsgInitialClaimResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgInitialClaimResponse>): MsgInitialClaimResponse {
+  fromPartial(object: Partial<MsgInitialClaimResponse>): MsgInitialClaimResponse {
     const message = createBaseMsgInitialClaimResponse();
     message.claimedAmount = object.claimedAmount?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: MsgInitialClaimResponseAmino): MsgInitialClaimResponse {
+    const message = createBaseMsgInitialClaimResponse();
+    message.claimedAmount = object.claimed_amount?.map(e => Coin.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgInitialClaimResponse): MsgInitialClaimResponseAmino {
+    const obj: any = {};
+    if (message.claimedAmount) {
+      obj.claimed_amount = message.claimedAmount.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.claimed_amount = message.claimedAmount;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgInitialClaimResponseAminoMsg): MsgInitialClaimResponse {
+    return MsgInitialClaimResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgInitialClaimResponseProtoMsg): MsgInitialClaimResponse {
+    return MsgInitialClaimResponse.decode(message.value);
+  },
+  toProto(message: MsgInitialClaimResponse): Uint8Array {
+    return MsgInitialClaimResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgInitialClaimResponse): MsgInitialClaimResponseProtoMsg {
+    return {
+      typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaimResponse",
+      value: MsgInitialClaimResponse.encode(message).finish()
+    };
   }
 };
 function createBaseMsgClaimFor(): MsgClaimFor {
@@ -112,7 +218,8 @@ function createBaseMsgClaimFor(): MsgClaimFor {
   };
 }
 export const MsgClaimFor = {
-  encode(message: MsgClaimFor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
+  encode(message: MsgClaimFor, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -124,8 +231,8 @@ export const MsgClaimFor = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimFor {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgClaimFor {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgClaimFor();
     while (reader.pos < end) {
@@ -147,12 +254,47 @@ export const MsgClaimFor = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgClaimFor>): MsgClaimFor {
+  fromPartial(object: Partial<MsgClaimFor>): MsgClaimFor {
     const message = createBaseMsgClaimFor();
     message.sender = object.sender ?? "";
     message.address = object.address ?? "";
     message.action = object.action ?? 0;
     return message;
+  },
+  fromAmino(object: MsgClaimForAmino): MsgClaimFor {
+    const message = createBaseMsgClaimFor();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.action !== undefined && object.action !== null) {
+      message.action = object.action;
+    }
+    return message;
+  },
+  toAmino(message: MsgClaimFor): MsgClaimForAmino {
+    const obj: any = {};
+    obj.sender = message.sender === "" ? undefined : message.sender;
+    obj.address = message.address === "" ? undefined : message.address;
+    obj.action = message.action === 0 ? undefined : message.action;
+    return obj;
+  },
+  fromAminoMsg(object: MsgClaimForAminoMsg): MsgClaimFor {
+    return MsgClaimFor.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgClaimForProtoMsg): MsgClaimFor {
+    return MsgClaimFor.decode(message.value);
+  },
+  toProto(message: MsgClaimFor): Uint8Array {
+    return MsgClaimFor.encode(message).finish();
+  },
+  toProtoMsg(message: MsgClaimFor): MsgClaimForProtoMsg {
+    return {
+      typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
+      value: MsgClaimFor.encode(message).finish()
+    };
   }
 };
 function createBaseMsgClaimForResponse(): MsgClaimForResponse {
@@ -162,7 +304,8 @@ function createBaseMsgClaimForResponse(): MsgClaimForResponse {
   };
 }
 export const MsgClaimForResponse = {
-  encode(message: MsgClaimForResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimForResponse",
+  encode(message: MsgClaimForResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -171,8 +314,8 @@ export const MsgClaimForResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClaimForResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgClaimForResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgClaimForResponse();
     while (reader.pos < end) {
@@ -191,10 +334,43 @@ export const MsgClaimForResponse = {
     }
     return message;
   },
-  fromPartial(object: DeepPartial<MsgClaimForResponse>): MsgClaimForResponse {
+  fromPartial(object: Partial<MsgClaimForResponse>): MsgClaimForResponse {
     const message = createBaseMsgClaimForResponse();
     message.address = object.address ?? "";
     message.claimedAmount = object.claimedAmount?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: MsgClaimForResponseAmino): MsgClaimForResponse {
+    const message = createBaseMsgClaimForResponse();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    message.claimedAmount = object.claimed_amount?.map(e => Coin.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgClaimForResponse): MsgClaimForResponseAmino {
+    const obj: any = {};
+    obj.address = message.address === "" ? undefined : message.address;
+    if (message.claimedAmount) {
+      obj.claimed_amount = message.claimedAmount.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.claimed_amount = message.claimedAmount;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgClaimForResponseAminoMsg): MsgClaimForResponse {
+    return MsgClaimForResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgClaimForResponseProtoMsg): MsgClaimForResponse {
+    return MsgClaimForResponse.decode(message.value);
+  },
+  toProto(message: MsgClaimForResponse): Uint8Array {
+    return MsgClaimForResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgClaimForResponse): MsgClaimForResponseProtoMsg {
+    return {
+      typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimForResponse",
+      value: MsgClaimForResponse.encode(message).finish()
+    };
   }
 };

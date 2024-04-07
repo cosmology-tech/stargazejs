@@ -54,7 +54,7 @@
     "@babel/preset-env": "7.19.4",
     "@babel/preset-react": "7.22.5",
     "@babel/preset-typescript": "^7.18.6",
-    "@cosmology/telescope": "1.5.3",
+    "@cosmology/telescope": "1.5.4",
     "@protobufs/cosmos": "^0.0.11",
     "@protobufs/cosmwasm": "^0.0.11",
     "@protobufs/ibc": "^0.0.11",

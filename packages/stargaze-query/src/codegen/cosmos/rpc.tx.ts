@@ -11,6 +11,12 @@ export const createRPCMsgClient = async ({
     bank: {
       v1beta1: new (await import("./bank/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
+    circuit: {
+      v1: new (await import("./circuit/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    consensus: {
+      v1: new (await import("./consensus/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     distribution: {
       v1beta1: new (await import("./distribution/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
