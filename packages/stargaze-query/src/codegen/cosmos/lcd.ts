@@ -26,16 +26,6 @@ export const createLCDClient = async ({
           })
         }
       },
-      circuit: {
-        v1: new (await import("./circuit/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      consensus: {
-        v1: new (await import("./consensus/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
       distribution: {
         v1beta1: new (await import("./distribution/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -46,11 +36,6 @@ export const createLCDClient = async ({
           requestClient
         }),
         v1beta1: new (await import("./gov/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      staking: {
-        v1beta1: new (await import("./staking/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

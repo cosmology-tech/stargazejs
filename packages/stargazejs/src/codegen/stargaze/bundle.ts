@@ -1,22 +1,22 @@
-import * as _170 from "./mint/v1beta1/genesis";
-import * as _171 from "./mint/v1beta1/mint";
-import * as _172 from "./mint/v1beta1/query";
-import * as _306 from "./mint/v1beta1/query.lcd";
-import * as _307 from "./mint/v1beta1/query.rpc.Query";
-import * as _320 from "./lcd";
-import * as _321 from "./rpc.query";
+import * as _133 from "./mint/v1beta1/genesis";
+import * as _134 from "./mint/v1beta1/mint";
+import * as _135 from "./mint/v1beta1/query";
+import * as _252 from "./mint/v1beta1/query.lcd";
+import * as _253 from "./mint/v1beta1/query.rpc.Query";
+import * as _266 from "./lcd";
+import * as _267 from "./rpc.query";
 export namespace stargaze {
   export namespace mint {
     export const v1beta1 = {
-      ..._170,
-      ..._171,
-      ..._172,
-      ..._306,
-      ..._307
+      ..._133,
+      ..._134,
+      ..._135,
+      ..._252,
+      ..._253
     };
   }
   export const ClientFactory = {
-    ..._320,
-    ..._321
+    ..._266,
+    ..._267
   };
 }
