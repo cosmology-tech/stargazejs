@@ -1,8 +1,9 @@
 import { Action } from "./claim_record";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
+import { isSet, DeepPartial, toTimestamp, fromTimestamp } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface ClaimAuthorization {
   contractAddress: string;
   action: Action;
@@ -70,6 +71,15 @@ function createBaseClaimAuthorization(): ClaimAuthorization {
 }
 export const ClaimAuthorization = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.ClaimAuthorization",
+  is(o: any): o is ClaimAuthorization {
+    return o && (o.$typeUrl === ClaimAuthorization.typeUrl || typeof o.contractAddress === "string" && isSet(o.action));
+  },
+  isSDK(o: any): o is ClaimAuthorizationSDKType {
+    return o && (o.$typeUrl === ClaimAuthorization.typeUrl || typeof o.contract_address === "string" && isSet(o.action));
+  },
+  isAmino(o: any): o is ClaimAuthorizationAmino {
+    return o && (o.$typeUrl === ClaimAuthorization.typeUrl || typeof o.contract_address === "string" && isSet(o.action));
+  },
   encode(message: ClaimAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
@@ -99,7 +109,7 @@ export const ClaimAuthorization = {
     }
     return message;
   },
-  fromPartial(object: Partial<ClaimAuthorization>): ClaimAuthorization {
+  fromPartial(object: DeepPartial<ClaimAuthorization>): ClaimAuthorization {
     const message = createBaseClaimAuthorization();
     message.contractAddress = object.contractAddress ?? "";
     message.action = object.action ?? 0;
@@ -137,6 +147,7 @@ export const ClaimAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(ClaimAuthorization.typeUrl, ClaimAuthorization);
 function createBaseParams(): Params {
   return {
     airdropEnabled: false,
@@ -149,6 +160,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.airdropEnabled === "boolean" && Timestamp.is(o.airdropStartTime) && Duration.is(o.durationUntilDecay) && Duration.is(o.durationOfDecay) && typeof o.claimDenom === "string" && Array.isArray(o.allowedClaimers) && (!o.allowedClaimers.length || ClaimAuthorization.is(o.allowedClaimers[0])));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.airdrop_enabled === "boolean" && Timestamp.isSDK(o.airdrop_start_time) && Duration.isSDK(o.duration_until_decay) && Duration.isSDK(o.duration_of_decay) && typeof o.claim_denom === "string" && Array.isArray(o.allowed_claimers) && (!o.allowed_claimers.length || ClaimAuthorization.isSDK(o.allowed_claimers[0])));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.airdrop_enabled === "boolean" && Timestamp.isAmino(o.airdrop_start_time) && Duration.isAmino(o.duration_until_decay) && Duration.isAmino(o.duration_of_decay) && typeof o.claim_denom === "string" && Array.isArray(o.allowed_claimers) && (!o.allowed_claimers.length || ClaimAuthorization.isAmino(o.allowed_claimers[0])));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.airdropEnabled === true) {
       writer.uint32(8).bool(message.airdropEnabled);
@@ -202,7 +222,7 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: Partial<Params>): Params {
+  fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.airdropEnabled = object.airdropEnabled ?? false;
     message.airdropStartTime = object.airdropStartTime ?? undefined;
@@ -262,3 +282,4 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

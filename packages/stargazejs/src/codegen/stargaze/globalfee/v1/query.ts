@@ -1,5 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType, CodeAuthorization, CodeAuthorizationAmino, CodeAuthorizationSDKType, ContractAuthorization, ContractAuthorizationAmino, ContractAuthorizationSDKType } from "./globalfee";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface QueryCodeAuthorizationRequest {
   codeId: bigint;
 }
@@ -134,6 +136,15 @@ function createBaseQueryCodeAuthorizationRequest(): QueryCodeAuthorizationReques
 }
 export const QueryCodeAuthorizationRequest = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryCodeAuthorizationRequest",
+  is(o: any): o is QueryCodeAuthorizationRequest {
+    return o && (o.$typeUrl === QueryCodeAuthorizationRequest.typeUrl || typeof o.codeId === "bigint");
+  },
+  isSDK(o: any): o is QueryCodeAuthorizationRequestSDKType {
+    return o && (o.$typeUrl === QueryCodeAuthorizationRequest.typeUrl || typeof o.code_id === "bigint");
+  },
+  isAmino(o: any): o is QueryCodeAuthorizationRequestAmino {
+    return o && (o.$typeUrl === QueryCodeAuthorizationRequest.typeUrl || typeof o.code_id === "bigint");
+  },
   encode(message: QueryCodeAuthorizationRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
@@ -157,7 +168,7 @@ export const QueryCodeAuthorizationRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryCodeAuthorizationRequest>): QueryCodeAuthorizationRequest {
+  fromPartial(object: DeepPartial<QueryCodeAuthorizationRequest>): QueryCodeAuthorizationRequest {
     const message = createBaseQueryCodeAuthorizationRequest();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
     return message;
@@ -190,6 +201,7 @@ export const QueryCodeAuthorizationRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryCodeAuthorizationRequest.typeUrl, QueryCodeAuthorizationRequest);
 function createBaseQueryCodeAuthorizationResponse(): QueryCodeAuthorizationResponse {
   return {
     methods: []
@@ -197,6 +209,15 @@ function createBaseQueryCodeAuthorizationResponse(): QueryCodeAuthorizationRespo
 }
 export const QueryCodeAuthorizationResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryCodeAuthorizationResponse",
+  is(o: any): o is QueryCodeAuthorizationResponse {
+    return o && (o.$typeUrl === QueryCodeAuthorizationResponse.typeUrl || Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isSDK(o: any): o is QueryCodeAuthorizationResponseSDKType {
+    return o && (o.$typeUrl === QueryCodeAuthorizationResponse.typeUrl || Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isAmino(o: any): o is QueryCodeAuthorizationResponseAmino {
+    return o && (o.$typeUrl === QueryCodeAuthorizationResponse.typeUrl || Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
   encode(message: QueryCodeAuthorizationResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.methods) {
       writer.uint32(10).string(v!);
@@ -220,7 +241,7 @@ export const QueryCodeAuthorizationResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryCodeAuthorizationResponse>): QueryCodeAuthorizationResponse {
+  fromPartial(object: DeepPartial<QueryCodeAuthorizationResponse>): QueryCodeAuthorizationResponse {
     const message = createBaseQueryCodeAuthorizationResponse();
     message.methods = object.methods?.map(e => e) || [];
     return message;
@@ -255,6 +276,7 @@ export const QueryCodeAuthorizationResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryCodeAuthorizationResponse.typeUrl, QueryCodeAuthorizationResponse);
 function createBaseQueryContractAuthorizationRequest(): QueryContractAuthorizationRequest {
   return {
     contractAddress: ""
@@ -262,6 +284,15 @@ function createBaseQueryContractAuthorizationRequest(): QueryContractAuthorizati
 }
 export const QueryContractAuthorizationRequest = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryContractAuthorizationRequest",
+  is(o: any): o is QueryContractAuthorizationRequest {
+    return o && (o.$typeUrl === QueryContractAuthorizationRequest.typeUrl || typeof o.contractAddress === "string");
+  },
+  isSDK(o: any): o is QueryContractAuthorizationRequestSDKType {
+    return o && (o.$typeUrl === QueryContractAuthorizationRequest.typeUrl || typeof o.contract_address === "string");
+  },
+  isAmino(o: any): o is QueryContractAuthorizationRequestAmino {
+    return o && (o.$typeUrl === QueryContractAuthorizationRequest.typeUrl || typeof o.contract_address === "string");
+  },
   encode(message: QueryContractAuthorizationRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
@@ -285,7 +316,7 @@ export const QueryContractAuthorizationRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractAuthorizationRequest>): QueryContractAuthorizationRequest {
+  fromPartial(object: DeepPartial<QueryContractAuthorizationRequest>): QueryContractAuthorizationRequest {
     const message = createBaseQueryContractAuthorizationRequest();
     message.contractAddress = object.contractAddress ?? "";
     return message;
@@ -318,6 +349,7 @@ export const QueryContractAuthorizationRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryContractAuthorizationRequest.typeUrl, QueryContractAuthorizationRequest);
 function createBaseQueryContractAuthorizationResponse(): QueryContractAuthorizationResponse {
   return {
     methods: []
@@ -325,6 +357,15 @@ function createBaseQueryContractAuthorizationResponse(): QueryContractAuthorizat
 }
 export const QueryContractAuthorizationResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryContractAuthorizationResponse",
+  is(o: any): o is QueryContractAuthorizationResponse {
+    return o && (o.$typeUrl === QueryContractAuthorizationResponse.typeUrl || Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isSDK(o: any): o is QueryContractAuthorizationResponseSDKType {
+    return o && (o.$typeUrl === QueryContractAuthorizationResponse.typeUrl || Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isAmino(o: any): o is QueryContractAuthorizationResponseAmino {
+    return o && (o.$typeUrl === QueryContractAuthorizationResponse.typeUrl || Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
   encode(message: QueryContractAuthorizationResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.methods) {
       writer.uint32(10).string(v!);
@@ -348,7 +389,7 @@ export const QueryContractAuthorizationResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractAuthorizationResponse>): QueryContractAuthorizationResponse {
+  fromPartial(object: DeepPartial<QueryContractAuthorizationResponse>): QueryContractAuthorizationResponse {
     const message = createBaseQueryContractAuthorizationResponse();
     message.methods = object.methods?.map(e => e) || [];
     return message;
@@ -383,11 +424,21 @@ export const QueryContractAuthorizationResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryContractAuthorizationResponse.typeUrl, QueryContractAuthorizationResponse);
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -405,7 +456,7 @@ export const QueryParamsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
+  fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
   },
@@ -433,6 +484,7 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: undefined
@@ -440,6 +492,15 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -463,7 +524,7 @@ export const QueryParamsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
+  fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
@@ -496,11 +557,21 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryAuthorizationsRequest(): QueryAuthorizationsRequest {
   return {};
 }
 export const QueryAuthorizationsRequest = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryAuthorizationsRequest",
+  is(o: any): o is QueryAuthorizationsRequest {
+    return o && o.$typeUrl === QueryAuthorizationsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryAuthorizationsRequestSDKType {
+    return o && o.$typeUrl === QueryAuthorizationsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryAuthorizationsRequestAmino {
+    return o && o.$typeUrl === QueryAuthorizationsRequest.typeUrl;
+  },
   encode(_: QueryAuthorizationsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -518,7 +589,7 @@ export const QueryAuthorizationsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryAuthorizationsRequest>): QueryAuthorizationsRequest {
+  fromPartial(_: DeepPartial<QueryAuthorizationsRequest>): QueryAuthorizationsRequest {
     const message = createBaseQueryAuthorizationsRequest();
     return message;
   },
@@ -546,6 +617,7 @@ export const QueryAuthorizationsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAuthorizationsRequest.typeUrl, QueryAuthorizationsRequest);
 function createBaseQueryAuthorizationsResponse(): QueryAuthorizationsResponse {
   return {
     codeAuthorizations: [],
@@ -554,6 +626,15 @@ function createBaseQueryAuthorizationsResponse(): QueryAuthorizationsResponse {
 }
 export const QueryAuthorizationsResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.QueryAuthorizationsResponse",
+  is(o: any): o is QueryAuthorizationsResponse {
+    return o && (o.$typeUrl === QueryAuthorizationsResponse.typeUrl || Array.isArray(o.codeAuthorizations) && (!o.codeAuthorizations.length || CodeAuthorization.is(o.codeAuthorizations[0])) && Array.isArray(o.contractAuthorizations) && (!o.contractAuthorizations.length || ContractAuthorization.is(o.contractAuthorizations[0])));
+  },
+  isSDK(o: any): o is QueryAuthorizationsResponseSDKType {
+    return o && (o.$typeUrl === QueryAuthorizationsResponse.typeUrl || Array.isArray(o.code_authorizations) && (!o.code_authorizations.length || CodeAuthorization.isSDK(o.code_authorizations[0])) && Array.isArray(o.contract_authorizations) && (!o.contract_authorizations.length || ContractAuthorization.isSDK(o.contract_authorizations[0])));
+  },
+  isAmino(o: any): o is QueryAuthorizationsResponseAmino {
+    return o && (o.$typeUrl === QueryAuthorizationsResponse.typeUrl || Array.isArray(o.code_authorizations) && (!o.code_authorizations.length || CodeAuthorization.isAmino(o.code_authorizations[0])) && Array.isArray(o.contract_authorizations) && (!o.contract_authorizations.length || ContractAuthorization.isAmino(o.contract_authorizations[0])));
+  },
   encode(message: QueryAuthorizationsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.codeAuthorizations) {
       CodeAuthorization.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -583,7 +664,7 @@ export const QueryAuthorizationsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAuthorizationsResponse>): QueryAuthorizationsResponse {
+  fromPartial(object: DeepPartial<QueryAuthorizationsResponse>): QueryAuthorizationsResponse {
     const message = createBaseQueryAuthorizationsResponse();
     message.codeAuthorizations = object.codeAuthorizations?.map(e => CodeAuthorization.fromPartial(e)) || [];
     message.contractAuthorizations = object.contractAuthorizations?.map(e => ContractAuthorization.fromPartial(e)) || [];
@@ -625,3 +706,4 @@ export const QueryAuthorizationsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAuthorizationsResponse.typeUrl, QueryAuthorizationsResponse);

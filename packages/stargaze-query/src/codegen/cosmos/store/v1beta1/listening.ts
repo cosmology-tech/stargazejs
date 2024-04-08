@@ -1,6 +1,7 @@
 import { ResponseCommit, ResponseCommitAmino, ResponseCommitSDKType, RequestFinalizeBlock, RequestFinalizeBlockAmino, RequestFinalizeBlockSDKType, ResponseFinalizeBlock, ResponseFinalizeBlockAmino, ResponseFinalizeBlockSDKType } from "../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { DeepPartial, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
@@ -99,6 +100,16 @@ function createBaseStoreKVPair(): StoreKVPair {
 }
 export const StoreKVPair = {
   typeUrl: "/cosmos.store.v1beta1.StoreKVPair",
+  aminoType: "cosmos-sdk/StoreKVPair",
+  is(o: any): o is StoreKVPair {
+    return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.storeKey === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
+  isSDK(o: any): o is StoreKVPairSDKType {
+    return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
+  isAmino(o: any): o is StoreKVPairAmino {
+    return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
   encode(message: StoreKVPair, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.storeKey !== "") {
       writer.uint32(10).string(message.storeKey);
@@ -140,7 +151,7 @@ export const StoreKVPair = {
     }
     return message;
   },
-  fromPartial(object: Partial<StoreKVPair>): StoreKVPair {
+  fromPartial(object: DeepPartial<StoreKVPair>): StoreKVPair {
     const message = createBaseStoreKVPair();
     message.storeKey = object.storeKey ?? "";
     message.delete = object.delete ?? false;
@@ -194,6 +205,8 @@ export const StoreKVPair = {
     };
   }
 };
+GlobalDecoderRegistry.register(StoreKVPair.typeUrl, StoreKVPair);
+GlobalDecoderRegistry.registerAminoProtoMapping(StoreKVPair.aminoType, StoreKVPair.typeUrl);
 function createBaseBlockMetadata(): BlockMetadata {
   return {
     responseCommit: undefined,
@@ -203,6 +216,16 @@ function createBaseBlockMetadata(): BlockMetadata {
 }
 export const BlockMetadata = {
   typeUrl: "/cosmos.store.v1beta1.BlockMetadata",
+  aminoType: "cosmos-sdk/BlockMetadata",
+  is(o: any): o is BlockMetadata {
+    return o && o.$typeUrl === BlockMetadata.typeUrl;
+  },
+  isSDK(o: any): o is BlockMetadataSDKType {
+    return o && o.$typeUrl === BlockMetadata.typeUrl;
+  },
+  isAmino(o: any): o is BlockMetadataAmino {
+    return o && o.$typeUrl === BlockMetadata.typeUrl;
+  },
   encode(message: BlockMetadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.responseCommit !== undefined) {
       ResponseCommit.encode(message.responseCommit, writer.uint32(50).fork()).ldelim();
@@ -238,7 +261,7 @@ export const BlockMetadata = {
     }
     return message;
   },
-  fromPartial(object: Partial<BlockMetadata>): BlockMetadata {
+  fromPartial(object: DeepPartial<BlockMetadata>): BlockMetadata {
     const message = createBaseBlockMetadata();
     message.responseCommit = object.responseCommit !== undefined && object.responseCommit !== null ? ResponseCommit.fromPartial(object.responseCommit) : undefined;
     message.requestFinalizeBlock = object.requestFinalizeBlock !== undefined && object.requestFinalizeBlock !== null ? RequestFinalizeBlock.fromPartial(object.requestFinalizeBlock) : undefined;
@@ -287,3 +310,5 @@ export const BlockMetadata = {
     };
   }
 };
+GlobalDecoderRegistry.register(BlockMetadata.typeUrl, BlockMetadata);
+GlobalDecoderRegistry.registerAminoProtoMapping(BlockMetadata.aminoType, BlockMetadata.typeUrl);

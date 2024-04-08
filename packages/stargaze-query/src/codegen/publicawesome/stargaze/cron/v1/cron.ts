@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** Params holds parameters for the cron module. */
 export interface Params {
   /**
@@ -34,6 +36,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/publicawesome.stargaze.cron.v1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.adminAddresses) && (!o.adminAddresses.length || typeof o.adminAddresses[0] === "string"));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.admin_addresses) && (!o.admin_addresses.length || typeof o.admin_addresses[0] === "string"));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.admin_addresses) && (!o.admin_addresses.length || typeof o.admin_addresses[0] === "string"));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.adminAddresses) {
       writer.uint32(10).string(v!);
@@ -57,7 +68,7 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: Partial<Params>): Params {
+  fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.adminAddresses = object.adminAddresses?.map(e => e) || [];
     return message;
@@ -92,3 +103,4 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

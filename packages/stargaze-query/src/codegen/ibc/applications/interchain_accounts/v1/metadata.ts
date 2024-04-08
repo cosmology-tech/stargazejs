@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * Metadata defines a set of protocol specific data encoded into the ICS27 channel version bytestring
  * See ICS004: https://github.com/cosmos/ibc/tree/master/spec/core/ics-004-channel-and-packet-semantics#Versioning
@@ -73,6 +75,16 @@ function createBaseMetadata(): Metadata {
 }
 export const Metadata = {
   typeUrl: "/ibc.applications.interchain_accounts.v1.Metadata",
+  aminoType: "cosmos-sdk/Metadata",
+  is(o: any): o is Metadata {
+    return o && (o.$typeUrl === Metadata.typeUrl || typeof o.version === "string" && typeof o.controllerConnectionId === "string" && typeof o.hostConnectionId === "string" && typeof o.address === "string" && typeof o.encoding === "string" && typeof o.txType === "string");
+  },
+  isSDK(o: any): o is MetadataSDKType {
+    return o && (o.$typeUrl === Metadata.typeUrl || typeof o.version === "string" && typeof o.controller_connection_id === "string" && typeof o.host_connection_id === "string" && typeof o.address === "string" && typeof o.encoding === "string" && typeof o.tx_type === "string");
+  },
+  isAmino(o: any): o is MetadataAmino {
+    return o && (o.$typeUrl === Metadata.typeUrl || typeof o.version === "string" && typeof o.controller_connection_id === "string" && typeof o.host_connection_id === "string" && typeof o.address === "string" && typeof o.encoding === "string" && typeof o.tx_type === "string");
+  },
   encode(message: Metadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.version !== "") {
       writer.uint32(10).string(message.version);
@@ -126,7 +138,7 @@ export const Metadata = {
     }
     return message;
   },
-  fromPartial(object: Partial<Metadata>): Metadata {
+  fromPartial(object: DeepPartial<Metadata>): Metadata {
     const message = createBaseMetadata();
     message.version = object.version ?? "";
     message.controllerConnectionId = object.controllerConnectionId ?? "";
@@ -190,3 +202,5 @@ export const Metadata = {
     };
   }
 };
+GlobalDecoderRegistry.register(Metadata.typeUrl, Metadata);
+GlobalDecoderRegistry.registerAminoProtoMapping(Metadata.aminoType, Metadata.typeUrl);

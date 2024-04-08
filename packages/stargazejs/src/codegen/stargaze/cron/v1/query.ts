@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * QueryListPrivilegedRequest is request type for the Query/ListPrivileged RPC
  * method.
@@ -64,6 +66,15 @@ function createBaseQueryListPrivilegedRequest(): QueryListPrivilegedRequest {
 }
 export const QueryListPrivilegedRequest = {
   typeUrl: "/publicawesome.stargaze.cron.v1.QueryListPrivilegedRequest",
+  is(o: any): o is QueryListPrivilegedRequest {
+    return o && o.$typeUrl === QueryListPrivilegedRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryListPrivilegedRequestSDKType {
+    return o && o.$typeUrl === QueryListPrivilegedRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryListPrivilegedRequestAmino {
+    return o && o.$typeUrl === QueryListPrivilegedRequest.typeUrl;
+  },
   encode(_: QueryListPrivilegedRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -81,7 +92,7 @@ export const QueryListPrivilegedRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryListPrivilegedRequest>): QueryListPrivilegedRequest {
+  fromPartial(_: DeepPartial<QueryListPrivilegedRequest>): QueryListPrivilegedRequest {
     const message = createBaseQueryListPrivilegedRequest();
     return message;
   },
@@ -109,6 +120,7 @@ export const QueryListPrivilegedRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryListPrivilegedRequest.typeUrl, QueryListPrivilegedRequest);
 function createBaseQueryListPrivilegedResponse(): QueryListPrivilegedResponse {
   return {
     contractAddresses: []
@@ -116,6 +128,15 @@ function createBaseQueryListPrivilegedResponse(): QueryListPrivilegedResponse {
 }
 export const QueryListPrivilegedResponse = {
   typeUrl: "/publicawesome.stargaze.cron.v1.QueryListPrivilegedResponse",
+  is(o: any): o is QueryListPrivilegedResponse {
+    return o && (o.$typeUrl === QueryListPrivilegedResponse.typeUrl || Array.isArray(o.contractAddresses) && (!o.contractAddresses.length || typeof o.contractAddresses[0] === "string"));
+  },
+  isSDK(o: any): o is QueryListPrivilegedResponseSDKType {
+    return o && (o.$typeUrl === QueryListPrivilegedResponse.typeUrl || Array.isArray(o.contract_addresses) && (!o.contract_addresses.length || typeof o.contract_addresses[0] === "string"));
+  },
+  isAmino(o: any): o is QueryListPrivilegedResponseAmino {
+    return o && (o.$typeUrl === QueryListPrivilegedResponse.typeUrl || Array.isArray(o.contract_addresses) && (!o.contract_addresses.length || typeof o.contract_addresses[0] === "string"));
+  },
   encode(message: QueryListPrivilegedResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.contractAddresses) {
       writer.uint32(10).string(v!);
@@ -139,7 +160,7 @@ export const QueryListPrivilegedResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryListPrivilegedResponse>): QueryListPrivilegedResponse {
+  fromPartial(object: DeepPartial<QueryListPrivilegedResponse>): QueryListPrivilegedResponse {
     const message = createBaseQueryListPrivilegedResponse();
     message.contractAddresses = object.contractAddresses?.map(e => e) || [];
     return message;
@@ -174,3 +195,4 @@ export const QueryListPrivilegedResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryListPrivilegedResponse.typeUrl, QueryListPrivilegedResponse);

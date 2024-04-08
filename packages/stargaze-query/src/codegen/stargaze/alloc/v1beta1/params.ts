@@ -1,6 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface WeightedAddress {
   address: string;
   weight: string;
@@ -92,6 +94,15 @@ function createBaseWeightedAddress(): WeightedAddress {
 }
 export const WeightedAddress = {
   typeUrl: "/publicawesome.stargaze.alloc.v1beta1.WeightedAddress",
+  is(o: any): o is WeightedAddress {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is WeightedAddressSDKType {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is WeightedAddressAmino {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
   encode(message: WeightedAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -121,7 +132,7 @@ export const WeightedAddress = {
     }
     return message;
   },
-  fromPartial(object: Partial<WeightedAddress>): WeightedAddress {
+  fromPartial(object: DeepPartial<WeightedAddress>): WeightedAddress {
     const message = createBaseWeightedAddress();
     message.address = object.address ?? "";
     message.weight = object.weight ?? "";
@@ -159,6 +170,7 @@ export const WeightedAddress = {
     };
   }
 };
+GlobalDecoderRegistry.register(WeightedAddress.typeUrl, WeightedAddress);
 function createBaseDistributionProportions(): DistributionProportions {
   return {
     nftIncentives: "",
@@ -168,6 +180,15 @@ function createBaseDistributionProportions(): DistributionProportions {
 }
 export const DistributionProportions = {
   typeUrl: "/publicawesome.stargaze.alloc.v1beta1.DistributionProportions",
+  is(o: any): o is DistributionProportions {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.nftIncentives === "string" && typeof o.developerRewards === "string" && typeof o.communityPool === "string");
+  },
+  isSDK(o: any): o is DistributionProportionsSDKType {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.nft_incentives === "string" && typeof o.developer_rewards === "string" && typeof o.community_pool === "string");
+  },
+  isAmino(o: any): o is DistributionProportionsAmino {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.nft_incentives === "string" && typeof o.developer_rewards === "string" && typeof o.community_pool === "string");
+  },
   encode(message: DistributionProportions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.nftIncentives !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.nftIncentives, 18).atomics);
@@ -203,7 +224,7 @@ export const DistributionProportions = {
     }
     return message;
   },
-  fromPartial(object: Partial<DistributionProportions>): DistributionProportions {
+  fromPartial(object: DeepPartial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
     message.nftIncentives = object.nftIncentives ?? "";
     message.developerRewards = object.developerRewards ?? "";
@@ -246,6 +267,7 @@ export const DistributionProportions = {
     };
   }
 };
+GlobalDecoderRegistry.register(DistributionProportions.typeUrl, DistributionProportions);
 function createBaseParams(): Params {
   return {
     distributionProportions: DistributionProportions.fromPartial({}),
@@ -256,6 +278,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/publicawesome.stargaze.alloc.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.is(o.distributionProportions) && Array.isArray(o.weightedDeveloperRewardsReceivers) && (!o.weightedDeveloperRewardsReceivers.length || WeightedAddress.is(o.weightedDeveloperRewardsReceivers[0])) && Array.isArray(o.weightedIncentivesRewardsReceivers) && (!o.weightedIncentivesRewardsReceivers.length || WeightedAddress.is(o.weightedIncentivesRewardsReceivers[0])) && Array.isArray(o.supplementAmount) && (!o.supplementAmount.length || Coin.is(o.supplementAmount[0])));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isSDK(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isSDK(o.weighted_developer_rewards_receivers[0])) && Array.isArray(o.weighted_incentives_rewards_receivers) && (!o.weighted_incentives_rewards_receivers.length || WeightedAddress.isSDK(o.weighted_incentives_rewards_receivers[0])) && Array.isArray(o.supplement_amount) && (!o.supplement_amount.length || Coin.isSDK(o.supplement_amount[0])));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || DistributionProportions.isAmino(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isAmino(o.weighted_developer_rewards_receivers[0])) && Array.isArray(o.weighted_incentives_rewards_receivers) && (!o.weighted_incentives_rewards_receivers.length || WeightedAddress.isAmino(o.weighted_incentives_rewards_receivers[0])) && Array.isArray(o.supplement_amount) && (!o.supplement_amount.length || Coin.isAmino(o.supplement_amount[0])));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.distributionProportions !== undefined) {
       DistributionProportions.encode(message.distributionProportions, writer.uint32(10).fork()).ldelim();
@@ -297,7 +328,7 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: Partial<Params>): Params {
+  fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.distributionProportions = object.distributionProportions !== undefined && object.distributionProportions !== null ? DistributionProportions.fromPartial(object.distributionProportions) : undefined;
     message.weightedDeveloperRewardsReceivers = object.weightedDeveloperRewardsReceivers?.map(e => WeightedAddress.fromPartial(e)) || [];
@@ -351,3 +382,4 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

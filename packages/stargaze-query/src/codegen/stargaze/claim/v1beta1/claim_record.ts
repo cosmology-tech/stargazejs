@@ -1,5 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export enum Action {
   ActionInitialClaim = 0,
   ActionBidNFT = 1,
@@ -94,6 +96,15 @@ function createBaseClaimRecord(): ClaimRecord {
 }
 export const ClaimRecord = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.ClaimRecord",
+  is(o: any): o is ClaimRecord {
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initialClaimableAmount) && (!o.initialClaimableAmount.length || Coin.is(o.initialClaimableAmount[0])) && Array.isArray(o.actionCompleted) && (!o.actionCompleted.length || typeof o.actionCompleted[0] === "boolean"));
+  },
+  isSDK(o: any): o is ClaimRecordSDKType {
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initial_claimable_amount) && (!o.initial_claimable_amount.length || Coin.isSDK(o.initial_claimable_amount[0])) && Array.isArray(o.action_completed) && (!o.action_completed.length || typeof o.action_completed[0] === "boolean"));
+  },
+  isAmino(o: any): o is ClaimRecordAmino {
+    return o && (o.$typeUrl === ClaimRecord.typeUrl || typeof o.address === "string" && Array.isArray(o.initial_claimable_amount) && (!o.initial_claimable_amount.length || Coin.isAmino(o.initial_claimable_amount[0])) && Array.isArray(o.action_completed) && (!o.action_completed.length || typeof o.action_completed[0] === "boolean"));
+  },
   encode(message: ClaimRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -138,7 +149,7 @@ export const ClaimRecord = {
     }
     return message;
   },
-  fromPartial(object: Partial<ClaimRecord>): ClaimRecord {
+  fromPartial(object: DeepPartial<ClaimRecord>): ClaimRecord {
     const message = createBaseClaimRecord();
     message.address = object.address ?? "";
     message.initialClaimableAmount = object.initialClaimableAmount?.map(e => Coin.fromPartial(e)) || [];
@@ -185,3 +196,4 @@ export const ClaimRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(ClaimRecord.typeUrl, ClaimRecord);

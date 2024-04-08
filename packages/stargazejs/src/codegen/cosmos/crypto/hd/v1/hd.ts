@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** BIP44Params is used as path field in ledger item in Record. */
 export interface BIP44Params {
   /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */
@@ -58,6 +60,16 @@ function createBaseBIP44Params(): BIP44Params {
 }
 export const BIP44Params = {
   typeUrl: "/cosmos.crypto.hd.v1.BIP44Params",
+  aminoType: "crypto/keys/hd/BIP44Params",
+  is(o: any): o is BIP44Params {
+    return o && (o.$typeUrl === BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coinType === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.addressIndex === "number");
+  },
+  isSDK(o: any): o is BIP44ParamsSDKType {
+    return o && (o.$typeUrl === BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coin_type === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.address_index === "number");
+  },
+  isAmino(o: any): o is BIP44ParamsAmino {
+    return o && (o.$typeUrl === BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coin_type === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.address_index === "number");
+  },
   encode(message: BIP44Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.purpose !== 0) {
       writer.uint32(8).uint32(message.purpose);
@@ -105,7 +117,7 @@ export const BIP44Params = {
     }
     return message;
   },
-  fromPartial(object: Partial<BIP44Params>): BIP44Params {
+  fromPartial(object: DeepPartial<BIP44Params>): BIP44Params {
     const message = createBaseBIP44Params();
     message.purpose = object.purpose ?? 0;
     message.coinType = object.coinType ?? 0;
@@ -164,3 +176,5 @@ export const BIP44Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(BIP44Params.typeUrl, BIP44Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(BIP44Params.aminoType, BIP44Params.typeUrl);

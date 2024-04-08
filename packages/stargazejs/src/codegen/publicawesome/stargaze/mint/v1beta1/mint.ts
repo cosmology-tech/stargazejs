@@ -1,7 +1,8 @@
 import { Timestamp } from "../../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { Decimal } from "@cosmjs/math";
-import { toTimestamp, fromTimestamp } from "../../../../helpers";
+import { DeepPartial, toTimestamp, fromTimestamp } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** Minter represents the minting state. */
 export interface Minter {
   /** current annual expected provisions */
@@ -73,6 +74,15 @@ function createBaseMinter(): Minter {
 }
 export const Minter = {
   typeUrl: "/publicawesome.stargaze.mint.v1beta1.Minter",
+  is(o: any): o is Minter {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.annualProvisions === "string");
+  },
+  isSDK(o: any): o is MinterSDKType {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.annual_provisions === "string");
+  },
+  isAmino(o: any): o is MinterAmino {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.annual_provisions === "string");
+  },
   encode(message: Minter, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.annualProvisions !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.annualProvisions, 18).atomics);
@@ -96,7 +106,7 @@ export const Minter = {
     }
     return message;
   },
-  fromPartial(object: Partial<Minter>): Minter {
+  fromPartial(object: DeepPartial<Minter>): Minter {
     const message = createBaseMinter();
     message.annualProvisions = object.annualProvisions ?? "";
     return message;
@@ -129,6 +139,7 @@ export const Minter = {
     };
   }
 };
+GlobalDecoderRegistry.register(Minter.typeUrl, Minter);
 function createBaseParams(): Params {
   return {
     mintDenom: "",
@@ -140,6 +151,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/publicawesome.stargaze.mint.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mintDenom === "string" && Timestamp.is(o.startTime) && typeof o.initialAnnualProvisions === "string" && typeof o.reductionFactor === "string" && typeof o.blocksPerYear === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && Timestamp.isSDK(o.start_time) && typeof o.initial_annual_provisions === "string" && typeof o.reduction_factor === "string" && typeof o.blocks_per_year === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && Timestamp.isAmino(o.start_time) && typeof o.initial_annual_provisions === "string" && typeof o.reduction_factor === "string" && typeof o.blocks_per_year === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.mintDenom !== "") {
       writer.uint32(10).string(message.mintDenom);
@@ -187,7 +207,7 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: Partial<Params>): Params {
+  fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.mintDenom = object.mintDenom ?? "";
     message.startTime = object.startTime ?? undefined;
@@ -240,3 +260,4 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

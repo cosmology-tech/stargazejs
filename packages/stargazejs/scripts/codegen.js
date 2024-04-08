@@ -132,7 +132,8 @@ telescope({
         useDeepPartial: true,
         useExact: false,
         timestamp: 'date',
-        duration: 'duration'
+        duration: 'duration',
+        autoFixUndefinedEnumDefault: true
       }
     },
     cosmwasm: {
@@ -156,7 +157,8 @@ telescope({
       }
     },
     aminoEncoding: {
-      enabled: true
+      enabled: true,
+      omitEmptyTags: ['omitempty', 'dont_omitempty']
     },
     lcdClients: {
       enabled: true

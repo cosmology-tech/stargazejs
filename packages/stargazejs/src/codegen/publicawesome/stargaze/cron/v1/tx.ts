@@ -1,5 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./cron";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** MsgPromoteToPrivilegedContract defines the Msg/PromoteToPrivilegedContract */
 export interface MsgPromoteToPrivilegedContract {
   /**
@@ -128,6 +130,15 @@ function createBaseMsgPromoteToPrivilegedContract(): MsgPromoteToPrivilegedContr
 }
 export const MsgPromoteToPrivilegedContract = {
   typeUrl: "/publicawesome.stargaze.cron.v1.MsgPromoteToPrivilegedContract",
+  is(o: any): o is MsgPromoteToPrivilegedContract {
+    return o && (o.$typeUrl === MsgPromoteToPrivilegedContract.typeUrl || typeof o.authority === "string" && typeof o.contract === "string");
+  },
+  isSDK(o: any): o is MsgPromoteToPrivilegedContractSDKType {
+    return o && (o.$typeUrl === MsgPromoteToPrivilegedContract.typeUrl || typeof o.authority === "string" && typeof o.contract === "string");
+  },
+  isAmino(o: any): o is MsgPromoteToPrivilegedContractAmino {
+    return o && (o.$typeUrl === MsgPromoteToPrivilegedContract.typeUrl || typeof o.authority === "string" && typeof o.contract === "string");
+  },
   encode(message: MsgPromoteToPrivilegedContract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -157,7 +168,7 @@ export const MsgPromoteToPrivilegedContract = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgPromoteToPrivilegedContract>): MsgPromoteToPrivilegedContract {
+  fromPartial(object: DeepPartial<MsgPromoteToPrivilegedContract>): MsgPromoteToPrivilegedContract {
     const message = createBaseMsgPromoteToPrivilegedContract();
     message.authority = object.authority ?? "";
     message.contract = object.contract ?? "";
@@ -195,11 +206,21 @@ export const MsgPromoteToPrivilegedContract = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgPromoteToPrivilegedContract.typeUrl, MsgPromoteToPrivilegedContract);
 function createBaseMsgPromoteToPrivilegedContractResponse(): MsgPromoteToPrivilegedContractResponse {
   return {};
 }
 export const MsgPromoteToPrivilegedContractResponse = {
   typeUrl: "/publicawesome.stargaze.cron.v1.MsgPromoteToPrivilegedContractResponse",
+  is(o: any): o is MsgPromoteToPrivilegedContractResponse {
+    return o && o.$typeUrl === MsgPromoteToPrivilegedContractResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgPromoteToPrivilegedContractResponseSDKType {
+    return o && o.$typeUrl === MsgPromoteToPrivilegedContractResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgPromoteToPrivilegedContractResponseAmino {
+    return o && o.$typeUrl === MsgPromoteToPrivilegedContractResponse.typeUrl;
+  },
   encode(_: MsgPromoteToPrivilegedContractResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -217,7 +238,7 @@ export const MsgPromoteToPrivilegedContractResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgPromoteToPrivilegedContractResponse>): MsgPromoteToPrivilegedContractResponse {
+  fromPartial(_: DeepPartial<MsgPromoteToPrivilegedContractResponse>): MsgPromoteToPrivilegedContractResponse {
     const message = createBaseMsgPromoteToPrivilegedContractResponse();
     return message;
   },
@@ -245,6 +266,7 @@ export const MsgPromoteToPrivilegedContractResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgPromoteToPrivilegedContractResponse.typeUrl, MsgPromoteToPrivilegedContractResponse);
 function createBaseMsgDemoteFromPrivilegedContract(): MsgDemoteFromPrivilegedContract {
   return {
     authority: "",
@@ -253,6 +275,15 @@ function createBaseMsgDemoteFromPrivilegedContract(): MsgDemoteFromPrivilegedCon
 }
 export const MsgDemoteFromPrivilegedContract = {
   typeUrl: "/publicawesome.stargaze.cron.v1.MsgDemoteFromPrivilegedContract",
+  is(o: any): o is MsgDemoteFromPrivilegedContract {
+    return o && (o.$typeUrl === MsgDemoteFromPrivilegedContract.typeUrl || typeof o.authority === "string" && typeof o.contract === "string");
+  },
+  isSDK(o: any): o is MsgDemoteFromPrivilegedContractSDKType {
+    return o && (o.$typeUrl === MsgDemoteFromPrivilegedContract.typeUrl || typeof o.authority === "string" && typeof o.contract === "string");
+  },
+  isAmino(o: any): o is MsgDemoteFromPrivilegedContractAmino {
+    return o && (o.$typeUrl === MsgDemoteFromPrivilegedContract.typeUrl || typeof o.authority === "string" && typeof o.contract === "string");
+  },
   encode(message: MsgDemoteFromPrivilegedContract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -282,7 +313,7 @@ export const MsgDemoteFromPrivilegedContract = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgDemoteFromPrivilegedContract>): MsgDemoteFromPrivilegedContract {
+  fromPartial(object: DeepPartial<MsgDemoteFromPrivilegedContract>): MsgDemoteFromPrivilegedContract {
     const message = createBaseMsgDemoteFromPrivilegedContract();
     message.authority = object.authority ?? "";
     message.contract = object.contract ?? "";
@@ -320,11 +351,21 @@ export const MsgDemoteFromPrivilegedContract = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDemoteFromPrivilegedContract.typeUrl, MsgDemoteFromPrivilegedContract);
 function createBaseMsgDemoteFromPrivilegedContractResponse(): MsgDemoteFromPrivilegedContractResponse {
   return {};
 }
 export const MsgDemoteFromPrivilegedContractResponse = {
   typeUrl: "/publicawesome.stargaze.cron.v1.MsgDemoteFromPrivilegedContractResponse",
+  is(o: any): o is MsgDemoteFromPrivilegedContractResponse {
+    return o && o.$typeUrl === MsgDemoteFromPrivilegedContractResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDemoteFromPrivilegedContractResponseSDKType {
+    return o && o.$typeUrl === MsgDemoteFromPrivilegedContractResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDemoteFromPrivilegedContractResponseAmino {
+    return o && o.$typeUrl === MsgDemoteFromPrivilegedContractResponse.typeUrl;
+  },
   encode(_: MsgDemoteFromPrivilegedContractResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -342,7 +383,7 @@ export const MsgDemoteFromPrivilegedContractResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgDemoteFromPrivilegedContractResponse>): MsgDemoteFromPrivilegedContractResponse {
+  fromPartial(_: DeepPartial<MsgDemoteFromPrivilegedContractResponse>): MsgDemoteFromPrivilegedContractResponse {
     const message = createBaseMsgDemoteFromPrivilegedContractResponse();
     return message;
   },
@@ -370,6 +411,7 @@ export const MsgDemoteFromPrivilegedContractResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDemoteFromPrivilegedContractResponse.typeUrl, MsgDemoteFromPrivilegedContractResponse);
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -378,6 +420,15 @@ function createBaseMsgUpdateParams(): MsgUpdateParams {
 }
 export const MsgUpdateParams = {
   typeUrl: "/publicawesome.stargaze.cron.v1.MsgUpdateParams",
+  is(o: any): o is MsgUpdateParams {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.is(o.params));
+  },
+  isSDK(o: any): o is MsgUpdateParamsSDKType {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is MsgUpdateParamsAmino {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isAmino(o.params));
+  },
   encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -407,7 +458,7 @@ export const MsgUpdateParams = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
+  fromPartial(object: DeepPartial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
     message.authority = object.authority ?? "";
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -445,11 +496,21 @@ export const MsgUpdateParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParams.typeUrl, MsgUpdateParams);
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
   typeUrl: "/publicawesome.stargaze.cron.v1.MsgUpdateParamsResponse",
+  is(o: any): o is MsgUpdateParamsResponse {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdateParamsResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdateParamsResponseAmino {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
   encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -467,7 +528,7 @@ export const MsgUpdateParamsResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
+  fromPartial(_: DeepPartial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
     const message = createBaseMsgUpdateParamsResponse();
     return message;
   },
@@ -495,3 +556,4 @@ export const MsgUpdateParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParamsResponse.typeUrl, MsgUpdateParamsResponse);

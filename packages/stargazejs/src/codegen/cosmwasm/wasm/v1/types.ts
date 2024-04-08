@@ -1,6 +1,7 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
+import { isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
 /** AccessType permission types */
 export enum AccessType {
@@ -236,7 +237,7 @@ export interface ContractInfo {
    * Extension is an extension point to store custom metadata within the
    * persistence model.
    */
-  extension?: (Any) | undefined;
+  extension?: Any | undefined;
 }
 export interface ContractInfoProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.ContractInfo";
@@ -391,6 +392,16 @@ function createBaseAccessTypeParam(): AccessTypeParam {
 }
 export const AccessTypeParam = {
   typeUrl: "/cosmwasm.wasm.v1.AccessTypeParam",
+  aminoType: "wasm/AccessTypeParam",
+  is(o: any): o is AccessTypeParam {
+    return o && (o.$typeUrl === AccessTypeParam.typeUrl || isSet(o.value));
+  },
+  isSDK(o: any): o is AccessTypeParamSDKType {
+    return o && (o.$typeUrl === AccessTypeParam.typeUrl || isSet(o.value));
+  },
+  isAmino(o: any): o is AccessTypeParamAmino {
+    return o && (o.$typeUrl === AccessTypeParam.typeUrl || isSet(o.value));
+  },
   encode(message: AccessTypeParam, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.value !== 0) {
       writer.uint32(8).int32(message.value);
@@ -414,7 +425,7 @@ export const AccessTypeParam = {
     }
     return message;
   },
-  fromPartial(object: Partial<AccessTypeParam>): AccessTypeParam {
+  fromPartial(object: DeepPartial<AccessTypeParam>): AccessTypeParam {
     const message = createBaseAccessTypeParam();
     message.value = object.value ?? 0;
     return message;
@@ -453,6 +464,8 @@ export const AccessTypeParam = {
     };
   }
 };
+GlobalDecoderRegistry.register(AccessTypeParam.typeUrl, AccessTypeParam);
+GlobalDecoderRegistry.registerAminoProtoMapping(AccessTypeParam.aminoType, AccessTypeParam.typeUrl);
 function createBaseAccessConfig(): AccessConfig {
   return {
     permission: 0,
@@ -462,6 +475,16 @@ function createBaseAccessConfig(): AccessConfig {
 }
 export const AccessConfig = {
   typeUrl: "/cosmwasm.wasm.v1.AccessConfig",
+  aminoType: "wasm/AccessConfig",
+  is(o: any): o is AccessConfig {
+    return o && (o.$typeUrl === AccessConfig.typeUrl || isSet(o.permission) && typeof o.address === "string" && Array.isArray(o.addresses) && (!o.addresses.length || typeof o.addresses[0] === "string"));
+  },
+  isSDK(o: any): o is AccessConfigSDKType {
+    return o && (o.$typeUrl === AccessConfig.typeUrl || isSet(o.permission) && typeof o.address === "string" && Array.isArray(o.addresses) && (!o.addresses.length || typeof o.addresses[0] === "string"));
+  },
+  isAmino(o: any): o is AccessConfigAmino {
+    return o && (o.$typeUrl === AccessConfig.typeUrl || isSet(o.permission) && typeof o.address === "string" && Array.isArray(o.addresses) && (!o.addresses.length || typeof o.addresses[0] === "string"));
+  },
   encode(message: AccessConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.permission !== 0) {
       writer.uint32(8).int32(message.permission);
@@ -497,7 +520,7 @@ export const AccessConfig = {
     }
     return message;
   },
-  fromPartial(object: Partial<AccessConfig>): AccessConfig {
+  fromPartial(object: DeepPartial<AccessConfig>): AccessConfig {
     const message = createBaseAccessConfig();
     message.permission = object.permission ?? 0;
     message.address = object.address ?? "";
@@ -548,6 +571,8 @@ export const AccessConfig = {
     };
   }
 };
+GlobalDecoderRegistry.register(AccessConfig.typeUrl, AccessConfig);
+GlobalDecoderRegistry.registerAminoProtoMapping(AccessConfig.aminoType, AccessConfig.typeUrl);
 function createBaseParams(): Params {
   return {
     codeUploadAccess: AccessConfig.fromPartial({}),
@@ -556,6 +581,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/cosmwasm.wasm.v1.Params",
+  aminoType: "wasm/Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || AccessConfig.is(o.codeUploadAccess) && isSet(o.instantiateDefaultPermission));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || AccessConfig.isSDK(o.code_upload_access) && isSet(o.instantiate_default_permission));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || AccessConfig.isAmino(o.code_upload_access) && isSet(o.instantiate_default_permission));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.codeUploadAccess !== undefined) {
       AccessConfig.encode(message.codeUploadAccess, writer.uint32(10).fork()).ldelim();
@@ -585,7 +620,7 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: Partial<Params>): Params {
+  fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.codeUploadAccess = object.codeUploadAccess !== undefined && object.codeUploadAccess !== null ? AccessConfig.fromPartial(object.codeUploadAccess) : undefined;
     message.instantiateDefaultPermission = object.instantiateDefaultPermission ?? 0;
@@ -629,6 +664,8 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 function createBaseCodeInfo(): CodeInfo {
   return {
     codeHash: new Uint8Array(),
@@ -638,6 +675,16 @@ function createBaseCodeInfo(): CodeInfo {
 }
 export const CodeInfo = {
   typeUrl: "/cosmwasm.wasm.v1.CodeInfo",
+  aminoType: "wasm/CodeInfo",
+  is(o: any): o is CodeInfo {
+    return o && (o.$typeUrl === CodeInfo.typeUrl || (o.codeHash instanceof Uint8Array || typeof o.codeHash === "string") && typeof o.creator === "string" && AccessConfig.is(o.instantiateConfig));
+  },
+  isSDK(o: any): o is CodeInfoSDKType {
+    return o && (o.$typeUrl === CodeInfo.typeUrl || (o.code_hash instanceof Uint8Array || typeof o.code_hash === "string") && typeof o.creator === "string" && AccessConfig.isSDK(o.instantiate_config));
+  },
+  isAmino(o: any): o is CodeInfoAmino {
+    return o && (o.$typeUrl === CodeInfo.typeUrl || (o.code_hash instanceof Uint8Array || typeof o.code_hash === "string") && typeof o.creator === "string" && AccessConfig.isAmino(o.instantiate_config));
+  },
   encode(message: CodeInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.codeHash.length !== 0) {
       writer.uint32(10).bytes(message.codeHash);
@@ -673,7 +720,7 @@ export const CodeInfo = {
     }
     return message;
   },
-  fromPartial(object: Partial<CodeInfo>): CodeInfo {
+  fromPartial(object: DeepPartial<CodeInfo>): CodeInfo {
     const message = createBaseCodeInfo();
     message.codeHash = object.codeHash ?? new Uint8Array();
     message.creator = object.creator ?? "";
@@ -722,6 +769,8 @@ export const CodeInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(CodeInfo.typeUrl, CodeInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(CodeInfo.aminoType, CodeInfo.typeUrl);
 function createBaseContractInfo(): ContractInfo {
   return {
     codeId: BigInt(0),
@@ -735,6 +784,16 @@ function createBaseContractInfo(): ContractInfo {
 }
 export const ContractInfo = {
   typeUrl: "/cosmwasm.wasm.v1.ContractInfo",
+  aminoType: "wasm/ContractInfo",
+  is(o: any): o is ContractInfo {
+    return o && (o.$typeUrl === ContractInfo.typeUrl || typeof o.codeId === "bigint" && typeof o.creator === "string" && typeof o.admin === "string" && typeof o.label === "string" && typeof o.ibcPortId === "string");
+  },
+  isSDK(o: any): o is ContractInfoSDKType {
+    return o && (o.$typeUrl === ContractInfo.typeUrl || typeof o.code_id === "bigint" && typeof o.creator === "string" && typeof o.admin === "string" && typeof o.label === "string" && typeof o.ibc_port_id === "string");
+  },
+  isAmino(o: any): o is ContractInfoAmino {
+    return o && (o.$typeUrl === ContractInfo.typeUrl || typeof o.code_id === "bigint" && typeof o.creator === "string" && typeof o.admin === "string" && typeof o.label === "string" && typeof o.ibc_port_id === "string");
+  },
   encode(message: ContractInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
@@ -755,7 +814,7 @@ export const ContractInfo = {
       writer.uint32(50).string(message.ibcPortId);
     }
     if (message.extension !== undefined) {
-      Any.encode((message.extension as Any), writer.uint32(58).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(message.extension), writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -785,7 +844,7 @@ export const ContractInfo = {
           message.ibcPortId = reader.string();
           break;
         case 7:
-          message.extension = (Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder(reader) as Any);
+          message.extension = GlobalDecoderRegistry.unwrapAny(reader);
           break;
         default:
           reader.skipType(tag & 7);
@@ -794,7 +853,7 @@ export const ContractInfo = {
     }
     return message;
   },
-  fromPartial(object: Partial<ContractInfo>): ContractInfo {
+  fromPartial(object: DeepPartial<ContractInfo>): ContractInfo {
     const message = createBaseContractInfo();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
     message.creator = object.creator ?? "";
@@ -802,7 +861,7 @@ export const ContractInfo = {
     message.label = object.label ?? "";
     message.created = object.created !== undefined && object.created !== null ? AbsoluteTxPosition.fromPartial(object.created) : undefined;
     message.ibcPortId = object.ibcPortId ?? "";
-    message.extension = object.extension !== undefined && object.extension !== null ? Any.fromPartial(object.extension) : undefined;
+    message.extension = object.extension !== undefined && object.extension !== null ? GlobalDecoderRegistry.fromPartial(object.extension) : undefined;
     return message;
   },
   fromAmino(object: ContractInfoAmino): ContractInfo {
@@ -826,7 +885,7 @@ export const ContractInfo = {
       message.ibcPortId = object.ibc_port_id;
     }
     if (object.extension !== undefined && object.extension !== null) {
-      message.extension = Cosmwasm_wasmv1ContractInfoExtension_FromAmino(object.extension);
+      message.extension = GlobalDecoderRegistry.fromAminoMsg(object.extension);
     }
     return message;
   },
@@ -838,7 +897,7 @@ export const ContractInfo = {
     obj.label = message.label === "" ? undefined : message.label;
     obj.created = message.created ? AbsoluteTxPosition.toAmino(message.created) : undefined;
     obj.ibc_port_id = message.ibcPortId === "" ? undefined : message.ibcPortId;
-    obj.extension = message.extension ? Cosmwasm_wasmv1ContractInfoExtension_ToAmino((message.extension as Any)) : undefined;
+    obj.extension = message.extension ? GlobalDecoderRegistry.toAminoMsg(message.extension) : undefined;
     return obj;
   },
   fromAminoMsg(object: ContractInfoAminoMsg): ContractInfo {
@@ -863,6 +922,8 @@ export const ContractInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(ContractInfo.typeUrl, ContractInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(ContractInfo.aminoType, ContractInfo.typeUrl);
 function createBaseContractCodeHistoryEntry(): ContractCodeHistoryEntry {
   return {
     operation: 0,
@@ -873,6 +934,16 @@ function createBaseContractCodeHistoryEntry(): ContractCodeHistoryEntry {
 }
 export const ContractCodeHistoryEntry = {
   typeUrl: "/cosmwasm.wasm.v1.ContractCodeHistoryEntry",
+  aminoType: "wasm/ContractCodeHistoryEntry",
+  is(o: any): o is ContractCodeHistoryEntry {
+    return o && (o.$typeUrl === ContractCodeHistoryEntry.typeUrl || isSet(o.operation) && typeof o.codeId === "bigint" && (o.msg instanceof Uint8Array || typeof o.msg === "string"));
+  },
+  isSDK(o: any): o is ContractCodeHistoryEntrySDKType {
+    return o && (o.$typeUrl === ContractCodeHistoryEntry.typeUrl || isSet(o.operation) && typeof o.code_id === "bigint" && (o.msg instanceof Uint8Array || typeof o.msg === "string"));
+  },
+  isAmino(o: any): o is ContractCodeHistoryEntryAmino {
+    return o && (o.$typeUrl === ContractCodeHistoryEntry.typeUrl || isSet(o.operation) && typeof o.code_id === "bigint" && (o.msg instanceof Uint8Array || typeof o.msg === "string"));
+  },
   encode(message: ContractCodeHistoryEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.operation !== 0) {
       writer.uint32(8).int32(message.operation);
@@ -914,7 +985,7 @@ export const ContractCodeHistoryEntry = {
     }
     return message;
   },
-  fromPartial(object: Partial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry {
+  fromPartial(object: DeepPartial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry {
     const message = createBaseContractCodeHistoryEntry();
     message.operation = object.operation ?? 0;
     message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
@@ -968,6 +1039,8 @@ export const ContractCodeHistoryEntry = {
     };
   }
 };
+GlobalDecoderRegistry.register(ContractCodeHistoryEntry.typeUrl, ContractCodeHistoryEntry);
+GlobalDecoderRegistry.registerAminoProtoMapping(ContractCodeHistoryEntry.aminoType, ContractCodeHistoryEntry.typeUrl);
 function createBaseAbsoluteTxPosition(): AbsoluteTxPosition {
   return {
     blockHeight: BigInt(0),
@@ -976,6 +1049,16 @@ function createBaseAbsoluteTxPosition(): AbsoluteTxPosition {
 }
 export const AbsoluteTxPosition = {
   typeUrl: "/cosmwasm.wasm.v1.AbsoluteTxPosition",
+  aminoType: "wasm/AbsoluteTxPosition",
+  is(o: any): o is AbsoluteTxPosition {
+    return o && (o.$typeUrl === AbsoluteTxPosition.typeUrl || typeof o.blockHeight === "bigint" && typeof o.txIndex === "bigint");
+  },
+  isSDK(o: any): o is AbsoluteTxPositionSDKType {
+    return o && (o.$typeUrl === AbsoluteTxPosition.typeUrl || typeof o.block_height === "bigint" && typeof o.tx_index === "bigint");
+  },
+  isAmino(o: any): o is AbsoluteTxPositionAmino {
+    return o && (o.$typeUrl === AbsoluteTxPosition.typeUrl || typeof o.block_height === "bigint" && typeof o.tx_index === "bigint");
+  },
   encode(message: AbsoluteTxPosition, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.blockHeight !== BigInt(0)) {
       writer.uint32(8).uint64(message.blockHeight);
@@ -1005,7 +1088,7 @@ export const AbsoluteTxPosition = {
     }
     return message;
   },
-  fromPartial(object: Partial<AbsoluteTxPosition>): AbsoluteTxPosition {
+  fromPartial(object: DeepPartial<AbsoluteTxPosition>): AbsoluteTxPosition {
     const message = createBaseAbsoluteTxPosition();
     message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? BigInt(object.blockHeight.toString()) : BigInt(0);
     message.txIndex = object.txIndex !== undefined && object.txIndex !== null ? BigInt(object.txIndex.toString()) : BigInt(0);
@@ -1049,6 +1132,8 @@ export const AbsoluteTxPosition = {
     };
   }
 };
+GlobalDecoderRegistry.register(AbsoluteTxPosition.typeUrl, AbsoluteTxPosition);
+GlobalDecoderRegistry.registerAminoProtoMapping(AbsoluteTxPosition.aminoType, AbsoluteTxPosition.typeUrl);
 function createBaseModel(): Model {
   return {
     key: new Uint8Array(),
@@ -1057,6 +1142,16 @@ function createBaseModel(): Model {
 }
 export const Model = {
   typeUrl: "/cosmwasm.wasm.v1.Model",
+  aminoType: "wasm/Model",
+  is(o: any): o is Model {
+    return o && (o.$typeUrl === Model.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
+  isSDK(o: any): o is ModelSDKType {
+    return o && (o.$typeUrl === Model.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
+  isAmino(o: any): o is ModelAmino {
+    return o && (o.$typeUrl === Model.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
   encode(message: Model, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -1086,7 +1181,7 @@ export const Model = {
     }
     return message;
   },
-  fromPartial(object: Partial<Model>): Model {
+  fromPartial(object: DeepPartial<Model>): Model {
     const message = createBaseModel();
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
@@ -1130,17 +1225,5 @@ export const Model = {
     };
   }
 };
-export const Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
-  switch (data.typeUrl) {
-    default:
-      return data;
-  }
-};
-export const Cosmwasm_wasmv1ContractInfoExtension_FromAmino = (content: AnyAmino): Any => {
-  return Any.fromAmino(content);
-};
-export const Cosmwasm_wasmv1ContractInfoExtension_ToAmino = (content: Any) => {
-  return Any.toAmino(content);
-};
+GlobalDecoderRegistry.register(Model.typeUrl, Model);
+GlobalDecoderRegistry.registerAminoProtoMapping(Model.aminoType, Model.typeUrl);

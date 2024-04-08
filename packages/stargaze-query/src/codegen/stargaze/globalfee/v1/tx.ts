@@ -1,5 +1,7 @@
 import { CodeAuthorization, CodeAuthorizationAmino, CodeAuthorizationSDKType, ContractAuthorization, ContractAuthorizationAmino, ContractAuthorizationSDKType } from "./globalfee";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface MsgSetCodeAuthorization {
   sender: string;
   codeAuthorization?: CodeAuthorization;
@@ -132,6 +134,15 @@ function createBaseMsgSetCodeAuthorization(): MsgSetCodeAuthorization {
 }
 export const MsgSetCodeAuthorization = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgSetCodeAuthorization",
+  is(o: any): o is MsgSetCodeAuthorization {
+    return o && (o.$typeUrl === MsgSetCodeAuthorization.typeUrl || typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgSetCodeAuthorizationSDKType {
+    return o && (o.$typeUrl === MsgSetCodeAuthorization.typeUrl || typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgSetCodeAuthorizationAmino {
+    return o && (o.$typeUrl === MsgSetCodeAuthorization.typeUrl || typeof o.sender === "string");
+  },
   encode(message: MsgSetCodeAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -161,7 +172,7 @@ export const MsgSetCodeAuthorization = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgSetCodeAuthorization>): MsgSetCodeAuthorization {
+  fromPartial(object: DeepPartial<MsgSetCodeAuthorization>): MsgSetCodeAuthorization {
     const message = createBaseMsgSetCodeAuthorization();
     message.sender = object.sender ?? "";
     message.codeAuthorization = object.codeAuthorization !== undefined && object.codeAuthorization !== null ? CodeAuthorization.fromPartial(object.codeAuthorization) : undefined;
@@ -199,11 +210,21 @@ export const MsgSetCodeAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetCodeAuthorization.typeUrl, MsgSetCodeAuthorization);
 function createBaseMsgSetCodeAuthorizationResponse(): MsgSetCodeAuthorizationResponse {
   return {};
 }
 export const MsgSetCodeAuthorizationResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgSetCodeAuthorizationResponse",
+  is(o: any): o is MsgSetCodeAuthorizationResponse {
+    return o && o.$typeUrl === MsgSetCodeAuthorizationResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetCodeAuthorizationResponseSDKType {
+    return o && o.$typeUrl === MsgSetCodeAuthorizationResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetCodeAuthorizationResponseAmino {
+    return o && o.$typeUrl === MsgSetCodeAuthorizationResponse.typeUrl;
+  },
   encode(_: MsgSetCodeAuthorizationResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -221,7 +242,7 @@ export const MsgSetCodeAuthorizationResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgSetCodeAuthorizationResponse>): MsgSetCodeAuthorizationResponse {
+  fromPartial(_: DeepPartial<MsgSetCodeAuthorizationResponse>): MsgSetCodeAuthorizationResponse {
     const message = createBaseMsgSetCodeAuthorizationResponse();
     return message;
   },
@@ -249,6 +270,7 @@ export const MsgSetCodeAuthorizationResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetCodeAuthorizationResponse.typeUrl, MsgSetCodeAuthorizationResponse);
 function createBaseMsgRemoveCodeAuthorization(): MsgRemoveCodeAuthorization {
   return {
     sender: "",
@@ -257,6 +279,15 @@ function createBaseMsgRemoveCodeAuthorization(): MsgRemoveCodeAuthorization {
 }
 export const MsgRemoveCodeAuthorization = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgRemoveCodeAuthorization",
+  is(o: any): o is MsgRemoveCodeAuthorization {
+    return o && (o.$typeUrl === MsgRemoveCodeAuthorization.typeUrl || typeof o.sender === "string" && typeof o.codeId === "bigint");
+  },
+  isSDK(o: any): o is MsgRemoveCodeAuthorizationSDKType {
+    return o && (o.$typeUrl === MsgRemoveCodeAuthorization.typeUrl || typeof o.sender === "string" && typeof o.code_id === "bigint");
+  },
+  isAmino(o: any): o is MsgRemoveCodeAuthorizationAmino {
+    return o && (o.$typeUrl === MsgRemoveCodeAuthorization.typeUrl || typeof o.sender === "string" && typeof o.code_id === "bigint");
+  },
   encode(message: MsgRemoveCodeAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -286,7 +317,7 @@ export const MsgRemoveCodeAuthorization = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgRemoveCodeAuthorization>): MsgRemoveCodeAuthorization {
+  fromPartial(object: DeepPartial<MsgRemoveCodeAuthorization>): MsgRemoveCodeAuthorization {
     const message = createBaseMsgRemoveCodeAuthorization();
     message.sender = object.sender ?? "";
     message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
@@ -324,11 +355,21 @@ export const MsgRemoveCodeAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRemoveCodeAuthorization.typeUrl, MsgRemoveCodeAuthorization);
 function createBaseMsgRemoveCodeAuthorizationResponse(): MsgRemoveCodeAuthorizationResponse {
   return {};
 }
 export const MsgRemoveCodeAuthorizationResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgRemoveCodeAuthorizationResponse",
+  is(o: any): o is MsgRemoveCodeAuthorizationResponse {
+    return o && o.$typeUrl === MsgRemoveCodeAuthorizationResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgRemoveCodeAuthorizationResponseSDKType {
+    return o && o.$typeUrl === MsgRemoveCodeAuthorizationResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgRemoveCodeAuthorizationResponseAmino {
+    return o && o.$typeUrl === MsgRemoveCodeAuthorizationResponse.typeUrl;
+  },
   encode(_: MsgRemoveCodeAuthorizationResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -346,7 +387,7 @@ export const MsgRemoveCodeAuthorizationResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgRemoveCodeAuthorizationResponse>): MsgRemoveCodeAuthorizationResponse {
+  fromPartial(_: DeepPartial<MsgRemoveCodeAuthorizationResponse>): MsgRemoveCodeAuthorizationResponse {
     const message = createBaseMsgRemoveCodeAuthorizationResponse();
     return message;
   },
@@ -374,6 +415,7 @@ export const MsgRemoveCodeAuthorizationResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRemoveCodeAuthorizationResponse.typeUrl, MsgRemoveCodeAuthorizationResponse);
 function createBaseMsgSetContractAuthorization(): MsgSetContractAuthorization {
   return {
     sender: "",
@@ -382,6 +424,15 @@ function createBaseMsgSetContractAuthorization(): MsgSetContractAuthorization {
 }
 export const MsgSetContractAuthorization = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgSetContractAuthorization",
+  is(o: any): o is MsgSetContractAuthorization {
+    return o && (o.$typeUrl === MsgSetContractAuthorization.typeUrl || typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgSetContractAuthorizationSDKType {
+    return o && (o.$typeUrl === MsgSetContractAuthorization.typeUrl || typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgSetContractAuthorizationAmino {
+    return o && (o.$typeUrl === MsgSetContractAuthorization.typeUrl || typeof o.sender === "string");
+  },
   encode(message: MsgSetContractAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -411,7 +462,7 @@ export const MsgSetContractAuthorization = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgSetContractAuthorization>): MsgSetContractAuthorization {
+  fromPartial(object: DeepPartial<MsgSetContractAuthorization>): MsgSetContractAuthorization {
     const message = createBaseMsgSetContractAuthorization();
     message.sender = object.sender ?? "";
     message.contractAuthorization = object.contractAuthorization !== undefined && object.contractAuthorization !== null ? ContractAuthorization.fromPartial(object.contractAuthorization) : undefined;
@@ -449,11 +500,21 @@ export const MsgSetContractAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetContractAuthorization.typeUrl, MsgSetContractAuthorization);
 function createBaseMsgSetContractAuthorizationResponse(): MsgSetContractAuthorizationResponse {
   return {};
 }
 export const MsgSetContractAuthorizationResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgSetContractAuthorizationResponse",
+  is(o: any): o is MsgSetContractAuthorizationResponse {
+    return o && o.$typeUrl === MsgSetContractAuthorizationResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetContractAuthorizationResponseSDKType {
+    return o && o.$typeUrl === MsgSetContractAuthorizationResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetContractAuthorizationResponseAmino {
+    return o && o.$typeUrl === MsgSetContractAuthorizationResponse.typeUrl;
+  },
   encode(_: MsgSetContractAuthorizationResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -471,7 +532,7 @@ export const MsgSetContractAuthorizationResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgSetContractAuthorizationResponse>): MsgSetContractAuthorizationResponse {
+  fromPartial(_: DeepPartial<MsgSetContractAuthorizationResponse>): MsgSetContractAuthorizationResponse {
     const message = createBaseMsgSetContractAuthorizationResponse();
     return message;
   },
@@ -499,6 +560,7 @@ export const MsgSetContractAuthorizationResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetContractAuthorizationResponse.typeUrl, MsgSetContractAuthorizationResponse);
 function createBaseMsgRemoveContractAuthorization(): MsgRemoveContractAuthorization {
   return {
     sender: "",
@@ -507,6 +569,15 @@ function createBaseMsgRemoveContractAuthorization(): MsgRemoveContractAuthorizat
 }
 export const MsgRemoveContractAuthorization = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgRemoveContractAuthorization",
+  is(o: any): o is MsgRemoveContractAuthorization {
+    return o && (o.$typeUrl === MsgRemoveContractAuthorization.typeUrl || typeof o.sender === "string" && typeof o.contractAddress === "string");
+  },
+  isSDK(o: any): o is MsgRemoveContractAuthorizationSDKType {
+    return o && (o.$typeUrl === MsgRemoveContractAuthorization.typeUrl || typeof o.sender === "string" && typeof o.contract_address === "string");
+  },
+  isAmino(o: any): o is MsgRemoveContractAuthorizationAmino {
+    return o && (o.$typeUrl === MsgRemoveContractAuthorization.typeUrl || typeof o.sender === "string" && typeof o.contract_address === "string");
+  },
   encode(message: MsgRemoveContractAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -536,7 +607,7 @@ export const MsgRemoveContractAuthorization = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgRemoveContractAuthorization>): MsgRemoveContractAuthorization {
+  fromPartial(object: DeepPartial<MsgRemoveContractAuthorization>): MsgRemoveContractAuthorization {
     const message = createBaseMsgRemoveContractAuthorization();
     message.sender = object.sender ?? "";
     message.contractAddress = object.contractAddress ?? "";
@@ -574,11 +645,21 @@ export const MsgRemoveContractAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRemoveContractAuthorization.typeUrl, MsgRemoveContractAuthorization);
 function createBaseMsgRemoveContractAuthorizationResponse(): MsgRemoveContractAuthorizationResponse {
   return {};
 }
 export const MsgRemoveContractAuthorizationResponse = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.MsgRemoveContractAuthorizationResponse",
+  is(o: any): o is MsgRemoveContractAuthorizationResponse {
+    return o && o.$typeUrl === MsgRemoveContractAuthorizationResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgRemoveContractAuthorizationResponseSDKType {
+    return o && o.$typeUrl === MsgRemoveContractAuthorizationResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgRemoveContractAuthorizationResponseAmino {
+    return o && o.$typeUrl === MsgRemoveContractAuthorizationResponse.typeUrl;
+  },
   encode(_: MsgRemoveContractAuthorizationResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -596,7 +677,7 @@ export const MsgRemoveContractAuthorizationResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgRemoveContractAuthorizationResponse>): MsgRemoveContractAuthorizationResponse {
+  fromPartial(_: DeepPartial<MsgRemoveContractAuthorizationResponse>): MsgRemoveContractAuthorizationResponse {
     const message = createBaseMsgRemoveContractAuthorizationResponse();
     return message;
   },
@@ -624,3 +705,4 @@ export const MsgRemoveContractAuthorizationResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRemoveContractAuthorizationResponse.typeUrl, MsgRemoveContractAuthorizationResponse);

@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the cron module's genesis state. */
 export interface GenesisState {
   /**
@@ -34,6 +36,15 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/publicawesome.stargaze.cron.v1.GenesisState",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.privilegedContractAddresses) && (!o.privilegedContractAddresses.length || typeof o.privilegedContractAddresses[0] === "string"));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.privileged_contract_addresses) && (!o.privileged_contract_addresses.length || typeof o.privileged_contract_addresses[0] === "string"));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.privileged_contract_addresses) && (!o.privileged_contract_addresses.length || typeof o.privileged_contract_addresses[0] === "string"));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.privilegedContractAddresses) {
       writer.uint32(10).string(v!);
@@ -57,7 +68,7 @@ export const GenesisState = {
     }
     return message;
   },
-  fromPartial(object: Partial<GenesisState>): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.privilegedContractAddresses = object.privilegedContractAddresses?.map(e => e) || [];
     return message;
@@ -92,3 +103,4 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);

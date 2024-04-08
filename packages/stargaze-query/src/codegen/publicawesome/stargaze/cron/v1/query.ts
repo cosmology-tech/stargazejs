@@ -1,5 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./cron";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * QueryListPrivilegedRequest is request type for the Query/ListPrivileged RPC
  * method.
@@ -117,6 +119,15 @@ function createBaseQueryListPrivilegedRequest(): QueryListPrivilegedRequest {
 }
 export const QueryListPrivilegedRequest = {
   typeUrl: "/publicawesome.stargaze.cron.v1.QueryListPrivilegedRequest",
+  is(o: any): o is QueryListPrivilegedRequest {
+    return o && o.$typeUrl === QueryListPrivilegedRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryListPrivilegedRequestSDKType {
+    return o && o.$typeUrl === QueryListPrivilegedRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryListPrivilegedRequestAmino {
+    return o && o.$typeUrl === QueryListPrivilegedRequest.typeUrl;
+  },
   encode(_: QueryListPrivilegedRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -134,7 +145,7 @@ export const QueryListPrivilegedRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryListPrivilegedRequest>): QueryListPrivilegedRequest {
+  fromPartial(_: DeepPartial<QueryListPrivilegedRequest>): QueryListPrivilegedRequest {
     const message = createBaseQueryListPrivilegedRequest();
     return message;
   },
@@ -162,6 +173,7 @@ export const QueryListPrivilegedRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryListPrivilegedRequest.typeUrl, QueryListPrivilegedRequest);
 function createBaseQueryListPrivilegedResponse(): QueryListPrivilegedResponse {
   return {
     contractAddresses: []
@@ -169,6 +181,15 @@ function createBaseQueryListPrivilegedResponse(): QueryListPrivilegedResponse {
 }
 export const QueryListPrivilegedResponse = {
   typeUrl: "/publicawesome.stargaze.cron.v1.QueryListPrivilegedResponse",
+  is(o: any): o is QueryListPrivilegedResponse {
+    return o && (o.$typeUrl === QueryListPrivilegedResponse.typeUrl || Array.isArray(o.contractAddresses) && (!o.contractAddresses.length || typeof o.contractAddresses[0] === "string"));
+  },
+  isSDK(o: any): o is QueryListPrivilegedResponseSDKType {
+    return o && (o.$typeUrl === QueryListPrivilegedResponse.typeUrl || Array.isArray(o.contract_addresses) && (!o.contract_addresses.length || typeof o.contract_addresses[0] === "string"));
+  },
+  isAmino(o: any): o is QueryListPrivilegedResponseAmino {
+    return o && (o.$typeUrl === QueryListPrivilegedResponse.typeUrl || Array.isArray(o.contract_addresses) && (!o.contract_addresses.length || typeof o.contract_addresses[0] === "string"));
+  },
   encode(message: QueryListPrivilegedResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.contractAddresses) {
       writer.uint32(10).string(v!);
@@ -192,7 +213,7 @@ export const QueryListPrivilegedResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryListPrivilegedResponse>): QueryListPrivilegedResponse {
+  fromPartial(object: DeepPartial<QueryListPrivilegedResponse>): QueryListPrivilegedResponse {
     const message = createBaseQueryListPrivilegedResponse();
     message.contractAddresses = object.contractAddresses?.map(e => e) || [];
     return message;
@@ -227,11 +248,21 @@ export const QueryListPrivilegedResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryListPrivilegedResponse.typeUrl, QueryListPrivilegedResponse);
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
   typeUrl: "/publicawesome.stargaze.cron.v1.QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -249,7 +280,7 @@ export const QueryParamsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
+  fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
   },
@@ -277,6 +308,7 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -284,6 +316,15 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/publicawesome.stargaze.cron.v1.QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -307,7 +348,7 @@ export const QueryParamsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
+  fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
@@ -340,3 +381,4 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);

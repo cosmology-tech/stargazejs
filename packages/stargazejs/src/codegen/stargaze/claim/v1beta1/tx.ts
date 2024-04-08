@@ -1,6 +1,8 @@
 import { Action } from "./claim_record";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial, isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface MsgInitialClaim {
   sender: string;
 }
@@ -89,6 +91,15 @@ function createBaseMsgInitialClaim(): MsgInitialClaim {
 }
 export const MsgInitialClaim = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaim",
+  is(o: any): o is MsgInitialClaim {
+    return o && (o.$typeUrl === MsgInitialClaim.typeUrl || typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgInitialClaimSDKType {
+    return o && (o.$typeUrl === MsgInitialClaim.typeUrl || typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgInitialClaimAmino {
+    return o && (o.$typeUrl === MsgInitialClaim.typeUrl || typeof o.sender === "string");
+  },
   encode(message: MsgInitialClaim, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -112,7 +123,7 @@ export const MsgInitialClaim = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgInitialClaim>): MsgInitialClaim {
+  fromPartial(object: DeepPartial<MsgInitialClaim>): MsgInitialClaim {
     const message = createBaseMsgInitialClaim();
     message.sender = object.sender ?? "";
     return message;
@@ -145,6 +156,7 @@ export const MsgInitialClaim = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgInitialClaim.typeUrl, MsgInitialClaim);
 function createBaseMsgInitialClaimResponse(): MsgInitialClaimResponse {
   return {
     claimedAmount: []
@@ -152,6 +164,15 @@ function createBaseMsgInitialClaimResponse(): MsgInitialClaimResponse {
 }
 export const MsgInitialClaimResponse = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgInitialClaimResponse",
+  is(o: any): o is MsgInitialClaimResponse {
+    return o && (o.$typeUrl === MsgInitialClaimResponse.typeUrl || Array.isArray(o.claimedAmount) && (!o.claimedAmount.length || Coin.is(o.claimedAmount[0])));
+  },
+  isSDK(o: any): o is MsgInitialClaimResponseSDKType {
+    return o && (o.$typeUrl === MsgInitialClaimResponse.typeUrl || Array.isArray(o.claimed_amount) && (!o.claimed_amount.length || Coin.isSDK(o.claimed_amount[0])));
+  },
+  isAmino(o: any): o is MsgInitialClaimResponseAmino {
+    return o && (o.$typeUrl === MsgInitialClaimResponse.typeUrl || Array.isArray(o.claimed_amount) && (!o.claimed_amount.length || Coin.isAmino(o.claimed_amount[0])));
+  },
   encode(message: MsgInitialClaimResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.claimedAmount) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
@@ -175,7 +196,7 @@ export const MsgInitialClaimResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgInitialClaimResponse>): MsgInitialClaimResponse {
+  fromPartial(object: DeepPartial<MsgInitialClaimResponse>): MsgInitialClaimResponse {
     const message = createBaseMsgInitialClaimResponse();
     message.claimedAmount = object.claimedAmount?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -210,6 +231,7 @@ export const MsgInitialClaimResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgInitialClaimResponse.typeUrl, MsgInitialClaimResponse);
 function createBaseMsgClaimFor(): MsgClaimFor {
   return {
     sender: "",
@@ -219,6 +241,15 @@ function createBaseMsgClaimFor(): MsgClaimFor {
 }
 export const MsgClaimFor = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimFor",
+  is(o: any): o is MsgClaimFor {
+    return o && (o.$typeUrl === MsgClaimFor.typeUrl || typeof o.sender === "string" && typeof o.address === "string" && isSet(o.action));
+  },
+  isSDK(o: any): o is MsgClaimForSDKType {
+    return o && (o.$typeUrl === MsgClaimFor.typeUrl || typeof o.sender === "string" && typeof o.address === "string" && isSet(o.action));
+  },
+  isAmino(o: any): o is MsgClaimForAmino {
+    return o && (o.$typeUrl === MsgClaimFor.typeUrl || typeof o.sender === "string" && typeof o.address === "string" && isSet(o.action));
+  },
   encode(message: MsgClaimFor, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -254,7 +285,7 @@ export const MsgClaimFor = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgClaimFor>): MsgClaimFor {
+  fromPartial(object: DeepPartial<MsgClaimFor>): MsgClaimFor {
     const message = createBaseMsgClaimFor();
     message.sender = object.sender ?? "";
     message.address = object.address ?? "";
@@ -297,6 +328,7 @@ export const MsgClaimFor = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgClaimFor.typeUrl, MsgClaimFor);
 function createBaseMsgClaimForResponse(): MsgClaimForResponse {
   return {
     address: "",
@@ -305,6 +337,15 @@ function createBaseMsgClaimForResponse(): MsgClaimForResponse {
 }
 export const MsgClaimForResponse = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.MsgClaimForResponse",
+  is(o: any): o is MsgClaimForResponse {
+    return o && (o.$typeUrl === MsgClaimForResponse.typeUrl || typeof o.address === "string" && Array.isArray(o.claimedAmount) && (!o.claimedAmount.length || Coin.is(o.claimedAmount[0])));
+  },
+  isSDK(o: any): o is MsgClaimForResponseSDKType {
+    return o && (o.$typeUrl === MsgClaimForResponse.typeUrl || typeof o.address === "string" && Array.isArray(o.claimed_amount) && (!o.claimed_amount.length || Coin.isSDK(o.claimed_amount[0])));
+  },
+  isAmino(o: any): o is MsgClaimForResponseAmino {
+    return o && (o.$typeUrl === MsgClaimForResponse.typeUrl || typeof o.address === "string" && Array.isArray(o.claimed_amount) && (!o.claimed_amount.length || Coin.isAmino(o.claimed_amount[0])));
+  },
   encode(message: MsgClaimForResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -334,7 +375,7 @@ export const MsgClaimForResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgClaimForResponse>): MsgClaimForResponse {
+  fromPartial(object: DeepPartial<MsgClaimForResponse>): MsgClaimForResponse {
     const message = createBaseMsgClaimForResponse();
     message.address = object.address ?? "";
     message.claimedAmount = object.claimedAmount?.map(e => Coin.fromPartial(e)) || [];
@@ -374,3 +415,4 @@ export const MsgClaimForResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgClaimForResponse.typeUrl, MsgClaimForResponse);

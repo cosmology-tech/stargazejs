@@ -1,6 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { toTimestamp, fromTimestamp, DeepPartial, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * CommitInfo defines commit information used by the multi-store when committing
  * a version/height.
@@ -109,6 +110,16 @@ function createBaseCommitInfo(): CommitInfo {
 }
 export const CommitInfo = {
   typeUrl: "/cosmos.store.v1beta1.CommitInfo",
+  aminoType: "cosmos-sdk/CommitInfo",
+  is(o: any): o is CommitInfo {
+    return o && (o.$typeUrl === CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.storeInfos) && (!o.storeInfos.length || StoreInfo.is(o.storeInfos[0])) && Timestamp.is(o.timestamp));
+  },
+  isSDK(o: any): o is CommitInfoSDKType {
+    return o && (o.$typeUrl === CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || StoreInfo.isSDK(o.store_infos[0])) && Timestamp.isSDK(o.timestamp));
+  },
+  isAmino(o: any): o is CommitInfoAmino {
+    return o && (o.$typeUrl === CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || StoreInfo.isAmino(o.store_infos[0])) && Timestamp.isAmino(o.timestamp));
+  },
   encode(message: CommitInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.version !== BigInt(0)) {
       writer.uint32(8).int64(message.version);
@@ -144,7 +155,7 @@ export const CommitInfo = {
     }
     return message;
   },
-  fromPartial(object: Partial<CommitInfo>): CommitInfo {
+  fromPartial(object: DeepPartial<CommitInfo>): CommitInfo {
     const message = createBaseCommitInfo();
     message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
     message.storeInfos = object.storeInfos?.map(e => StoreInfo.fromPartial(e)) || [];
@@ -195,6 +206,8 @@ export const CommitInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(CommitInfo.typeUrl, CommitInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(CommitInfo.aminoType, CommitInfo.typeUrl);
 function createBaseStoreInfo(): StoreInfo {
   return {
     name: "",
@@ -203,6 +216,16 @@ function createBaseStoreInfo(): StoreInfo {
 }
 export const StoreInfo = {
   typeUrl: "/cosmos.store.v1beta1.StoreInfo",
+  aminoType: "cosmos-sdk/StoreInfo",
+  is(o: any): o is StoreInfo {
+    return o && (o.$typeUrl === StoreInfo.typeUrl || typeof o.name === "string" && CommitID.is(o.commitId));
+  },
+  isSDK(o: any): o is StoreInfoSDKType {
+    return o && (o.$typeUrl === StoreInfo.typeUrl || typeof o.name === "string" && CommitID.isSDK(o.commit_id));
+  },
+  isAmino(o: any): o is StoreInfoAmino {
+    return o && (o.$typeUrl === StoreInfo.typeUrl || typeof o.name === "string" && CommitID.isAmino(o.commit_id));
+  },
   encode(message: StoreInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -232,7 +255,7 @@ export const StoreInfo = {
     }
     return message;
   },
-  fromPartial(object: Partial<StoreInfo>): StoreInfo {
+  fromPartial(object: DeepPartial<StoreInfo>): StoreInfo {
     const message = createBaseStoreInfo();
     message.name = object.name ?? "";
     message.commitId = object.commitId !== undefined && object.commitId !== null ? CommitID.fromPartial(object.commitId) : undefined;
@@ -276,6 +299,8 @@ export const StoreInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(StoreInfo.typeUrl, StoreInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(StoreInfo.aminoType, StoreInfo.typeUrl);
 function createBaseCommitID(): CommitID {
   return {
     version: BigInt(0),
@@ -284,6 +309,16 @@ function createBaseCommitID(): CommitID {
 }
 export const CommitID = {
   typeUrl: "/cosmos.store.v1beta1.CommitID",
+  aminoType: "cosmos-sdk/CommitID",
+  is(o: any): o is CommitID {
+    return o && (o.$typeUrl === CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+  },
+  isSDK(o: any): o is CommitIDSDKType {
+    return o && (o.$typeUrl === CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+  },
+  isAmino(o: any): o is CommitIDAmino {
+    return o && (o.$typeUrl === CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+  },
   encode(message: CommitID, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.version !== BigInt(0)) {
       writer.uint32(8).int64(message.version);
@@ -313,7 +348,7 @@ export const CommitID = {
     }
     return message;
   },
-  fromPartial(object: Partial<CommitID>): CommitID {
+  fromPartial(object: DeepPartial<CommitID>): CommitID {
     const message = createBaseCommitID();
     message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
     message.hash = object.hash ?? new Uint8Array();
@@ -357,3 +392,5 @@ export const CommitID = {
     };
   }
 };
+GlobalDecoderRegistry.register(CommitID.typeUrl, CommitID);
+GlobalDecoderRegistry.registerAminoProtoMapping(CommitID.aminoType, CommitID.typeUrl);

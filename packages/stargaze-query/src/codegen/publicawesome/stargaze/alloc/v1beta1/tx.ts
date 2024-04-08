@@ -1,5 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.
@@ -134,6 +136,15 @@ function createBaseMsgCreateVestingAccount(): MsgCreateVestingAccount {
 }
 export const MsgCreateVestingAccount = {
   typeUrl: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccount",
+  is(o: any): o is MsgCreateVestingAccount {
+    return o && (o.$typeUrl === MsgCreateVestingAccount.typeUrl || typeof o.fromAddress === "string" && typeof o.toAddress === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])) && typeof o.startTime === "bigint" && typeof o.endTime === "bigint" && typeof o.delayed === "boolean");
+  },
+  isSDK(o: any): o is MsgCreateVestingAccountSDKType {
+    return o && (o.$typeUrl === MsgCreateVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])) && typeof o.start_time === "bigint" && typeof o.end_time === "bigint" && typeof o.delayed === "boolean");
+  },
+  isAmino(o: any): o is MsgCreateVestingAccountAmino {
+    return o && (o.$typeUrl === MsgCreateVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])) && typeof o.start_time === "bigint" && typeof o.end_time === "bigint" && typeof o.delayed === "boolean");
+  },
   encode(message: MsgCreateVestingAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.fromAddress !== "") {
       writer.uint32(10).string(message.fromAddress);
@@ -187,7 +198,7 @@ export const MsgCreateVestingAccount = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
+  fromPartial(object: DeepPartial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
     const message = createBaseMsgCreateVestingAccount();
     message.fromAddress = object.fromAddress ?? "";
     message.toAddress = object.toAddress ?? "";
@@ -247,11 +258,21 @@ export const MsgCreateVestingAccount = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateVestingAccount.typeUrl, MsgCreateVestingAccount);
 function createBaseMsgCreateVestingAccountResponse(): MsgCreateVestingAccountResponse {
   return {};
 }
 export const MsgCreateVestingAccountResponse = {
   typeUrl: "/publicawesome.stargaze.alloc.v1beta1.MsgCreateVestingAccountResponse",
+  is(o: any): o is MsgCreateVestingAccountResponse {
+    return o && o.$typeUrl === MsgCreateVestingAccountResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgCreateVestingAccountResponseSDKType {
+    return o && o.$typeUrl === MsgCreateVestingAccountResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgCreateVestingAccountResponseAmino {
+    return o && o.$typeUrl === MsgCreateVestingAccountResponse.typeUrl;
+  },
   encode(_: MsgCreateVestingAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -269,7 +290,7 @@ export const MsgCreateVestingAccountResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse {
+  fromPartial(_: DeepPartial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse {
     const message = createBaseMsgCreateVestingAccountResponse();
     return message;
   },
@@ -297,6 +318,7 @@ export const MsgCreateVestingAccountResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateVestingAccountResponse.typeUrl, MsgCreateVestingAccountResponse);
 function createBaseMsgFundFairburnPool(): MsgFundFairburnPool {
   return {
     sender: "",
@@ -305,6 +327,15 @@ function createBaseMsgFundFairburnPool(): MsgFundFairburnPool {
 }
 export const MsgFundFairburnPool = {
   typeUrl: "/publicawesome.stargaze.alloc.v1beta1.MsgFundFairburnPool",
+  is(o: any): o is MsgFundFairburnPool {
+    return o && (o.$typeUrl === MsgFundFairburnPool.typeUrl || typeof o.sender === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])));
+  },
+  isSDK(o: any): o is MsgFundFairburnPoolSDKType {
+    return o && (o.$typeUrl === MsgFundFairburnPool.typeUrl || typeof o.sender === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])));
+  },
+  isAmino(o: any): o is MsgFundFairburnPoolAmino {
+    return o && (o.$typeUrl === MsgFundFairburnPool.typeUrl || typeof o.sender === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])));
+  },
   encode(message: MsgFundFairburnPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -334,7 +365,7 @@ export const MsgFundFairburnPool = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgFundFairburnPool>): MsgFundFairburnPool {
+  fromPartial(object: DeepPartial<MsgFundFairburnPool>): MsgFundFairburnPool {
     const message = createBaseMsgFundFairburnPool();
     message.sender = object.sender ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
@@ -374,11 +405,21 @@ export const MsgFundFairburnPool = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgFundFairburnPool.typeUrl, MsgFundFairburnPool);
 function createBaseMsgFundFairburnPoolResponse(): MsgFundFairburnPoolResponse {
   return {};
 }
 export const MsgFundFairburnPoolResponse = {
   typeUrl: "/publicawesome.stargaze.alloc.v1beta1.MsgFundFairburnPoolResponse",
+  is(o: any): o is MsgFundFairburnPoolResponse {
+    return o && o.$typeUrl === MsgFundFairburnPoolResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgFundFairburnPoolResponseSDKType {
+    return o && o.$typeUrl === MsgFundFairburnPoolResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgFundFairburnPoolResponseAmino {
+    return o && o.$typeUrl === MsgFundFairburnPoolResponse.typeUrl;
+  },
   encode(_: MsgFundFairburnPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -396,7 +437,7 @@ export const MsgFundFairburnPoolResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgFundFairburnPoolResponse>): MsgFundFairburnPoolResponse {
+  fromPartial(_: DeepPartial<MsgFundFairburnPoolResponse>): MsgFundFairburnPoolResponse {
     const message = createBaseMsgFundFairburnPoolResponse();
     return message;
   },
@@ -424,3 +465,4 @@ export const MsgFundFairburnPoolResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgFundFairburnPoolResponse.typeUrl, MsgFundFairburnPoolResponse);

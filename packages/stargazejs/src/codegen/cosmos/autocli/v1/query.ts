@@ -1,5 +1,7 @@
 import { ModuleOptions, ModuleOptionsAmino, ModuleOptionsSDKType } from "./options";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial, isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** AppOptionsRequest is the RemoteInfoService/AppOptions request type. */
 export interface AppOptionsRequest {}
 export interface AppOptionsRequestProtoMsg {
@@ -67,6 +69,16 @@ function createBaseAppOptionsRequest(): AppOptionsRequest {
 }
 export const AppOptionsRequest = {
   typeUrl: "/cosmos.autocli.v1.AppOptionsRequest",
+  aminoType: "cosmos-sdk/AppOptionsRequest",
+  is(o: any): o is AppOptionsRequest {
+    return o && o.$typeUrl === AppOptionsRequest.typeUrl;
+  },
+  isSDK(o: any): o is AppOptionsRequestSDKType {
+    return o && o.$typeUrl === AppOptionsRequest.typeUrl;
+  },
+  isAmino(o: any): o is AppOptionsRequestAmino {
+    return o && o.$typeUrl === AppOptionsRequest.typeUrl;
+  },
   encode(_: AppOptionsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -84,7 +96,7 @@ export const AppOptionsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<AppOptionsRequest>): AppOptionsRequest {
+  fromPartial(_: DeepPartial<AppOptionsRequest>): AppOptionsRequest {
     const message = createBaseAppOptionsRequest();
     return message;
   },
@@ -118,6 +130,8 @@ export const AppOptionsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(AppOptionsRequest.typeUrl, AppOptionsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(AppOptionsRequest.aminoType, AppOptionsRequest.typeUrl);
 function createBaseAppOptionsResponse_ModuleOptionsEntry(): AppOptionsResponse_ModuleOptionsEntry {
   return {
     key: "",
@@ -154,7 +168,7 @@ export const AppOptionsResponse_ModuleOptionsEntry = {
     }
     return message;
   },
-  fromPartial(object: Partial<AppOptionsResponse_ModuleOptionsEntry>): AppOptionsResponse_ModuleOptionsEntry {
+  fromPartial(object: DeepPartial<AppOptionsResponse_ModuleOptionsEntry>): AppOptionsResponse_ModuleOptionsEntry {
     const message = createBaseAppOptionsResponse_ModuleOptionsEntry();
     message.key = object.key ?? "";
     message.value = object.value !== undefined && object.value !== null ? ModuleOptions.fromPartial(object.value) : undefined;
@@ -193,6 +207,16 @@ function createBaseAppOptionsResponse(): AppOptionsResponse {
 }
 export const AppOptionsResponse = {
   typeUrl: "/cosmos.autocli.v1.AppOptionsResponse",
+  aminoType: "cosmos-sdk/AppOptionsResponse",
+  is(o: any): o is AppOptionsResponse {
+    return o && (o.$typeUrl === AppOptionsResponse.typeUrl || isSet(o.moduleOptions));
+  },
+  isSDK(o: any): o is AppOptionsResponseSDKType {
+    return o && (o.$typeUrl === AppOptionsResponse.typeUrl || isSet(o.module_options));
+  },
+  isAmino(o: any): o is AppOptionsResponseAmino {
+    return o && (o.$typeUrl === AppOptionsResponse.typeUrl || isSet(o.module_options));
+  },
   encode(message: AppOptionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     Object.entries(message.moduleOptions).forEach(([key, value]) => {
       AppOptionsResponse_ModuleOptionsEntry.encode({
@@ -222,7 +246,7 @@ export const AppOptionsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<AppOptionsResponse>): AppOptionsResponse {
+  fromPartial(object: DeepPartial<AppOptionsResponse>): AppOptionsResponse {
     const message = createBaseAppOptionsResponse();
     message.moduleOptions = Object.entries(object.moduleOptions ?? {}).reduce<{
       [key: string]: ModuleOptions;
@@ -278,3 +302,5 @@ export const AppOptionsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AppOptionsResponse.typeUrl, AppOptionsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AppOptionsResponse.aminoType, AppOptionsResponse.typeUrl);

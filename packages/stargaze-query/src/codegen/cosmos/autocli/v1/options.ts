@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial, isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** ModuleOptions describes the CLI options for a Cosmos SDK module. */
 export interface ModuleOptions {
   /** tx describes the tx commands for the module. */
@@ -378,6 +380,16 @@ function createBaseModuleOptions(): ModuleOptions {
 }
 export const ModuleOptions = {
   typeUrl: "/cosmos.autocli.v1.ModuleOptions",
+  aminoType: "cosmos-sdk/ModuleOptions",
+  is(o: any): o is ModuleOptions {
+    return o && o.$typeUrl === ModuleOptions.typeUrl;
+  },
+  isSDK(o: any): o is ModuleOptionsSDKType {
+    return o && o.$typeUrl === ModuleOptions.typeUrl;
+  },
+  isAmino(o: any): o is ModuleOptionsAmino {
+    return o && o.$typeUrl === ModuleOptions.typeUrl;
+  },
   encode(message: ModuleOptions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tx !== undefined) {
       ServiceCommandDescriptor.encode(message.tx, writer.uint32(10).fork()).ldelim();
@@ -407,7 +419,7 @@ export const ModuleOptions = {
     }
     return message;
   },
-  fromPartial(object: Partial<ModuleOptions>): ModuleOptions {
+  fromPartial(object: DeepPartial<ModuleOptions>): ModuleOptions {
     const message = createBaseModuleOptions();
     message.tx = object.tx !== undefined && object.tx !== null ? ServiceCommandDescriptor.fromPartial(object.tx) : undefined;
     message.query = object.query !== undefined && object.query !== null ? ServiceCommandDescriptor.fromPartial(object.query) : undefined;
@@ -451,6 +463,8 @@ export const ModuleOptions = {
     };
   }
 };
+GlobalDecoderRegistry.register(ModuleOptions.typeUrl, ModuleOptions);
+GlobalDecoderRegistry.registerAminoProtoMapping(ModuleOptions.aminoType, ModuleOptions.typeUrl);
 function createBaseServiceCommandDescriptor_SubCommandsEntry(): ServiceCommandDescriptor_SubCommandsEntry {
   return {
     key: "",
@@ -487,7 +501,7 @@ export const ServiceCommandDescriptor_SubCommandsEntry = {
     }
     return message;
   },
-  fromPartial(object: Partial<ServiceCommandDescriptor_SubCommandsEntry>): ServiceCommandDescriptor_SubCommandsEntry {
+  fromPartial(object: DeepPartial<ServiceCommandDescriptor_SubCommandsEntry>): ServiceCommandDescriptor_SubCommandsEntry {
     const message = createBaseServiceCommandDescriptor_SubCommandsEntry();
     message.key = object.key ?? "";
     message.value = object.value !== undefined && object.value !== null ? ServiceCommandDescriptor.fromPartial(object.value) : undefined;
@@ -528,6 +542,16 @@ function createBaseServiceCommandDescriptor(): ServiceCommandDescriptor {
 }
 export const ServiceCommandDescriptor = {
   typeUrl: "/cosmos.autocli.v1.ServiceCommandDescriptor",
+  aminoType: "cosmos-sdk/ServiceCommandDescriptor",
+  is(o: any): o is ServiceCommandDescriptor {
+    return o && (o.$typeUrl === ServiceCommandDescriptor.typeUrl || typeof o.service === "string" && Array.isArray(o.rpcCommandOptions) && (!o.rpcCommandOptions.length || RpcCommandOptions.is(o.rpcCommandOptions[0])) && isSet(o.subCommands));
+  },
+  isSDK(o: any): o is ServiceCommandDescriptorSDKType {
+    return o && (o.$typeUrl === ServiceCommandDescriptor.typeUrl || typeof o.service === "string" && Array.isArray(o.rpc_command_options) && (!o.rpc_command_options.length || RpcCommandOptions.isSDK(o.rpc_command_options[0])) && isSet(o.sub_commands));
+  },
+  isAmino(o: any): o is ServiceCommandDescriptorAmino {
+    return o && (o.$typeUrl === ServiceCommandDescriptor.typeUrl || typeof o.service === "string" && Array.isArray(o.rpc_command_options) && (!o.rpc_command_options.length || RpcCommandOptions.isAmino(o.rpc_command_options[0])) && isSet(o.sub_commands));
+  },
   encode(message: ServiceCommandDescriptor, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.service !== "") {
       writer.uint32(10).string(message.service);
@@ -569,7 +593,7 @@ export const ServiceCommandDescriptor = {
     }
     return message;
   },
-  fromPartial(object: Partial<ServiceCommandDescriptor>): ServiceCommandDescriptor {
+  fromPartial(object: DeepPartial<ServiceCommandDescriptor>): ServiceCommandDescriptor {
     const message = createBaseServiceCommandDescriptor();
     message.service = object.service ?? "";
     message.rpcCommandOptions = object.rpcCommandOptions?.map(e => RpcCommandOptions.fromPartial(e)) || [];
@@ -637,6 +661,8 @@ export const ServiceCommandDescriptor = {
     };
   }
 };
+GlobalDecoderRegistry.register(ServiceCommandDescriptor.typeUrl, ServiceCommandDescriptor);
+GlobalDecoderRegistry.registerAminoProtoMapping(ServiceCommandDescriptor.aminoType, ServiceCommandDescriptor.typeUrl);
 function createBaseRpcCommandOptions_FlagOptionsEntry(): RpcCommandOptions_FlagOptionsEntry {
   return {
     key: "",
@@ -673,7 +699,7 @@ export const RpcCommandOptions_FlagOptionsEntry = {
     }
     return message;
   },
-  fromPartial(object: Partial<RpcCommandOptions_FlagOptionsEntry>): RpcCommandOptions_FlagOptionsEntry {
+  fromPartial(object: DeepPartial<RpcCommandOptions_FlagOptionsEntry>): RpcCommandOptions_FlagOptionsEntry {
     const message = createBaseRpcCommandOptions_FlagOptionsEntry();
     message.key = object.key ?? "";
     message.value = object.value !== undefined && object.value !== null ? FlagOptions.fromPartial(object.value) : undefined;
@@ -723,6 +749,16 @@ function createBaseRpcCommandOptions(): RpcCommandOptions {
 }
 export const RpcCommandOptions = {
   typeUrl: "/cosmos.autocli.v1.RpcCommandOptions",
+  aminoType: "cosmos-sdk/RpcCommandOptions",
+  is(o: any): o is RpcCommandOptions {
+    return o && (o.$typeUrl === RpcCommandOptions.typeUrl || typeof o.rpcMethod === "string" && typeof o.use === "string" && typeof o.long === "string" && typeof o.short === "string" && typeof o.example === "string" && Array.isArray(o.alias) && (!o.alias.length || typeof o.alias[0] === "string") && Array.isArray(o.suggestFor) && (!o.suggestFor.length || typeof o.suggestFor[0] === "string") && typeof o.deprecated === "string" && typeof o.version === "string" && isSet(o.flagOptions) && Array.isArray(o.positionalArgs) && (!o.positionalArgs.length || PositionalArgDescriptor.is(o.positionalArgs[0])) && typeof o.skip === "boolean");
+  },
+  isSDK(o: any): o is RpcCommandOptionsSDKType {
+    return o && (o.$typeUrl === RpcCommandOptions.typeUrl || typeof o.rpc_method === "string" && typeof o.use === "string" && typeof o.long === "string" && typeof o.short === "string" && typeof o.example === "string" && Array.isArray(o.alias) && (!o.alias.length || typeof o.alias[0] === "string") && Array.isArray(o.suggest_for) && (!o.suggest_for.length || typeof o.suggest_for[0] === "string") && typeof o.deprecated === "string" && typeof o.version === "string" && isSet(o.flag_options) && Array.isArray(o.positional_args) && (!o.positional_args.length || PositionalArgDescriptor.isSDK(o.positional_args[0])) && typeof o.skip === "boolean");
+  },
+  isAmino(o: any): o is RpcCommandOptionsAmino {
+    return o && (o.$typeUrl === RpcCommandOptions.typeUrl || typeof o.rpc_method === "string" && typeof o.use === "string" && typeof o.long === "string" && typeof o.short === "string" && typeof o.example === "string" && Array.isArray(o.alias) && (!o.alias.length || typeof o.alias[0] === "string") && Array.isArray(o.suggest_for) && (!o.suggest_for.length || typeof o.suggest_for[0] === "string") && typeof o.deprecated === "string" && typeof o.version === "string" && isSet(o.flag_options) && Array.isArray(o.positional_args) && (!o.positional_args.length || PositionalArgDescriptor.isAmino(o.positional_args[0])) && typeof o.skip === "boolean");
+  },
   encode(message: RpcCommandOptions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.rpcMethod !== "") {
       writer.uint32(10).string(message.rpcMethod);
@@ -818,7 +854,7 @@ export const RpcCommandOptions = {
     }
     return message;
   },
-  fromPartial(object: Partial<RpcCommandOptions>): RpcCommandOptions {
+  fromPartial(object: DeepPartial<RpcCommandOptions>): RpcCommandOptions {
     const message = createBaseRpcCommandOptions();
     message.rpcMethod = object.rpcMethod ?? "";
     message.use = object.use ?? "";
@@ -935,6 +971,8 @@ export const RpcCommandOptions = {
     };
   }
 };
+GlobalDecoderRegistry.register(RpcCommandOptions.typeUrl, RpcCommandOptions);
+GlobalDecoderRegistry.registerAminoProtoMapping(RpcCommandOptions.aminoType, RpcCommandOptions.typeUrl);
 function createBaseFlagOptions(): FlagOptions {
   return {
     name: "",
@@ -948,6 +986,16 @@ function createBaseFlagOptions(): FlagOptions {
 }
 export const FlagOptions = {
   typeUrl: "/cosmos.autocli.v1.FlagOptions",
+  aminoType: "cosmos-sdk/FlagOptions",
+  is(o: any): o is FlagOptions {
+    return o && (o.$typeUrl === FlagOptions.typeUrl || typeof o.name === "string" && typeof o.shorthand === "string" && typeof o.usage === "string" && typeof o.defaultValue === "string" && typeof o.deprecated === "string" && typeof o.shorthandDeprecated === "string" && typeof o.hidden === "boolean");
+  },
+  isSDK(o: any): o is FlagOptionsSDKType {
+    return o && (o.$typeUrl === FlagOptions.typeUrl || typeof o.name === "string" && typeof o.shorthand === "string" && typeof o.usage === "string" && typeof o.default_value === "string" && typeof o.deprecated === "string" && typeof o.shorthand_deprecated === "string" && typeof o.hidden === "boolean");
+  },
+  isAmino(o: any): o is FlagOptionsAmino {
+    return o && (o.$typeUrl === FlagOptions.typeUrl || typeof o.name === "string" && typeof o.shorthand === "string" && typeof o.usage === "string" && typeof o.default_value === "string" && typeof o.deprecated === "string" && typeof o.shorthand_deprecated === "string" && typeof o.hidden === "boolean");
+  },
   encode(message: FlagOptions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -1007,7 +1055,7 @@ export const FlagOptions = {
     }
     return message;
   },
-  fromPartial(object: Partial<FlagOptions>): FlagOptions {
+  fromPartial(object: DeepPartial<FlagOptions>): FlagOptions {
     const message = createBaseFlagOptions();
     message.name = object.name ?? "";
     message.shorthand = object.shorthand ?? "";
@@ -1076,6 +1124,8 @@ export const FlagOptions = {
     };
   }
 };
+GlobalDecoderRegistry.register(FlagOptions.typeUrl, FlagOptions);
+GlobalDecoderRegistry.registerAminoProtoMapping(FlagOptions.aminoType, FlagOptions.typeUrl);
 function createBasePositionalArgDescriptor(): PositionalArgDescriptor {
   return {
     protoField: "",
@@ -1084,6 +1134,16 @@ function createBasePositionalArgDescriptor(): PositionalArgDescriptor {
 }
 export const PositionalArgDescriptor = {
   typeUrl: "/cosmos.autocli.v1.PositionalArgDescriptor",
+  aminoType: "cosmos-sdk/PositionalArgDescriptor",
+  is(o: any): o is PositionalArgDescriptor {
+    return o && (o.$typeUrl === PositionalArgDescriptor.typeUrl || typeof o.protoField === "string" && typeof o.varargs === "boolean");
+  },
+  isSDK(o: any): o is PositionalArgDescriptorSDKType {
+    return o && (o.$typeUrl === PositionalArgDescriptor.typeUrl || typeof o.proto_field === "string" && typeof o.varargs === "boolean");
+  },
+  isAmino(o: any): o is PositionalArgDescriptorAmino {
+    return o && (o.$typeUrl === PositionalArgDescriptor.typeUrl || typeof o.proto_field === "string" && typeof o.varargs === "boolean");
+  },
   encode(message: PositionalArgDescriptor, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.protoField !== "") {
       writer.uint32(10).string(message.protoField);
@@ -1113,7 +1173,7 @@ export const PositionalArgDescriptor = {
     }
     return message;
   },
-  fromPartial(object: Partial<PositionalArgDescriptor>): PositionalArgDescriptor {
+  fromPartial(object: DeepPartial<PositionalArgDescriptor>): PositionalArgDescriptor {
     const message = createBasePositionalArgDescriptor();
     message.protoField = object.protoField ?? "";
     message.varargs = object.varargs ?? false;
@@ -1157,3 +1217,5 @@ export const PositionalArgDescriptor = {
     };
   }
 };
+GlobalDecoderRegistry.register(PositionalArgDescriptor.typeUrl, PositionalArgDescriptor);
+GlobalDecoderRegistry.registerAminoProtoMapping(PositionalArgDescriptor.aminoType, PositionalArgDescriptor.typeUrl);

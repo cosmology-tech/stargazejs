@@ -1,5 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType, CodeAuthorization, CodeAuthorizationAmino, CodeAuthorizationSDKType, ContractAuthorization, ContractAuthorizationAmino, ContractAuthorizationSDKType } from "./globalfee";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the globalfee module's genesis state. */
 export interface GenesisState {
   /** Module params */
@@ -41,6 +43,15 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.GenesisState",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.codeAuthorizations) && (!o.codeAuthorizations.length || CodeAuthorization.is(o.codeAuthorizations[0])) && Array.isArray(o.contractAuthorizations) && (!o.contractAuthorizations.length || ContractAuthorization.is(o.contractAuthorizations[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.code_authorizations) && (!o.code_authorizations.length || CodeAuthorization.isSDK(o.code_authorizations[0])) && Array.isArray(o.contract_authorizations) && (!o.contract_authorizations.length || ContractAuthorization.isSDK(o.contract_authorizations[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.code_authorizations) && (!o.code_authorizations.length || CodeAuthorization.isAmino(o.code_authorizations[0])) && Array.isArray(o.contract_authorizations) && (!o.contract_authorizations.length || ContractAuthorization.isAmino(o.contract_authorizations[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -76,7 +87,7 @@ export const GenesisState = {
     }
     return message;
   },
-  fromPartial(object: Partial<GenesisState>): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.codeAuthorizations = object.codeAuthorizations?.map(e => CodeAuthorization.fromPartial(e)) || [];
@@ -123,3 +134,4 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);

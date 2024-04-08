@@ -2,6 +2,8 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { ClaimRecord, ClaimRecordAmino, ClaimRecordSDKType } from "./claim_record";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the claim module's genesis state. */
 export interface GenesisState {
   /**
@@ -49,6 +51,15 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/publicawesome.stargaze.claim.v1beta1.GenesisState",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Coin.is(o.moduleAccountBalance) && Params.is(o.params) && Array.isArray(o.claimRecords) && (!o.claimRecords.length || ClaimRecord.is(o.claimRecords[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Coin.isSDK(o.module_account_balance) && Params.isSDK(o.params) && Array.isArray(o.claim_records) && (!o.claim_records.length || ClaimRecord.isSDK(o.claim_records[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Coin.isAmino(o.module_account_balance) && Params.isAmino(o.params) && Array.isArray(o.claim_records) && (!o.claim_records.length || ClaimRecord.isAmino(o.claim_records[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.moduleAccountBalance !== undefined) {
       Coin.encode(message.moduleAccountBalance, writer.uint32(10).fork()).ldelim();
@@ -84,7 +95,7 @@ export const GenesisState = {
     }
     return message;
   },
-  fromPartial(object: Partial<GenesisState>): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.moduleAccountBalance = object.moduleAccountBalance !== undefined && object.moduleAccountBalance !== null ? Coin.fromPartial(object.moduleAccountBalance) : undefined;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -129,3 +140,4 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);

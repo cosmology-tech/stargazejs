@@ -1,5 +1,7 @@
 import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../../../cosmos/auth/v1beta1/auth";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccount {
   $typeUrl?: "/ibc.applications.interchain_accounts.v1.InterchainAccount";
@@ -34,6 +36,16 @@ function createBaseInterchainAccount(): InterchainAccount {
 }
 export const InterchainAccount = {
   typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccount",
+  aminoType: "cosmos-sdk/InterchainAccount",
+  is(o: any): o is InterchainAccount {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.accountOwner === "string");
+  },
+  isSDK(o: any): o is InterchainAccountSDKType {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.account_owner === "string");
+  },
+  isAmino(o: any): o is InterchainAccountAmino {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.account_owner === "string");
+  },
   encode(message: InterchainAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.baseAccount !== undefined) {
       BaseAccount.encode(message.baseAccount, writer.uint32(10).fork()).ldelim();
@@ -63,7 +75,7 @@ export const InterchainAccount = {
     }
     return message;
   },
-  fromPartial(object: Partial<InterchainAccount>): InterchainAccount {
+  fromPartial(object: DeepPartial<InterchainAccount>): InterchainAccount {
     const message = createBaseInterchainAccount();
     message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
     message.accountOwner = object.accountOwner ?? "";
@@ -107,3 +119,5 @@ export const InterchainAccount = {
     };
   }
 };
+GlobalDecoderRegistry.register(InterchainAccount.typeUrl, InterchainAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(InterchainAccount.aminoType, InterchainAccount.typeUrl);

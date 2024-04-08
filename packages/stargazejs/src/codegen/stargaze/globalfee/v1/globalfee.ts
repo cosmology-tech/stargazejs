@@ -1,5 +1,7 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Params holds parameters for the globalfee module. */
 export interface Params {
   /** Addresses which are whitelisted to modify the gas free operations */
@@ -89,6 +91,15 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.privilegedAddresses) && (!o.privilegedAddresses.length || typeof o.privilegedAddresses[0] === "string") && Array.isArray(o.minimumGasPrices) && (!o.minimumGasPrices.length || DecCoin.is(o.minimumGasPrices[0])));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.privileged_addresses) && (!o.privileged_addresses.length || typeof o.privileged_addresses[0] === "string") && Array.isArray(o.minimum_gas_prices) && (!o.minimum_gas_prices.length || DecCoin.isSDK(o.minimum_gas_prices[0])));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.privileged_addresses) && (!o.privileged_addresses.length || typeof o.privileged_addresses[0] === "string") && Array.isArray(o.minimum_gas_prices) && (!o.minimum_gas_prices.length || DecCoin.isAmino(o.minimum_gas_prices[0])));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.privilegedAddresses) {
       writer.uint32(10).string(v!);
@@ -118,7 +129,7 @@ export const Params = {
     }
     return message;
   },
-  fromPartial(object: Partial<Params>): Params {
+  fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.privilegedAddresses = object.privilegedAddresses?.map(e => e) || [];
     message.minimumGasPrices = object.minimumGasPrices?.map(e => DecCoin.fromPartial(e)) || [];
@@ -160,6 +171,7 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
 function createBaseCodeAuthorization(): CodeAuthorization {
   return {
     codeId: BigInt(0),
@@ -168,6 +180,15 @@ function createBaseCodeAuthorization(): CodeAuthorization {
 }
 export const CodeAuthorization = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.CodeAuthorization",
+  is(o: any): o is CodeAuthorization {
+    return o && (o.$typeUrl === CodeAuthorization.typeUrl || typeof o.codeId === "bigint" && Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isSDK(o: any): o is CodeAuthorizationSDKType {
+    return o && (o.$typeUrl === CodeAuthorization.typeUrl || typeof o.code_id === "bigint" && Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isAmino(o: any): o is CodeAuthorizationAmino {
+    return o && (o.$typeUrl === CodeAuthorization.typeUrl || typeof o.code_id === "bigint" && Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
   encode(message: CodeAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
@@ -197,7 +218,7 @@ export const CodeAuthorization = {
     }
     return message;
   },
-  fromPartial(object: Partial<CodeAuthorization>): CodeAuthorization {
+  fromPartial(object: DeepPartial<CodeAuthorization>): CodeAuthorization {
     const message = createBaseCodeAuthorization();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
     message.methods = object.methods?.map(e => e) || [];
@@ -237,6 +258,7 @@ export const CodeAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(CodeAuthorization.typeUrl, CodeAuthorization);
 function createBaseContractAuthorization(): ContractAuthorization {
   return {
     contractAddress: "",
@@ -245,6 +267,15 @@ function createBaseContractAuthorization(): ContractAuthorization {
 }
 export const ContractAuthorization = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.ContractAuthorization",
+  is(o: any): o is ContractAuthorization {
+    return o && (o.$typeUrl === ContractAuthorization.typeUrl || typeof o.contractAddress === "string" && Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isSDK(o: any): o is ContractAuthorizationSDKType {
+    return o && (o.$typeUrl === ContractAuthorization.typeUrl || typeof o.contract_address === "string" && Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
+  isAmino(o: any): o is ContractAuthorizationAmino {
+    return o && (o.$typeUrl === ContractAuthorization.typeUrl || typeof o.contract_address === "string" && Array.isArray(o.methods) && (!o.methods.length || typeof o.methods[0] === "string"));
+  },
   encode(message: ContractAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
@@ -274,7 +305,7 @@ export const ContractAuthorization = {
     }
     return message;
   },
-  fromPartial(object: Partial<ContractAuthorization>): ContractAuthorization {
+  fromPartial(object: DeepPartial<ContractAuthorization>): ContractAuthorization {
     const message = createBaseContractAuthorization();
     message.contractAddress = object.contractAddress ?? "";
     message.methods = object.methods?.map(e => e) || [];
@@ -314,3 +345,4 @@ export const ContractAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(ContractAuthorization.typeUrl, ContractAuthorization);

@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * Deprecated: Do not use. To promote a contract, a
  * MsgPromoteToPrivilegedContract can be invoked from the x/gov module via a v1
@@ -107,6 +109,16 @@ function createBasePromoteToPrivilegedContractProposal(): PromoteToPrivilegedCon
 }
 export const PromoteToPrivilegedContractProposal = {
   typeUrl: "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal",
+  aminoType: "cron/PromoteToPrivilegedContractProposal",
+  is(o: any): o is PromoteToPrivilegedContractProposal {
+    return o && (o.$typeUrl === PromoteToPrivilegedContractProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract === "string");
+  },
+  isSDK(o: any): o is PromoteToPrivilegedContractProposalSDKType {
+    return o && (o.$typeUrl === PromoteToPrivilegedContractProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract === "string");
+  },
+  isAmino(o: any): o is PromoteToPrivilegedContractProposalAmino {
+    return o && (o.$typeUrl === PromoteToPrivilegedContractProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract === "string");
+  },
   encode(message: PromoteToPrivilegedContractProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -142,7 +154,7 @@ export const PromoteToPrivilegedContractProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<PromoteToPrivilegedContractProposal>): PromoteToPrivilegedContractProposal {
+  fromPartial(object: DeepPartial<PromoteToPrivilegedContractProposal>): PromoteToPrivilegedContractProposal {
     const message = createBasePromoteToPrivilegedContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -191,6 +203,8 @@ export const PromoteToPrivilegedContractProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(PromoteToPrivilegedContractProposal.typeUrl, PromoteToPrivilegedContractProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(PromoteToPrivilegedContractProposal.aminoType, PromoteToPrivilegedContractProposal.typeUrl);
 function createBaseDemotePrivilegedContractProposal(): DemotePrivilegedContractProposal {
   return {
     $typeUrl: "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal",
@@ -201,6 +215,16 @@ function createBaseDemotePrivilegedContractProposal(): DemotePrivilegedContractP
 }
 export const DemotePrivilegedContractProposal = {
   typeUrl: "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal",
+  aminoType: "cron/DemotePrivilegedContractProposal",
+  is(o: any): o is DemotePrivilegedContractProposal {
+    return o && (o.$typeUrl === DemotePrivilegedContractProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract === "string");
+  },
+  isSDK(o: any): o is DemotePrivilegedContractProposalSDKType {
+    return o && (o.$typeUrl === DemotePrivilegedContractProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract === "string");
+  },
+  isAmino(o: any): o is DemotePrivilegedContractProposalAmino {
+    return o && (o.$typeUrl === DemotePrivilegedContractProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract === "string");
+  },
   encode(message: DemotePrivilegedContractProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -236,7 +260,7 @@ export const DemotePrivilegedContractProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<DemotePrivilegedContractProposal>): DemotePrivilegedContractProposal {
+  fromPartial(object: DeepPartial<DemotePrivilegedContractProposal>): DemotePrivilegedContractProposal {
     const message = createBaseDemotePrivilegedContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -285,3 +309,5 @@ export const DemotePrivilegedContractProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(DemotePrivilegedContractProposal.typeUrl, DemotePrivilegedContractProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(DemotePrivilegedContractProposal.aminoType, DemotePrivilegedContractProposal.typeUrl);

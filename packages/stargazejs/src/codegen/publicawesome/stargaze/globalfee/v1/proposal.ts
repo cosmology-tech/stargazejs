@@ -1,5 +1,7 @@
 import { CodeAuthorization, CodeAuthorizationAmino, CodeAuthorizationSDKType, ContractAuthorization, ContractAuthorizationAmino, ContractAuthorizationSDKType } from "./globalfee";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { DeepPartial } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** SetCodeAuthorizationProposal ... */
 /** @deprecated */
 export interface SetCodeAuthorizationProposal {
@@ -134,6 +136,16 @@ function createBaseSetCodeAuthorizationProposal(): SetCodeAuthorizationProposal 
 }
 export const SetCodeAuthorizationProposal = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal",
+  aminoType: "globalfee/SetCodeAuthorizationProposal",
+  is(o: any): o is SetCodeAuthorizationProposal {
+    return o && (o.$typeUrl === SetCodeAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
+  isSDK(o: any): o is SetCodeAuthorizationProposalSDKType {
+    return o && (o.$typeUrl === SetCodeAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
+  isAmino(o: any): o is SetCodeAuthorizationProposalAmino {
+    return o && (o.$typeUrl === SetCodeAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
   encode(message: SetCodeAuthorizationProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -169,7 +181,7 @@ export const SetCodeAuthorizationProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<SetCodeAuthorizationProposal>): SetCodeAuthorizationProposal {
+  fromPartial(object: DeepPartial<SetCodeAuthorizationProposal>): SetCodeAuthorizationProposal {
     const message = createBaseSetCodeAuthorizationProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -218,6 +230,8 @@ export const SetCodeAuthorizationProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetCodeAuthorizationProposal.typeUrl, SetCodeAuthorizationProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetCodeAuthorizationProposal.aminoType, SetCodeAuthorizationProposal.typeUrl);
 function createBaseRemoveCodeAuthorizationProposal(): RemoveCodeAuthorizationProposal {
   return {
     $typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal",
@@ -228,6 +242,16 @@ function createBaseRemoveCodeAuthorizationProposal(): RemoveCodeAuthorizationPro
 }
 export const RemoveCodeAuthorizationProposal = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal",
+  aminoType: "globalfee/RemoveCodeAuthorizationProposal",
+  is(o: any): o is RemoveCodeAuthorizationProposal {
+    return o && (o.$typeUrl === RemoveCodeAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.codeId === "bigint");
+  },
+  isSDK(o: any): o is RemoveCodeAuthorizationProposalSDKType {
+    return o && (o.$typeUrl === RemoveCodeAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.code_id === "bigint");
+  },
+  isAmino(o: any): o is RemoveCodeAuthorizationProposalAmino {
+    return o && (o.$typeUrl === RemoveCodeAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.code_id === "bigint");
+  },
   encode(message: RemoveCodeAuthorizationProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -263,7 +287,7 @@ export const RemoveCodeAuthorizationProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<RemoveCodeAuthorizationProposal>): RemoveCodeAuthorizationProposal {
+  fromPartial(object: DeepPartial<RemoveCodeAuthorizationProposal>): RemoveCodeAuthorizationProposal {
     const message = createBaseRemoveCodeAuthorizationProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -312,6 +336,8 @@ export const RemoveCodeAuthorizationProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(RemoveCodeAuthorizationProposal.typeUrl, RemoveCodeAuthorizationProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(RemoveCodeAuthorizationProposal.aminoType, RemoveCodeAuthorizationProposal.typeUrl);
 function createBaseSetContractAuthorizationProposal(): SetContractAuthorizationProposal {
   return {
     $typeUrl: "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal",
@@ -322,6 +348,16 @@ function createBaseSetContractAuthorizationProposal(): SetContractAuthorizationP
 }
 export const SetContractAuthorizationProposal = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal",
+  aminoType: "globalfee/SetContractAuthorizationProposal",
+  is(o: any): o is SetContractAuthorizationProposal {
+    return o && (o.$typeUrl === SetContractAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
+  isSDK(o: any): o is SetContractAuthorizationProposalSDKType {
+    return o && (o.$typeUrl === SetContractAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
+  isAmino(o: any): o is SetContractAuthorizationProposalAmino {
+    return o && (o.$typeUrl === SetContractAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
   encode(message: SetContractAuthorizationProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -357,7 +393,7 @@ export const SetContractAuthorizationProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<SetContractAuthorizationProposal>): SetContractAuthorizationProposal {
+  fromPartial(object: DeepPartial<SetContractAuthorizationProposal>): SetContractAuthorizationProposal {
     const message = createBaseSetContractAuthorizationProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -406,6 +442,8 @@ export const SetContractAuthorizationProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetContractAuthorizationProposal.typeUrl, SetContractAuthorizationProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetContractAuthorizationProposal.aminoType, SetContractAuthorizationProposal.typeUrl);
 function createBaseRemoveContractAuthorizationProposal(): RemoveContractAuthorizationProposal {
   return {
     $typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal",
@@ -416,6 +454,16 @@ function createBaseRemoveContractAuthorizationProposal(): RemoveContractAuthoriz
 }
 export const RemoveContractAuthorizationProposal = {
   typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal",
+  aminoType: "globalfee/RemoveContractAuthorizationProposal",
+  is(o: any): o is RemoveContractAuthorizationProposal {
+    return o && (o.$typeUrl === RemoveContractAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contractAddress === "string");
+  },
+  isSDK(o: any): o is RemoveContractAuthorizationProposalSDKType {
+    return o && (o.$typeUrl === RemoveContractAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract_address === "string");
+  },
+  isAmino(o: any): o is RemoveContractAuthorizationProposalAmino {
+    return o && (o.$typeUrl === RemoveContractAuthorizationProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.contract_address === "string");
+  },
   encode(message: RemoveContractAuthorizationProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -451,7 +499,7 @@ export const RemoveContractAuthorizationProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<RemoveContractAuthorizationProposal>): RemoveContractAuthorizationProposal {
+  fromPartial(object: DeepPartial<RemoveContractAuthorizationProposal>): RemoveContractAuthorizationProposal {
     const message = createBaseRemoveContractAuthorizationProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -500,3 +548,5 @@ export const RemoveContractAuthorizationProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(RemoveContractAuthorizationProposal.typeUrl, RemoveContractAuthorizationProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(RemoveContractAuthorizationProposal.aminoType, RemoveContractAuthorizationProposal.typeUrl);

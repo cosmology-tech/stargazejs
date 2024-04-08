@@ -1,6 +1,8 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Permissions, PermissionsAmino, PermissionsSDKType, GenesisAccountPermissions, GenesisAccountPermissionsAmino, GenesisAccountPermissionsSDKType } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** QueryAccountRequest is the request type for the Query/Account RPC method. */
 export interface QueryAccountRequest {
   address: string;
@@ -129,6 +131,16 @@ function createBaseQueryAccountRequest(): QueryAccountRequest {
 }
 export const QueryAccountRequest = {
   typeUrl: "/cosmos.circuit.v1.QueryAccountRequest",
+  aminoType: "cosmos-sdk/QueryAccountRequest",
+  is(o: any): o is QueryAccountRequest {
+    return o && (o.$typeUrl === QueryAccountRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is QueryAccountRequestSDKType {
+    return o && (o.$typeUrl === QueryAccountRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is QueryAccountRequestAmino {
+    return o && (o.$typeUrl === QueryAccountRequest.typeUrl || typeof o.address === "string");
+  },
   encode(message: QueryAccountRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -152,7 +164,7 @@ export const QueryAccountRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAccountRequest>): QueryAccountRequest {
+  fromPartial(object: DeepPartial<QueryAccountRequest>): QueryAccountRequest {
     const message = createBaseQueryAccountRequest();
     message.address = object.address ?? "";
     return message;
@@ -191,6 +203,8 @@ export const QueryAccountRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAccountRequest.typeUrl, QueryAccountRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAccountRequest.aminoType, QueryAccountRequest.typeUrl);
 function createBaseAccountResponse(): AccountResponse {
   return {
     permission: undefined
@@ -198,6 +212,16 @@ function createBaseAccountResponse(): AccountResponse {
 }
 export const AccountResponse = {
   typeUrl: "/cosmos.circuit.v1.AccountResponse",
+  aminoType: "cosmos-sdk/AccountResponse",
+  is(o: any): o is AccountResponse {
+    return o && o.$typeUrl === AccountResponse.typeUrl;
+  },
+  isSDK(o: any): o is AccountResponseSDKType {
+    return o && o.$typeUrl === AccountResponse.typeUrl;
+  },
+  isAmino(o: any): o is AccountResponseAmino {
+    return o && o.$typeUrl === AccountResponse.typeUrl;
+  },
   encode(message: AccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.permission !== undefined) {
       Permissions.encode(message.permission, writer.uint32(10).fork()).ldelim();
@@ -221,7 +245,7 @@ export const AccountResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<AccountResponse>): AccountResponse {
+  fromPartial(object: DeepPartial<AccountResponse>): AccountResponse {
     const message = createBaseAccountResponse();
     message.permission = object.permission !== undefined && object.permission !== null ? Permissions.fromPartial(object.permission) : undefined;
     return message;
@@ -260,6 +284,8 @@ export const AccountResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AccountResponse.typeUrl, AccountResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AccountResponse.aminoType, AccountResponse.typeUrl);
 function createBaseQueryAccountsRequest(): QueryAccountsRequest {
   return {
     pagination: undefined
@@ -267,6 +293,16 @@ function createBaseQueryAccountsRequest(): QueryAccountsRequest {
 }
 export const QueryAccountsRequest = {
   typeUrl: "/cosmos.circuit.v1.QueryAccountsRequest",
+  aminoType: "cosmos-sdk/QueryAccountsRequest",
+  is(o: any): o is QueryAccountsRequest {
+    return o && o.$typeUrl === QueryAccountsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryAccountsRequestSDKType {
+    return o && o.$typeUrl === QueryAccountsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryAccountsRequestAmino {
+    return o && o.$typeUrl === QueryAccountsRequest.typeUrl;
+  },
   encode(message: QueryAccountsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -290,7 +326,7 @@ export const QueryAccountsRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAccountsRequest>): QueryAccountsRequest {
+  fromPartial(object: DeepPartial<QueryAccountsRequest>): QueryAccountsRequest {
     const message = createBaseQueryAccountsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -329,6 +365,8 @@ export const QueryAccountsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAccountsRequest.typeUrl, QueryAccountsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAccountsRequest.aminoType, QueryAccountsRequest.typeUrl);
 function createBaseAccountsResponse(): AccountsResponse {
   return {
     accounts: [],
@@ -337,6 +375,16 @@ function createBaseAccountsResponse(): AccountsResponse {
 }
 export const AccountsResponse = {
   typeUrl: "/cosmos.circuit.v1.AccountsResponse",
+  aminoType: "cosmos-sdk/AccountsResponse",
+  is(o: any): o is AccountsResponse {
+    return o && (o.$typeUrl === AccountsResponse.typeUrl || Array.isArray(o.accounts) && (!o.accounts.length || GenesisAccountPermissions.is(o.accounts[0])));
+  },
+  isSDK(o: any): o is AccountsResponseSDKType {
+    return o && (o.$typeUrl === AccountsResponse.typeUrl || Array.isArray(o.accounts) && (!o.accounts.length || GenesisAccountPermissions.isSDK(o.accounts[0])));
+  },
+  isAmino(o: any): o is AccountsResponseAmino {
+    return o && (o.$typeUrl === AccountsResponse.typeUrl || Array.isArray(o.accounts) && (!o.accounts.length || GenesisAccountPermissions.isAmino(o.accounts[0])));
+  },
   encode(message: AccountsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.accounts) {
       GenesisAccountPermissions.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -366,7 +414,7 @@ export const AccountsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<AccountsResponse>): AccountsResponse {
+  fromPartial(object: DeepPartial<AccountsResponse>): AccountsResponse {
     const message = createBaseAccountsResponse();
     message.accounts = object.accounts?.map(e => GenesisAccountPermissions.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -412,11 +460,23 @@ export const AccountsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AccountsResponse.typeUrl, AccountsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AccountsResponse.aminoType, AccountsResponse.typeUrl);
 function createBaseQueryDisabledListRequest(): QueryDisabledListRequest {
   return {};
 }
 export const QueryDisabledListRequest = {
   typeUrl: "/cosmos.circuit.v1.QueryDisabledListRequest",
+  aminoType: "cosmos-sdk/QueryDisabledListRequest",
+  is(o: any): o is QueryDisabledListRequest {
+    return o && o.$typeUrl === QueryDisabledListRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryDisabledListRequestSDKType {
+    return o && o.$typeUrl === QueryDisabledListRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryDisabledListRequestAmino {
+    return o && o.$typeUrl === QueryDisabledListRequest.typeUrl;
+  },
   encode(_: QueryDisabledListRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -434,7 +494,7 @@ export const QueryDisabledListRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryDisabledListRequest>): QueryDisabledListRequest {
+  fromPartial(_: DeepPartial<QueryDisabledListRequest>): QueryDisabledListRequest {
     const message = createBaseQueryDisabledListRequest();
     return message;
   },
@@ -468,6 +528,8 @@ export const QueryDisabledListRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDisabledListRequest.typeUrl, QueryDisabledListRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDisabledListRequest.aminoType, QueryDisabledListRequest.typeUrl);
 function createBaseDisabledListResponse(): DisabledListResponse {
   return {
     disabledList: []
@@ -475,6 +537,16 @@ function createBaseDisabledListResponse(): DisabledListResponse {
 }
 export const DisabledListResponse = {
   typeUrl: "/cosmos.circuit.v1.DisabledListResponse",
+  aminoType: "cosmos-sdk/DisabledListResponse",
+  is(o: any): o is DisabledListResponse {
+    return o && (o.$typeUrl === DisabledListResponse.typeUrl || Array.isArray(o.disabledList) && (!o.disabledList.length || typeof o.disabledList[0] === "string"));
+  },
+  isSDK(o: any): o is DisabledListResponseSDKType {
+    return o && (o.$typeUrl === DisabledListResponse.typeUrl || Array.isArray(o.disabled_list) && (!o.disabled_list.length || typeof o.disabled_list[0] === "string"));
+  },
+  isAmino(o: any): o is DisabledListResponseAmino {
+    return o && (o.$typeUrl === DisabledListResponse.typeUrl || Array.isArray(o.disabled_list) && (!o.disabled_list.length || typeof o.disabled_list[0] === "string"));
+  },
   encode(message: DisabledListResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.disabledList) {
       writer.uint32(10).string(v!);
@@ -498,7 +570,7 @@ export const DisabledListResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<DisabledListResponse>): DisabledListResponse {
+  fromPartial(object: DeepPartial<DisabledListResponse>): DisabledListResponse {
     const message = createBaseDisabledListResponse();
     message.disabledList = object.disabledList?.map(e => e) || [];
     return message;
@@ -539,3 +611,5 @@ export const DisabledListResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(DisabledListResponse.typeUrl, DisabledListResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(DisabledListResponse.aminoType, DisabledListResponse.typeUrl);

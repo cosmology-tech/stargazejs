@@ -42,9 +42,10 @@ import { SetContractAuthorizationProposalSDKType as SetContractAuthorizationProp
 import { RemoveContractAuthorizationProposal as RemoveContractAuthorizationProposal2 } from "../../../stargaze/globalfee/v1/proposal";
 import { RemoveContractAuthorizationProposalProtoMsg as RemoveContractAuthorizationProposal2ProtoMsg } from "../../../stargaze/globalfee/v1/proposal";
 import { RemoveContractAuthorizationProposalSDKType as RemoveContractAuthorizationProposal2SDKType } from "../../../stargaze/globalfee/v1/proposal";
+import { isSet, DeepPartial, toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
-import { toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export enum VoteOption {
   /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
@@ -302,7 +303,7 @@ export interface Proposal {
   /** proposal_id defines the unique id of the proposal. */
   proposalId: bigint;
   /** content is the proposal's content. */
-  content?: (TextProposal & CommunityPoolSpendProposal & CommunityPoolSpendProposalWithDeposit & SoftwareUpgradeProposal & CancelSoftwareUpgradeProposal & StoreCodeProposal & InstantiateContractProposal & InstantiateContract2Proposal & MigrateContractProposal & SudoContractProposal & ExecuteContractProposal & UpdateAdminProposal & ClearAdminProposal & PinCodesProposal & UnpinCodesProposal & UpdateInstantiateConfigProposal & StoreAndInstantiateContractProposal & ClientUpdateProposal & UpgradeProposal & PromoteToPrivilegedContractProposal1 & DemotePrivilegedContractProposal1 & SetCodeAuthorizationProposal1 & RemoveCodeAuthorizationProposal1 & SetContractAuthorizationProposal1 & RemoveContractAuthorizationProposal1 & PromoteToPrivilegedContractProposal2 & DemotePrivilegedContractProposal2 & SetCodeAuthorizationProposal2 & RemoveCodeAuthorizationProposal2 & SetContractAuthorizationProposal2 & RemoveContractAuthorizationProposal2 & Any) | undefined;
+  content?: TextProposal | CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | StoreCodeProposal | InstantiateContractProposal | InstantiateContract2Proposal | MigrateContractProposal | SudoContractProposal | ExecuteContractProposal | UpdateAdminProposal | ClearAdminProposal | PinCodesProposal | UnpinCodesProposal | UpdateInstantiateConfigProposal | StoreAndInstantiateContractProposal | ClientUpdateProposal | UpgradeProposal | PromoteToPrivilegedContractProposal1 | DemotePrivilegedContractProposal1 | SetCodeAuthorizationProposal1 | RemoveCodeAuthorizationProposal1 | SetContractAuthorizationProposal1 | RemoveContractAuthorizationProposal1 | PromoteToPrivilegedContractProposal2 | DemotePrivilegedContractProposal2 | SetCodeAuthorizationProposal2 | RemoveCodeAuthorizationProposal2 | SetContractAuthorizationProposal2 | RemoveContractAuthorizationProposal2 | Any | undefined;
   /** status defines the proposal status. */
   status: ProposalStatus;
   /**
@@ -579,6 +580,16 @@ function createBaseWeightedVoteOption(): WeightedVoteOption {
 }
 export const WeightedVoteOption = {
   typeUrl: "/cosmos.gov.v1beta1.WeightedVoteOption",
+  aminoType: "cosmos-sdk/WeightedVoteOption",
+  is(o: any): o is WeightedVoteOption {
+    return o && (o.$typeUrl === WeightedVoteOption.typeUrl || isSet(o.option) && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is WeightedVoteOptionSDKType {
+    return o && (o.$typeUrl === WeightedVoteOption.typeUrl || isSet(o.option) && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is WeightedVoteOptionAmino {
+    return o && (o.$typeUrl === WeightedVoteOption.typeUrl || isSet(o.option) && typeof o.weight === "string");
+  },
   encode(message: WeightedVoteOption, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.option !== 0) {
       writer.uint32(8).int32(message.option);
@@ -608,7 +619,7 @@ export const WeightedVoteOption = {
     }
     return message;
   },
-  fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption {
+  fromPartial(object: DeepPartial<WeightedVoteOption>): WeightedVoteOption {
     const message = createBaseWeightedVoteOption();
     message.option = object.option ?? 0;
     message.weight = object.weight ?? "";
@@ -652,6 +663,8 @@ export const WeightedVoteOption = {
     };
   }
 };
+GlobalDecoderRegistry.register(WeightedVoteOption.typeUrl, WeightedVoteOption);
+GlobalDecoderRegistry.registerAminoProtoMapping(WeightedVoteOption.aminoType, WeightedVoteOption.typeUrl);
 function createBaseTextProposal(): TextProposal {
   return {
     $typeUrl: "/cosmos.gov.v1beta1.TextProposal",
@@ -661,6 +674,16 @@ function createBaseTextProposal(): TextProposal {
 }
 export const TextProposal = {
   typeUrl: "/cosmos.gov.v1beta1.TextProposal",
+  aminoType: "cosmos-sdk/TextProposal",
+  is(o: any): o is TextProposal {
+    return o && (o.$typeUrl === TextProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
+  isSDK(o: any): o is TextProposalSDKType {
+    return o && (o.$typeUrl === TextProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
+  isAmino(o: any): o is TextProposalAmino {
+    return o && (o.$typeUrl === TextProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+  },
   encode(message: TextProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -690,7 +713,7 @@ export const TextProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<TextProposal>): TextProposal {
+  fromPartial(object: DeepPartial<TextProposal>): TextProposal {
     const message = createBaseTextProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -734,6 +757,8 @@ export const TextProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(TextProposal.typeUrl, TextProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(TextProposal.aminoType, TextProposal.typeUrl);
 function createBaseDeposit(): Deposit {
   return {
     proposalId: BigInt(0),
@@ -743,6 +768,16 @@ function createBaseDeposit(): Deposit {
 }
 export const Deposit = {
   typeUrl: "/cosmos.gov.v1beta1.Deposit",
+  aminoType: "cosmos-sdk/Deposit",
+  is(o: any): o is Deposit {
+    return o && (o.$typeUrl === Deposit.typeUrl || typeof o.proposalId === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])));
+  },
+  isSDK(o: any): o is DepositSDKType {
+    return o && (o.$typeUrl === Deposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])));
+  },
+  isAmino(o: any): o is DepositAmino {
+    return o && (o.$typeUrl === Deposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])));
+  },
   encode(message: Deposit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposalId !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposalId);
@@ -778,7 +813,7 @@ export const Deposit = {
     }
     return message;
   },
-  fromPartial(object: Partial<Deposit>): Deposit {
+  fromPartial(object: DeepPartial<Deposit>): Deposit {
     const message = createBaseDeposit();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
     message.depositor = object.depositor ?? "";
@@ -829,6 +864,8 @@ export const Deposit = {
     };
   }
 };
+GlobalDecoderRegistry.register(Deposit.typeUrl, Deposit);
+GlobalDecoderRegistry.registerAminoProtoMapping(Deposit.aminoType, Deposit.typeUrl);
 function createBaseProposal(): Proposal {
   return {
     proposalId: BigInt(0),
@@ -844,12 +881,22 @@ function createBaseProposal(): Proposal {
 }
 export const Proposal = {
   typeUrl: "/cosmos.gov.v1beta1.Proposal",
+  aminoType: "cosmos-sdk/Proposal",
+  is(o: any): o is Proposal {
+    return o && (o.$typeUrl === Proposal.typeUrl || typeof o.proposalId === "bigint" && isSet(o.status) && TallyResult.is(o.finalTallyResult) && Timestamp.is(o.submitTime) && Timestamp.is(o.depositEndTime) && Array.isArray(o.totalDeposit) && (!o.totalDeposit.length || Coin.is(o.totalDeposit[0])) && Timestamp.is(o.votingStartTime) && Timestamp.is(o.votingEndTime));
+  },
+  isSDK(o: any): o is ProposalSDKType {
+    return o && (o.$typeUrl === Proposal.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.status) && TallyResult.isSDK(o.final_tally_result) && Timestamp.isSDK(o.submit_time) && Timestamp.isSDK(o.deposit_end_time) && Array.isArray(o.total_deposit) && (!o.total_deposit.length || Coin.isSDK(o.total_deposit[0])) && Timestamp.isSDK(o.voting_start_time) && Timestamp.isSDK(o.voting_end_time));
+  },
+  isAmino(o: any): o is ProposalAmino {
+    return o && (o.$typeUrl === Proposal.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.status) && TallyResult.isAmino(o.final_tally_result) && Timestamp.isAmino(o.submit_time) && Timestamp.isAmino(o.deposit_end_time) && Array.isArray(o.total_deposit) && (!o.total_deposit.length || Coin.isAmino(o.total_deposit[0])) && Timestamp.isAmino(o.voting_start_time) && Timestamp.isAmino(o.voting_end_time));
+  },
   encode(message: Proposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposalId !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposalId);
     }
     if (message.content !== undefined) {
-      Any.encode((message.content as Any), writer.uint32(18).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(message.content), writer.uint32(18).fork()).ldelim();
     }
     if (message.status !== 0) {
       writer.uint32(24).int32(message.status);
@@ -885,7 +932,7 @@ export const Proposal = {
           message.proposalId = reader.uint64();
           break;
         case 2:
-          message.content = (Cosmos_govv1beta1Content_InterfaceDecoder(reader) as Any);
+          message.content = GlobalDecoderRegistry.unwrapAny(reader);
           break;
         case 3:
           message.status = (reader.int32() as any);
@@ -915,10 +962,10 @@ export const Proposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<Proposal>): Proposal {
+  fromPartial(object: DeepPartial<Proposal>): Proposal {
     const message = createBaseProposal();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
-    message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
+    message.content = object.content !== undefined && object.content !== null ? GlobalDecoderRegistry.fromPartial(object.content) : undefined;
     message.status = object.status ?? 0;
     message.finalTallyResult = object.finalTallyResult !== undefined && object.finalTallyResult !== null ? TallyResult.fromPartial(object.finalTallyResult) : undefined;
     message.submitTime = object.submitTime ?? undefined;
@@ -934,7 +981,7 @@ export const Proposal = {
       message.proposalId = BigInt(object.proposal_id);
     }
     if (object.content !== undefined && object.content !== null) {
-      message.content = Cosmos_govv1beta1Content_FromAmino(object.content);
+      message.content = GlobalDecoderRegistry.fromAminoMsg(object.content);
     }
     if (object.status !== undefined && object.status !== null) {
       message.status = object.status;
@@ -960,7 +1007,7 @@ export const Proposal = {
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
     obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
-    obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino((message.content as Any)) : undefined;
+    obj.content = message.content ? GlobalDecoderRegistry.toAminoMsg(message.content) : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
     obj.final_tally_result = message.finalTallyResult ? TallyResult.toAmino(message.finalTallyResult) : TallyResult.toAmino(TallyResult.fromPartial({}));
     obj.submit_time = message.submitTime ? Timestamp.toAmino(toTimestamp(message.submitTime)) : new Date();
@@ -996,6 +1043,8 @@ export const Proposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(Proposal.typeUrl, Proposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(Proposal.aminoType, Proposal.typeUrl);
 function createBaseTallyResult(): TallyResult {
   return {
     yes: "",
@@ -1006,6 +1055,16 @@ function createBaseTallyResult(): TallyResult {
 }
 export const TallyResult = {
   typeUrl: "/cosmos.gov.v1beta1.TallyResult",
+  aminoType: "cosmos-sdk/TallyResult",
+  is(o: any): o is TallyResult {
+    return o && (o.$typeUrl === TallyResult.typeUrl || typeof o.yes === "string" && typeof o.abstain === "string" && typeof o.no === "string" && typeof o.noWithVeto === "string");
+  },
+  isSDK(o: any): o is TallyResultSDKType {
+    return o && (o.$typeUrl === TallyResult.typeUrl || typeof o.yes === "string" && typeof o.abstain === "string" && typeof o.no === "string" && typeof o.no_with_veto === "string");
+  },
+  isAmino(o: any): o is TallyResultAmino {
+    return o && (o.$typeUrl === TallyResult.typeUrl || typeof o.yes === "string" && typeof o.abstain === "string" && typeof o.no === "string" && typeof o.no_with_veto === "string");
+  },
   encode(message: TallyResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.yes !== "") {
       writer.uint32(10).string(message.yes);
@@ -1047,7 +1106,7 @@ export const TallyResult = {
     }
     return message;
   },
-  fromPartial(object: Partial<TallyResult>): TallyResult {
+  fromPartial(object: DeepPartial<TallyResult>): TallyResult {
     const message = createBaseTallyResult();
     message.yes = object.yes ?? "";
     message.abstain = object.abstain ?? "";
@@ -1101,6 +1160,8 @@ export const TallyResult = {
     };
   }
 };
+GlobalDecoderRegistry.register(TallyResult.typeUrl, TallyResult);
+GlobalDecoderRegistry.registerAminoProtoMapping(TallyResult.aminoType, TallyResult.typeUrl);
 function createBaseVote(): Vote {
   return {
     proposalId: BigInt(0),
@@ -1111,6 +1172,16 @@ function createBaseVote(): Vote {
 }
 export const Vote = {
   typeUrl: "/cosmos.gov.v1beta1.Vote",
+  aminoType: "cosmos-sdk/Vote",
+  is(o: any): o is Vote {
+    return o && (o.$typeUrl === Vote.typeUrl || typeof o.proposalId === "bigint" && typeof o.voter === "string" && isSet(o.option) && Array.isArray(o.options) && (!o.options.length || WeightedVoteOption.is(o.options[0])));
+  },
+  isSDK(o: any): o is VoteSDKType {
+    return o && (o.$typeUrl === Vote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && isSet(o.option) && Array.isArray(o.options) && (!o.options.length || WeightedVoteOption.isSDK(o.options[0])));
+  },
+  isAmino(o: any): o is VoteAmino {
+    return o && (o.$typeUrl === Vote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && isSet(o.option) && Array.isArray(o.options) && (!o.options.length || WeightedVoteOption.isAmino(o.options[0])));
+  },
   encode(message: Vote, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposalId !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposalId);
@@ -1152,7 +1223,7 @@ export const Vote = {
     }
     return message;
   },
-  fromPartial(object: Partial<Vote>): Vote {
+  fromPartial(object: DeepPartial<Vote>): Vote {
     const message = createBaseVote();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
     message.voter = object.voter ?? "";
@@ -1208,6 +1279,8 @@ export const Vote = {
     };
   }
 };
+GlobalDecoderRegistry.register(Vote.typeUrl, Vote);
+GlobalDecoderRegistry.registerAminoProtoMapping(Vote.aminoType, Vote.typeUrl);
 function createBaseDepositParams(): DepositParams {
   return {
     minDeposit: [],
@@ -1216,6 +1289,16 @@ function createBaseDepositParams(): DepositParams {
 }
 export const DepositParams = {
   typeUrl: "/cosmos.gov.v1beta1.DepositParams",
+  aminoType: "cosmos-sdk/DepositParams",
+  is(o: any): o is DepositParams {
+    return o && (o.$typeUrl === DepositParams.typeUrl || Array.isArray(o.minDeposit) && (!o.minDeposit.length || Coin.is(o.minDeposit[0])) && Duration.is(o.maxDepositPeriod));
+  },
+  isSDK(o: any): o is DepositParamsSDKType {
+    return o && (o.$typeUrl === DepositParams.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || Coin.isSDK(o.min_deposit[0])) && Duration.isSDK(o.max_deposit_period));
+  },
+  isAmino(o: any): o is DepositParamsAmino {
+    return o && (o.$typeUrl === DepositParams.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || Coin.isAmino(o.min_deposit[0])) && Duration.isAmino(o.max_deposit_period));
+  },
   encode(message: DepositParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.minDeposit) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1245,7 +1328,7 @@ export const DepositParams = {
     }
     return message;
   },
-  fromPartial(object: Partial<DepositParams>): DepositParams {
+  fromPartial(object: DeepPartial<DepositParams>): DepositParams {
     const message = createBaseDepositParams();
     message.minDeposit = object.minDeposit?.map(e => Coin.fromPartial(e)) || [];
     message.maxDepositPeriod = object.maxDepositPeriod !== undefined && object.maxDepositPeriod !== null ? Duration.fromPartial(object.maxDepositPeriod) : undefined;
@@ -1291,6 +1374,8 @@ export const DepositParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(DepositParams.typeUrl, DepositParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(DepositParams.aminoType, DepositParams.typeUrl);
 function createBaseVotingParams(): VotingParams {
   return {
     votingPeriod: Duration.fromPartial({})
@@ -1298,6 +1383,16 @@ function createBaseVotingParams(): VotingParams {
 }
 export const VotingParams = {
   typeUrl: "/cosmos.gov.v1beta1.VotingParams",
+  aminoType: "cosmos-sdk/VotingParams",
+  is(o: any): o is VotingParams {
+    return o && (o.$typeUrl === VotingParams.typeUrl || Duration.is(o.votingPeriod));
+  },
+  isSDK(o: any): o is VotingParamsSDKType {
+    return o && (o.$typeUrl === VotingParams.typeUrl || Duration.isSDK(o.voting_period));
+  },
+  isAmino(o: any): o is VotingParamsAmino {
+    return o && (o.$typeUrl === VotingParams.typeUrl || Duration.isAmino(o.voting_period));
+  },
   encode(message: VotingParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.votingPeriod !== undefined) {
       Duration.encode(message.votingPeriod, writer.uint32(10).fork()).ldelim();
@@ -1321,7 +1416,7 @@ export const VotingParams = {
     }
     return message;
   },
-  fromPartial(object: Partial<VotingParams>): VotingParams {
+  fromPartial(object: DeepPartial<VotingParams>): VotingParams {
     const message = createBaseVotingParams();
     message.votingPeriod = object.votingPeriod !== undefined && object.votingPeriod !== null ? Duration.fromPartial(object.votingPeriod) : undefined;
     return message;
@@ -1360,6 +1455,8 @@ export const VotingParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(VotingParams.typeUrl, VotingParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(VotingParams.aminoType, VotingParams.typeUrl);
 function createBaseTallyParams(): TallyParams {
   return {
     quorum: new Uint8Array(),
@@ -1369,6 +1466,16 @@ function createBaseTallyParams(): TallyParams {
 }
 export const TallyParams = {
   typeUrl: "/cosmos.gov.v1beta1.TallyParams",
+  aminoType: "cosmos-sdk/TallyParams",
+  is(o: any): o is TallyParams {
+    return o && (o.$typeUrl === TallyParams.typeUrl || (o.quorum instanceof Uint8Array || typeof o.quorum === "string") && (o.threshold instanceof Uint8Array || typeof o.threshold === "string") && (o.vetoThreshold instanceof Uint8Array || typeof o.vetoThreshold === "string"));
+  },
+  isSDK(o: any): o is TallyParamsSDKType {
+    return o && (o.$typeUrl === TallyParams.typeUrl || (o.quorum instanceof Uint8Array || typeof o.quorum === "string") && (o.threshold instanceof Uint8Array || typeof o.threshold === "string") && (o.veto_threshold instanceof Uint8Array || typeof o.veto_threshold === "string"));
+  },
+  isAmino(o: any): o is TallyParamsAmino {
+    return o && (o.$typeUrl === TallyParams.typeUrl || (o.quorum instanceof Uint8Array || typeof o.quorum === "string") && (o.threshold instanceof Uint8Array || typeof o.threshold === "string") && (o.veto_threshold instanceof Uint8Array || typeof o.veto_threshold === "string"));
+  },
   encode(message: TallyParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.quorum.length !== 0) {
       writer.uint32(10).bytes(message.quorum);
@@ -1404,7 +1511,7 @@ export const TallyParams = {
     }
     return message;
   },
-  fromPartial(object: Partial<TallyParams>): TallyParams {
+  fromPartial(object: DeepPartial<TallyParams>): TallyParams {
     const message = createBaseTallyParams();
     message.quorum = object.quorum ?? new Uint8Array();
     message.threshold = object.threshold ?? new Uint8Array();
@@ -1453,395 +1560,5 @@ export const TallyParams = {
     };
   }
 };
-export const Cosmos_govv1beta1Content_InterfaceDecoder = (input: BinaryReader | Uint8Array): CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | StoreCodeProposal | InstantiateContractProposal | InstantiateContract2Proposal | MigrateContractProposal | SudoContractProposal | ExecuteContractProposal | UpdateAdminProposal | ClearAdminProposal | PinCodesProposal | UnpinCodesProposal | UpdateInstantiateConfigProposal | StoreAndInstantiateContractProposal | ClientUpdateProposal | UpgradeProposal | PromoteToPrivilegedContractProposal1 | DemotePrivilegedContractProposal1 | SetCodeAuthorizationProposal1 | RemoveCodeAuthorizationProposal1 | SetContractAuthorizationProposal1 | RemoveContractAuthorizationProposal1 | PromoteToPrivilegedContractProposal2 | DemotePrivilegedContractProposal2 | SetCodeAuthorizationProposal2 | RemoveCodeAuthorizationProposal2 | SetContractAuthorizationProposal2 | RemoveContractAuthorizationProposal2 | Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
-  switch (data.typeUrl) {
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
-      return CommunityPoolSpendProposal.decode(data.value);
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
-      return CommunityPoolSpendProposalWithDeposit.decode(data.value);
-    case "/cosmos.gov.v1beta1.TextProposal":
-      return TextProposal.decode(data.value);
-    case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
-      return SoftwareUpgradeProposal.decode(data.value);
-    case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
-      return CancelSoftwareUpgradeProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.StoreCodeProposal":
-      return StoreCodeProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.InstantiateContractProposal":
-      return InstantiateContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.InstantiateContract2Proposal":
-      return InstantiateContract2Proposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.MigrateContractProposal":
-      return MigrateContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.SudoContractProposal":
-      return SudoContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.ExecuteContractProposal":
-      return ExecuteContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.UpdateAdminProposal":
-      return UpdateAdminProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.ClearAdminProposal":
-      return ClearAdminProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.PinCodesProposal":
-      return PinCodesProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.UnpinCodesProposal":
-      return UnpinCodesProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal":
-      return UpdateInstantiateConfigProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal":
-      return StoreAndInstantiateContractProposal.decode(data.value);
-    case "/ibc.core.client.v1.ClientUpdateProposal":
-      return ClientUpdateProposal.decode(data.value);
-    case "/ibc.core.client.v1.UpgradeProposal":
-      return UpgradeProposal.decode(data.value);
-    case "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal":
-      return PromoteToPrivilegedContractProposal1.decode(data.value);
-    case "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal":
-      return DemotePrivilegedContractProposal1.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal":
-      return SetCodeAuthorizationProposal1.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal":
-      return RemoveCodeAuthorizationProposal1.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal":
-      return SetContractAuthorizationProposal1.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal":
-      return RemoveContractAuthorizationProposal1.decode(data.value);
-    case "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal":
-      return PromoteToPrivilegedContractProposal2.decode(data.value);
-    case "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal":
-      return DemotePrivilegedContractProposal2.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal":
-      return SetCodeAuthorizationProposal2.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal":
-      return RemoveCodeAuthorizationProposal2.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal":
-      return SetContractAuthorizationProposal2.decode(data.value);
-    case "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal":
-      return RemoveContractAuthorizationProposal2.decode(data.value);
-    default:
-      return data;
-  }
-};
-export const Cosmos_govv1beta1Content_FromAmino = (content: AnyAmino): Any => {
-  switch (content.type) {
-    case "cosmos-sdk/CommunityPoolSpendProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal",
-        value: CommunityPoolSpendProposal.encode(CommunityPoolSpendProposal.fromPartial(CommunityPoolSpendProposal.fromAmino(content.value))).finish()
-      });
-    case "cosmos-sdk/CommunityPoolSpendProposalWithDeposit":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit",
-        value: CommunityPoolSpendProposalWithDeposit.encode(CommunityPoolSpendProposalWithDeposit.fromPartial(CommunityPoolSpendProposalWithDeposit.fromAmino(content.value))).finish()
-      });
-    case "cosmos-sdk/TextProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.gov.v1beta1.TextProposal",
-        value: TextProposal.encode(TextProposal.fromPartial(TextProposal.fromAmino(content.value))).finish()
-      });
-    case "cosmos-sdk/SoftwareUpgradeProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
-        value: SoftwareUpgradeProposal.encode(SoftwareUpgradeProposal.fromPartial(SoftwareUpgradeProposal.fromAmino(content.value))).finish()
-      });
-    case "cosmos-sdk/CancelSoftwareUpgradeProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
-        value: CancelSoftwareUpgradeProposal.encode(CancelSoftwareUpgradeProposal.fromPartial(CancelSoftwareUpgradeProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/StoreCodeProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal",
-        value: StoreCodeProposal.encode(StoreCodeProposal.fromPartial(StoreCodeProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/InstantiateContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.InstantiateContractProposal",
-        value: InstantiateContractProposal.encode(InstantiateContractProposal.fromPartial(InstantiateContractProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/InstantiateContract2Proposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.InstantiateContract2Proposal",
-        value: InstantiateContract2Proposal.encode(InstantiateContract2Proposal.fromPartial(InstantiateContract2Proposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/MigrateContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal",
-        value: MigrateContractProposal.encode(MigrateContractProposal.fromPartial(MigrateContractProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/SudoContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal",
-        value: SudoContractProposal.encode(SudoContractProposal.fromPartial(SudoContractProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/ExecuteContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.ExecuteContractProposal",
-        value: ExecuteContractProposal.encode(ExecuteContractProposal.fromPartial(ExecuteContractProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/UpdateAdminProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal",
-        value: UpdateAdminProposal.encode(UpdateAdminProposal.fromPartial(UpdateAdminProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/ClearAdminProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.ClearAdminProposal",
-        value: ClearAdminProposal.encode(ClearAdminProposal.fromPartial(ClearAdminProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/PinCodesProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal",
-        value: PinCodesProposal.encode(PinCodesProposal.fromPartial(PinCodesProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/UnpinCodesProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal",
-        value: UnpinCodesProposal.encode(UnpinCodesProposal.fromPartial(UnpinCodesProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/UpdateInstantiateConfigProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal",
-        value: UpdateInstantiateConfigProposal.encode(UpdateInstantiateConfigProposal.fromPartial(UpdateInstantiateConfigProposal.fromAmino(content.value))).finish()
-      });
-    case "wasm/StoreAndInstantiateContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal",
-        value: StoreAndInstantiateContractProposal.encode(StoreAndInstantiateContractProposal.fromPartial(StoreAndInstantiateContractProposal.fromAmino(content.value))).finish()
-      });
-    case "cosmos-sdk/ClientUpdateProposal":
-      return Any.fromPartial({
-        typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
-        value: ClientUpdateProposal.encode(ClientUpdateProposal.fromPartial(ClientUpdateProposal.fromAmino(content.value))).finish()
-      });
-    case "cosmos-sdk/UpgradeProposal":
-      return Any.fromPartial({
-        typeUrl: "/ibc.core.client.v1.UpgradeProposal",
-        value: UpgradeProposal.encode(UpgradeProposal.fromPartial(UpgradeProposal.fromAmino(content.value))).finish()
-      });
-    case "cron/PromoteToPrivilegedContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal",
-        value: PromoteToPrivilegedContractProposal1.encode(PromoteToPrivilegedContractProposal1.fromPartial(PromoteToPrivilegedContractProposal1.fromAmino(content.value))).finish()
-      });
-    case "cron/DemotePrivilegedContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal",
-        value: DemotePrivilegedContractProposal1.encode(DemotePrivilegedContractProposal1.fromPartial(DemotePrivilegedContractProposal1.fromAmino(content.value))).finish()
-      });
-    case "globalfee/SetCodeAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal",
-        value: SetCodeAuthorizationProposal1.encode(SetCodeAuthorizationProposal1.fromPartial(SetCodeAuthorizationProposal1.fromAmino(content.value))).finish()
-      });
-    case "globalfee/RemoveCodeAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal",
-        value: RemoveCodeAuthorizationProposal1.encode(RemoveCodeAuthorizationProposal1.fromPartial(RemoveCodeAuthorizationProposal1.fromAmino(content.value))).finish()
-      });
-    case "globalfee/SetContractAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal",
-        value: SetContractAuthorizationProposal1.encode(SetContractAuthorizationProposal1.fromPartial(SetContractAuthorizationProposal1.fromAmino(content.value))).finish()
-      });
-    case "globalfee/RemoveContractAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal",
-        value: RemoveContractAuthorizationProposal1.encode(RemoveContractAuthorizationProposal1.fromPartial(RemoveContractAuthorizationProposal1.fromAmino(content.value))).finish()
-      });
-    case "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal",
-        value: PromoteToPrivilegedContractProposal2.encode(PromoteToPrivilegedContractProposal2.fromPartial(PromoteToPrivilegedContractProposal2.fromAmino(content.value))).finish()
-      });
-    case "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal",
-        value: DemotePrivilegedContractProposal2.encode(DemotePrivilegedContractProposal2.fromPartial(DemotePrivilegedContractProposal2.fromAmino(content.value))).finish()
-      });
-    case "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal",
-        value: SetCodeAuthorizationProposal2.encode(SetCodeAuthorizationProposal2.fromPartial(SetCodeAuthorizationProposal2.fromAmino(content.value))).finish()
-      });
-    case "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal",
-        value: RemoveCodeAuthorizationProposal2.encode(RemoveCodeAuthorizationProposal2.fromPartial(RemoveCodeAuthorizationProposal2.fromAmino(content.value))).finish()
-      });
-    case "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal",
-        value: SetContractAuthorizationProposal2.encode(SetContractAuthorizationProposal2.fromPartial(SetContractAuthorizationProposal2.fromAmino(content.value))).finish()
-      });
-    case "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal":
-      return Any.fromPartial({
-        typeUrl: "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal",
-        value: RemoveContractAuthorizationProposal2.encode(RemoveContractAuthorizationProposal2.fromPartial(RemoveContractAuthorizationProposal2.fromAmino(content.value))).finish()
-      });
-    default:
-      return Any.fromAmino(content);
-  }
-};
-export const Cosmos_govv1beta1Content_ToAmino = (content: Any) => {
-  switch (content.typeUrl) {
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
-      return {
-        type: "cosmos-sdk/CommunityPoolSpendProposal",
-        value: CommunityPoolSpendProposal.toAmino(CommunityPoolSpendProposal.decode(content.value, undefined))
-      };
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
-      return {
-        type: "cosmos-sdk/CommunityPoolSpendProposalWithDeposit",
-        value: CommunityPoolSpendProposalWithDeposit.toAmino(CommunityPoolSpendProposalWithDeposit.decode(content.value, undefined))
-      };
-    case "/cosmos.gov.v1beta1.TextProposal":
-      return {
-        type: "cosmos-sdk/TextProposal",
-        value: TextProposal.toAmino(TextProposal.decode(content.value, undefined))
-      };
-    case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
-      return {
-        type: "cosmos-sdk/SoftwareUpgradeProposal",
-        value: SoftwareUpgradeProposal.toAmino(SoftwareUpgradeProposal.decode(content.value, undefined))
-      };
-    case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
-      return {
-        type: "cosmos-sdk/CancelSoftwareUpgradeProposal",
-        value: CancelSoftwareUpgradeProposal.toAmino(CancelSoftwareUpgradeProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.StoreCodeProposal":
-      return {
-        type: "wasm/StoreCodeProposal",
-        value: StoreCodeProposal.toAmino(StoreCodeProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.InstantiateContractProposal":
-      return {
-        type: "wasm/InstantiateContractProposal",
-        value: InstantiateContractProposal.toAmino(InstantiateContractProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.InstantiateContract2Proposal":
-      return {
-        type: "wasm/InstantiateContract2Proposal",
-        value: InstantiateContract2Proposal.toAmino(InstantiateContract2Proposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.MigrateContractProposal":
-      return {
-        type: "wasm/MigrateContractProposal",
-        value: MigrateContractProposal.toAmino(MigrateContractProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.SudoContractProposal":
-      return {
-        type: "wasm/SudoContractProposal",
-        value: SudoContractProposal.toAmino(SudoContractProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.ExecuteContractProposal":
-      return {
-        type: "wasm/ExecuteContractProposal",
-        value: ExecuteContractProposal.toAmino(ExecuteContractProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.UpdateAdminProposal":
-      return {
-        type: "wasm/UpdateAdminProposal",
-        value: UpdateAdminProposal.toAmino(UpdateAdminProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.ClearAdminProposal":
-      return {
-        type: "wasm/ClearAdminProposal",
-        value: ClearAdminProposal.toAmino(ClearAdminProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.PinCodesProposal":
-      return {
-        type: "wasm/PinCodesProposal",
-        value: PinCodesProposal.toAmino(PinCodesProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.UnpinCodesProposal":
-      return {
-        type: "wasm/UnpinCodesProposal",
-        value: UnpinCodesProposal.toAmino(UnpinCodesProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal":
-      return {
-        type: "wasm/UpdateInstantiateConfigProposal",
-        value: UpdateInstantiateConfigProposal.toAmino(UpdateInstantiateConfigProposal.decode(content.value, undefined))
-      };
-    case "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal":
-      return {
-        type: "wasm/StoreAndInstantiateContractProposal",
-        value: StoreAndInstantiateContractProposal.toAmino(StoreAndInstantiateContractProposal.decode(content.value, undefined))
-      };
-    case "/ibc.core.client.v1.ClientUpdateProposal":
-      return {
-        type: "cosmos-sdk/ClientUpdateProposal",
-        value: ClientUpdateProposal.toAmino(ClientUpdateProposal.decode(content.value, undefined))
-      };
-    case "/ibc.core.client.v1.UpgradeProposal":
-      return {
-        type: "cosmos-sdk/UpgradeProposal",
-        value: UpgradeProposal.toAmino(UpgradeProposal.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal":
-      return {
-        type: "cron/PromoteToPrivilegedContractProposal",
-        value: PromoteToPrivilegedContractProposal1.toAmino(PromoteToPrivilegedContractProposal1.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal":
-      return {
-        type: "cron/DemotePrivilegedContractProposal",
-        value: DemotePrivilegedContractProposal1.toAmino(DemotePrivilegedContractProposal1.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal":
-      return {
-        type: "globalfee/SetCodeAuthorizationProposal",
-        value: SetCodeAuthorizationProposal1.toAmino(SetCodeAuthorizationProposal1.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal":
-      return {
-        type: "globalfee/RemoveCodeAuthorizationProposal",
-        value: RemoveCodeAuthorizationProposal1.toAmino(RemoveCodeAuthorizationProposal1.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal":
-      return {
-        type: "globalfee/SetContractAuthorizationProposal",
-        value: SetContractAuthorizationProposal1.toAmino(SetContractAuthorizationProposal1.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal":
-      return {
-        type: "globalfee/RemoveContractAuthorizationProposal",
-        value: RemoveContractAuthorizationProposal1.toAmino(RemoveContractAuthorizationProposal1.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal":
-      return {
-        type: "/publicawesome.stargaze.cron.v1.PromoteToPrivilegedContractProposal",
-        value: PromoteToPrivilegedContractProposal2.toAmino(PromoteToPrivilegedContractProposal2.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal":
-      return {
-        type: "/publicawesome.stargaze.cron.v1.DemotePrivilegedContractProposal",
-        value: DemotePrivilegedContractProposal2.toAmino(DemotePrivilegedContractProposal2.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal":
-      return {
-        type: "/publicawesome.stargaze.globalfee.v1.SetCodeAuthorizationProposal",
-        value: SetCodeAuthorizationProposal2.toAmino(SetCodeAuthorizationProposal2.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal":
-      return {
-        type: "/publicawesome.stargaze.globalfee.v1.RemoveCodeAuthorizationProposal",
-        value: RemoveCodeAuthorizationProposal2.toAmino(RemoveCodeAuthorizationProposal2.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal":
-      return {
-        type: "/publicawesome.stargaze.globalfee.v1.SetContractAuthorizationProposal",
-        value: SetContractAuthorizationProposal2.toAmino(SetContractAuthorizationProposal2.decode(content.value, undefined))
-      };
-    case "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal":
-      return {
-        type: "/publicawesome.stargaze.globalfee.v1.RemoveContractAuthorizationProposal",
-        value: RemoveContractAuthorizationProposal2.toAmino(RemoveContractAuthorizationProposal2.decode(content.value, undefined))
-      };
-    default:
-      return Any.toAmino(content);
-  }
-};
+GlobalDecoderRegistry.register(TallyParams.typeUrl, TallyParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(TallyParams.aminoType, TallyParams.typeUrl);
