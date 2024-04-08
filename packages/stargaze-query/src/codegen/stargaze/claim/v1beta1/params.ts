@@ -1,11 +1,24 @@
 import { Action } from "./claim_record";
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, toTimestamp, fromTimestamp } from "../../../helpers";
+import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
+import { isSet, DeepPartial, toTimestamp, fromTimestamp } from "../../../helpers";
+import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface ClaimAuthorization {
   contractAddress: string;
   action: Action;
+}
+export interface ClaimAuthorizationProtoMsg {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.ClaimAuthorization";
+  value: Uint8Array;
+}
+export interface ClaimAuthorizationAmino {
+  contract_address?: string;
+  action?: Action;
+}
+export interface ClaimAuthorizationAminoMsg {
+  type: "/publicawesome.stargaze.claim.v1beta1.ClaimAuthorization";
+  value: ClaimAuthorizationAmino;
 }
 export interface ClaimAuthorizationSDKType {
   contract_address: string;
@@ -21,6 +34,25 @@ export interface Params {
   claimDenom: string;
   /** list of contracts and their allowed claim actions */
   allowedClaimers: ClaimAuthorization[];
+}
+export interface ParamsProtoMsg {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.Params";
+  value: Uint8Array;
+}
+/** Params defines the claim module's parameters. */
+export interface ParamsAmino {
+  airdrop_enabled?: boolean;
+  airdrop_start_time?: string;
+  duration_until_decay?: DurationAmino;
+  duration_of_decay?: DurationAmino;
+  /** denom of claimable asset */
+  claim_denom?: string;
+  /** list of contracts and their allowed claim actions */
+  allowed_claimers: ClaimAuthorizationAmino[];
+}
+export interface ParamsAminoMsg {
+  type: "/publicawesome.stargaze.claim.v1beta1.Params";
+  value: ParamsAmino;
 }
 /** Params defines the claim module's parameters. */
 export interface ParamsSDKType {
@@ -38,7 +70,17 @@ function createBaseClaimAuthorization(): ClaimAuthorization {
   };
 }
 export const ClaimAuthorization = {
-  encode(message: ClaimAuthorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.ClaimAuthorization",
+  is(o: any): o is ClaimAuthorization {
+    return o && (o.$typeUrl === ClaimAuthorization.typeUrl || typeof o.contractAddress === "string" && isSet(o.action));
+  },
+  isSDK(o: any): o is ClaimAuthorizationSDKType {
+    return o && (o.$typeUrl === ClaimAuthorization.typeUrl || typeof o.contract_address === "string" && isSet(o.action));
+  },
+  isAmino(o: any): o is ClaimAuthorizationAmino {
+    return o && (o.$typeUrl === ClaimAuthorization.typeUrl || typeof o.contract_address === "string" && isSet(o.action));
+  },
+  encode(message: ClaimAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
     }
@@ -47,8 +89,8 @@ export const ClaimAuthorization = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ClaimAuthorization {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ClaimAuthorization {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseClaimAuthorization();
     while (reader.pos < end) {
@@ -72,8 +114,40 @@ export const ClaimAuthorization = {
     message.contractAddress = object.contractAddress ?? "";
     message.action = object.action ?? 0;
     return message;
+  },
+  fromAmino(object: ClaimAuthorizationAmino): ClaimAuthorization {
+    const message = createBaseClaimAuthorization();
+    if (object.contract_address !== undefined && object.contract_address !== null) {
+      message.contractAddress = object.contract_address;
+    }
+    if (object.action !== undefined && object.action !== null) {
+      message.action = object.action;
+    }
+    return message;
+  },
+  toAmino(message: ClaimAuthorization): ClaimAuthorizationAmino {
+    const obj: any = {};
+    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.action = message.action === 0 ? undefined : message.action;
+    return obj;
+  },
+  fromAminoMsg(object: ClaimAuthorizationAminoMsg): ClaimAuthorization {
+    return ClaimAuthorization.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ClaimAuthorizationProtoMsg): ClaimAuthorization {
+    return ClaimAuthorization.decode(message.value);
+  },
+  toProto(message: ClaimAuthorization): Uint8Array {
+    return ClaimAuthorization.encode(message).finish();
+  },
+  toProtoMsg(message: ClaimAuthorization): ClaimAuthorizationProtoMsg {
+    return {
+      typeUrl: "/publicawesome.stargaze.claim.v1beta1.ClaimAuthorization",
+      value: ClaimAuthorization.encode(message).finish()
+    };
   }
 };
+GlobalDecoderRegistry.register(ClaimAuthorization.typeUrl, ClaimAuthorization);
 function createBaseParams(): Params {
   return {
     airdropEnabled: false,
@@ -85,7 +159,17 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl: "/publicawesome.stargaze.claim.v1beta1.Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.airdropEnabled === "boolean" && Timestamp.is(o.airdropStartTime) && Duration.is(o.durationUntilDecay) && Duration.is(o.durationOfDecay) && typeof o.claimDenom === "string" && Array.isArray(o.allowedClaimers) && (!o.allowedClaimers.length || ClaimAuthorization.is(o.allowedClaimers[0])));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.airdrop_enabled === "boolean" && Timestamp.isSDK(o.airdrop_start_time) && Duration.isSDK(o.duration_until_decay) && Duration.isSDK(o.duration_of_decay) && typeof o.claim_denom === "string" && Array.isArray(o.allowed_claimers) && (!o.allowed_claimers.length || ClaimAuthorization.isSDK(o.allowed_claimers[0])));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.airdrop_enabled === "boolean" && Timestamp.isAmino(o.airdrop_start_time) && Duration.isAmino(o.duration_until_decay) && Duration.isAmino(o.duration_of_decay) && typeof o.claim_denom === "string" && Array.isArray(o.allowed_claimers) && (!o.allowed_claimers.length || ClaimAuthorization.isAmino(o.allowed_claimers[0])));
+  },
+  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.airdropEnabled === true) {
       writer.uint32(8).bool(message.airdropEnabled);
     }
@@ -106,8 +190,8 @@ export const Params = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Params {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Params {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -147,5 +231,55 @@ export const Params = {
     message.claimDenom = object.claimDenom ?? "";
     message.allowedClaimers = object.allowedClaimers?.map(e => ClaimAuthorization.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: ParamsAmino): Params {
+    const message = createBaseParams();
+    if (object.airdrop_enabled !== undefined && object.airdrop_enabled !== null) {
+      message.airdropEnabled = object.airdrop_enabled;
+    }
+    if (object.airdrop_start_time !== undefined && object.airdrop_start_time !== null) {
+      message.airdropStartTime = fromTimestamp(Timestamp.fromAmino(object.airdrop_start_time));
+    }
+    if (object.duration_until_decay !== undefined && object.duration_until_decay !== null) {
+      message.durationUntilDecay = Duration.fromAmino(object.duration_until_decay);
+    }
+    if (object.duration_of_decay !== undefined && object.duration_of_decay !== null) {
+      message.durationOfDecay = Duration.fromAmino(object.duration_of_decay);
+    }
+    if (object.claim_denom !== undefined && object.claim_denom !== null) {
+      message.claimDenom = object.claim_denom;
+    }
+    message.allowedClaimers = object.allowed_claimers?.map(e => ClaimAuthorization.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: Params): ParamsAmino {
+    const obj: any = {};
+    obj.airdrop_enabled = message.airdropEnabled === false ? undefined : message.airdropEnabled;
+    obj.airdrop_start_time = message.airdropStartTime ? Timestamp.toAmino(toTimestamp(message.airdropStartTime)) : undefined;
+    obj.duration_until_decay = message.durationUntilDecay ? Duration.toAmino(message.durationUntilDecay) : undefined;
+    obj.duration_of_decay = message.durationOfDecay ? Duration.toAmino(message.durationOfDecay) : undefined;
+    obj.claim_denom = message.claimDenom === "" ? undefined : message.claimDenom;
+    if (message.allowedClaimers) {
+      obj.allowed_claimers = message.allowedClaimers.map(e => e ? ClaimAuthorization.toAmino(e) : undefined);
+    } else {
+      obj.allowed_claimers = message.allowedClaimers;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: ParamsAminoMsg): Params {
+    return Params.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ParamsProtoMsg): Params {
+    return Params.decode(message.value);
+  },
+  toProto(message: Params): Uint8Array {
+    return Params.encode(message).finish();
+  },
+  toProtoMsg(message: Params): ParamsProtoMsg {
+    return {
+      typeUrl: "/publicawesome.stargaze.claim.v1beta1.Params",
+      value: Params.encode(message).finish()
+    };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);

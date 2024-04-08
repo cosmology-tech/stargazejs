@@ -1,6 +1,7 @@
-import { Any, AnySDKType } from "../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
+import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 import { DeepPartial } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * LegacyAminoPubKey specifies a public key type
  * which nests multiple public keys and a threshold,
@@ -9,6 +10,23 @@ import { DeepPartial } from "../../../helpers";
 export interface LegacyAminoPubKey {
   threshold: number;
   publicKeys: Any[];
+}
+export interface LegacyAminoPubKeyProtoMsg {
+  typeUrl: "/cosmos.crypto.multisig.LegacyAminoPubKey";
+  value: Uint8Array;
+}
+/**
+ * LegacyAminoPubKey specifies a public key type
+ * which nests multiple public keys and a threshold,
+ * it uses legacy amino address rules.
+ */
+export interface LegacyAminoPubKeyAmino {
+  threshold?: number;
+  public_keys?: AnyAmino[];
+}
+export interface LegacyAminoPubKeyAminoMsg {
+  type: "tendermint/PubKeyMultisigThreshold";
+  value: LegacyAminoPubKeyAmino;
 }
 /**
  * LegacyAminoPubKey specifies a public key type
@@ -26,7 +44,18 @@ function createBaseLegacyAminoPubKey(): LegacyAminoPubKey {
   };
 }
 export const LegacyAminoPubKey = {
-  encode(message: LegacyAminoPubKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl: "/cosmos.crypto.multisig.LegacyAminoPubKey",
+  aminoType: "tendermint/PubKeyMultisigThreshold",
+  is(o: any): o is LegacyAminoPubKey {
+    return o && (o.$typeUrl === LegacyAminoPubKey.typeUrl || typeof o.threshold === "number" && Array.isArray(o.publicKeys) && (!o.publicKeys.length || Any.is(o.publicKeys[0])));
+  },
+  isSDK(o: any): o is LegacyAminoPubKeySDKType {
+    return o && (o.$typeUrl === LegacyAminoPubKey.typeUrl || typeof o.threshold === "number" && Array.isArray(o.public_keys) && (!o.public_keys.length || Any.isSDK(o.public_keys[0])));
+  },
+  isAmino(o: any): o is LegacyAminoPubKeyAmino {
+    return o && (o.$typeUrl === LegacyAminoPubKey.typeUrl || typeof o.threshold === "number" && Array.isArray(o.public_keys) && (!o.public_keys.length || Any.isAmino(o.public_keys[0])));
+  },
+  encode(message: LegacyAminoPubKey, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.threshold !== 0) {
       writer.uint32(8).uint32(message.threshold);
     }
@@ -35,8 +64,8 @@ export const LegacyAminoPubKey = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): LegacyAminoPubKey {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): LegacyAminoPubKey {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLegacyAminoPubKey();
     while (reader.pos < end) {
@@ -60,5 +89,46 @@ export const LegacyAminoPubKey = {
     message.threshold = object.threshold ?? 0;
     message.publicKeys = object.publicKeys?.map(e => Any.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: LegacyAminoPubKeyAmino): LegacyAminoPubKey {
+    const message = createBaseLegacyAminoPubKey();
+    if (object.threshold !== undefined && object.threshold !== null) {
+      message.threshold = object.threshold;
+    }
+    message.publicKeys = object.public_keys?.map(e => Any.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: LegacyAminoPubKey): LegacyAminoPubKeyAmino {
+    const obj: any = {};
+    obj.threshold = message.threshold === 0 ? undefined : message.threshold;
+    if (message.publicKeys) {
+      obj.public_keys = message.publicKeys.map(e => e ? Any.toAmino(e) : undefined);
+    } else {
+      obj.public_keys = message.publicKeys;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: LegacyAminoPubKeyAminoMsg): LegacyAminoPubKey {
+    return LegacyAminoPubKey.fromAmino(object.value);
+  },
+  toAminoMsg(message: LegacyAminoPubKey): LegacyAminoPubKeyAminoMsg {
+    return {
+      type: "tendermint/PubKeyMultisigThreshold",
+      value: LegacyAminoPubKey.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: LegacyAminoPubKeyProtoMsg): LegacyAminoPubKey {
+    return LegacyAminoPubKey.decode(message.value);
+  },
+  toProto(message: LegacyAminoPubKey): Uint8Array {
+    return LegacyAminoPubKey.encode(message).finish();
+  },
+  toProtoMsg(message: LegacyAminoPubKey): LegacyAminoPubKeyProtoMsg {
+    return {
+      typeUrl: "/cosmos.crypto.multisig.LegacyAminoPubKey",
+      value: LegacyAminoPubKey.encode(message).finish()
+    };
   }
 };
+GlobalDecoderRegistry.register(LegacyAminoPubKey.typeUrl, LegacyAminoPubKey);
+GlobalDecoderRegistry.registerAminoProtoMapping(LegacyAminoPubKey.aminoType, LegacyAminoPubKey.typeUrl);

@@ -1,5 +1,5 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { MsgInitialClaim, MsgInitialClaimResponse, MsgClaimFor, MsgClaimForResponse } from "./tx";
 /** Msg defines the Msg service. */
 export interface Msg {
@@ -17,11 +17,14 @@ export class MsgClientImpl implements Msg {
   initialClaim(request: MsgInitialClaim): Promise<MsgInitialClaimResponse> {
     const data = MsgInitialClaim.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.claim.v1beta1.Msg", "InitialClaim", data);
-    return promise.then(data => MsgInitialClaimResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgInitialClaimResponse.decode(new BinaryReader(data)));
   }
   claimFor(request: MsgClaimFor): Promise<MsgClaimForResponse> {
     const data = MsgClaimFor.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.claim.v1beta1.Msg", "ClaimFor", data);
-    return promise.then(data => MsgClaimForResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgClaimForResponse.decode(new BinaryReader(data)));
   }
 }
+export const createClientImpl = (rpc: Rpc) => {
+  return new MsgClientImpl(rpc);
+};

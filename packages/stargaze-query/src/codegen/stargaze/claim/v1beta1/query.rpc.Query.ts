@@ -1,5 +1,5 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryModuleAccountBalanceRequest, QueryModuleAccountBalanceResponse, QueryParamsRequest, QueryParamsResponse, QueryClaimRecordRequest, QueryClaimRecordResponse, QueryClaimableForActionRequest, QueryClaimableForActionResponse, QueryTotalClaimableRequest, QueryTotalClaimableResponse } from "./query";
 /** Query defines the gRPC querier service. */
@@ -24,27 +24,27 @@ export class QueryClientImpl implements Query {
   moduleAccountBalance(request: QueryModuleAccountBalanceRequest = {}): Promise<QueryModuleAccountBalanceResponse> {
     const data = QueryModuleAccountBalanceRequest.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.claim.v1beta1.Query", "ModuleAccountBalance", data);
-    return promise.then(data => QueryModuleAccountBalanceResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryModuleAccountBalanceResponse.decode(new BinaryReader(data)));
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.claim.v1beta1.Query", "Params", data);
-    return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryParamsResponse.decode(new BinaryReader(data)));
   }
   claimRecord(request: QueryClaimRecordRequest): Promise<QueryClaimRecordResponse> {
     const data = QueryClaimRecordRequest.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.claim.v1beta1.Query", "ClaimRecord", data);
-    return promise.then(data => QueryClaimRecordResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryClaimRecordResponse.decode(new BinaryReader(data)));
   }
   claimableForAction(request: QueryClaimableForActionRequest): Promise<QueryClaimableForActionResponse> {
     const data = QueryClaimableForActionRequest.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.claim.v1beta1.Query", "ClaimableForAction", data);
-    return promise.then(data => QueryClaimableForActionResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryClaimableForActionResponse.decode(new BinaryReader(data)));
   }
   totalClaimable(request: QueryTotalClaimableRequest): Promise<QueryTotalClaimableResponse> {
     const data = QueryTotalClaimableRequest.encode(request).finish();
     const promise = this.rpc.request("publicawesome.stargaze.claim.v1beta1.Query", "TotalClaimable", data);
-    return promise.then(data => QueryTotalClaimableResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryTotalClaimableResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

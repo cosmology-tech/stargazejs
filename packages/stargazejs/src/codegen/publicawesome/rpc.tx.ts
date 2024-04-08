@@ -11,6 +11,12 @@ export const createRPCMsgClient = async ({
     bank: {
       v1beta1: new (await import("../cosmos/bank/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
+    circuit: {
+      v1: new (await import("../cosmos/circuit/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    consensus: {
+      v1: new (await import("../cosmos/consensus/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     distribution: {
       v1beta1: new (await import("../cosmos/distribution/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
@@ -29,6 +35,12 @@ export const createRPCMsgClient = async ({
     stargaze: {
       alloc: {
         v1beta1: new (await import("../stargaze/alloc/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      },
+      cron: {
+        v1: new (await import("./stargaze/cron/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+      },
+      globalfee: {
+        v1: new (await import("../stargaze/globalfee/v1/tx.rpc.msg")).MsgClientImpl(rpc)
       },
       claim: {
         v1beta1: new (await import("../stargaze/claim/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
